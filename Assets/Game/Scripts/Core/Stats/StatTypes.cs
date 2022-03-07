@@ -17,18 +17,14 @@ namespace Core.Stats {
         maxHealth, // Maximum health points
         maxMana, // Maximum mana points
 
-        physicAttack, // Used to calculate physic damage
-        magicAttack, // Used to calculate magic damage
+        physicAttack, // Attack of physical properties (impacts, slash, pierce, etc)
+        magicAttack, // Attack of magical and/or elemental properties (curses, fire, ice, thunder, etc)
 
-        physicDefense, // Used to calculate physic damage
-        magicDefense, // Used to calculate magic damage
-
-        damage, // Final damage to the health applied to character
+        physicDefense, // Defense towards physical attacks
+        magicDefense, // Defense towards magical attacks
 
         movementSpeed, // Movement speed in combat
-        actionSpeed, // Action speed incombat
-        hitRate, // Chances of hitting the target without missing
-        missRate // Chances of evading a hit
+        actionSpeed // Action speed incombat
 
     }
 
