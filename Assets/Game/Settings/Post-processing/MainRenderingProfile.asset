@@ -47,12 +47,12 @@ MonoBehaviour:
     max: 1
   affineTextureWarping:
     m_OverrideState: 1
-    m_Value: 0.8
+    m_Value: 0
     min: 0
     max: 1
   framebufferDither:
     m_OverrideState: 1
-    m_Value: 0.7
+    m_Value: 0.15
     min: 0
     max: 1
   ditherSize:
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d61509376d05fc438d9ed9281e44e26, type: 3}
   m_Name: CompressionVolume
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   isEnabled:
     m_OverrideState: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   isFrameLimitEnabled:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   frameLimit:
     m_OverrideState: 1
     m_Value: 24
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad71758d66b75b45a6157133f3e6024, type: 3}
   m_Name: AccumulationMotionBlurVolume
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   weight:
     m_OverrideState: 0
@@ -457,7 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdadb30f615c5d5499a6de3fe4216ef6, type: 3}
   m_Name: SkyVolume
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   skyMode:
     m_OverrideState: 0
