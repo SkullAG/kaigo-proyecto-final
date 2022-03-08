@@ -21,6 +21,9 @@ namespace Core.Stats {
 
             UpdateResource();
 
+            healthPoints.value = healthPoints.max;
+            actionPoints.value = actionPoints.max;
+
             vitality.onValueChanged += OnAttributeValueChanged;
             determination.onValueChanged += OnAttributeValueChanged;
 
