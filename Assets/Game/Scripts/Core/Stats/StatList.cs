@@ -7,10 +7,12 @@ namespace Core.Stats {
     public class StatList : MonoBehaviour
     {
         
-        public Resource health;
-        public Resource mana;
+        public Resource healthPoints;
+        public Resource actionPoints;
 
-        public BaseAttributes baseAttributes;
+        [Space(15)]
+
+        public Attributes baseAttributes;
 
     }
 
