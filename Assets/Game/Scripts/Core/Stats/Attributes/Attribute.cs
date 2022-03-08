@@ -16,27 +16,31 @@ namespace Core.Stats {
         [SerializeField]
         private float _rawValue;
 
+        [SerializeField]
+        private float _modifiedValue;
+
         public readonly List<Modifier> modifiers;
 
-        public float GetModifiedValue() {
+        public float GetValue() {
 
-            float _result = GetValue();
+            float _result = GetRawValue();
 
             var _sortedModifiers = SortModifiers(modifiers);
 
             foreach (Modifier mod in _sortedModifiers) {
-                _result = mod.CalculateValue( GetValue() );
+                _result = mod.CalculateValue( GetRawValue() );
             }
 
-            return _result;
+            _modifiedValue = _result;
+            return _modifiedValue;
 
         }
 
-        public float GetValue() {
+        public float GetRawValue() {
             return _rawValue;
         }
 
-        public void SetValue(float value) {
+        public void SetRawValue(float value) {
 
             Mathf.Clamp(_rawValue, MIN_STAT, MAX_STAT);
             onValueChanged(_rawValue);
