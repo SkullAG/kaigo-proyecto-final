@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 namespace Core.Stats {
 
@@ -15,7 +14,7 @@ namespace Core.Stats {
         [SerializeField]
         protected int _currentValue;
 
-        [SerializeField]
+        [SerializeField, ReadOnly, AllowNesting]
         protected int _maxValue;
 
         public int value {
