@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 namespace Core.Stats {
 
@@ -10,54 +11,65 @@ namespace Core.Stats {
 
         public System.Action<float> onValueChanged = delegate {};
 
-        private const float MIN_STAT = 0.0f;
-        private const float MAX_STAT = 99.0f;
-
         [SerializeField]
-        private float _rawValue;
+        protected float _rawValue;
 
-        [SerializeField]
-        private float _modifiedValue;
+        [SerializeField, ReadOnly, AllowNesting]
+        protected float _modifiedValue;
 
-        public readonly List<Modifier> modifiers;
+        [SerializeField, NonReorderable]
+        public List<Modifier> modifiers = new List<Modifier>();
 
-        public float GetValue() {
+        public float value {
+            get => GetValue();
+            set => SetRawValue(value);
+        }
 
-            float _result = GetRawValue();
+        public virtual float GetValue() {
 
-            var _sortedModifiers = SortModifiers(modifiers);
-
-            foreach (Modifier mod in _sortedModifiers) {
-                _result = mod.CalculateValue( GetRawValue() );
-            }
-
+            float _result = ApplyModifiers(_rawValue);
             _modifiedValue = _result;
+
             return _modifiedValue;
 
         }
 
-        public float GetRawValue() {
+        public virtual float GetRawValue() {
             return _rawValue;
         }
 
-        public void SetRawValue(float value) {
+        public virtual void SetRawValue(float value) {
 
-            Mathf.Clamp(_rawValue, MIN_STAT, MAX_STAT);
+            if(value < 0) _rawValue = 0;
+            else _rawValue = value;
+
             onValueChanged(_rawValue);
 
         }
 
-        private List<Modifier> SortModifiers(List<Modifier> modifiers) {
+        private float ApplyModifiers(float value) {
 
-            return modifiers.OrderBy(x => x.GetType()) as List<Modifier>;
-            
+            float _result = value;
+
+            if(modifiers.Count > 0) {
+
+                var _sortedModifiers = SortModifiers(modifiers);
+
+                foreach (Modifier mod in _sortedModifiers) {
+                    _result = mod.CalculateValue( _rawValue, _result );
+                }
+
+            }
+
+            return _result;
+
         }
 
-        public Attribute() {
+        // Sort by type
+        private IOrderedEnumerable<Modifier> SortModifiers(List<Modifier> modifiers) {
 
-            this.modifiers = new List<Modifier>();
-            this._rawValue = 0;
-
+            return modifiers.OrderBy(x => (int)x.type);
+            
         }
 
     }
