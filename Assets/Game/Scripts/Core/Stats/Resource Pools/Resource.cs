@@ -37,7 +37,7 @@ namespace Core.Stats {
         }
 
         public int GetValue() {
-            return _maxValue;
+            return _currentValue;
         }
 
     }
