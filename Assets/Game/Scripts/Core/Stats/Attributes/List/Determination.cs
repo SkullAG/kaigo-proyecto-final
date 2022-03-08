@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Core.Stats {
 
+    [System.Serializable]
     public class Determination : Attribute
     {
 
