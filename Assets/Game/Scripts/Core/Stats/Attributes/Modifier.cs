@@ -4,29 +4,32 @@ using UnityEngine;
 
 namespace Core.Stats {
 
+    [System.Serializable]
     public class Modifier
     {
         
-        public enum Type { flat, percentage }
+        public enum Type { percentage, flat }
 
         [SerializeField]
         private Type _type = Type.flat;
 
+        public Type type => _type;
+
         public float factor = 0;
 
-        public float CalculateValue(float value) {
-
+        public float CalculateValue(float baseValue, float lastValue) {
+            
             if(_type == Type.flat) {
 
-                return value + factor;
+                return lastValue + factor;
 
             } else if (_type == Type.percentage) {
 
-                return value * factor / 100;
+                return baseValue + (baseValue * factor / 100);
 
             }
 
-            return value;
+            return lastValue;
 
         }
 
