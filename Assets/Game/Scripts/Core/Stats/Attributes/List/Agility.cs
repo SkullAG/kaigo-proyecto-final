@@ -9,6 +9,9 @@ namespace Core.Stats {
 
         public const float MOVEMENT_FACTOR = 1;
         public const float ACTION_FACTOR = 1;
+        public const float EVASION_FACTOR = 1;
+
+        public const float ATTRIBUTE_MAX = 99;
 
         public float CalculateMovementSpeed() {
 
@@ -25,6 +28,14 @@ namespace Core.Stats {
             return _result;
 
         }
+
+        public float CalculateEvasion(float attackerAgility, float defenderAgility) {
+
+            float _result = ((defenderAgility / attackerAgility ) / ATTRIBUTE_MAX) * 100 * EVASION_FACTOR;
+
+            return _result;
+
+        }   
 
     }
 
