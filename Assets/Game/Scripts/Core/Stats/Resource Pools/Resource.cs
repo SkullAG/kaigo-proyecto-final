@@ -23,6 +23,11 @@ namespace Core.Stats {
             set => SetValue(value);
         }
 
+        public int max {
+            get => GetMax();
+            set => SetMax(value);
+        }
+
         public void SetValue(int value) {
 
             _currentValue = Mathf.Clamp(value, 0, _maxValue);
@@ -38,6 +43,14 @@ namespace Core.Stats {
 
         public int GetValue() {
             return _currentValue;
+        }
+
+        public void SetMax(int maximum) {
+            _maxValue = maximum;
+        }
+
+        public int GetMax() {
+            return _maxValue;
         }
 
     }
