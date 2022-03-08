@@ -1,18 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 namespace Core.Stats {
 
     public class StatList : MonoBehaviour
     {
         
-        public Resource healthPoints;
-        public Resource actionPoints;
+        // Resource stats
+        [BoxGroup("Resource")] public Resource healthPoints;
+        [BoxGroup("Resource")] public Resource actionPoints;
 
-        [Space(15)]
+        // Base stats
+        [BoxGroup("Base")] public Bravery bravery;
+        [BoxGroup("Base")] public Constitution constitution;
+        [BoxGroup("Base")] public Vitality vitality;
+        [BoxGroup("Base")] public Determination determination;
+        [BoxGroup("Base")] public Agility agility;
 
-        public Attributes baseAttributes;
+        private void Awake() {
+
+            UpdateResource();
+
+            vitality.onValueChanged += OnAttributeValueChanged;
+            determination.onValueChanged += OnAttributeValueChanged;
+
+        }
+
+        private void OnValidate() {
+
+            UpdateResource();
+
+        }
+
+        private void OnAttributeValueChanged(float value) {
+
+            UpdateResource();
+            
+        }
+
+        public void UpdateResource() {
+
+            healthPoints.max = Mathf.RoundToInt(vitality.CalculateMaximumHealth());
+            actionPoints.max = Mathf.RoundToInt(determination.CalculateMaxActionPoints());
+
+        }
 
     }
 
