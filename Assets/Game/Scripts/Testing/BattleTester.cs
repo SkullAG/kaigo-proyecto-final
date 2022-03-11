@@ -1,7 +1,7 @@
 using UnityEngine;
 using Core.Characters;
 using NaughtyAttributes;
-using Core.Actions.Example;
+using Core.Actions;
 
 public class BattleTester : MonoBehaviour
 {
@@ -9,7 +9,7 @@ public class BattleTester : MonoBehaviour
     private Character attacker;
     private Character defender;
 
-    private SkillAction action;
+    private GameAction action;
 
     [Button] 
     private void UseAction() {
