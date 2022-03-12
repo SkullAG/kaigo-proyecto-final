@@ -9,7 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: bushi_skin
   m_Shader: {fileID: 4800000, guid: 055eab4e84dc70a47ae75b3125a22de6, type: 3}
-  m_ShaderKeywords: _BRDF_MODE_LAMBERT _SHADING_EVALUATION_MODE_PER_OBJECT _TEXTURE_FILTER_MODE_TEXTURE_IMPORT_SETTINGS
+  m_ShaderKeywords: _BRDF_MODE_LAMBERT _FOG_ON _LIGHTING_BAKED_ON _LIGHTING_DYNAMIC_ON
+    _SHADING_EVALUATION_MODE_PER_VERTEX _TEXTURE_FILTER_MODE_TEXTURE_IMPORT_SETTINGS
     _VERTEX_COLOR_MODE_COLOR
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -26,7 +27,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 78f46f1e611122240a598e7c517bd2a7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ReflectionCubemap:
@@ -51,10 +52,10 @@ Material:
     - _DrawDistanceOverrideMode: 0
     - _DstBlend: 0
     - _EmissionBakedMultiplier: 1
-    - _FogWeight: 0
+    - _FogWeight: 1
     - _LightingBaked: 1
     - _LightingDynamic: 1
-    - _LightingMode: 1
+    - _LightingMode: 0
     - _PrecisionColorOverrideMode: 0
     - _PrecisionGeometryOverrideMode: 0
     - _PrecisionGeometryWeight: 1
@@ -62,7 +63,7 @@ Material:
     - _ReflectionBlendMode: 0
     - _ReflectionDirectionMode: 0
     - _RenderQueueCategory: 0
-    - _ShadingEvaluationMode: 2
+    - _ShadingEvaluationMode: 0
     - _SrcBlend: 1
     - _Surface: 0
     - _TextureFilterMode: 0
@@ -78,7 +79,7 @@ Material:
     - _MainColor: {r: 1, g: 1, b: 1, a: 1}
     - _PrecisionColorOverrideParameters: {r: 0, g: 0, b: 0, a: 0}
     - _PrecisionGeometryOverrideParameters: {r: 0, g: 0, b: 0, a: 0}
-    - _ReflectionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _UVAnimationParameters: {r: 1, g: 1, b: 1, a: 1}
+    - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _UVAnimationParameters: {r: 1, g: 1, b: 0, a: 0}
     - _UVAnimationParametersFrameLimit: {r: 0, g: 60, b: 0, a: 0}
   m_BuildTextureStacks: []
