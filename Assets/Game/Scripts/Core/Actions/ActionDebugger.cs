@@ -5,7 +5,7 @@ using NaughtyAttributes;
 public class ActionDebugger : MonoBehaviour
 {
 
-    [SerializeField, Expandable]
+    /*[SerializeField, Expandable]
     private GameAction _action;
 
     private void Awake() {
@@ -33,6 +33,6 @@ public class ActionDebugger : MonoBehaviour
 
         }
 
-    }
+    }*/
 
 }

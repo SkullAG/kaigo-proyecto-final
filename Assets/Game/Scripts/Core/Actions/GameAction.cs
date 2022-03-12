@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using Core.Characters;
 
 namespace Core.Actions
 {
@@ -10,43 +11,79 @@ namespace Core.Actions
 
         [SerializeReference]
         private List<ActionPhase> _phases;
-
         private List<ActionPhase> _runtimePhases;
 
         protected int previousPhaseIndex = 0;
         protected int currentPhaseIndex = 0;
+
         protected bool running = false;
+
+        protected Character actor;
+        protected Character[] targets;
+
+        protected ActionPhase currentPhase => _runtimePhases[currentPhaseIndex];
+        protected ActionPhase previousPhase => _runtimePhases[previousPhaseIndex];
+
+        protected int lastIndex => _runtimePhases.Count - 1;
 
         public bool isRunning => running;
 
         private void OnEnable() {
 
-            Initialize();
             running = false;
             _runtimePhases = _phases;
 
         }
 
-        /// <summary> Sets initial values. </summary>
-        public abstract void Initialize();
+        // Abstract methods
+        public abstract void OnExecution();
+        protected abstract void OnPhaseStart();
+        protected abstract void OnPhaseEnd();
+        protected abstract void OnUpdate();
 
-        /// <summary> Executes the action. </summary>
-        public abstract void Execute();
-
-        /// <summary> Update action processing. </summary>
-        public void Update() {
+        private void Update() {
 
             if (running) {
 
-                // Update current phase
-                _runtimePhases[currentPhaseIndex].Update();
+                // Update current phase's logic
+                _runtimePhases[currentPhaseIndex].UpdateLogic(actor, targets);
+
+                OnUpdate();
 
             }
 
         }
+        
+        public void Execute(Character actor, Character[] targets) {
 
-        /// <summary> Starts action execution. </summary>
-        protected void StartSequence() {
+            this.actor = actor;
+            this.targets = targets;
+
+            OnExecution();
+            
+        }
+
+        protected void NextPhase() {
+
+            // Stop listening last phase
+            _phases[previousPhaseIndex].onPhaseStart -= OnPhaseStart;
+            _phases[previousPhaseIndex].onPhaseEnd -= OnPhaseEnd;
+
+            previousPhaseIndex = currentPhaseIndex;
+            currentPhaseIndex++;
+
+            Debug.Log( $"Next phase: {_phases[currentPhaseIndex].name}" );
+
+            // Start listening next phase
+            _phases[currentPhaseIndex].onPhaseStart += OnPhaseStart;
+            _phases[currentPhaseIndex].onPhaseEnd += OnPhaseEnd;
+
+            // Start next phase
+            _phases[currentPhaseIndex].Start();
+
+        }
+
+        protected void StartAction() {
 
             Debug.Log( $"Action {name} starts." );
 
@@ -56,8 +93,8 @@ namespace Core.Actions
             }
 
             // Start listening first phase
-            _runtimePhases[0].onPhaseStart += OnCurrentPhaseStart;
-            _runtimePhases[0].onPhaseEnd += OnCurrentPhaseEnd;
+            _runtimePhases[0].onPhaseStart += OnPhaseStart;
+            _runtimePhases[0].onPhaseEnd += OnPhaseEnd;
 
             // Start first phase
             running = true;
@@ -65,55 +102,13 @@ namespace Core.Actions
 
         }
 
-        /// <summary> Called when current phase starts. </summary>
-        protected virtual void OnCurrentPhaseStart() {
-
-            //
-
-        }
-
-        /// <summary> Called when current phase ends. </summary>
-        protected virtual void OnCurrentPhaseEnd() {
-
-            // If the current phase is the last, end sequence.
-            if(currentPhaseIndex == _phases.Count - 1) {
-                EndSequence();
-                return;
-            }
-
-            // Jump to the next phase.
-            Next();
-
-        }
-
-        private void Next() {
-
-            // Stop listening last phase
-            _phases[previousPhaseIndex].onPhaseStart -= OnCurrentPhaseStart;
-            _phases[previousPhaseIndex].onPhaseEnd -= OnCurrentPhaseEnd;
-
-            previousPhaseIndex = currentPhaseIndex;
-            currentPhaseIndex++;
-
-            Debug.Log( $"Next phase: {_phases[currentPhaseIndex].name}" );
-
-            // Start listening next phase
-            _phases[currentPhaseIndex].onPhaseStart += OnCurrentPhaseStart;
-            _phases[currentPhaseIndex].onPhaseEnd += OnCurrentPhaseEnd;
-
-            // Start next phase
-            _phases[currentPhaseIndex].Start();
-
-        }
-
-        /// <summary> Ends the phase sequence. </summary>
-        private void EndSequence() {
+        protected void EndAction() {
 
             Debug.Log( $"Action {name} ends." );
 
             // Stop listening last phase
-            _phases[previousPhaseIndex].onPhaseStart -= OnCurrentPhaseStart;
-            _phases[previousPhaseIndex].onPhaseEnd -= OnCurrentPhaseEnd;
+            _phases[previousPhaseIndex].onPhaseStart -= OnPhaseStart;
+            _phases[previousPhaseIndex].onPhaseEnd -= OnPhaseEnd;
 
             running = false;
 
