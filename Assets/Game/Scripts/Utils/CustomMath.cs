@@ -86,6 +86,31 @@ public static class CustomMath
 		return result;
 	}
 
+	public static float CloseTo0(float a, float b)
+	{
+		return (Mathf.Abs(a) < Mathf.Abs(b)) ? a : b;
+	}
+	public static Vector2 CloseTo0(Vector2 a, Vector2 b)
+	{
+		return (a.magnitude < b.magnitude) ? a : b;
+	}
+	public static Vector3 CloseTo0(Vector3 a, Vector3 b)
+	{
+		return (a.magnitude < b.magnitude) ? a : b;
+	}
+	public static float FarFrom0(float a, float b)
+	{
+		return (Mathf.Abs(a) > Mathf.Abs(b)) ? a : b;
+	}
+	public static Vector2 FarFrom0(Vector2 a, Vector2 b)
+	{
+		return (a.magnitude > b.magnitude) ? a : b;
+	}
+	public static Vector3 FarFrom0(Vector3 a, Vector3 b)
+	{
+		return (a.magnitude > b.magnitude) ? a : b;
+	}
+
 	public static T GetCopyOf<T>(this T comp, T other) where T : Component
 	{
 		Type type = comp.GetType();
