@@ -17,10 +17,9 @@ namespace Core.Actions
             onPhaseStart();
         }
 
-        protected virtual void End() {
+        public virtual void End() {
             onPhaseEnd();
         }
-
 
     }
     

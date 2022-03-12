@@ -11,17 +11,15 @@ public class ExampleAction : GameAction
 
     // This happens once after the action is executed,
     // that is, when an actor has triggered the action.
-    public override void OnExecution() {
-
-        Debug.Log("Action " + name + " has been executed.");
+    protected override void OnExecution() {
 
         // This starts the update of the action's phases.
         StartAction();
 
         // You can use "actor" and "targets" properties to get the
         // actor character that is executing this action and its targets.
-        Debug.Log("Action's actor is: " + actor);
-        Debug.Log("Action's first target is: " + targets[0]);
+        // Debug.Log("Action's actor is: " + actor);
+        // Debug.Log("Action's first target is: " + targets[0]);
         
     }
 
@@ -52,7 +50,7 @@ public class ExampleAction : GameAction
         Debug.Log("Phase " + currentPhase.name + " has ended.");
 
         // This ends the action when the last phase has ended.
-        if(currentPhaseIndex == lastIndex) {
+        if( OnLastPhase() ) {
 
             EndAction();
             return;
