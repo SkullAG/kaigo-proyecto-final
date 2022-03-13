@@ -27,7 +27,7 @@ namespace Core.Actions
 
                 if( _actionTimer >= 1.0f ) {
 
-                    if(!_busy) {
+                    if(!_busy && _queuedAction != null) {
 
                         _currentAction = _queuedAction;
                         _currentAction.Execute();

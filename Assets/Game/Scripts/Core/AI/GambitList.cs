@@ -48,6 +48,8 @@ namespace Core.Gambits
                     // If the condition is met, add the action to the character's queue
                     if(_condition) {
 
+                        //Debug.Log("Gambit " + i + " evaluates true!");
+
                         // Instantiate scriptable object
                         GameAction _action = Instantiate(_gambits[i].action);
 
@@ -56,6 +58,8 @@ namespace Core.Gambits
 
                         // Add action to queue
                         _actionQueue.RequestExecution(_action);
+
+                        break;
 
                     }
 
