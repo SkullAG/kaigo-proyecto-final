@@ -115,6 +115,11 @@ public class DisplaySegments : MonoBehaviour
 		Segments.RemoveRange(SegNum, Segments.Count - SegNum);
 	}
 
+	private void Update()
+	{
+		UpdateValues();
+	}
+
 	private void Start()
 	{
 		rectTransform = GetComponent<RectTransform>();

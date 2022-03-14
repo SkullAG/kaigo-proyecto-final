@@ -159,6 +159,11 @@ public class DisplayBar : MonoBehaviour
 		}
 	}
 
+    private void Update()
+    {
+		UpdateValues();
+	}
+
     public void SetValue(float value)
 	{
 		//Debug.Log(value);
