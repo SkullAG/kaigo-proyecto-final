@@ -6,6 +6,7 @@ using UnityEngine;
 
 public static class CustomMath
 {
+	
 	static Vector3 TempVec3 = Vector3.zero;
 
     ///<summary>
@@ -64,6 +65,14 @@ public static class CustomMath
 		bool resultX = ((a.x + range > b.x) && (a.x - range < b.x));
 		bool resultY = ((a.y + range > b.y) && (a.y - range < b.y));
 		return (resultX && resultY);
+	}
+
+	public static bool AproximatelyVector3(Vector3 a, Vector3 b, float range = 0.001f)
+	{
+		bool resultX = ((a.x + range > b.x) && (a.x - range < b.x));
+		bool resultY = ((a.y + range > b.y) && (a.y - range < b.y));
+		bool resultZ = ((a.z + range > b.z) && (a.z - range < b.z));
+		return (resultX && resultY && resultZ);
 	}
 
 	public static float Hypotenuse(float legA, float legB)
