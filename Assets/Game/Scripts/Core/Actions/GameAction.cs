@@ -12,8 +12,10 @@ namespace Core.Actions
         public System.Action onActionStart = delegate {};
         public System.Action onActionEnd = delegate {};
 
+        public string id;
+
         [SerializeReference, NonReorderable, Expandable]
-        private List<ActionPhase> _phases;
+        public List<ActionPhase> phases;
 
         //private List<ActionPhase> _runtimePhases;
 
@@ -62,9 +64,9 @@ namespace Core.Actions
 
         protected void NextPhase() {
 
-            lastPhase = _phases[phaseIndex];
+            lastPhase = phases[phaseIndex];
             phaseIndex++;
-            currentPhase = _phases[phaseIndex];
+            currentPhase = phases[phaseIndex];
 
             StartPhase(currentPhase);
 
@@ -92,13 +94,13 @@ namespace Core.Actions
             Debug.Log( $"Action {name} starts." );
             onActionStart();
 
-            // Instantiate phases
+            /*// Instantiate phases (replace with pooling)
             for(int i = 0; i < _phases.Count; i++) {
                 _phases[i] = Instantiate(_phases[i]);
-            }
+            }*/
 
             running = true;
-            currentPhase = _phases[0];
+            currentPhase = phases[0];
 
             StartPhase(currentPhase); // Start first phase
 
@@ -115,7 +117,7 @@ namespace Core.Actions
 
         public bool OnLastPhase() {
 
-            return phaseIndex == _phases.Count - 1;
+            return phaseIndex == phases.Count - 1;
             
         }
 

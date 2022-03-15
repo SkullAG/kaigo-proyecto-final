@@ -5,7 +5,7 @@ using Core.Characters;
 [CreateAssetMenu(fileName = "Example Action", menuName = "Game/Actions/Example/Action")]
 public class ExampleAction : GameAction
 {
-
+    
     [SerializeField]
     float _number;
 

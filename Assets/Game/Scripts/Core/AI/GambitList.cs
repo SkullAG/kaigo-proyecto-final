@@ -51,7 +51,7 @@ namespace Core.Gambits
                         //Debug.Log("Gambit " + i + " evaluates true!");
 
                         // Instantiate scriptable object
-                        GameAction _action = Instantiate(_gambits[i].action);
+                        GameAction _action = Instantiate(_gambits[i].action); // Replace with action pooling
 
                         _action.actor = _actor;
                         _action.targets = _targets;

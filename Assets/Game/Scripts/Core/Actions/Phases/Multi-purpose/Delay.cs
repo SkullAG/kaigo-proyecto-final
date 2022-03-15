@@ -10,6 +10,13 @@ public class Delay : ActionPhase
     private int _counter = 0;
 
     public int timeToExit = 5;
+    public int runtimeTimeToExit;
+
+    private void OnEnable() {
+
+        
+
+    }
 
     // Update phase's processing
     public override void UpdateLogic(Character actor, Character[] targets) {
