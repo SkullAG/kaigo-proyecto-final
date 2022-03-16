@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: LifePotion
   m_EditorClassIdentifier: 
   description: Gives life to player
-  stackMax: 16
-  names: Life Potion
+  stackMax: 2
   id: 01
   _gameObject: {fileID: 0}
   life: 5

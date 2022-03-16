@@ -16,7 +16,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   geometryEnabled:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   geometry:
     m_OverrideState: 1
     m_Value: 0.8
@@ -126,12 +126,12 @@ MonoBehaviour:
     m_Value: 0
   targetRasterizationResolutionWidth:
     m_OverrideState: 1
-    m_Value: 256
+    m_Value: 4096
     min: 1
     max: 4096
   targetRasterizationResolutionHeight:
     m_OverrideState: 1
-    m_Value: 224
+    m_Value: 4096
     min: 1
     max: 4096
   isDepthBufferEnabled:

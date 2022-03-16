@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b8c52abd410a8749b97de331df471f6, type: 3}
-  m_Name: Potion
+  m_Name: ManaPotion
   m_EditorClassIdentifier: 
-  description: Gives life
-  stackMax: 16
-  id: 00
+  description: mana
+  stackMax: 3
+  id: 3
   _gameObject: {fileID: 0}
