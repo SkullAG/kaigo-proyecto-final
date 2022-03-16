@@ -58,8 +58,6 @@ namespace Core.Actions
 
             _currentAction.onActionEnd -= OnActionEnd; // Stop listening action end event
 
-            Destroy(_currentAction); // Destroy clone of scriptable object
-
             _busy = false;
 
         }

@@ -91,7 +91,7 @@ namespace Core.Actions
 
         protected void StartAction() {
 
-            Debug.Log( $"Action {name} starts." );
+            //Debug.Log( $"Action {name} starts." );
             onActionStart();
 
             /*// Instantiate phases (replace with pooling)
@@ -110,7 +110,7 @@ namespace Core.Actions
 
             running = false;
 
-            Debug.Log( $"Action {name} ends." );
+            //Debug.Log( $"Action {name} ends." );
             onActionEnd();
 
         }

@@ -17,11 +17,13 @@ namespace Core.Gambits
 
         private Character _actor;
         private ActionQueue _actionQueue;
+        private ActionList _actionList;
 
         private void Awake() {
 
             _actor = GetComponent<Character>();
             _actionQueue = GetComponent<ActionQueue>();
+            _actionList = GetComponent<ActionList>();
 
         }
 
@@ -48,18 +50,20 @@ namespace Core.Gambits
                     // If the condition is met, add the action to the character's queue
                     if(_condition) {
 
-                        //Debug.Log("Gambit " + i + " evaluates true!");
+                        // Get action from character action list
+                        GameAction _action = _actionList.GetAction(_gambits[i].action.id);
 
-                        // Instantiate scriptable object
-                        GameAction _action = Instantiate(_gambits[i].action); // Replace with action pooling
+                        if(_action != null) {
 
-                        _action.actor = _actor;
-                        _action.targets = _targets;
+                            _action.actor = _actor;
+                            _action.targets = _targets;
 
-                        // Add action to queue
-                        _actionQueue.RequestExecution(_action);
+                            // Add action to queue
+                            _actionQueue.RequestExecution(_action);
 
-                        break;
+                            break;
+
+                        }
 
                     }
 

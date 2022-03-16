@@ -33,7 +33,7 @@ public class ExampleAction : GameAction
     // This happens once after a phase starts.
     protected override void OnPhaseStart() {
         
-        Debug.Log("Phase " + currentPhase.name + " has started.");
+        //Debug.Log("Phase " + currentPhase.name + " has started.");
 
     }
     
@@ -47,7 +47,7 @@ public class ExampleAction : GameAction
         // Example: you can loop a phase many times or interrupt
         // its processing freely, depending on any conditions.
 
-        Debug.Log("Phase " + currentPhase.name + " has ended.");
+        //Debug.Log("Phase " + currentPhase.name + " has ended.");
 
         // This ends the action when the last phase has ended.
         if( OnLastPhase() ) {

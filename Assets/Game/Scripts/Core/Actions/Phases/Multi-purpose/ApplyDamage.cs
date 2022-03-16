@@ -14,7 +14,7 @@ public class ApplyDamage : ActionPhase
     // Update phase's processing
     public override void UpdateLogic(Character actor, Character[] targets) {
 
-        Debug.Log( "Fire!" );
+        //Debug.Log( "Fire!" );
 
         End();
 
