@@ -8,13 +8,14 @@ public static class CustomMath
 {
 	
 	static Vector3 TempVec3 = Vector3.zero;
+	static Vector2 TempVec2 = Vector2.zero;
 
-    ///<summary>
-    ///	Is true if float a and b have the same, if one of the two is 0 will return false
-    ///	</summary>
-    ///	<param name="a">Float or int</param>
-    ///	<param name="b">Float or int</param>
-    public static bool SignesAreEqual(float a, float b)
+	///<summary>
+	///	Is true if float a and b have the same, if one of the two is 0 will return false
+	///	</summary>
+	///	<param name="a">Float or int</param>
+	///	<param name="b">Float or int</param>
+	public static bool SignesAreEqual(float a, float b)
 	{
 		bool result = ((a < 0 && b < 0) || (a > 0 && b > 0));
 		return result;
@@ -118,6 +119,31 @@ public static class CustomMath
 	public static Vector3 FarFrom0(Vector3 a, Vector3 b)
 	{
 		return (a.magnitude > b.magnitude) ? a : b;
+	}
+
+	///<summary>
+	///	returns the Vector2 rotated to the Dir vector this being Up
+	///	</summary>
+	public static Vector2 RotateVector(Vector2 vector, Vector2 dir)
+	{
+		dir = dir.normalized;
+		TempVec2.x = vector.x * dir.y + vector.y * dir.x;
+		TempVec2.y = vector.x * dir.x + vector.y * dir.y;
+
+		return TempVec2;
+	}
+
+	///<summary>
+	///	returns the Vector2 rotated to the Dir vector this being Forward
+	///	</summary>
+	public static Vector3 RotateVector(Vector3 vector, Vector3 dir)
+	{
+		dir = dir.normalized;
+		TempVec3.x = vector.x * dir.z + vector.z * dir.x;
+		TempVec3.y = vector.y * dir.z + vector.z * dir.y;
+		TempVec3.z = vector.z * dir.z + vector.x * dir.x + vector.y * dir.y;
+
+		return TempVec2;
 	}
 
 	public static T GetCopyOf<T>(this T comp, T other) where T : Component
