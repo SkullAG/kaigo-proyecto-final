@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb25b00bc33b54a48b4bda25d3b9564c, type: 3}
   m_Name: HP More Than 25%
   m_EditorClassIdentifier: 
-  id: HPMore Than 25%
+  id: HP More Than 25%
   description: 
   _resourceToEvaluate: 0
   _operator: 1
