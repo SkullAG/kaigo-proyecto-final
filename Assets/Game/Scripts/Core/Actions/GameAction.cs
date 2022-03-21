@@ -13,6 +13,7 @@ namespace Core.Actions
         public System.Action onActionEnd = delegate {};
 
         public string id;
+        public string description;
 
         [SerializeReference, NonReorderable, Expandable]
         public List<ActionPhase> phases;

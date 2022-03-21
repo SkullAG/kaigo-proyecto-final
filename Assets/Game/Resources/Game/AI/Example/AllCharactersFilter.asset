@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab9ab806a637a0f4fbc83567d947acf3, type: 3}
   m_Name: AllCharactersFilter
   m_EditorClassIdentifier: 
+  id: Any Character
+  description: 

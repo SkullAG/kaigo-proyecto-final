@@ -7,6 +7,9 @@ namespace Core.AI
     public abstract class TargetFilter : ScriptableObject
     {
         
+        public string id;
+        public string description;
+
         public abstract Character[] GetTargets();
 
     }

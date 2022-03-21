@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb25b00bc33b54a48b4bda25d3b9564c, type: 3}
   m_Name: AP More Than 75%
   m_EditorClassIdentifier: 
+  id: AP More Than 75%
+  description: 
   _resourceToEvaluate: 1
   _operator: 1
   _percentage: 75

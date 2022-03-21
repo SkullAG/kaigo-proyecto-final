@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9255cc790daa6241b8c073ce878d534, type: 3}
   m_Name: HealthAtHalf
   m_EditorClassIdentifier: 
+  id: HP at 1/2
+  description: 
