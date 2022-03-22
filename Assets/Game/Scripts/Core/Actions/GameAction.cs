@@ -46,7 +46,7 @@ namespace Core.Actions
 
         public void Update() {
 
-            if (running) {
+            if (running && currentPhase != null) {
 
                 // Update current phase's logic
                 currentPhase.UpdateLogic(actor, targets);
@@ -74,6 +74,13 @@ namespace Core.Actions
         }
 
         protected void StartPhase(ActionPhase phase) {
+
+            if(phases.Count == 0) {
+
+                Debug.LogWarning("Tried to start an action without phases (" + id + ")");
+                return;
+
+            }
 
             if(lastPhase != null) {
 

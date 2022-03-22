@@ -30,6 +30,7 @@ namespace Core.Actions
                     if(!_busy && _queuedAction != null) {
 
                         _currentAction = _queuedAction;
+                        _queuedAction = null;
                         _currentAction.Execute();
 
                         _currentAction.onActionEnd += OnActionEnd;
