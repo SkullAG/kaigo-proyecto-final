@@ -6,10 +6,17 @@ using TMPro;
 
 public class GambitUI : MonoBehaviour
 {
+
+    [SerializeField] private RectTransform _handleButton;
+    [SerializeField] private RectTransform _targetButton;
+    [SerializeField] private RectTransform _conditionButton;
+    [SerializeField] private RectTransform _actionButton;
+
+    [SerializeField] private string _emptyText = "Empty";
     
-    [SerializeField] private TextMeshProUGUI _targetText;
-    [SerializeField] private TextMeshProUGUI _conditionText;
-    [SerializeField] private TextMeshProUGUI _actionText;
+    private TextMeshProUGUI _targetText;
+    private TextMeshProUGUI _conditionText;
+    private TextMeshProUGUI _actionText;
 
     private Gambit _lastGambit;
     private TargetFilter _lastTargetFilter;
@@ -17,6 +24,14 @@ public class GambitUI : MonoBehaviour
     private BehaviourCondition _lastCondition;
 
     public Gambit gambit;
+
+    private void Awake() {
+
+        _targetText = _targetButton.GetComponentInChildren<TextMeshProUGUI>();
+        _conditionText = _conditionButton.GetComponentInChildren<TextMeshProUGUI>();
+        _actionText = _actionButton.GetComponentInChildren<TextMeshProUGUI>();
+
+    }
 
     private void Update() {
 
@@ -40,11 +55,24 @@ public class GambitUI : MonoBehaviour
     private void UpdateButtons() {
 
         if(gambit != null) {
+
+            if(gambit.target == null)
+                _targetText.text = _emptyText;
+            else
+                _targetText.text = gambit.target.id;
             
-            // Temp
-            _targetText.text = gambit.target != null ? gambit.target.id : "Empty";
-            _conditionText.text = gambit.condition != null ? gambit.condition.id : "Empty";
-            _actionText.text = gambit.action != null ? gambit.action.id : "Empty";
+
+            if(gambit.condition == null)
+                _conditionText.text = _emptyText;
+            else
+                _conditionText.text = gambit.condition.id;
+            
+
+            if(gambit.action == null)
+                _actionText.text = _emptyText;
+            else
+                _actionText.text = gambit.action.id;
+            
 
         }
 
