@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: Action 1
   description: 
-  phases: []
+  phases:
+  - {fileID: 11400000, guid: 2984861a4a2eb1541bad7acc2de1a39f, type: 2}
   running: 0
   actor: {fileID: 0}
   targets: []
