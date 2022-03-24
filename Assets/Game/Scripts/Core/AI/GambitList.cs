@@ -74,15 +74,15 @@ namespace Core.Gambits
 
             if( _gambits.Contains(gambit) ) {
 
-                int _index = _gambits.IndexOf(gambit);
-                int _shiftedIndex = _index + shift;
+                int _currentIndex = _gambits.IndexOf(gambit);
+                int _nextIndex = Mathf.Clamp(_currentIndex + shift, 0, _gambits.Count - 1);
 
-                _shiftedIndex = Mathf.Clamp(_shiftedIndex, 0, _gambits.Count - 1);
+                Debug.Log("Swapping gambit " + _currentIndex + " with " + _nextIndex);
 
-                Gambit _temp = _gambits[_shiftedIndex];
+                var _temp = _gambits[_nextIndex];
 
-                _gambits[_shiftedIndex] = _gambits[_index];
-                _gambits[_index] = _temp;
+                _gambits[_nextIndex] = _gambits[_currentIndex];
+                _gambits[_currentIndex] = _temp;
 
             }
 
