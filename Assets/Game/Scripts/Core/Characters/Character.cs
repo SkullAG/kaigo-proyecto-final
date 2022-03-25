@@ -1,5 +1,8 @@
 using UnityEngine;
 using Core.Stats;
+using Core.Gambits;
+using Core.Actions;
+using Core.States;
 
 namespace Core.Characters {
 
@@ -7,6 +10,9 @@ namespace Core.Characters {
     {
         
         public StatList stats;
+        public ActionList actions;
+        public GambitList gambits;
+        public StateList states;
 
     }
 

@@ -12,11 +12,17 @@ namespace Core.Stats {
         public const float ACTION_FACTOR = 1;
         public const float EVASION_FACTOR = 1;
 
+        public const int MIN_SPEED = 3;
+        public const int MAX_SPEED = 8;
+
+        public const int MAX_ACTIONSPEED = 2;
+        public const int MIN_ACTIONSPEED = 10;
+
         public const float ATTRIBUTE_MAX = 99;
 
         public float CalculateMovementSpeed() {
 
-            float _result = value * MOVEMENT_FACTOR;
+            float _result = value * (MAX_SPEED - MIN_SPEED) / 10 + MIN_SPEED; 
 
             return _result;
 
@@ -24,7 +30,7 @@ namespace Core.Stats {
 
         public float CalculateActionSpeed() {
 
-            float _result = value * ACTION_FACTOR;
+            float _result = value * (MAX_ACTIONSPEED - MIN_ACTIONSPEED) / 10 + MIN_ACTIONSPEED; 
 
             return _result;
 
