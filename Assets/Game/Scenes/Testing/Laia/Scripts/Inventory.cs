@@ -6,34 +6,135 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {    
-    public Transform _capsule;
-    public Button _button;
-    public void boton()    
-    {        
-        _capsule.gameObject.SetActive(true);
+	public Transform _capsule;
+	public Button _button;
+	bool notEmpty = false;
+	public void boton()    
+	{        
+		_capsule.gameObject.SetActive(true);
+	}
+
+	[Serializable]
+	public class Casilla
+	{
+		public Objects objeto;
+		public int stack;
+
+		public Casilla(Objects o)
+        {
+			stack = 1;
+			objeto = o;
+        }
+	};
+
+	private Dictionary<string, Casilla> huecos=new Dictionary<string, Casilla>();
+
+	[SerializeField]
+	public List<string> nombres = new List<string>();
+
+	public void Use(int value)
+	{
+		if (notEmpty)
+		{
+			Debug.Log("Usando " + huecos[nombres[value]].objeto.name);
+			huecos[nombres[value]].objeto.Use();
+			huecos[nombres[value]].stack--;
+
+
+			//huecos[value].SetStackValue(huecos[value].stack - 1);
+
+
+			if (huecos[nombres[value]].stack <= 0)
+            {
+				notEmpty = false;
+				huecos.Remove(nombres[value]);
+				nombres.RemoveAt(value);
+				//huecos.Remove();			
+			}
+		}      
+	}
+	
+	public void Add(Objects obj)
+    {
+
+		if (huecos.ContainsKey(obj.name))
+        {
+			if (huecos[obj.name].stack < huecos[obj.name].objeto.stackMax)
+			{
+				Debug.Log("Añadiendo " + huecos[obj.name].objeto.name);
+
+				notEmpty = true;
+				huecos[obj.name].stack++;
+				//Casilla ca = huecos[i];
+				//ca.stack +=1;
+			}
+			else
+			{
+				Debug.Log("Stack Maximo alcanzado " + huecos[obj.name].objeto.stackMax);
+			}
+		}
+		else
+		{
+			Casilla c = new Casilla(obj);
+			huecos.Add(obj.name, c);
+			nombres.Add(obj.name);
+		}
     }
 
-    [Serializable]
-    public struct Casilla
-    {
-        public Objects objeto;
-        public int stack;
-    };
+	public void Quit(int value) 
+	{
+		if (notEmpty)
+		{
+			Debug.Log("Tirando " + huecos[nombres[value]].objeto.name);
+			huecos[nombres[value]].stack--;
 
-    [SerializeField]
-    public List<Casilla> huecos = new List<Casilla>();
+			if (huecos[nombres[value]].stack <= 0)
+			{
+				notEmpty = false;
+				huecos.Remove(nombres[value]);
+				nombres.RemoveAt(value);
+				//huecos.Remove();			
+			}
+		}
+	}
 
-    public void Use(int value)
+    public void ShowDic()
     {
-        Debug.Log("Usando " + huecos[value].objeto.names);
-        huecos[value].objeto.Use();
-        huecos.RemoveAt(value);
-    }
-
-    public void Quit(int value) 
-    {
-        Debug.Log("Quitando " + huecos[value].objeto.names);
-        huecos.RemoveAt(value);
+		Debug.Log(huecos["LifePotion"].objeto.name + " " + huecos["LifePotion"].stack);
+		Debug.Log(huecos["ManaPotion"].objeto.name + " " + huecos["ManaPotion"].stack);		
     }
 
 }
+
+
+
+/*public void Add2(Objects obj)
+{
+	for(int i = 0; i < huecos.Count; i++)
+	{
+		if (huecos[i].objeto == obj)
+		{
+			if (huecos[i].stack < huecos[i].objeto.stackMax)
+			{
+				Debug.Log("Añadiendo " + huecos[i].objeto.names);
+
+				notEmpty = true;
+				huecos[i].stack++;
+				huecos[i].SetStackValue(huecos[i].stack + 1);
+				//Casilla ca = huecos[i];
+				//ca.stack +=1;
+			}
+			else
+			{
+				Debug.Log("Stack Maximo alcanzado " + huecos[i].objeto.stackMax);
+			}
+			return;
+		}
+	}
+	Casilla c = new Casilla();
+
+	c.objeto = obj;
+	c.stack = 1;
+
+	huecos.Add(c);
+}*/

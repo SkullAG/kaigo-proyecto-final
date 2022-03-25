@@ -7,7 +7,6 @@ public class Objects : ScriptableObject
 {
     public string description;
     public int stackMax;
-    public string names;
     public string id;
     public GameObject _gameObject;
 

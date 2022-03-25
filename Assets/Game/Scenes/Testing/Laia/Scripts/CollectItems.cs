@@ -10,12 +10,10 @@ public class CollectItems : MonoBehaviour
     {
         PickableObject _inter = other.GetComponent<PickableObject>();
         if (_inter)
-        {
-            Inventory.Casilla _casilla =  new Inventory.Casilla();
-            _casilla.objeto = _inter._obj;
-            _casilla.stack = 1;
-            _inventory.huecos.Add(_casilla);
+        { 
+            //_inventory.huecos.Add(_casilla);
             other.gameObject.SetActive(false);
+            _inventory.Add(_inter._obj);
         }      
         //items.Remove("potion");
     }

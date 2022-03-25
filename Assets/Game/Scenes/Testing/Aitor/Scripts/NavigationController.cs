@@ -22,5 +22,10 @@ public class NavigationController : MonoBehaviour
 	{
 		navAgent.SetDestination(objective.position);
 		//NavMesh.CalculatePath();
+
+		for (int i = 0; i < navAgent.path.corners.Length - 1; i++)
+		{
+			Debug.DrawLine(navAgent.path.corners[i], navAgent.path.corners[i + 1], Color.red);
+		}
 	}
 }

@@ -6,14 +6,16 @@ using UnityEngine;
 
 public static class CustomMath
 {
+	
 	static Vector3 TempVec3 = Vector3.zero;
+	static Vector2 TempVec2 = Vector2.zero;
 
-    ///<summary>
-    ///	Is true if float a and b have the same, if one of the two is 0 will return false
-    ///	</summary>
-    ///	<param name="a">Float or int</param>
-    ///	<param name="b">Float or int</param>
-    public static bool SignesAreEqual(float a, float b)
+	///<summary>
+	///	Is true if float a and b have the same, if one of the two is 0 will return false
+	///	</summary>
+	///	<param name="a">Float or int</param>
+	///	<param name="b">Float or int</param>
+	public static bool SignesAreEqual(float a, float b)
 	{
 		bool result = ((a < 0 && b < 0) || (a > 0 && b > 0));
 		return result;
@@ -66,6 +68,14 @@ public static class CustomMath
 		return (resultX && resultY);
 	}
 
+	public static bool AproximatelyVector3(Vector3 a, Vector3 b, float range = 0.001f)
+	{
+		bool resultX = ((a.x + range > b.x) && (a.x - range < b.x));
+		bool resultY = ((a.y + range > b.y) && (a.y - range < b.y));
+		bool resultZ = ((a.z + range > b.z) && (a.z - range < b.z));
+		return (resultX && resultY && resultZ);
+	}
+
 	public static float Hypotenuse(float legA, float legB)
 	{
 		float result = Mathf.Sqrt(Mathf.Pow(legA, 2) + Mathf.Pow(legB, 2));
@@ -109,6 +119,40 @@ public static class CustomMath
 	public static Vector3 FarFrom0(Vector3 a, Vector3 b)
 	{
 		return (a.magnitude > b.magnitude) ? a : b;
+	}
+
+	///<summary>
+	///	returns the Vector2 rotated to the Dir vector this being Up
+	///	</summary>
+	public static Vector2 RotateVector(Vector2 vector, Vector2 dir)
+	{
+		dir = dir.normalized;
+		TempVec2.x = vector.x * dir.y + vector.y * dir.x;
+		TempVec2.y = vector.x * dir.x + vector.y * dir.y;
+
+		return TempVec2;
+	}
+
+	///<summary>
+	///	returns the Vector2 rotated to the Dir vector this being Forward
+	///	</summary>
+	public static Vector3 RotateVector(Vector3 vector, Vector3 dir)
+	{
+		return Quaternion.LookRotation(dir) * vector;
+	}
+
+	public static Vector3 onePoleBezierLerp(Vector3 init, Vector3 end, Vector3 pole, float factor)
+    {
+		return Vector3.Lerp(Vector3.Lerp(init, pole, factor), Vector3.Lerp(pole, end, factor), factor);
+    }
+
+	public static Vector3 twoPoleBezierLerp(Vector3 init, Vector3 end, Vector3 pole1, Vector3 pole2, float factor)
+	{
+		Vector3 L1 = Vector3.Lerp(init, pole1, factor);
+		Vector3 L2 = Vector3.Lerp(pole1, pole2, factor);
+		Vector3 L3 = Vector3.Lerp(pole2, end, factor);
+
+		return onePoleBezierLerp(L1, L3, L2, factor);
 	}
 
 	public static T GetCopyOf<T>(this T comp, T other) where T : Component
