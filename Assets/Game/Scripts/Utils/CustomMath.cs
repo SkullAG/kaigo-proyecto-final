@@ -138,12 +138,21 @@ public static class CustomMath
 	///	</summary>
 	public static Vector3 RotateVector(Vector3 vector, Vector3 dir)
 	{
-		dir = dir.normalized;
-		TempVec3.x = vector.x * dir.z + vector.z * dir.x;
-		TempVec3.y = vector.y * dir.z + vector.z * dir.y;
-		TempVec3.z = vector.z * dir.z + vector.x * dir.x + vector.y * dir.y;
+		return Quaternion.LookRotation(dir) * vector;
+	}
 
-		return TempVec2;
+	public static Vector3 onePoleBezierLerp(Vector3 init, Vector3 end, Vector3 pole, float factor)
+    {
+		return Vector3.Lerp(Vector3.Lerp(init, pole, factor), Vector3.Lerp(pole, end, factor), factor);
+    }
+
+	public static Vector3 twoPoleBezierLerp(Vector3 init, Vector3 end, Vector3 pole1, Vector3 pole2, float factor)
+	{
+		Vector3 L1 = Vector3.Lerp(init, pole1, factor);
+		Vector3 L2 = Vector3.Lerp(pole1, pole2, factor);
+		Vector3 L3 = Vector3.Lerp(pole2, end, factor);
+
+		return onePoleBezierLerp(L1, L3, L2, factor);
 	}
 
 	public static T GetCopyOf<T>(this T comp, T other) where T : Component
