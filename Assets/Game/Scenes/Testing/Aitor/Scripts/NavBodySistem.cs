@@ -101,7 +101,7 @@ public class NavBodySistem : MonoBehaviour
 
 					transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), Mathf.Min(Mathf.Abs(Mathf.DeltaAngle(transform.rotation.eulerAngles.y, targetAngle)), rotationVelocity * Time.deltaTime));
 					//Debug.Log(transform.rotation.eulerAngles.y + ", " + targetAngle);
-					if (Mathf.DeltaAngle(transform.rotation.eulerAngles.y, targetAngle) <= fieldOfView / 2)
+					if (Mathf.Abs(Mathf.DeltaAngle(transform.rotation.eulerAngles.y, targetAngle)) <= fieldOfView / 2)
 					{
 						MoveTowardsPoint(path.corners[1]);
 					}
