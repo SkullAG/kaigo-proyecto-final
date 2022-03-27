@@ -1,13 +1,33 @@
 using UnityEngine;
 using Core.Actions;
 using Core.Characters;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "Example Action", menuName = "Game/Actions/Example/Action")]
 public class ExampleAction : GameAction
 {
     
     [SerializeField]
-    float _number;
+    int _delay;
+
+    [SerializeField]
+    int _damage;
+
+    [SerializeField]
+    float _testNumber;
+
+    // Returns an array of the action phases that will be executed in order.
+    // Configuration of this clases must be set from the inspector of this ScriptableObject.
+    protected override ActionPhase[] GetPhases() {
+        
+        return new ActionPhase[] {
+
+            new Delay(_delay), // Delay of X seconds
+            new ApplyDamage(_damage) // Apply damage to targets
+
+        };
+
+    }
 
     // This happens once after the action is executed,
     // that is, when an actor has triggered the action.
@@ -26,7 +46,7 @@ public class ExampleAction : GameAction
     // This happens every frame, during the action execution.
     protected override void OnUpdate() {
         
-        _number += Time.deltaTime;
+        _testNumber += Time.deltaTime;
 
     }
 

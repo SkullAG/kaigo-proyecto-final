@@ -2,26 +2,30 @@ using UnityEngine;
 using Core.Actions;
 using Core.Characters;
 
-[CreateAssetMenu(fileName = "DelayPhase", menuName = "Game/Actions/Phases/Delay")]
 public class Delay : ActionPhase
 {
     
     private float _timer = 0;
     private int _counter = 0;
 
-    public int timeToExit = 5;
-    public int runtimeTimeToExit;
+    private int _time = 5;
 
-    private void OnEnable() {
+    public Delay(int time) {
 
-        
+        this._time = time;
+
+    }
+
+    public override void Start() {
+
+        Debug.Log( "Casting delay..." );
+
+        base.Start();
 
     }
 
     // Update phase's processing
-    public override void UpdateLogic(Character actor, Character[] targets) {
-
-        Debug.Log( "Charging..." );
+    public override void Update(Character actor, Character[] targets) {
 
         _timer += Time.deltaTime;
 
@@ -30,7 +34,7 @@ public class Delay : ActionPhase
             _timer = 0;
             _counter++;
 
-            if(_counter >= timeToExit) {
+            if(_counter >= _time) {
 
                 End(); // Call End method when you want the phase to end and proceed to the next one
 

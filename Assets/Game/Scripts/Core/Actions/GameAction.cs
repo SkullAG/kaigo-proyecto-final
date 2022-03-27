@@ -13,12 +13,11 @@ namespace Core.Actions
         public System.Action onActionEnd = delegate {};
 
         public string id;
+
+        [TextArea]
         public string description;
 
-        [SerializeReference, NonReorderable, Expandable]
-        public List<ActionPhase> phases;
-
-        //private List<ActionPhase> _runtimePhases;
+        public ActionPhase[] phases;
 
         [SerializeField, ReadOnly]
         protected bool running = false;
@@ -26,8 +25,8 @@ namespace Core.Actions
         protected ActionPhase currentPhase;
         protected ActionPhase lastPhase;
 
-        public Character actor;
-        [NonReorderable] public Character[] targets;
+        [ReadOnly] public Character actor;
+        [ReadOnly] public Character[] targets;
 
         protected int phaseIndex = 0;
 
@@ -39,6 +38,7 @@ namespace Core.Actions
         }
 
         // Abstract methods
+        protected abstract ActionPhase[] GetPhases();
         protected abstract void OnExecution();
         protected abstract void OnPhaseStart();
         protected abstract void OnPhaseEnd();
@@ -49,7 +49,7 @@ namespace Core.Actions
             if (running && currentPhase != null) {
 
                 // Update current phase's logic
-                currentPhase.UpdateLogic(actor, targets);
+                currentPhase.Update(actor, targets);
 
                 OnUpdate();
 
@@ -58,7 +58,8 @@ namespace Core.Actions
         }
         
         public void Execute() {
-
+            
+            phases = GetPhases();
             OnExecution();
 
         }
@@ -75,7 +76,7 @@ namespace Core.Actions
 
         protected void StartPhase(ActionPhase phase) {
 
-            if(phases.Count == 0) {
+            if(phases.Length == 0) {
 
                 Debug.LogWarning("Tried to start an action without phases (" + id + ")");
                 return;
@@ -125,7 +126,7 @@ namespace Core.Actions
 
         public bool OnLastPhase() {
 
-            return phaseIndex == phases.Count - 1;
+            return phaseIndex == phases.Length - 1;
             
         }
 

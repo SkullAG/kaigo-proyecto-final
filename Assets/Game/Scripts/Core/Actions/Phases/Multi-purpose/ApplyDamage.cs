@@ -4,15 +4,28 @@ using UnityEngine;
 using Core.Actions;
 using Core.Characters;
 
-[CreateAssetMenu(fileName = "Apply Damage", menuName = "Game/Actions/Phases/Apply Damage")]
 public class ApplyDamage : ActionPhase
 {
     
     [SerializeField]
     private int _damage;
+
+    public ApplyDamage(int damage) {
+
+        this._damage = damage;
+
+    }
+
+    public override void Start() {
+
+        Debug.Log("Applying damage: " + _damage);
+
+        base.Start();
+
+    }
     
     // Update phase's processing
-    public override void UpdateLogic(Character actor, Character[] targets) {
+    public override void Update(Character actor, Character[] targets) {
 
         //Debug.Log( "Fire!" );
 
