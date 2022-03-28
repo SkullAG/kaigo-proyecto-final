@@ -30,10 +30,12 @@ namespace Core.Actions
 
         protected int phaseIndex = 0;
 
-        private void OnEnable() {
+        private void Reset() {
 
             running = false;
-            //_runtimePhases = _phases;
+            phaseIndex = 0;
+            currentPhase = null;
+            lastPhase = null;
 
         }
 
@@ -121,6 +123,8 @@ namespace Core.Actions
 
             //Debug.Log( $"Action {name} ends." );
             onActionEnd();
+
+            Reset();
 
         }
 
