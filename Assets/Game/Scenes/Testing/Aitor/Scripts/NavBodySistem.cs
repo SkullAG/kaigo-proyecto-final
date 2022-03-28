@@ -148,7 +148,7 @@ public class NavBodySistem : MonoBehaviour
 	{
 		Vector3 dir = position - (transform.position + pivot);
 
-		Vector3 mov = dir.normalized * velocity * Time.fixedDeltaTime;
+		Vector3 mov = dir.normalized * velocity * Time.deltaTime;
 
 		//Debug.Log("Min(" + mov + ", " + dir + ") = " + Vector3.Min(mov, dir));
 
