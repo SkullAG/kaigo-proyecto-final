@@ -8,7 +8,11 @@ using UnityEngine.AI;
 
 public class NavBodySistem : MonoBehaviour
 {
+	public bool UsePosition = false;
+	[HideIf("UsePosition")]
 	public Transform Objective;
+	[ShowIf("UsePosition")]
+	public Vector3 ObjectivePoint = Vector3.zero;
 
 	//public float radius;
 	//public float height;
@@ -65,6 +69,8 @@ public class NavBodySistem : MonoBehaviour
 
 	void Start()
 	{
+		ObjectivePoint = transform.position;
+
 		filter.areaMask = (int)areaMask;
 		filter.agentTypeID = NavMesh.GetSettingsByIndex((int)agentType).agentTypeID;
 
@@ -85,6 +91,8 @@ public class NavBodySistem : MonoBehaviour
 	private void Update()
 	{
 		CheckForGround();
+
+		
 
 		if (!isFalling && !isJumping)
 		{
@@ -171,10 +179,15 @@ public class NavBodySistem : MonoBehaviour
 
 	public void CalculatePath()
 	{
+		if (!UsePosition)
+		{
+			ObjectivePoint = Objective.position;
+		}
+
 		path = new NavMeshPath();
 		NavMeshHit hit;
-		bool detected = NavMesh.SamplePosition(Objective.position, out hit, 10, filter.areaMask);
-		hasPath = NavMesh.CalculatePath((transform.position + pivot), detected ? hit.position : Objective.position, filter, path);
+		bool detected = NavMesh.SamplePosition(ObjectivePoint, out hit, 10, filter.areaMask);
+		hasPath = NavMesh.CalculatePath((transform.position + pivot), detected ? hit.position : ObjectivePoint, filter, path);
 
 		for (int i = 0; i < path.corners.Length-1; i++)
 		{
