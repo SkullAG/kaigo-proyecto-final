@@ -6,15 +6,10 @@ using UnityEngine.UI;
 public class ButtonConstructor : MonoBehaviour
 {
     public GameObject buttons;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject _button;
 
-    // Update is called once per frame
-    void Update()
+    public void MakeButton()
     {
-        
+        Instantiate(_button, transform.position, transform.rotation);
     }
 }
