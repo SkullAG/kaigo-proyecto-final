@@ -6,8 +6,19 @@ using NaughtyAttributes;
 public class SpellAction : GameAction
 {
 
+    public string castingAnimation;
+    public float castingEndTime;
+
+    [Space(15)]
+
+    public string spellAnimation;
+    public float spellEndtime;
+
+    [Space(15)]
+
     public int cost = 0;
     public int castingDelay = 0;
+    public int damage = 0;
 
     private float timer = 0;
     private int counter = 0;
@@ -18,7 +29,9 @@ public class SpellAction : GameAction
 
         return new ActionPhase[] {
 
-            
+            new PlayAnimation(castingAnimation, castingEndTime),
+            new PlayAnimation(spellAnimation, spellEndtime),
+            new ApplyDamage(damage),
 
         };
 
@@ -36,18 +49,7 @@ public class SpellAction : GameAction
 
     protected override void OnUpdate() {
         
-        timer += Time.deltaTime;
-
-        if(timer >= 1) {
-
-            timer = 0;
-            counter ++;
-
-            if(counter >= castingDelay) {
-                casting = false;
-            }
-
-        }
+        
 
     }
 
