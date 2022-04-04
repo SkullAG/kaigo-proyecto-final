@@ -125,11 +125,7 @@ public class NavBodySistem : MonoBehaviour
 				calculateLinks();
 			}
 		}
-	}
-
-    private void FixedUpdate()
-    {
-		if (isFalling)
+        else if (isFalling)
 		{
 			dowVel -= Physics.gravity.y * Time.deltaTime;
 			transform.position -= Vector3.up * dowVel * Time.deltaTime;
