@@ -45,6 +45,9 @@ public class NavBodySistem : MonoBehaviour
 	bool hasPath;
 
 	public NavMeshLink link { get; private set; }
+
+	[HideInInspector]
+	public bool isBeingControled = false;
 	public bool isJumping { get; private set; }
 
 	public bool isFalling { get; private set; }
@@ -122,11 +125,7 @@ public class NavBodySistem : MonoBehaviour
 				calculateLinks();
 			}
 		}
-	}
-
-    private void FixedUpdate()
-    {
-		if (isFalling)
+        else if (isFalling)
 		{
 			dowVel -= Physics.gravity.y * Time.deltaTime;
 			transform.position -= Vector3.up * dowVel * Time.deltaTime;
@@ -179,7 +178,7 @@ public class NavBodySistem : MonoBehaviour
 
 	public void CalculatePath()
 	{
-		if (!UsePosition)
+		if (!UsePosition && !isBeingControled)
 		{
 			ObjectivePoint = Objective.position;
 		}

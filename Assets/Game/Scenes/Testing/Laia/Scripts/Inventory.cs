@@ -3,12 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class Inventory : MonoBehaviour
 {    
 	public Transform _capsule;
 	public Button _button;
 	bool notEmpty = false;
+	public GameObject _Ibutton;
+	public GameObject _Panel;
+
+	public UnityEvent<Dictionary<string, Casilla>> SendOnInventoryChange;
 	public void boton()    
 	{        
 		_capsule.gameObject.SetActive(true);
@@ -27,10 +32,12 @@ public class Inventory : MonoBehaviour
         }
 	};
 
-	private Dictionary<string, Casilla> huecos=new Dictionary<string, Casilla>();
+	private Dictionary<string, Casilla> huecos = new Dictionary<string, Casilla>();
 
 	[SerializeField]
 	public List<string> nombres = new List<string>();
+
+	
 
 	public void Use(int value)
 	{
@@ -65,8 +72,9 @@ public class Inventory : MonoBehaviour
 
 				notEmpty = true;
 				huecos[obj.name].stack++;
-				//Casilla ca = huecos[i];
-				//ca.stack +=1;
+
+				SendOnInventoryChange.Invoke(huecos);
+
 			}
 			else
 			{
