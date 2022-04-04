@@ -18,9 +18,9 @@ MonoBehaviour:
   actor: {fileID: 0}
   targets: []
   castingAnimation: Charge
-  castingEndFrame: 119
+  castingEndTime: 1.55
   spellAnimation: Cast
-  spellEndFrame: 29
+  spellEndtime: 0.3
   cost: 5
   castingDelay: 0
   damage: 10

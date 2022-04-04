@@ -8,11 +8,16 @@ using System.Linq;
 public class Targetter : MonoBehaviour
 {
 
+    public event System.Action<Character> onTargetSelect = delegate {};
+    public event System.Action<Character> onTargetSwitch = delegate {};
+
     [SerializeField] private PlayerInput _input;
     [SerializeField] private TargetCursor _cursor;
     [SerializeField] private Character _target;
 
     [SerializeField] private float _range;
+
+    [SerializeField] private float _fieldOfView;
     [SerializeField, ReadOnly] private bool _update;
 
     [SerializeField] private Vector2[] _viewPositions;
@@ -23,6 +28,7 @@ public class Targetter : MonoBehaviour
 
     private VisibilityFilter _filter;
 
+    private bool _pressed = false;
 
     private void Awake() {
 
@@ -30,6 +36,7 @@ public class Targetter : MonoBehaviour
         _cursor.gameObject.SetActive(false);
 
         _navigateAction = _input.actions.FindAction("Navigate", true);
+        _submitAction = _input.actions.FindAction("Submit", true);
 
     }
 
@@ -49,21 +56,34 @@ public class Targetter : MonoBehaviour
 
         if(_update) {
 
-            Vector2 _cursorViewPosition = _filter.camera.WorldToViewportPoint(_cursor.transform.position);
+            Vector2 _targetViewPos = _filter.camera.WorldToViewportPoint(_target.transform.position);
             Vector2 _control = _navigateAction.ReadValue<Vector2>();
 
-            if(_control.magnitude > 0) {
+            if(_control.magnitude > 0 != _pressed) {
 
-                Debug.Log("Pressing directional buttons...");
+                if(!_pressed) {
 
-                int _index = UtilityClass.FindClosestPointInDirection(_viewPositions, _cursorViewPosition, _control);
 
-                if(_index != -1) {
+                    int _index = UtilityClass.FindClosestPointInDirection(_viewPositions, _targetViewPos, _control, _fieldOfView);
+                    Debug.Log($"Pressed directional button ({_control.x}, {_control.y}). Index is: {_index}. ");
 
-                    SetTarget(_characters[_index]);
-                    Debug.Log("Target is now: " + _characters[_index]);   
+                    if(_index != -1) {
+
+                        SetTarget(_characters[_index]); 
+                        onTargetSwitch(_target);
+
+                    }
 
                 }
+
+                _pressed = _control.magnitude > 0;
+
+            } 
+
+            if(_submitAction.triggered && _target != null) {
+
+                onTargetSelect(_target);
+                Disable();
 
             }
 
