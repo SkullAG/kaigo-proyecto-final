@@ -13,7 +13,7 @@ public class Inventory : MonoBehaviour
 	public GameObject _Ibutton;
 	public GameObject _Panel;
 
-	public UnityEvent<Dictionary<string, Casilla>> SendOnInventoryChange;
+	public UnityEvent<Dictionary<string, Casilla>, List<string>> SendOnInventoryChange;
 	public void boton()    
 	{        
 		_capsule.gameObject.SetActive(true);
@@ -48,15 +48,16 @@ public class Inventory : MonoBehaviour
 			huecos[nombres[value]].stack--;
 
 
-			//huecos[value].SetStackValue(huecos[value].stack - 1);
+			SendOnInventoryChange.Invoke(huecos, nombres);
 
 
 			if (huecos[nombres[value]].stack <= 0)
             {
-				notEmpty = false;
+				//notEmpty = false;
 				huecos.Remove(nombres[value]);
 				nombres.RemoveAt(value);
-				//huecos.Remove();			
+				//huecos.Remove();	
+				SendOnInventoryChange.Invoke(huecos, nombres);
 			}
 		}      
 	}
@@ -73,7 +74,8 @@ public class Inventory : MonoBehaviour
 				notEmpty = true;
 				huecos[obj.name].stack++;
 
-				SendOnInventoryChange.Invoke(huecos);
+				SendOnInventoryChange.Invoke(huecos, nombres);
+				//SendOnInventoryChange.Invoke(huecos);
 
 			}
 			else
@@ -86,6 +88,7 @@ public class Inventory : MonoBehaviour
 			Casilla c = new Casilla(obj);
 			huecos.Add(obj.name, c);
 			nombres.Add(obj.name);
+			SendOnInventoryChange.Invoke(huecos, nombres);
 		}
     }
 
@@ -96,12 +99,14 @@ public class Inventory : MonoBehaviour
 			Debug.Log("Tirando " + huecos[nombres[value]].objeto.name);
 			huecos[nombres[value]].stack--;
 
+			SendOnInventoryChange.Invoke(huecos, nombres);
+
 			if (huecos[nombres[value]].stack <= 0)
 			{
 				notEmpty = false;
 				huecos.Remove(nombres[value]);
 				nombres.RemoveAt(value);
-				//huecos.Remove();			
+				SendOnInventoryChange.Invoke(huecos, nombres);
 			}
 		}
 	}
