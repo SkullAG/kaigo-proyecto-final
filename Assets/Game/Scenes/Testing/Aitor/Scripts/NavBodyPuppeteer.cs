@@ -9,12 +9,13 @@ using UnityEngine.InputSystem.UI;
 public class NavBodyPuppeteer : MonoBehaviour
 {
 	public NavBodySistem character;
+	public LayerMask layerMask;
+	
 	Camera _camera;
 	PlayerInput _input;
 	InputAction _moveAction;
 	Vector2 _move;
 	Mouse _mouse;
-
 
 	// Start is called before the first frame update
 	void Start()
@@ -47,7 +48,7 @@ public class NavBodyPuppeteer : MonoBehaviour
 			Vector3 dir = (mousePos - _camera.transform.position).normalized;
 
 			RaycastHit hit;
-			if(Physics.Raycast(_camera.transform.position, dir, out hit, _camera.farClipPlane * 2))
+			if(Physics.Raycast(_camera.transform.position, dir, out hit, _camera.farClipPlane * 2, layerMask))
             {
 				character.ObjectivePoint = hit.point;
 			}

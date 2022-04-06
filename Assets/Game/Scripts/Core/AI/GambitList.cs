@@ -32,7 +32,9 @@ namespace Core.Gambits
         private void FixedUpdate() {
 
             if(_useGambits) {
+
                 EvaluateGambits();
+
             }
 
         }
@@ -41,7 +43,7 @@ namespace Core.Gambits
 
             for(int i = 0; i < _gambits.Count; i++) {
                 
-                Character[] _targets = _gambits[i].target?.GetTargets();
+                Character[] _targets = _gambits[i].target?.GetTargets(_actor);
 
                 if(_targets != null && _targets.Length != 0) {
 
@@ -99,6 +101,28 @@ namespace Core.Gambits
             _gambits.Remove(gambit);
 
         }
+
+        #if UNITY_EDITOR
+
+        private void OnDrawGizmos() {
+
+            if(_gambits != null) {
+
+                if( _gambits.Count > 0 ) {
+
+                    for (int i = 0; i < _gambits.Count; i++) {
+                        
+                        _gambits[i].target.DrawGizmos(_actor);
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        #endif
 
     }
 

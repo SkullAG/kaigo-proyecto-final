@@ -10,7 +10,8 @@ namespace Core.AI
         public string id;
         public string description;
 
-        public abstract Character[] GetTargets();
+        public abstract Character[] GetTargets(Character actor);
+        public abstract void DrawGizmos(Character actor);
 
     }
     

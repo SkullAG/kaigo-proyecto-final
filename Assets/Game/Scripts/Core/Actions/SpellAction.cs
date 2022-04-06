@@ -8,6 +8,7 @@ public class SpellAction : GameAction
 
     public string castingAnimation;
     public float castingEndTime;
+    public float distanceToCast;
 
     [Space(15)]
 
@@ -29,6 +30,7 @@ public class SpellAction : GameAction
 
         return new ActionPhase[] {
 
+            new MoveToTarget(distanceToCast),
             new PlayAnimation(castingAnimation, castingEndTime),
             new PlayAnimation(spellAnimation, spellEndtime),
             new ApplyDamage(damage),
