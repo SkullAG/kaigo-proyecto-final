@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using Core.Characters;
 
 public class Inventory : MonoBehaviour
 {    
@@ -12,6 +13,8 @@ public class Inventory : MonoBehaviour
 	bool notEmpty = false;
 	public GameObject _Ibutton;
 	public GameObject _Panel;
+	public Targetter _target;
+	private int value;
 
 	public UnityEvent<Dictionary<string, Casilla>, List<string>> SendOnInventoryChange;
 	public void boton()    
@@ -37,29 +40,43 @@ public class Inventory : MonoBehaviour
 	[SerializeField]
 	public List<string> nombres = new List<string>();
 
-	
+	private void Awake()
+    {
+		_target.onTargetSelect += OnTargetSelect;
 
+	}
+
+
+	public void OnTargetSelect(Character target) 
+	{
+		ApplyEffect(value);
+		Debug.Log("OnTargetSelect");
+	}
 	public void Use(int value)
 	{
 		if (notEmpty)
 		{
-			Debug.Log("Usando " + huecos[nombres[value]].objeto.name);
-			huecos[nombres[value]].objeto.Use();
-			huecos[nombres[value]].stack--;
+			_target.Enable();
 
-
-			SendOnInventoryChange.Invoke(huecos, nombres);
-
-
-			if (huecos[nombres[value]].stack <= 0)
-            {
-				//notEmpty = false;
-				huecos.Remove(nombres[value]);
-				nombres.RemoveAt(value);
-				//huecos.Remove();	
-				SendOnInventoryChange.Invoke(huecos, nombres);
-			}
+			this.value = value;
 		}      
+	}
+	public void ApplyEffect(int value)
+    {
+		Debug.Log("Usando " + huecos[nombres[value]].objeto.name);
+		huecos[nombres[value]].objeto.Use(_target.currentTarget);
+		huecos[nombres[value]].stack--;
+
+		SendOnInventoryChange.Invoke(huecos, nombres);
+
+		if (huecos[nombres[value]].stack <= 0)
+		{
+			//notEmpty = false;
+			huecos.Remove(nombres[value]);
+			nombres.RemoveAt(value);
+			//huecos.Remove();	
+			SendOnInventoryChange.Invoke(huecos, nombres);
+		}
 	}
 	
 	public void Add(Objects obj)
@@ -67,16 +84,18 @@ public class Inventory : MonoBehaviour
 
 		if (huecos.ContainsKey(obj.name))
         {
+			//Debug.Log("Añadiendo primero");
+
 			if (huecos[obj.name].stack < huecos[obj.name].objeto.stackMax)
 			{
-				Debug.Log("Añadiendo " + huecos[obj.name].objeto.name);
+				
 
-				notEmpty = true;
+				
 				huecos[obj.name].stack++;
 
 				SendOnInventoryChange.Invoke(huecos, nombres);
 				//SendOnInventoryChange.Invoke(huecos);
-
+				Debug.Log("Sumando al stack " + huecos[obj.name].objeto.name);
 			}
 			else
 			{
@@ -85,6 +104,8 @@ public class Inventory : MonoBehaviour
 		}
 		else
 		{
+			Debug.Log("Añadiendo ");
+			notEmpty = true;
 			Casilla c = new Casilla(obj);
 			huecos.Add(obj.name, c);
 			nombres.Add(obj.name);
