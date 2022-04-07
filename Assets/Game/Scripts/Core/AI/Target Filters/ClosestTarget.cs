@@ -43,7 +43,7 @@ public class ClosestTarget : TargetFilter
 
         // Get closest character
 
-        if(_characters.Count == 0) Debug.Log("No targets found!");
+        //if(_characters.Count == 0) Debug.Log("No targets found!");
 
         return _characters.ToArray();
 
