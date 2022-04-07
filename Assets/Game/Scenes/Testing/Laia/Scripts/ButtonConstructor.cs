@@ -17,12 +17,49 @@ public class ButtonConstructor : MonoBehaviour
 
     [SerializeField]
     public List<GameObject> buttonslist = new List<GameObject>();
-    public void UpdateList(Dictionary<string, Inventory.Casilla> huecos)
+
+    private List<GameObject> savedButList = new List<GameObject>();
+    public void UpdateList(Dictionary<string, Inventory.Casilla> huecos, List<string> nombres)
     {
-        GameObject but = Instantiate(_button, transform.position, transform.rotation);
+        /*if (huecos.Count < buttonslist.Count)
+        {
+            List<GameObject> butL = buttonslist.GetRange(huecos.Count-1, buttonslist.Count-1);
 
-        but.transform.parent = transform;
+            foreach(GameObject b in butL)
+            {
+                savedButList.Add(b);
+                b.SetActive(true);
+            }
+        }*/
+        if (huecos.Count > buttonslist.Count)
+        {
+            int dif = huecos.Count - buttonslist.Count;
 
-        buttonslist.Add(but);
-    }
+            for (int i = 0; i < dif; i++)
+            {
+                GameObject but = Instantiate(_button, transform.position, transform.rotation);
+
+                but.transform.parent = transform;
+
+                but.GetComponent<ButtonHelper>().SendOnClick.AddListener(_inventory.Use);
+
+                buttonslist.Add(but);
+            }
+            
+        }
+
+        for (int i = 0; i < nombres.Count; i++)
+        {
+            buttonslist[i].GetComponentInChildren<Text>().text = nombres[i] + " X" + huecos[nombres[i]].stack;
+
+            buttonslist[i].GetComponent<ButtonHelper>().value = i;          
+
+        }
+
+        /*if (huecos[nombres[value]].stack == 0)
+        {
+            buttonslist.Remove(but);
+            but.SetActive(false);
+        }*/
+    }   
 }

@@ -30,6 +30,8 @@ public class Targetter : MonoBehaviour
 
     private bool _pressed = false;
 
+    public Character currentTarget => _target;
+
     private void Awake() {
 
         _filter = GetComponent<VisibilityFilter>();
@@ -94,6 +96,8 @@ public class Targetter : MonoBehaviour
     [Button]
     public void Enable() {
 
+        _input.SwitchCurrentActionMap("UI");
+
         _cursor.gameObject.SetActive(true);
 
         _filter.enabled = true;
@@ -112,6 +116,8 @@ public class Targetter : MonoBehaviour
 
     [Button]
     public void Disable() {
+
+        _input.SwitchCurrentActionMap("Player");
 
         _cursor.target = null;
         _cursor.gameObject.SetActive(false);
