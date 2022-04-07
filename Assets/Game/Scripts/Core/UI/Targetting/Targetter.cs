@@ -30,6 +30,8 @@ public class Targetter : MonoBehaviour
 
     private bool _pressed = false;
 
+    public Character currentTarget => _target;
+
     private void Awake() {
 
         _filter = GetComponent<VisibilityFilter>();
