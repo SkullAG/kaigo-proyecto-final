@@ -3,15 +3,29 @@ using UnityEditor;
 
 public class VisibilityChecker : MonoBehaviour
 {
-    
-    public bool isVisible;
 
-    private void OnBecameVisible() {
-        isVisible = true;
+    private Renderer[] _renderers;
+
+    private void Awake() {
+
+        _renderers = GetComponentsInChildren<Renderer>();
+ 
     }
+    
+    public bool IsVisible(Plane[] planes) {
 
-    private void OnBecameInvisible() {
-        isVisible = false;
+        for(int i = 0; i < _renderers.Length; i++) {
+
+            if(GeometryUtility.TestPlanesAABB(planes, _renderers[i].bounds)) {
+
+                return true;
+
+            }
+
+        }
+
+        return false;
+
     }
 
     #if UNITY_EDITOR

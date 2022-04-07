@@ -9,44 +9,49 @@ namespace Core.Actions
     public abstract class GameAction : ScriptableObject
     {
 
-        [SerializeReference]
-        private List<ActionPhase> _phases;
-        private List<ActionPhase> _runtimePhases;
+        public System.Action onActionStart = delegate {};
+        public System.Action onActionEnd = delegate {};
 
-        protected int previousPhaseIndex = 0;
-        protected int currentPhaseIndex = 0;
+        public string id;
 
+        [TextArea]
+        public string description;
+
+        public ActionPhase[] phases;
+
+        [SerializeField, ReadOnly]
         protected bool running = false;
 
-        protected Character actor;
-        protected Character[] targets;
+        protected ActionPhase currentPhase;
+        protected ActionPhase lastPhase;
 
-        protected ActionPhase currentPhase => _runtimePhases[currentPhaseIndex];
-        protected ActionPhase previousPhase => _runtimePhases[previousPhaseIndex];
+        [ReadOnly] public Character actor;
+        [ReadOnly] public Character[] targets;
 
-        protected int lastIndex => _runtimePhases.Count - 1;
+        protected int phaseIndex = 0;
 
-        public bool isRunning => running;
-
-        private void OnEnable() {
+        private void Reset() {
 
             running = false;
-            _runtimePhases = _phases;
+            phaseIndex = 0;
+            currentPhase = null;
+            lastPhase = null;
 
         }
 
         // Abstract methods
-        public abstract void OnExecution();
+        protected abstract ActionPhase[] GetPhases();
+        protected abstract void OnExecution();
         protected abstract void OnPhaseStart();
         protected abstract void OnPhaseEnd();
         protected abstract void OnUpdate();
 
-        private void Update() {
+        public void Update() {
 
-            if (running) {
+            if (running && currentPhase != null) {
 
                 // Update current phase's logic
-                _runtimePhases[currentPhaseIndex].UpdateLogic(actor, targets);
+                currentPhase.Update(actor, targets);
 
                 OnUpdate();
 
@@ -54,64 +59,79 @@ namespace Core.Actions
 
         }
         
-        public void Execute(Character actor, Character[] targets) {
-
-            this.actor = actor;
-            this.targets = targets;
-
-            OnExecution();
+        public void Execute() {
             
+            phases = GetPhases();
+            OnExecution();
+
         }
 
         protected void NextPhase() {
 
-            // Stop listening last phase
-            _phases[previousPhaseIndex].onPhaseStart -= OnPhaseStart;
-            _phases[previousPhaseIndex].onPhaseEnd -= OnPhaseEnd;
+            lastPhase = phases[phaseIndex];
+            phaseIndex++;
+            currentPhase = phases[phaseIndex];
 
-            previousPhaseIndex = currentPhaseIndex;
-            currentPhaseIndex++;
+            StartPhase(currentPhase);
 
-            Debug.Log( $"Next phase: {_phases[currentPhaseIndex].name}" );
+        }
 
-            // Start listening next phase
-            _phases[currentPhaseIndex].onPhaseStart += OnPhaseStart;
-            _phases[currentPhaseIndex].onPhaseEnd += OnPhaseEnd;
+        protected void StartPhase(ActionPhase phase) {
 
-            // Start next phase
-            _phases[currentPhaseIndex].Start();
+            if(phases.Length == 0) {
+
+                Debug.LogWarning("Tried to start an action without phases (" + id + ")");
+                return;
+
+            }
+
+            if(lastPhase != null) {
+
+                // Stop listening last phase
+                lastPhase.onPhaseStart -= OnPhaseStart;
+                lastPhase.onPhaseEnd -= OnPhaseEnd;
+
+            }
+
+            phase.onPhaseStart += OnPhaseStart;
+            phase.onPhaseEnd += OnPhaseEnd;
+
+            phase.Start();
 
         }
 
         protected void StartAction() {
 
-            Debug.Log( $"Action {name} starts." );
+            //Debug.Log( $"Action {name} starts." );
+            onActionStart();
 
-            // Instantiate phases
+            /*// Instantiate phases (replace with pooling)
             for(int i = 0; i < _phases.Count; i++) {
-                _runtimePhases[i] = Instantiate(_phases[i]);
-            }
+                _phases[i] = Instantiate(_phases[i]);
+            }*/
 
-            // Start listening first phase
-            _runtimePhases[0].onPhaseStart += OnPhaseStart;
-            _runtimePhases[0].onPhaseEnd += OnPhaseEnd;
-
-            // Start first phase
             running = true;
-            _runtimePhases[0].Start();
+            currentPhase = phases[0];
+
+            StartPhase(currentPhase); // Start first phase
 
         }
 
         protected void EndAction() {
 
-            Debug.Log( $"Action {name} ends." );
-
-            // Stop listening last phase
-            _phases[previousPhaseIndex].onPhaseStart -= OnPhaseStart;
-            _phases[previousPhaseIndex].onPhaseEnd -= OnPhaseEnd;
-
             running = false;
 
+            //Debug.Log( $"Action {name} ends." );
+            onActionEnd();
+
+            Reset();
+
+        }
+
+        public bool OnLastPhase() {
+
+            return phaseIndex == phases.Length - 1;
+            
         }
 
     }

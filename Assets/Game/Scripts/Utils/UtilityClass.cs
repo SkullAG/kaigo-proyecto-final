@@ -35,4 +35,32 @@ public static class UtilityClass
         return (mask.value & 1 << layer) != 0;
     }
 
+    public static int FindClosestPointInDirection(Vector2[] points, Vector2 p, Vector2 dir, float fov = 0.25f) {
+
+        float _shortestDistance = Mathf.Infinity;
+        int _index = -1;
+
+        for (int i = 0; i < points.Length; i++) {
+            
+            Vector2 _dir = (points[i] - p).normalized;
+
+            if( (_dir - dir).magnitude < fov ) {
+
+                float _dist = (p - points[i]).sqrMagnitude;
+
+                if( _dist < _shortestDistance ) {
+
+                    _shortestDistance = _dist;
+                    _index = i;
+
+                }
+
+            }
+
+        }
+
+        return _index;
+
+    }
+
 }
