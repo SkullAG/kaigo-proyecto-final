@@ -13,7 +13,9 @@ public class CameraManager : MonoBehaviour
 	public Vector3 rotationOffset = Vector3.zero;
 	public Vector3 offset = Vector3.zero;
 
-	public float sensitivity = 180;
+	public float sensitivity = 1;
+
+	public float mouseSentivityMultiplier = 0.5f;
 
 	Camera _camera;
 
@@ -23,7 +25,7 @@ public class CameraManager : MonoBehaviour
 
 	//Vector2 _lastMousePos = Vector2.zero;
 
-	void Awake()
+	void Start()
 	{
 		_camera = GetComponent<Camera>();
 
@@ -46,6 +48,8 @@ public class CameraManager : MonoBehaviour
 			if (_lookInput.activeControl.device is Mouse)
 			{
 				rc = _RightClick.ReadValue<float>() == 1;
+
+				deltaLook *= mouseSentivityMultiplier;
 			}
 
 			if (rc)
