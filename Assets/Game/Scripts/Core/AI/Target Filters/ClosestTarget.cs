@@ -60,9 +60,11 @@ public class ClosestTarget : TargetFilter
 
     }
 
+    
+    public override void DrawGizmos(Character actor) {
+
     #if UNITY_EDITOR
 
-    public override void DrawGizmos(Character actor) {
 
         if(actor != null) {
 
@@ -83,8 +85,10 @@ public class ClosestTarget : TargetFilter
 
         }
 
+    #endif
+
     }
 
-    #endif
+   
 
 }
