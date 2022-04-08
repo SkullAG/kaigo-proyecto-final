@@ -7,13 +7,13 @@ public class ExampleTargetFilter : TargetFilter
 {
 
     // Abstract method that returns a list of targets (of type Character)
-    public override Character[] GetTargets(Character actor)
+    public override Character GetTarget(Character actor)
     {
         
         // Return every Character in the scene
-        Character[] _targets = FindObjectsOfType<Character>();
+        //Character _target = FindObjectsOfType<Character>();
 
-        return _targets;
+        return actor;
 
     }
 

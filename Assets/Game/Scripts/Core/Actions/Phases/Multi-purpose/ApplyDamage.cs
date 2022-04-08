@@ -25,7 +25,7 @@ public class ApplyDamage : ActionPhase
     }
     
     // Update phase's processing
-    public override void Update(Character actor, Character[] targets) {
+    public override void Update(Character actor, Character target) {
 
         //Debug.Log( "Fire!" );
 

@@ -18,7 +18,7 @@ public class ResourcePercentageCondition : BehaviourCondition
     [SerializeField]
     private int _percentage;
 
-    public override bool Evaluate(Character actor, Character[] targets) {
+    public override bool Evaluate(Character actor, Character target) {
         
         int _value = 0;
         int _max = 0;

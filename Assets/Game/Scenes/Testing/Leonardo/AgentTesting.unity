@@ -908,7 +908,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 741952338}
   m_LocalRotation: {x: -0, y: -0.721646, z: -0, w: 0.69226223}
-  m_LocalPosition: {x: 2.548, y: 0, z: 0.6}
+  m_LocalPosition: {x: 0.67, y: 0, z: 0.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 542451361}
@@ -1805,10 +1805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9f499d145df1734e9729778ed3caf72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gambits:
-  - _target: {fileID: 11400000, guid: cd5ab95b1af3a8945ac2c609b0d5601f, type: 2}
-    _condition: {fileID: 11400000, guid: a50b5dbb5aedb1a4882ff6bfd325224a, type: 2}
-    _action: {fileID: 11400000, guid: 51f2852ec587d34449e66e5d6c796f9c, type: 2}
+  _gambits: []
   _useGambits: 1
 --- !u!114 &1240114820
 MonoBehaviour:
@@ -1915,7 +1912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UsePosition: 0
-  Objective: {fileID: 1130978013}
+  Objective: {fileID: 1240114827}
   ObjectivePoint: {x: 0, y: 0, z: 0}
   pivot: {x: 0, y: 0, z: 0}
   areaMask: 2147483647
@@ -1962,7 +1959,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1240114817}
   m_LocalRotation: {x: -0, y: 0.48079595, z: -0, w: 0.8768325}
-  m_LocalPosition: {x: -2.75, y: 0, z: 0.03}
+  m_LocalPosition: {x: -2.57, y: 0, z: 0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1249838414}
@@ -2277,6 +2274,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 741952340}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!114 &1433658934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2338,7 +2338,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1483676131
 MonoBehaviour:
   m_ObjectHideFlags: 0

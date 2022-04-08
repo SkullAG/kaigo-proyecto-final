@@ -26,7 +26,7 @@ namespace Core.Actions
         protected ActionPhase lastPhase;
 
         [ReadOnly] public Character actor;
-        [ReadOnly] public Character[] targets;
+        [ReadOnly] public Character target;
 
         protected int phaseIndex = 0;
 
@@ -51,7 +51,7 @@ namespace Core.Actions
             if (running && currentPhase != null) {
 
                 // Update current phase's logic
-                currentPhase.Update(actor, targets);
+                currentPhase.Update(actor, target);
 
                 OnUpdate();
 

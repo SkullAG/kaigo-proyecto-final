@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: Closest Enemy
   description: Finds the closest enemy inside a range.
-  range: 15
+  range: 5
   mask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 8
   triggerQuery: 2
   tag: Enemy
