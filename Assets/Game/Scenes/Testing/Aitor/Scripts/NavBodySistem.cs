@@ -178,7 +178,7 @@ public class NavBodySistem : MonoBehaviour
 
 	public void CalculatePath()
 	{
-		if (!UsePosition && !isBeingControled)
+		if (!UsePosition && !isBeingControled && Objective)
 		{
 			ObjectivePoint = Objective.position;
 		}
