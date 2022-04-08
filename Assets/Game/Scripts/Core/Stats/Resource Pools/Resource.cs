@@ -17,6 +17,9 @@ namespace Core.Stats {
         [SerializeField, ReadOnly, AllowNesting]
         protected int _maxValue;
 
+        public bool depleted = false;
+        public bool atMax = false;
+
         public int value {
             get => GetValue();
             set => SetValue(value);
@@ -33,9 +36,20 @@ namespace Core.Stats {
             onValueUpdated(_currentValue);
 
             if(value == _maxValue) {
+
                 onValueMax(value);
+                atMax = true;
+
             } else if (value == 0) {
+
                 onValueMin(value);
+                depleted = false;
+
+            } else {
+
+                atMax = false;
+                depleted = false;
+
             }
 
         }

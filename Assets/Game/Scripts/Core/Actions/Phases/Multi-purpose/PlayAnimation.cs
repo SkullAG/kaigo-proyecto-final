@@ -19,7 +19,7 @@ public class PlayAnimation : ActionPhase
 
     }
 
-    public override void Update(Character actor, Character target)
+    public override void Update()
     {
 
         if(_animator == null) {

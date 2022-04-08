@@ -51,7 +51,7 @@ namespace Core.Actions
             if (running && currentPhase != null) {
 
                 // Update current phase's logic
-                currentPhase.Update(actor, target);
+                currentPhase.Update();
 
                 OnUpdate();
 
@@ -96,7 +96,7 @@ namespace Core.Actions
             phase.onPhaseStart += OnPhaseStart;
             phase.onPhaseEnd += OnPhaseEnd;
 
-            phase.Start();
+            phase.Start(actor, target);
 
         }
 
