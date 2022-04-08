@@ -14,7 +14,7 @@ public class MoveToTarget : ActionPhase
 
     }
 
-    public override void Update(Character actor, Character target)
+    public override void Update()
     {
 
         if(_navigator == null) {
