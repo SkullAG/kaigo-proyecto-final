@@ -16,9 +16,10 @@ MonoBehaviour:
   description: Conjures a flame that bursts right beneath the target's feet.
   running: 0
   actor: {fileID: 0}
-  targets: []
+  target: {fileID: 0}
   castingAnimation: Charge
   castingEndTime: 1.55
+  distanceToCast: 1.5
   spellAnimation: Cast
   spellEndtime: 0.3
   cost: 5

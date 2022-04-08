@@ -43,26 +43,24 @@ namespace Core.Gambits
 
             for(int i = 0; i < _gambits.Count; i++) {
                 
-                Character[] _targets = _gambits[i].target?.GetTargets(_actor);
+                Character _target = _gambits[i].target?.GetTarget(_actor);
 
-                if(_targets != null && _targets.Length != 0) {
+                bool _condition = _target != null ? _gambits[i].condition.Evaluate(_actor, _target) : false;
 
-                    bool _condition = _gambits[i].condition.Evaluate(_actor, _targets);
+                GameAction _action = _actionList.GetAction(_gambits[i].action.id);
+
+                if(_action != null) {
+
+                    _action.actor = _actor;
+                    _action.target = _target;
+
+                    //Debug.Log(_target == null ? "Target sent is NULL" : "Target sent is: " + _target);
 
                     if(_condition) {
 
-                        GameAction _action = _actionList.GetAction(_gambits[i].action.id);
+                        _actionQueue.RequestExecution(_action);
 
-                        if(_action != null) {
-
-                            _action.actor = _actor;
-                            _action.targets = _targets;
-
-                            _actionQueue.RequestExecution(_action);
-
-                            break;
-
-                        }
+                        break;
 
                     }
 
@@ -79,7 +77,7 @@ namespace Core.Gambits
                 int _currentIndex = _gambits.IndexOf(gambit);
                 int _nextIndex = Mathf.Clamp(_currentIndex + shift, 0, _gambits.Count - 1);
 
-                Debug.Log("Swapping gambit " + _currentIndex + " with " + _nextIndex);
+                //Debug.Log("Swapping gambit " + _currentIndex + " with " + _nextIndex);
 
                 var _temp = _gambits[_nextIndex];
 

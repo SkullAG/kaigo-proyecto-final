@@ -22,30 +22,41 @@ public class ClosestTarget : TargetFilter
 
     }
 
-    public override Character[] GetTargets(Character actor)
+    public override Character GetTarget(Character actor)
     {
-        
-        _colliders = Physics.OverlapSphere(actor.transform.position, range, mask, triggerQuery);
 
-        List<Character> _characters = new List<Character>();
+        Collider[] _collidersLocal = Physics.OverlapSphere(actor.transform.position, range, mask, triggerQuery);
 
-        for (int i = 0; i < _colliders.Length; i++) {
+        Character _closest = null;
+        float _minDistance = Mathf.Infinity;
+
+        for (int i = 0; i < _collidersLocal.Length; i++) {
             
-            Character _c = _colliders[i].GetComponent<Character>();
+            // needs optimization
+            Character _c = _collidersLocal[i].GetComponent<Character>();
 
-            if(_colliders[i].gameObject.CompareTag(tag) && _c != null) {
+            if(_collidersLocal[i].gameObject.CompareTag(tag) && _c != null) {
 
-                _characters.Add(_colliders[i].GetComponent<Character>());
+                if(_c != actor) {
+
+                    float _dist = Vector3.Distance(_c.transform.position, actor.transform.position);
+
+                    if( _dist < _minDistance ) {
+
+                        _minDistance = _dist;
+                        _closest = _c;
+
+                    }
+
+                }
 
             }
 
         }
 
-        // Get closest character
+        _colliders = _collidersLocal;
 
-        if(_characters.Count == 0) Debug.Log("No targets found!");
-
-        return _characters.ToArray();
+        return _closest; // Need to return closest character
 
     }
 

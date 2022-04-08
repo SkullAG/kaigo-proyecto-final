@@ -10,7 +10,7 @@ namespace Core.AI
         public string id;
         public string description;
 
-        public abstract bool Evaluate(Character actor, Character[] targets);
+        public abstract bool Evaluate(Character actor, Character targets);
 
     }
 

@@ -14,32 +14,49 @@ public class MoveToTarget : ActionPhase
 
     }
 
-    public override void Update(Character actor, Character[] targets)
+    public override void Update(Character actor, Character target)
     {
-        
+
         if(_navigator == null) {
 
             _navigator = actor.GetComponent<NavBodySistem>();
 
         } else {
 
-            float _dist = Vector3.Distance(actor.transform.position, targets[0].transform.position);
+            if(target == null) { 
 
-            if(_dist > _distanceToStop) {
+                Stop();
+                return;
 
-                _navigator.ObjectivePoint = targets[0].transform.position;
+            }
 
-            } else {
+            if(target != null) {
 
-                _navigator.Objective = null;
-                _navigator.ObjectivePoint = _navigator.transform.position;
+                float _dist = Vector3.Distance(actor.transform.position, target.transform.position);
 
-                End();
+                if( _dist > _distanceToStop && _distanceToStop > 0 ) {
+
+                    // Move
+                    _navigator.ObjectivePoint = target.transform.position;
+
+                } else {
+                    
+                    Stop();
+                    End();
+
+                }
 
             }
 
         }
 
+    }
+
+    private void Stop() {
+
+        // Stop
+        _navigator.Objective = null;
+        _navigator.ObjectivePoint = _navigator.transform.position;
 
     }
 
