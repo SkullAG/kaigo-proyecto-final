@@ -8,9 +8,11 @@ using UnityEngine.InputSystem.UI;
 [RequireComponent(typeof(PlayerInput))]
 public class NavBodyPuppeteer : MonoBehaviour
 {
-	public NavBodySistem character;
 	public LayerMask layerMask;
 	
+	public NavBodySistem character { get { return _character; } set { if(_character) _character.isBeingControled = false; _character = value; } }
+	[SerializeField]
+	NavBodySistem _character;
 	Camera _camera;
 	PlayerInput _input;
 	InputAction _moveAction;
@@ -30,14 +32,15 @@ public class NavBodyPuppeteer : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		character.isBeingControled = true;
+		if (!_character) return;
+		_character.isBeingControled = true;
 		_move = _moveAction.ReadValue<Vector2>();
 
-		if (_move != Vector2.zero && !character.isFalling && !character.isJumping)
+		if (_move != Vector2.zero && !_character.isFalling && !_character.isJumping)
 		{
 			Vector3 dir = Quaternion.Euler(0, _camera.transform.rotation.eulerAngles.y, 0) * new Vector3(_move.x, 0, _move.y);
 			//character.MoveTowardsPoint(character.transform.position + dir, true);
-			character.ObjectivePoint = character.transform.position + dir*0.1f;
+			_character.ObjectivePoint = _character.transform.position + dir*0.1f;
 			//character.ObjectivePoint = character.transform.position;
 		}
 
@@ -50,7 +53,7 @@ public class NavBodyPuppeteer : MonoBehaviour
 			RaycastHit hit;
 			if(Physics.Raycast(_camera.transform.position, dir, out hit, _camera.farClipPlane * 2, layerMask))
             {
-				character.ObjectivePoint = hit.point;
+				_character.ObjectivePoint = hit.point;
 			}
 		}
 	}
