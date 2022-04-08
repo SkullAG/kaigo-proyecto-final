@@ -28,18 +28,25 @@ public class ClosestTarget : TargetFilter
         Collider[] _collidersLocal = Physics.OverlapSphere(actor.transform.position, range, mask, triggerQuery);
 
         Character _closest = null;
+        float _minDistance = Mathf.Infinity;
 
         for (int i = 0; i < _collidersLocal.Length; i++) {
-        
+            
+            // needs optimization
             Character _c = _collidersLocal[i].GetComponent<Character>();
 
             if(_collidersLocal[i].gameObject.CompareTag(tag) && _c != null) {
 
                 if(_c != actor) {
 
-                    // Need to measure distance of _c to actor,
-                    // now returns first character that's not the actor
-                    _closest = _c;
+                    float _dist = Vector3.Distance(_c.transform.position, actor.transform.position);
+
+                    if( _dist < _minDistance ) {
+
+                        _minDistance = _dist;
+                        _closest = _c;
+
+                    }
 
                 }
 

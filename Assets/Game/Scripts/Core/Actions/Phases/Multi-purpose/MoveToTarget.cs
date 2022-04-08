@@ -17,8 +17,6 @@ public class MoveToTarget : ActionPhase
     public override void Update(Character actor, Character target)
     {
 
-        //Debug.Log(target == null ? "Target received is NULL" : "Target received is: " + target);
-        
         if(_navigator == null) {
 
             _navigator = actor.GetComponent<NavBodySistem>();

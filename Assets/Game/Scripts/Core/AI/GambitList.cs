@@ -54,7 +54,7 @@ namespace Core.Gambits
                     _action.actor = _actor;
                     _action.target = _target;
 
-                    Debug.Log(_target == null ? "Target sent is NULL" : "Target sent is: " + _target);
+                    //Debug.Log(_target == null ? "Target sent is NULL" : "Target sent is: " + _target);
 
                     if(_condition) {
 
@@ -77,7 +77,7 @@ namespace Core.Gambits
                 int _currentIndex = _gambits.IndexOf(gambit);
                 int _nextIndex = Mathf.Clamp(_currentIndex + shift, 0, _gambits.Count - 1);
 
-                Debug.Log("Swapping gambit " + _currentIndex + " with " + _nextIndex);
+                //Debug.Log("Swapping gambit " + _currentIndex + " with " + _nextIndex);
 
                 var _temp = _gambits[_nextIndex];
 
