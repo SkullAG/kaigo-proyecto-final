@@ -7,20 +7,22 @@ public class PlayAnimation : ActionPhase
 
     private const string DAMAGE_EVENT_NAME = "ApplyDamage";
     private const string ACTION_ID_PARAM_NAME = "ActionID";
-    private const string SPELL_STATE_PARAM_NAME = "SpellState";
+    private const string INSTANT_CAST_PARAM_NAME = "InstantCast";
 
     private int _actionID;
     private int _animationLayer;
+    private bool _instantCast;
 
     private Animator _animator;
     private AnimationEventSender _sender;
 
     private bool _customEnd = true;
 
-    public PlayAnimation(int actionID, int layer) {
+    public PlayAnimation(int actionID, int layer, bool instantCast) {
 
         this._actionID = actionID;
         this._animationLayer = layer;
+        this._instantCast = instantCast;
 
     }
 
@@ -45,7 +47,7 @@ public class PlayAnimation : ActionPhase
         if(_animator != null) {
 
             _animator.SetInteger(ACTION_ID_PARAM_NAME, _actionID); // Send action ID to Animator
-            _animator.SetInteger(SPELL_STATE_PARAM_NAME, 1); // Tell animator it's a spell
+            _animator.SetInteger(INSTANT_CAST_PARAM_NAME, _instantCast ? 1 : 0); // Tell animator if action is casted instantly (without charging)
 
         }
 
@@ -63,7 +65,7 @@ public class PlayAnimation : ActionPhase
 
         // Reset animator parameters
         _animator.SetInteger(ACTION_ID_PARAM_NAME, -1);
-        _animator.SetInteger(SPELL_STATE_PARAM_NAME, -1);
+        _animator.SetInteger(INSTANT_CAST_PARAM_NAME, -1);
 
         // Stop listening animation event
         _sender.onEventTriggered -= OnEventTriggered;

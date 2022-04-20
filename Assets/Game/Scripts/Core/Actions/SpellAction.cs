@@ -9,6 +9,7 @@ public class SpellAction : GameAction
     public int damage = 0;
     public int cost = 0;
     public float distanceToCast;
+    private bool v;
 
     private float timer = 0;
     private int counter = 0;
@@ -20,7 +21,7 @@ public class SpellAction : GameAction
         return new ActionPhase[] {
 
             new MoveToTarget(distanceToCast), // Move to target, stop at X distance
-            new PlayAnimation(id, 0), // Start spell animation using action ID
+            new PlayAnimation(id, 0, v), // Start spell animation using action ID
             new ApplyDamage(damage),
 
         };

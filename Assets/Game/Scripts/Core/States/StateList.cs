@@ -68,6 +68,20 @@ namespace Core.States {
 
         }
 
+        public void AddState(State state) {
+
+            if(state != null) {
+                
+                if(!_currentStates.Contains(state) && _availableStates.Contains(state)) {
+
+                    _currentStates.Add(state);
+
+                }
+
+            }
+
+        }
+
         public void RemoveState(string id) {
 
             State _state = GetState(id);
