@@ -2,8 +2,8 @@ using UnityEngine;
 using Core.Actions;
 using NaughtyAttributes;
 
-[CreateAssetMenu(fileName = "Spell", menuName = "Game/Actions/Spell")]
-public class SpellAction : GameAction
+[CreateAssetMenu(fileName = "Spell", menuName = "Game/Actions/Offensive Spell")]
+public class OffensiveSpell : GameAction
 {
 
     public int damage = 0;
@@ -31,7 +31,7 @@ public class SpellAction : GameAction
 
         StartAction();
 
-        Debug.Log("Executing spell!");
+        Debug.Log("Executing spell attack!");
 
         actor.stats.actionPoints.value -= cost; // Cost is applied at the start
         

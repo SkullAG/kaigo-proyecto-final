@@ -18,9 +18,6 @@ MonoBehaviour:
   running: 0
   actor: {fileID: 0}
   target: {fileID: 0}
-  castingEndTime: 0
-  distanceToCast: 0
-  spellEndtime: 0
+  damage: 7
   cost: 6
-  castingDelay: 0
-  damage: 0
+  distanceToCast: 0
