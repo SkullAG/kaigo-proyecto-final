@@ -47,8 +47,8 @@ public class RetroEffects : MonoBehaviour
             _precisionVolume.framebufferDither.value = 1;
             _precisionVolume.color.value = 0.5f;
 
-            _cameraVolume.targetRasterizationResolutionHeight.value = 224;
-            _cameraVolume.targetRasterizationResolutionWidth.value = 256;
+            _cameraVolume.targetRasterizationResolutionHeight.value = 320;
+            _cameraVolume.targetRasterizationResolutionWidth.value = 320;
 
         } else {
 

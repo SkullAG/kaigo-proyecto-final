@@ -16,16 +16,16 @@ public class Delay : ActionPhase
 
     }
 
-    public override void Start() {
+    public override void Start(Character actor, Character targets) {
 
         Debug.Log( "Casting delay..." );
 
-        base.Start();
+        base.Start(actor, targets);
 
     }
 
     // Update phase's processing
-    public override void Update(Character actor, Character target) {
+    public override void Update() {
 
         _timer += Time.deltaTime;
 

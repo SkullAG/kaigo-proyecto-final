@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43997738, g: 0.48845655, b: 0.56865585, a: 1}
+  m_IndirectSpecularColor: {r: 0.43997788, g: 0.48845708, b: 0.5686563, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -873,8 +873,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objective: {fileID: 741952339}
   acceleration: 8
+  rotationOffset: {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 1.5, z: -9}
-  degreesPerScreen: 180
+  sensitivity: 1
+  mouseSentivityMultiplier: 0.5
 --- !u!1 &741952338
 GameObject:
   m_ObjectHideFlags: 0
@@ -2254,6 +2256,7 @@ GameObject:
   - component: {fileID: 1433658935}
   - component: {fileID: 1433658934}
   - component: {fileID: 1433658933}
+  - component: {fileID: 1433658936}
   m_Layer: 0
   m_Name: Puppeteer
   m_TagString: Untagged
@@ -2273,10 +2276,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ea94eecd3bd71459d7dd0b20a92bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 741952340}
   layerMask:
     serializedVersion: 2
     m_Bits: 1
+  _character: {fileID: 0}
 --- !u!114 &1433658934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2321,6 +2324,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1433658936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433658932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c909d7f7c24480644a58935b1488db2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 1433658934}
 --- !u!1 &1483676130
 GameObject:
   m_ObjectHideFlags: 0

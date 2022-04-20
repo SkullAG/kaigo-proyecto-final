@@ -1,6 +1,7 @@
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -74,6 +75,13 @@ public class DisplayBar : MonoBehaviour
 		thisBar.UpdateValues();
 	}
 #endif
+	[OnValueChanged("UpdateValues")]
+	public TextMeshProUGUI valueText;
+
+	[Tooltip(" _val means the value, _max means the max value ")]
+	[OnValueChanged("UpdateValues")]
+	public string textFormat;
+
 	[OnValueChanged("UpdateValues")]
 	public bool invertValue = false;
 	[OnValueChanged("UpdateValues")]
@@ -156,6 +164,11 @@ public class DisplayBar : MonoBehaviour
 		if (insideOfBarTransform)
 		{
 			insideOfBarTransform.localPosition = -barTransform.localPosition;
+		}
+
+		if(valueText)
+        {
+			valueText.text = textFormat.Replace("_val", _value.ToString()).Replace("_max", MaxValue.ToString());
 		}
 	}
 

@@ -12,10 +12,22 @@ namespace Core.Actions
         public event System.Action onPhaseEnd;
         public event System.Action onPhaseStart;
 
-        public abstract void Update(Character actor, Character targets);
+        public bool started = false;
 
-        public virtual void Start() {
+        protected Character actor;
+        protected Character target;
+
+        public abstract void Update();
+
+        public virtual void Start(Character actor, Character target) {
+
+            this.actor = actor;
+            this.target = target;
+
             onPhaseStart();
+            
+            started = true;
+
         }
 
         public virtual void End() {

@@ -19,15 +19,19 @@ public class PlayAnimation : ActionPhase
 
     }
 
-    public override void Update(Character actor, Character target)
+    public override void Update()
     {
 
         if(_animator == null) {
 
             _animator = actor.gameObject.GetComponentInChildren<Animator>();
 
-            Debug.Log("Playing animation: " + _animationStateName);
-            _animator.Play(_animationStateName);
+            if(_animator != null) {
+
+                Debug.Log("Playing animation: " + _animationStateName);
+                _animator.Play(_animationStateName);
+
+            }
 
         }
 
@@ -53,13 +57,17 @@ public class PlayAnimation : ActionPhase
 
             // Trigger phase end when animation ends
 
-            if(_animator.GetCurrentAnimatorStateInfo(0).IsName(_animationStateName)) {
+            if(_animator != null) {
 
-                var _info = _animator.GetCurrentAnimatorStateInfo(0);
+                if(_animator.GetCurrentAnimatorStateInfo(0).IsName(_animationStateName)) {
 
-                if( _info.normalizedTime >= 1 ) {
+                    var _info = _animator.GetCurrentAnimatorStateInfo(0);
 
-                    End();
+                    if( _info.normalizedTime >= 1 ) {
+
+                        End();
+
+                    }
 
                 }
 
