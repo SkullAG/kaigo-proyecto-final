@@ -46,7 +46,7 @@ public class UIGambitUpdater : MonoBehaviour
 
                     _targetText.text = _gambit.target != null ? _gambit.target.id : _emptyText;
                     _conditionText.text = _gambit.condition != null ? _gambit.condition.id : _emptyText;
-                    _actionText.text = _gambit.action != null ? _gambit.action.id : _emptyText;
+                    _actionText.text = _gambit.action != null ? _gambit.action.displayName : _emptyText;
 
                     _gambitUI.gambit = _gambit;
 

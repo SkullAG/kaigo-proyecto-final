@@ -25,7 +25,13 @@ namespace Core.States {
         private void OnEnable() {
 
             for(int i = 0; i < _availableStates.Count; i++) {
-                _availableStates[i] = Instantiate(_availableStates[i]);
+
+                if(_availableStates[i] != null) {
+
+                    _availableStates[i] = Instantiate(_availableStates[i]);
+
+                }
+
             }
 
         }

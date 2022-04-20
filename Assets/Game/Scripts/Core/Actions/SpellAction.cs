@@ -6,13 +6,12 @@ using NaughtyAttributes;
 public class SpellAction : GameAction
 {
 
-    public string castingAnimation;
     public float castingEndTime;
     public float distanceToCast;
 
     [Space(15)]
 
-    public string spellAnimation;
+    //public string spellAnimation;
     public float spellEndtime;
 
     [Space(15)]
@@ -30,9 +29,8 @@ public class SpellAction : GameAction
 
         return new ActionPhase[] {
 
-            new MoveToTarget(distanceToCast),
-            new PlayAnimation(castingAnimation, castingEndTime),
-            new PlayAnimation(spellAnimation, spellEndtime),
+            new MoveToTarget(distanceToCast), // Move to target, stop at X distance
+            new PlayAnimation(id, 0), // Start spell animation using action ID
             new ApplyDamage(damage),
 
         };
@@ -45,7 +43,7 @@ public class SpellAction : GameAction
 
         Debug.Log("Executing spell!");
 
-        ApplyCost(); // Cost is applied at the start
+        actor.stats.actionPoints.value -= cost; // Cost is applied at the start
         
     }
 
@@ -71,12 +69,6 @@ public class SpellAction : GameAction
         }
 
         NextPhase();
-
-    }
-
-    private void ApplyCost() {
-
-        actor.stats.actionPoints.value -= cost;
 
     }
 

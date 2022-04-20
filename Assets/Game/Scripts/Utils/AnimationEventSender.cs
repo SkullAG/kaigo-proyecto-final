@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimationEventString : MonoBehaviour
+public class AnimationEventSender : MonoBehaviour
 {
     
     public System.Action<string> onEventTriggered = delegate {};

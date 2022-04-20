@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfdd2f1bae33d0e4f8fc9bc7a1a2e447, type: 3}
   m_Name: Thunder
   m_EditorClassIdentifier: 
-  id: 
+  displayName: Thunder
+  id: 5
   description: Conjures a lightning bolt on the target's position that damages the
     area.
-  phases: []
   running: 0
   actor: {fileID: 0}
-  targets: []
+  target: {fileID: 0}
+  castingEndTime: 0
+  distanceToCast: 0
+  spellEndtime: 0
   cost: 8
+  castingDelay: 0
+  damage: 0

@@ -60,11 +60,11 @@ namespace Core.Actions
 
         }
 
-        public GameAction GetAction(string id) {
+        public GameAction GetAction(string name) {
 
             for(int i = 0; i < _runtimeActions.Length; i++) {
 
-                if(_runtimeActions[i].id == id) {
+                if(_runtimeActions[i].displayName == name) {
                     return _runtimeActions[i];
                 }
 

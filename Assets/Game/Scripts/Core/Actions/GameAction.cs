@@ -12,7 +12,8 @@ namespace Core.Actions
         public System.Action onActionStart = delegate {};
         public System.Action onActionEnd = delegate {};
 
-        public string id;
+        public string displayName;
+        public int id;
 
         [TextArea]
         public string description;

@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfdd2f1bae33d0e4f8fc9bc7a1a2e447, type: 3}
   m_Name: Levity
   m_EditorClassIdentifier: 
-  id: Levity
+  displayName: Levity
+  id: 3
   description: Temporally increases the agility of the target by a small amount.
-  phases: []
   running: 0
   actor: {fileID: 0}
-  targets: []
+  target: {fileID: 0}
+  castingEndTime: 0
+  distanceToCast: 0
+  spellEndtime: 0
   cost: 6
+  castingDelay: 0
+  damage: 0

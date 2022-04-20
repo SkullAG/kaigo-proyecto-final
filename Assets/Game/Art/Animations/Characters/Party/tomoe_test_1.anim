@@ -3997,7 +3997,7 @@ AnimationClip:
   m_Events:
   - time: 1
     functionName: OnEventTrigger
-    data: End
+    data: ApplyDamage
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

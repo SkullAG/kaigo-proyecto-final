@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfdd2f1bae33d0e4f8fc9bc7a1a2e447, type: 3}
   m_Name: Collapse
   m_EditorClassIdentifier: 
-  id: Collapse
+  displayName: Collapse
+  id: 2
   description: Conjures a rock above the target that falls with all its might.
-  phases: []
   running: 0
   actor: {fileID: 0}
-  targets: []
+  target: {fileID: 0}
+  castingEndTime: 0
+  distanceToCast: 0
+  spellEndtime: 0
   cost: 6
+  castingDelay: 0
+  damage: 0

@@ -12,15 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfdd2f1bae33d0e4f8fc9bc7a1a2e447, type: 3}
   m_Name: Blaze
   m_EditorClassIdentifier: 
-  id: Blaze
+  displayName: Blaze
+  id: 0
   description: Conjures a flame that bursts right beneath the target's feet.
   running: 0
   actor: {fileID: 0}
   target: {fileID: 0}
-  castingAnimation: Charge
   castingEndTime: 1.55
   distanceToCast: 1.5
-  spellAnimation: Cast
   spellEndtime: 0.3
   cost: 5
   castingDelay: 0
