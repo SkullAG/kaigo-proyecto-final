@@ -15,6 +15,7 @@ public class Inventory : MonoBehaviour
 	public GameObject _Panel;
 	public Targetter _target;
 	private int value;
+	public int coins;
 
 	public UnityEvent<Dictionary<string, Casilla>, List<string>> SendOnInventoryChange;
 	public void boton()    
@@ -46,7 +47,6 @@ public class Inventory : MonoBehaviour
 
 	}
 
-
 	public void OnTargetSelect(Character target) 
 	{
 		ApplyEffect(value);
@@ -71,10 +71,8 @@ public class Inventory : MonoBehaviour
 
 		if (huecos[nombres[value]].stack <= 0)
 		{
-			//notEmpty = false;
 			huecos.Remove(nombres[value]);
 			nombres.RemoveAt(value);
-			//huecos.Remove();	
 			SendOnInventoryChange.Invoke(huecos, nombres);
 		}
 	}
@@ -84,7 +82,6 @@ public class Inventory : MonoBehaviour
 
 		if (huecos.ContainsKey(obj.name))
         {
-			//Debug.Log("Añadiendo primero");
 
 			if (huecos[obj.name].stack < huecos[obj.name].objeto.stackMax)
 			{
@@ -94,7 +91,6 @@ public class Inventory : MonoBehaviour
 				huecos[obj.name].stack++;
 
 				SendOnInventoryChange.Invoke(huecos, nombres);
-				//SendOnInventoryChange.Invoke(huecos);
 				Debug.Log("Sumando al stack " + huecos[obj.name].objeto.name);
 			}
 			else
@@ -139,36 +135,3 @@ public class Inventory : MonoBehaviour
     }
 
 }
-
-
-
-/*public void Add2(Objects obj)
-{
-	for(int i = 0; i < huecos.Count; i++)
-	{
-		if (huecos[i].objeto == obj)
-		{
-			if (huecos[i].stack < huecos[i].objeto.stackMax)
-			{
-				Debug.Log("Añadiendo " + huecos[i].objeto.names);
-
-				notEmpty = true;
-				huecos[i].stack++;
-				huecos[i].SetStackValue(huecos[i].stack + 1);
-				//Casilla ca = huecos[i];
-				//ca.stack +=1;
-			}
-			else
-			{
-				Debug.Log("Stack Maximo alcanzado " + huecos[i].objeto.stackMax);
-			}
-			return;
-		}
-	}
-	Casilla c = new Casilla();
-
-	c.objeto = obj;
-	c.stack = 1;
-
-	huecos.Add(c);
-}*/
