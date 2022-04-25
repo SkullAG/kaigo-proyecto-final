@@ -47,7 +47,7 @@ namespace Core.Gambits
 
                 bool _condition = _target != null ? _gambits[i].condition.Evaluate(_actor, _target) : false;
 
-                GameAction _action = _actionList.GetAction(_gambits[i].action.id);
+                GameAction _action = _actionList.GetAction(_gambits[i].action.displayName);
 
                 if(_action != null) {
 
