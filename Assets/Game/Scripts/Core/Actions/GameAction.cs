@@ -6,8 +6,9 @@ using Core.Characters;
 namespace Core.Actions
 {
 
-    public abstract class GameAction : ScriptableObject
+    public abstract class GameAction : ScriptableObject, IListableElement
     {
+
 
         public System.Action onActionStart = delegate {};
         public System.Action onActionEnd = delegate {};
@@ -15,8 +16,13 @@ namespace Core.Actions
         public string displayName;
         public int id;
 
+        // Part of IListableElement interface
+        string IListableElement.displayName => displayName;
+
         [TextArea]
         public string description;
+
+        public bool hasTargetSelection;
 
         public ActionPhase[] phases;
 
@@ -30,6 +36,7 @@ namespace Core.Actions
         [ReadOnly] public Character target;
 
         protected int phaseIndex = 0;
+
 
         private void Reset() {
 

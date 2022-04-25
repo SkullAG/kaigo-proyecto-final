@@ -14,6 +14,9 @@ namespace Core.Actions
         [SerializeField, NonReorderable, ReadOnly, Expandable]
         private GameAction[] _runtimeActions;
 
+        public GameAction[] runtimeActions => _runtimeActions;
+        public GameAction[] actions => _actions.ToArray();
+
         private void Awake() {
 
             InstantiateAll();
