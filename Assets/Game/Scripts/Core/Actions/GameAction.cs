@@ -17,6 +17,9 @@ namespace Core.Actions
         [TextArea]
         public string description;
 
+        [SerializeField]
+        public bool hasTargetSelection;
+
         public ActionPhase[] phases;
 
         [SerializeField, ReadOnly]

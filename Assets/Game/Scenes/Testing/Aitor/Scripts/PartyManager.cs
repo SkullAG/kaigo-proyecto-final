@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PartyManager : MonoBehaviour
+public class PartyManager : Singleton<PartyManager>
 {
 	public NavBodyPuppeteer puppeteer;
 	[SerializeField]
 	[OnValueChanged("UpdatePartyInfo")]
-	private List<NavBodySistem> PartyMembers = new List<NavBodySistem>();
+	public List<NavBodySistem> PartyMembers = new List<NavBodySistem>();
 	public int selectedCharacter { get { return _selectedCharacter; } set 
 		{ 
 			_selectedCharacter = value;
