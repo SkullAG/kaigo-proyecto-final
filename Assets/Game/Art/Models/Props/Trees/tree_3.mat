@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: tree_3
-  m_Shader: {fileID: 4800000, guid: 055eab4e84dc70a47ae75b3125a22de6, type: 3}
+  m_Shader: {fileID: 4800000, guid: c48588cb55077c84381fd8bd6bd6b42d, type: 3}
   m_ShaderKeywords: _ALPHATEST_ON _BRDF_MODE_LAMBERT _FOG_ON _LIGHTING_BAKED_ON _LIGHTING_DYNAMIC_ON
     _SHADING_EVALUATION_MODE_PER_VERTEX _TEXTURE_FILTER_MODE_TEXTURE_IMPORT_SETTINGS
     _VERTEX_COLOR_MODE_COLOR
@@ -42,7 +42,7 @@ Material:
     m_Floats:
     - _AffineTextureWarpingWeight: 1
     - _AlphaClip: 1
-    - _AlphaClippingDitherIsEnabled: 0
+    - _AlphaClippingDitherIsEnabled: 1
     - _BRDFMode: 0
     - _Blend: 0
     - _BlendOp: 0
@@ -72,7 +72,7 @@ Material:
     - _VertexColorMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _AlphaClippingScaleBiasMinMax: {r: 99864.38, g: -61915.918, b: 0.62, a: 0.62001}
+    - _AlphaClippingScaleBiasMinMax: {r: 1.1111112, g: -0.11111111, b: 0.1, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _DrawDistanceOverride: {r: 100, g: 10000, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}

@@ -7,7 +7,6 @@
 #include "Packages/com.hauntedpsx.render-pipelines.psx/Runtime/ShaderLibrary/DynamicLighting.hlsl"
 #include "Packages/com.hauntedpsx.render-pipelines.psx/Runtime/ShaderLibrary/MaterialFunctions.hlsl"
 
-
 // Simply rely on dead code removal to strip unused attributes and varyings from shaders.
 // Manually stripping with ifdefing made the shader harder to read.
 struct Attributes
@@ -70,6 +69,7 @@ Varyings LitPassVertex(Attributes v)
 
 half4 LitPassFragment(Varyings i, FRONT_FACE_TYPE cullFace : FRONT_FACE_SEMANTIC) : SV_Target
 {
+
     float2 positionSS = i.vertex.xy;
 
     // Remember, we multipled all interpolated vertex values by positionCS.w in order to counter contemporary hardware's perspective correct interpolation.

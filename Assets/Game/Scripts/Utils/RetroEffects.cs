@@ -4,6 +4,7 @@ using UnityEngine.Rendering;
 using NaughtyAttributes;
 
 [RequireComponent(typeof(Volume))]
+[ExecuteInEditMode]
 public class RetroEffects : MonoBehaviour
 {
 

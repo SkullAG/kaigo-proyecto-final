@@ -72,6 +72,10 @@
             #pragma exclude_renderers d3d11_9x
             #pragma target 3.0
 
+            float _AlphaCut = 0.0;
+            float _DistanceCut = 0.0;
+            float _BlendingCut = 0.0;
+
             // -------------------------------------
             // Global Keywords (set by render pipeline)
             #pragma multi_compile _OUTPUT_LDR _OUTPUT_HDR
