@@ -4,49 +4,51 @@ using UnityEngine;
 using Core.Actions;
 using Core.Characters;
 using Core.States;
+using Core.Affinities;
 
 public class ApplyDamage : ActionPhase
 {
-    
-    private int _damage;
-    private string _deathStateName = "Death";
+	private AffinityList _elementalDamage;
 
-    private bool _healthDepleted = false;
 
-    public ApplyDamage(int damage) {
+	//private int _damage;
+	private string _deathStateName = "Death";
 
-        this._damage = damage;
+	private bool _healthDepleted = false;
 
-    }
+	public ApplyDamage(AffinityList elementalDamage) {
 
-    public override void Start(Character actor, Character target) {
+		this._elementalDamage = elementalDamage;
 
-        base.Start(actor, target);
+	}
 
-    }
-    
-    // Update phase's processing
-    public override void Update() {
+	public override void Start(Character actor, Character target) {
 
-        if(started) {
+		base.Start(actor, target);
+	}
+	
+	// Update phase's processing
+	public override void Update() {
 
-            if(target != null) {
+		if(started) {
 
-                target.stats.healthPoints.value -= _damage;
+			if(target != null) {
 
-                if(target.stats.healthPoints.depleted) {
+				target.stats.healthPoints.value -= Mathf.FloorToInt(target.stats.constitution.DamageMultiplier * target.GetComponent<Affinities>().DamageCalculation(_elementalDamage));
 
-                    // Add Death state to character
-                    target.states.AddState(_deathStateName);
+				if (target.stats.healthPoints.depleted) {
 
-                }
+					// Add Death state to character
+					target.states.AddState(_deathStateName);
 
-                End();
+				}
 
-            }
+				End();
 
-        }
+			}
 
-    }
+		}
+
+	}
 
 }

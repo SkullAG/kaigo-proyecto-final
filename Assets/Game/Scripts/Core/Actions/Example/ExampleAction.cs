@@ -2,6 +2,7 @@ using UnityEngine;
 using Core.Actions;
 using Core.Characters;
 using System.Collections.Generic;
+using Core.Affinities;
 
 [CreateAssetMenu(fileName = "Example Action", menuName = "Game/Actions/Example/Action")]
 public class ExampleAction : GameAction
@@ -11,7 +12,7 @@ public class ExampleAction : GameAction
     int _delay;
 
     [SerializeField]
-    int _damage;
+    public AffinityList _damage;
 
     [SerializeField]
     float _testNumber;

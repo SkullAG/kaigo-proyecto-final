@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 5852901802018738726}
   - component: {fileID: 5852901802018738727}
   - component: {fileID: 5852901802018738724}
+  - component: {fileID: 2208423620771748443}
   m_Layer: 3
   m_Name: Yamabozu
   m_TagString: Ally
@@ -160,12 +161,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints:
     _currentValue: 0
-    _maxValue: 300
+    _maxValue: 125
+    depleted: 0
+    atMax: 0
   actionPoints:
     _currentValue: 0
-    _maxValue: 25
+    _maxValue: 20
+    depleted: 0
+    atMax: 0
   bravery:
-    _rawValue: 5
+    _rawValue: 1
     _modifiedValue: 0
     modifiers: []
   constitution:
@@ -173,15 +178,15 @@ MonoBehaviour:
     _modifiedValue: 0
     modifiers: []
   vitality:
-    _rawValue: 10
-    _modifiedValue: 10
+    _rawValue: 3
+    _modifiedValue: 3
     modifiers: []
   determination:
-    _rawValue: 5
-    _modifiedValue: 5
+    _rawValue: 4
+    _modifiedValue: 4
     modifiers: []
   agility:
-    _rawValue: 3
+    _rawValue: 5
     _modifiedValue: 0
     modifiers: []
 --- !u!114 &5852901802018738727
@@ -216,6 +221,28 @@ MonoBehaviour:
   _availableStates:
   - {fileID: 11400000, guid: a4eb56b5783311c4e97f861acacb64f4, type: 2}
   _currentStates: []
+--- !u!114 &2208423620771748443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5852901802018738722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 060caad1ee4b1834c888516042da800b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affinities:
+    Physical: -0.25
+    Magical: 0.75
+    Fire: -0.1
+    Thunder: 0
+    Ice: -0.25
+    Wind: 0
+    Void: 0.5
+    Poison: 0.25
+    Bleeding: -0.25
 --- !u!95 &5852901801262158029
 Animator:
   serializedVersion: 3

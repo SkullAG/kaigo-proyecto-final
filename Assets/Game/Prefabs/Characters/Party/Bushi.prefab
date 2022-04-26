@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 5379139465414702164}
   - component: {fileID: 5379139465414702165}
   - component: {fileID: 5379139465414702166}
+  - component: {fileID: 99671995}
   m_Layer: 3
   m_Name: Bushi
   m_TagString: Ally
@@ -191,25 +192,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints:
     _currentValue: 0
-    _maxValue: 300
+    _maxValue: 150
+    depleted: 0
+    atMax: 0
   actionPoints:
     _currentValue: 0
-    _maxValue: 25
+    _maxValue: 5
+    depleted: 0
+    atMax: 0
   bravery:
-    _rawValue: 5
+    _rawValue: 3
     _modifiedValue: 0
     modifiers: []
   constitution:
-    _rawValue: 2
+    _rawValue: 4
     _modifiedValue: 0
     modifiers: []
   vitality:
-    _rawValue: 10
-    _modifiedValue: 10
+    _rawValue: 4
+    _modifiedValue: 4
     modifiers: []
   determination:
-    _rawValue: 5
-    _modifiedValue: 5
+    _rawValue: 1
+    _modifiedValue: 1
     modifiers: []
   agility:
     _rawValue: 3
@@ -247,6 +252,28 @@ MonoBehaviour:
   _availableStates:
   - {fileID: 11400000, guid: a4eb56b5783311c4e97f861acacb64f4, type: 2}
   _currentStates: []
+--- !u!114 &99671995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5379139465414702120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 060caad1ee4b1834c888516042da800b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affinities:
+    Physical: 0.25
+    Magical: -0.25
+    Fire: 0
+    Thunder: 0
+    Ice: 0.25
+    Wind: 0.5
+    Void: 0
+    Poison: 0.25
+    Bleeding: 0.5
 --- !u!1001 &5379139467191278235
 PrefabInstance:
   m_ObjectHideFlags: 0

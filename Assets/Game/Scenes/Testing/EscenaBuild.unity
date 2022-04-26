@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43997788, g: 0.48845708, b: 0.5686563, a: 1}
+  m_IndirectSpecularColor: {r: 0.43997738, g: 0.48845655, b: 0.56865585, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1454,7 +1454,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5043851537257179178, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
   m_PrefabInstance: {fileID: 2039635641}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1166882457}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae4416bee41490945acac855a0a6388a, type: 3}
@@ -3716,6 +3716,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 20207a729ed94474091b0fa039fe73e9, type: 3}
   m_PrefabInstance: {fileID: 1140263499}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1166882457 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5043851537257179180, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
+  m_PrefabInstance: {fileID: 2039635641}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1166882458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166882457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 060caad1ee4b1834c888516042da800b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affinities:
+    Physical: -0.25
+    Magical: 0.5
+    Fire: 0.25
+    Thunder: 0.25
+    Ice: 0.25
+    Wind: 0.25
+    Void: 0
+    Poison: 0
+    Bleeding: -0.15
 --- !u!1 &1169814358
 GameObject:
   m_ObjectHideFlags: 0
@@ -6770,6 +6797,30 @@ PrefabInstance:
     - target: {fileID: 5031767352646836998, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.7006546
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043851537257179175, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
+      propertyPath: agility._rawValue
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043851537257179175, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
+      propertyPath: bravery._rawValue
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043851537257179175, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
+      propertyPath: vitality._rawValue
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043851537257179175, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
+      propertyPath: constitution._rawValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043851537257179175, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
+      propertyPath: healthPoints._maxValue
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043851537257179175, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
+      propertyPath: vitality._modifiedValue
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5043851537257179180, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
       propertyPath: m_Name

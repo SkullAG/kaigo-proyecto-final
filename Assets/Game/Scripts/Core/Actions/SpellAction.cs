@@ -1,6 +1,7 @@
 using UnityEngine;
 using Core.Actions;
 using NaughtyAttributes;
+using Core.Affinities;
 
 [CreateAssetMenu(fileName = "Spell", menuName = "Game/Actions/Spell")]
 public class SpellAction : GameAction
@@ -19,7 +20,7 @@ public class SpellAction : GameAction
 
     public int cost = 0;
     public int castingDelay = 0;
-    public int damage = 0;
+    public AffinityList damage;
 
     private float timer = 0;
     private int counter = 0;

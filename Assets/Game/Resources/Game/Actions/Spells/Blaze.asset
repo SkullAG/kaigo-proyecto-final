@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Blaze
   m_EditorClassIdentifier: 
   id: Blaze
-  description: Conjures a flame that bursts right beneath the target's feet.
+  description: Conjures a blaze that freeze the target and its surroundings
+  hasTargetSelection: 0
   running: 0
   actor: {fileID: 0}
   target: {fileID: 0}
@@ -24,4 +25,13 @@ MonoBehaviour:
   spellEndtime: 0.3
   cost: 5
   castingDelay: 0
-  damage: 10
+  damage:
+    Physical: 0
+    Magical: 10
+    Fire: 0
+    Thunder: 0
+    Ice: 20
+    Wind: 10
+    Void: 0
+    Poison: 0
+    Bleeding: 0

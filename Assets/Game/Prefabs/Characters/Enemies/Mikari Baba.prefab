@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &8657649740298191604
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8423788766114726266}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8657649740238381031
 GameObject:
   m_ObjectHideFlags: 0
@@ -18,6 +37,7 @@ GameObject:
   - component: {fileID: 8657649740238381026}
   - component: {fileID: 8657649740238381029}
   - component: {fileID: 8657649740238381028}
+  - component: {fileID: 3652765091935807002}
   m_Layer: 3
   m_Name: Mikari Baba
   m_TagString: Enemy
@@ -32,7 +52,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8657649740238381031}
-  m_LocalRotation: {x: -0, y: 0.48079598, z: -0, w: 0.87683254}
+  m_LocalRotation: {x: 0, y: 0.48079744, z: 0, w: 0.8768317}
   m_LocalPosition: {x: 3.94, y: 0, z: 3.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -161,15 +181,19 @@ MonoBehaviour:
   healthPoints:
     _currentValue: 0
     _maxValue: 125
+    depleted: 0
+    atMax: 0
   actionPoints:
     _currentValue: 0
     _maxValue: 25
+    depleted: 0
+    atMax: 0
   bravery:
     _rawValue: 5
     _modifiedValue: 0
     modifiers: []
   constitution:
-    _rawValue: 2
+    _rawValue: 10
     _modifiedValue: 0
     modifiers: []
   vitality:
@@ -215,25 +239,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _availableStates: []
   _currentStates: []
---- !u!95 &8657649740298191604
-Animator:
-  serializedVersion: 3
+--- !u!114 &3652765091935807002
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8423788766114726266}
+  m_GameObject: {fileID: 8657649740238381031}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 060caad1ee4b1834c888516042da800b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affinities:
+    Physical: 0
+    Magical: -1
+    Fire: 0
+    Thunder: 0
+    Ice: -1
+    Wind: -1
+    Void: 0
+    Poison: 0
+    Bleeding: 0
 --- !u!1001 &8657649740281609259
 PrefabInstance:
   m_ObjectHideFlags: 0

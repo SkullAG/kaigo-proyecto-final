@@ -20,6 +20,8 @@ namespace Core.Stats {
         [SerializeField, NonReorderable]
         public List<Modifier> modifiers = new List<Modifier>();
 
+        public const float _MAX = 10;
+
         public float value {
             get => GetValue();
             set => SetRawValue(value);
