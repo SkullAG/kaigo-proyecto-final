@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 using NaughtyAttributes;
+using TMPro;
 
 [RequireComponent(typeof(VerticalLayoutGroup))]
-public class SelectableList : MonoBehaviour
+public class ButtonList : MonoBehaviour
 {
 
     public System.Action<int> onListRebuilt = delegate {};
-    public System.Action<GameObject> onItemSelected = delegate {};
+    public System.Action<GameObject> onElementSelected = delegate {};
     
     [SerializeField]
     private Button _referenceButton;
@@ -22,10 +23,8 @@ public class SelectableList : MonoBehaviour
     private void Start() {
 
         if( _referenceButton != null && _elements != null) {
-
             DestroyChildren();
             InstantiateButtons();
-
         }
 
     }
@@ -35,9 +34,7 @@ public class SelectableList : MonoBehaviour
         if(_updateAutomatically && _elements != null) {
 
             if(_lastElementCount != _elements.Length) {
-
                 InstantiateButtons();
-
             }
 
             _lastElementCount = _elements.Length;
@@ -54,7 +51,7 @@ public class SelectableList : MonoBehaviour
 
     private void DestroyChildren() {
 
-        // Kill children :)
+        // Kill children >:)
         foreach(Transform c in transform) {
             Destroy(c.gameObject);
         }
@@ -65,15 +62,31 @@ public class SelectableList : MonoBehaviour
 
         DestroyChildren();
 
-        // Make children :D
+        // Make children ._.
         for(int i = 0; i < _elements.Length; i++) {
 
             Transform _elem = Instantiate(_referenceButton).transform;
             _elem.parent = transform;
 
+            ButtonHelper _helper = _elem.GetComponent<ButtonHelper>();
+
+            _helper.value = i;
+            _helper.SendOnClick.AddListener(OnButtonClick);
+
+            TextMeshProUGUI _textMesh = _elem.GetComponentInChildren<TextMeshProUGUI>();
+            _textMesh.text = _elements[i].displayName;
+
         }
 
         onListRebuilt(_elements.Length);
+
+    }
+
+    private void OnButtonClick(int elementIndex) {
+
+        Debug.Log("Clicked element with index " + elementIndex);
+
+        onElementSelected(transform.GetChild(elementIndex).gameObject);
 
     }
 

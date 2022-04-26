@@ -2,51 +2,34 @@ using UnityEngine;
 using Core.Characters;
 using Core.Actions;
 
-[RequireComponent(typeof(SelectableList))]
+[RequireComponent(typeof(ButtonList))]
 public class UIActionList : MonoBehaviour
 {
 
-    private SelectableList _selectableList;
+    private ButtonList _selectableList;
     private PartyManager _partyManager;
     private ActionList _actionList;
-    private Character _selectedCharacter;
 
-    private int _lastActionCount;
+    private int _lastSelectedCharacter = -1;
 
-    private void Awake() {
+    private void Start() {
 
-        _selectableList = GetComponent<SelectableList>();
+        _selectableList = GetComponent<ButtonList>();
         _partyManager = PartyManager.current;
 
     }
 
     private void Update() {
 
-        if(_actionList.actions.Length != _lastActionCount) {
+        if(_lastSelectedCharacter != _partyManager.selectedCharacter) {
 
-            SetElements();
+            _actionList = _partyManager.PartyMembers[_partyManager.selectedCharacter].GetComponent<ActionList>();
+        
+            _selectableList.SetElements(_actionList.actions);
 
         }
 
-        _lastActionCount = _actionList.actions.Length;
-
-    }
-
-    private void OnEnable() {
-        
-        // Get selected character
-        _selectedCharacter = _partyManager.PartyMembers[_partyManager.selectedCharacter].GetComponent<Character>();
-
-        // Get action list
-        _actionList = _selectedCharacter.actions;
-
-    }
-
-    private void SetElements() {
-
-        // Set elements in UI list
-        var actions = _selectedCharacter.actions.actions;
-        _selectableList.SetElements(actions);
+        _lastSelectedCharacter = _partyManager.selectedCharacter;
 
     }
 
