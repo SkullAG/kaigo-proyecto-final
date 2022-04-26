@@ -25,7 +25,13 @@ namespace Core.States {
         private void OnEnable() {
 
             for(int i = 0; i < _availableStates.Count; i++) {
-                _availableStates[i] = Instantiate(_availableStates[i]);
+
+                if(_availableStates[i] != null) {
+
+                    _availableStates[i] = Instantiate(_availableStates[i]);
+
+                }
+
             }
 
         }
@@ -55,6 +61,20 @@ namespace Core.States {
                 if(!_currentStates.Contains(_state) && _availableStates.Contains(_state)) {
 
                     _currentStates.Add(_state);
+
+                }
+
+            }
+
+        }
+
+        public void AddState(State state) {
+
+            if(state != null) {
+                
+                if(!_currentStates.Contains(state) && _availableStates.Contains(state)) {
+
+                    _currentStates.Add(state);
 
                 }
 

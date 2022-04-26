@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfdd2f1bae33d0e4f8fc9bc7a1a2e447, type: 3}
   m_Name: ColdSpikes
   m_EditorClassIdentifier: 
-  id: Cold Spikes
+  displayName: Cold Spikes
+  id: 1
   description: Conjures sharp ice spikes that go through the target's body.
-  phases: []
   running: 0
   actor: {fileID: 0}
-  targets: []
+  target: {fileID: 0}
+  damage: 10
   cost: 7
+  distanceToCast: 1.5

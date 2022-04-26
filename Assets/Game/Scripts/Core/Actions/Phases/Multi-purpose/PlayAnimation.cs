@@ -5,93 +5,75 @@ using Core.Characters;
 public class PlayAnimation : ActionPhase
 {
 
-    private string _animationStateName;
-    //private float _endTime;
+    private const string DAMAGE_EVENT_NAME = "ApplyDamage";
+    private const string ACTION_ID_PARAM_NAME = "ActionID";
+    private const string INSTANT_CAST_PARAM_NAME = "InstantCast";
+
+    private int _actionID;
+    private int _animationLayer;
+    private bool _instantCast;
 
     private Animator _animator;
-    private AnimationEventString _eventComm;
+    private AnimationEventSender _sender;
 
     private bool _customEnd = true;
 
-    public PlayAnimation(string stateName, float _endTime = -1) {
+    public PlayAnimation(int actionID, int layer, bool instantCast) {
 
-        this._animationStateName = stateName;
+        this._actionID = actionID;
+        this._animationLayer = layer;
+        this._instantCast = instantCast;
 
     }
 
-    public override void Update()
-    {
+    public override void Start(Character actor, Character target) {
 
-        if(_animator == null) {
+        base.Start(actor, target);
 
-            _animator = actor.gameObject.GetComponentInChildren<Animator>();
+        _animator = actor.gameObject.GetComponentInChildren<Animator>();
+        _sender = _animator.GetComponent<AnimationEventSender>();
 
-            if(_animator != null) {
+        if(_sender != null) {
 
-                Debug.Log("Playing animation: " + _animationStateName);
-                _animator.Play(_animationStateName);
-
-            }
+            // Listen to the animation event
+            _sender.onEventTriggered += OnEventTriggered;
 
         }
 
-        if(_eventComm == null) {
+    }
 
-            _eventComm = actor.transform.GetChild(0).GetComponent<AnimationEventString>();
+    public override void Update() {
 
-            if(_eventComm != null) {
+        if(_animator != null) {
 
-                // Subscribe to animation event handler
-
-                _eventComm.onEventTriggered += OnAnimationEvent;
-
-            } else {
-
-                _customEnd = false;
-
-            }
+            _animator.SetInteger(ACTION_ID_PARAM_NAME, _actionID); // Send action ID to Animator
+            _animator.SetInteger(INSTANT_CAST_PARAM_NAME, _instantCast ? 1 : 0); // Tell animator if action is casted instantly (without charging)
 
         }
 
-        if(!_customEnd) {
+    }
 
-            // Trigger phase end when animation ends
+    private void OnEventTriggered(string name) {
 
-            if(_animator != null) {
-
-                if(_animator.GetCurrentAnimatorStateInfo(0).IsName(_animationStateName)) {
-
-                    var _info = _animator.GetCurrentAnimatorStateInfo(0);
-
-                    if( _info.normalizedTime >= 1 ) {
-
-                        End();
-
-                    }
-
-                }
-
-            }
-
+        if(name == DAMAGE_EVENT_NAME) {
+            End();
         }
 
     }
 
     public override void End() {
 
+        // Reset animator parameters
+        _animator.SetInteger(ACTION_ID_PARAM_NAME, -1);
+        _animator.SetInteger(INSTANT_CAST_PARAM_NAME, -1);
+
+        // Stop listening animation event
+        _sender.onEventTriggered -= OnEventTriggered;
+
+        // Give end permision to animation
+        _animator.SetTrigger("End");
+
         base.End();
-
-        _eventComm.onEventTriggered -= OnAnimationEvent;
-
-    }
-
-    private void OnAnimationEvent(string name) {
-
-        if(name == "End") {
-
-            End();
-
-        }
 
     }
 

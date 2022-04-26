@@ -161,9 +161,13 @@ MonoBehaviour:
   healthPoints:
     _currentValue: 0
     _maxValue: 300
+    depleted: 0
+    atMax: 0
   actionPoints:
     _currentValue: 0
     _maxValue: 25
+    depleted: 0
+    atMax: 0
   bravery:
     _rawValue: 5
     _modifiedValue: 0
@@ -213,10 +217,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a0cdfed700657b489f78ceb86b5023e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _availableStates:
-  - {fileID: 11400000, guid: a4eb56b5783311c4e97f861acacb64f4, type: 2}
+  _availableStates: []
   _currentStates: []
---- !u!114 &5043851536207635472
+--- !u!114 &7333614855870436072
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -225,7 +228,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5277715111159149586}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d50eda93023de554e96b1fec04211f06, type: 3}
+  m_Script: {fileID: 11500000, guid: b0c0c255df999e3438a27a7edb62a08c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &5043851536524314947
