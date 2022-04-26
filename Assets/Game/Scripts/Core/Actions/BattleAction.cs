@@ -1,12 +1,13 @@
 using UnityEngine;
 using Core.Actions;
 using Core.States;
+using Core.Affinities;
 
-[CreateAssetMenu(fileName = "Spell", menuName = "Game/Actions/Battle Action")]
+[CreateAssetMenu(fileName = "Battle Action", menuName = "Game/Actions/Battle Action")]
 public class BattleAction : GameAction
 {
 
-    public int damage = 0;
+    public AffinityList damage;
     public int cost = 0;
     public float distanceToCast;
     public bool instantCast;

@@ -9,15 +9,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfdd2f1bae33d0e4f8fc9bc7a1a2e447, type: 3}
-  m_Name: Levity
+  m_Script: {fileID: 11500000, guid: 1ac57fe23aaadad4c98c6d71ac1a4b0a, type: 3}
+  m_Name: Battle Action
   m_EditorClassIdentifier: 
-  displayName: Levity
-  id: 3
-  description: Temporally increases the agility of the target by a small amount.
+  displayName: 
+  id: 0
+  description: 
+  hasTargetSelection: 0
   running: 0
   actor: {fileID: 0}
   target: {fileID: 0}
-  damage: 7
-  cost: 6
+  damage:
+    Physical: 0
+    Magical: 0
+    Fire: 0
+    Thunder: 0
+    Ice: 0
+    Wind: 0
+    Void: 0
+    Poison: 0
+    Bleeding: 0
+  cost: 0
   distanceToCast: 0
+  instantCast: 0
+  state: {fileID: 0}

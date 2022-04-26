@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using Core.Characters;
+using System.Linq;
 
 public class Inventory : MonoBehaviour
 {    
@@ -40,6 +41,9 @@ public class Inventory : MonoBehaviour
 
 	[SerializeField]
 	public List<string> nombres = new List<string>();
+
+	// AÃ±adido: devuelve array de todos los objetos en el inventario
+	public Objects[] items => huecos.Values.Select(x => x.objeto).ToArray();
 
 	private void Awake()
     {
@@ -100,7 +104,7 @@ public class Inventory : MonoBehaviour
 		}
 		else
 		{
-			Debug.Log("Añadiendo ");
+			Debug.Log("Aï¿½adiendo ");
 			notEmpty = true;
 			Casilla c = new Casilla(obj);
 			huecos.Add(obj.name, c);

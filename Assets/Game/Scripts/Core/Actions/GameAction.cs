@@ -18,6 +18,7 @@ namespace Core.Actions
 
         // Part of IListableElement interface
         string IListableElement.displayName => displayName;
+        string IListableElement.displayDescription => description;
 
         [TextArea]
         public string description;
