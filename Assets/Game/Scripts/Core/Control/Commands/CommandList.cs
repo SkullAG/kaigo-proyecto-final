@@ -46,7 +46,13 @@ public class CommandList : MonoBehaviour
 
     public void SelectButton(int index) {
 
-        EventSystem.current.SetSelectedGameObject(_buttons[index].gameObject);
+        if(_buttons != null) {
+
+            if(_buttons.Length > 0) {
+                EventSystem.current.SetSelectedGameObject(_buttons[index].gameObject);
+            }
+
+        } 
 
     }
 

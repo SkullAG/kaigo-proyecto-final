@@ -11,7 +11,7 @@ public class BattleAction : GameAction
     public int cost = 0;
     public float distanceToCast;
     public bool instantCast;
-    public State state;
+    public State[] states;
 
     private float timer = 0;
     private int counter = 0;
@@ -25,7 +25,7 @@ public class BattleAction : GameAction
             new MoveToTarget(distanceToCast), // Move to target, stop at X distance
             new PlayAnimation(id, 0, instantCast), // Start spell animation using action ID
             new ApplyDamage(damage),
-            new ApplyState(state)
+            new ApplyState(states)
 
         };
 

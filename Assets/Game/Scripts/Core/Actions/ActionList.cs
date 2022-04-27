@@ -34,15 +34,7 @@ namespace Core.Actions
             _runtimeActions = new GameAction[_actions.Count];
 
             for(int i = 0; i < _actions.Count; i++) {
-
                 _runtimeActions[i] = Instantiate(_actions[i]);
-
-                /*for(int j = 0; j < _actions[i].phases.Count; j++) {
-
-                    _runtimeActions[i].phases[j] = Instantiate(_actions[i].phases[j]);
-
-                }*/
-
             }
 
         }
@@ -50,15 +42,7 @@ namespace Core.Actions
         private void DestroyAll() {
 
             for(int i = 0; i < _runtimeActions.Length; i++) {
-
-                /*for(int j = 0; j < _runtimeActions[i].phases.Count; j++) {
-
-                    Destroy( _runtimeActions[i].phases[j] );
-
-                }*/
-
                 Destroy( _runtimeActions[i] );
-
             }
 
         }

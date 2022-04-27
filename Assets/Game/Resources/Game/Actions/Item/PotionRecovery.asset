@@ -9,11 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b8c52abd410a8749b97de331df471f6, type: 3}
-  m_Name: Potion
+  m_Script: {fileID: 11500000, guid: 11da271767b1a5648b53ce818ffc67bc, type: 3}
+  m_Name: PotionRecovery
   m_EditorClassIdentifier: 
-  id: 00
   displayName: Potion
-  description: Gives life
-  stackMax: 16
-  itemAction: {fileID: 11400000, guid: d9acc72c9407e0e44987b025e03032ae, type: 2}
+  id: 0
+  description: Recovers health by a small ammount.
+  hasTargetSelection: 1
+  running: 0
+  actor: {fileID: 0}
+  target: {fileID: 0}
+  valueRecovered: 10
+  distanceToCast: 1
+  instantCast: 1
+  states: []

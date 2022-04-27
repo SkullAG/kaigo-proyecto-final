@@ -8,20 +8,14 @@ using Core.States;
 public class ApplyState : ActionPhase
 {
     
-    private State _state;
+    private State[] _states;
     private string _deathStateName = "Death";
 
     private bool _healthDepleted = false;
 
-    public ApplyState(State state) {
+    public ApplyState(State[] states) {
 
-        this._state = state;
-
-    }
-
-    public override void Start(Character actor, Character target) {
-
-        base.Start(actor, target);
+        this._states = states;
 
     }
     
@@ -30,10 +24,24 @@ public class ApplyState : ActionPhase
 
         if(started) {
 
+            // End action if there are no states to apply
+            if(_states == null || _states.Length == 0) {
+
+                End();
+                return;
+
+            }
+
             if(target != null) {
 
-                target.states.AddState(_state);
+                // Applies each state
+                foreach (var state in _states) {
 
+                    target.states.AddState(state);
+
+                }
+
+                // Maybe this shouldn't be here :S
                 if(target.stats.healthPoints.depleted) {
 
                     // Add Death state to character

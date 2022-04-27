@@ -68,7 +68,6 @@ public class Inventory : MonoBehaviour
 
 		string _name = nombres[value];
 
-		Debug.Log("Usando " + huecos[_name].objeto.name);
 
 		huecos[_name].objeto.Use(_target.currentTarget);
 		huecos[_name].stack--;
