@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Core.Characters;
 using Core.Actions;
+using System.Linq;
 
 [RequireComponent(typeof(CommandList))]
 public class UIItemList : MonoBehaviour
@@ -20,6 +21,8 @@ public class UIItemList : MonoBehaviour
         _inventory = PartyInventory.current.inventory;
 
         _inventory.Add(_testItem);
+        _inventory.Add(_testItem);
+        _inventory.Add(_testItem);
 
     }
 
@@ -37,19 +40,26 @@ public class UIItemList : MonoBehaviour
 
     private void CreateCommands() {
 
-        // Get inventory items
-        var _items = _inventory.items;
+        // Get slots that aren't empty
+        Inventory.Casilla[] _slots = _inventory.huecos.Values.Where(x => x.stack != 0).ToArray();
         
         List<CommandItem> _commands = new List<CommandItem>();
 
-        // Create commands for each available item in inventory
-        for(int i = 0; i < _items.Length; i++) {
+        // Create commands for each available used slot in inventory
+        for(int i = 0; i < _slots.Length; i++) {
+
+            string _initialName =  _slots[i].objeto.displayName;
+            
+            // Set name to include stack size initially
+            if(_slots[i].stack > 0) {
+                _initialName += " x" + _slots[i].stack;
+            }
 
             CommandItem _c = new CommandItem(i, i) {
 
-                displayName = _items[i].displayName,
-                displayDescription = _items[i].description
-                
+                displayName = _initialName,
+                displayDescription = _slots[i].objeto.description
+
             };
 
             _commands.Add(_c);

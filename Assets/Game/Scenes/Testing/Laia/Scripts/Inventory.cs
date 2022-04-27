@@ -15,6 +15,8 @@ public class Inventory : MonoBehaviour
 	private int value;
 	public int coins;
 
+	public System.Action effectApplied = delegate {};
+
 	public UnityEvent<Dictionary<string, Casilla>, List<string>> SendOnInventoryChange;
 	public void boton()    
 	{        
@@ -32,6 +34,7 @@ public class Inventory : MonoBehaviour
 			stack = 1;
 			objeto = o;
 		}
+
 	};
 
 	public Dictionary<string, Casilla> huecos { get; private set; } = new Dictionary<string, Casilla>();
@@ -53,6 +56,7 @@ public class Inventory : MonoBehaviour
 		Debug.Log("OnTargetSelect");
 		_target.onTargetSelect -= OnTargetSelect;
 	}
+
 	public void Use(int value)
 	{
 		if (notEmpty)
@@ -63,11 +67,11 @@ public class Inventory : MonoBehaviour
 			this.value = value;
 		}      
 	}
+
 	public void ApplyEffect(int value)
 	{
 
 		string _name = nombres[value];
-
 
 		huecos[_name].objeto.Use(_target.currentTarget);
 		huecos[_name].stack--;
@@ -80,6 +84,9 @@ public class Inventory : MonoBehaviour
 			nombres.RemoveAt(value);
 			SendOnInventoryChange.Invoke(huecos, nombres);
 		}
+
+		effectApplied();
+
 	}
 	
 	public void Add(Objects obj)

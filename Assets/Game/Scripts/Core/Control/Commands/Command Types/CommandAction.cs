@@ -3,6 +3,7 @@ using Core.Actions;
 using Core.Characters;
 using UnityEngine.UI;
 
+[System.Serializable]
 public class CommandAction : Command
 {
 
