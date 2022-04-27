@@ -10,10 +10,7 @@ using System.Linq;
 public class Inventory : MonoBehaviour
 {    
 	public Transform _capsule;
-	public Button _button;
 	bool notEmpty = false;
-	public GameObject _Ibutton;
-	public GameObject _Panel;
 	public Targetter _target;
 	private int value;
 	public int coins;
@@ -31,13 +28,13 @@ public class Inventory : MonoBehaviour
 		public int stack;
 
 		public Casilla(Objects o)
-        {
+		{
 			stack = 1;
 			objeto = o;
-        }
+		}
 	};
 
-	private Dictionary<string, Casilla> huecos = new Dictionary<string, Casilla>();
+	public Dictionary<string, Casilla> huecos { get; private set; } = new Dictionary<string, Casilla>();
 
 	[SerializeField]
 	public List<string> nombres = new List<string>();
@@ -46,9 +43,13 @@ public class Inventory : MonoBehaviour
 	public Objects[] items => huecos.Values.Select(x => x.objeto).ToArray();
 
 	private void Awake()
-    {
+	{
 		_target.onTargetSelect += OnTargetSelect;
+	}
 
+	private void OnEnable()
+	{
+		SendOnInventoryChange.Invoke(huecos, nombres);
 	}
 
 	public void OnTargetSelect(Character target) 
@@ -66,7 +67,7 @@ public class Inventory : MonoBehaviour
 		}      
 	}
 	public void ApplyEffect(int value)
-    {
+	{
 		Debug.Log("Usando " + huecos[nombres[value]].objeto.name);
 		huecos[nombres[value]].objeto.Use(_target.currentTarget);
 		huecos[nombres[value]].stack--;
@@ -82,10 +83,10 @@ public class Inventory : MonoBehaviour
 	}
 	
 	public void Add(Objects obj)
-    {
+	{
 
 		if (huecos.ContainsKey(obj.name))
-        {
+		{
 
 			if (huecos[obj.name].stack < huecos[obj.name].objeto.stackMax)
 			{
@@ -111,7 +112,7 @@ public class Inventory : MonoBehaviour
 			nombres.Add(obj.name);
 			SendOnInventoryChange.Invoke(huecos, nombres);
 		}
-    }
+	}
 
 	public void Quit(int value) 
 	{
@@ -132,10 +133,10 @@ public class Inventory : MonoBehaviour
 		}
 	}
 
-    public void ShowDic()
-    {
+	public void ShowDic()
+	{
 		Debug.Log(huecos["LifePotion"].objeto.name + " " + huecos["LifePotion"].stack);
 		Debug.Log(huecos["ManaPotion"].objeto.name + " " + huecos["ManaPotion"].stack);		
-    }
+	}
 
 }

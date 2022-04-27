@@ -13,6 +13,8 @@ public class ButtonConstructor : MonoBehaviour
     public void OnEnable()
     {
         _inventory.SendOnInventoryChange.AddListener(UpdateList);
+
+        UpdateList(_inventory.huecos, _inventory.nombres);
     }
 
     [SerializeField]
