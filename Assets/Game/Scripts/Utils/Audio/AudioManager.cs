@@ -13,9 +13,7 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField]
     private int _sourceNumber = 10;
 
-    public override void Awake() {
-
-        base.Awake();
+    public void Awake() {
 
         Transform _sourceContainer = new GameObject("Audio Sources").transform;
         _sourceContainer.SetParent(transform);

@@ -1,12 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
-using Core.Characters;
 using Core.Actions;
 
-[RequireComponent(typeof(ButtonList))]
+[RequireComponent(typeof(CommandList))]
 public class UIActionList : MonoBehaviour
 {
 
-    private ButtonList _selectableList;
+    private CommandList _commandList;
     private PartyManager _partyManager;
     private ActionList _actionList;
 
@@ -14,7 +14,7 @@ public class UIActionList : MonoBehaviour
 
     private void Start() {
 
-        _selectableList = GetComponent<ButtonList>();
+        _commandList = GetComponent<CommandList>();
         _partyManager = PartyManager.current;
 
     }
@@ -25,11 +25,34 @@ public class UIActionList : MonoBehaviour
 
             _actionList = _partyManager.PartyMembers[_partyManager.selectedCharacter].GetComponent<ActionList>();
         
-            _selectableList.SetElements(_actionList.actions);
+            CreateCommands();
 
         }
 
         _lastSelectedCharacter = _partyManager.selectedCharacter;
+
+    }
+
+    private void CreateCommands() {
+
+        List<CommandAction> _commands = new List<CommandAction>();
+
+        // Create commands for each available action
+        for(int i = 0; i < _actionList.actions.Length; i++) {
+
+            CommandAction _c = new CommandAction(0, i) {
+
+                displayName = _actionList.actions[i].displayName,
+                displayDescription = _actionList.actions[i].description
+
+            };
+
+            _commands.Add(_c);
+
+        }
+        
+        // Send commands to be listed
+        _commandList.SetCommands(_commands.ToArray());
 
     }
 

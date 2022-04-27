@@ -1,15 +1,21 @@
+using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
-public abstract class Command : MonoBehaviour
+[System.Serializable]
+public abstract class Command
 {
-    
-    [SerializeField] private string _text;
 
-    [SerializeField, TextArea] private string _description;
-
-    public string text => _text;
-    public string description => _description;
+    public int id;
+    public string displayName = "DEFAULT_NAME";
+    public string displayDescription = "DEFAULT_DESCRIPTION";
 
     public abstract void Execute();
+
+    public Command(int id) {
+
+        this.id = id;
+
+    }
 
 }

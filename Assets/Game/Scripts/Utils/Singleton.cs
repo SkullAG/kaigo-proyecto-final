@@ -5,7 +5,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
 
     public static T current;
     
-    public virtual void Awake() {
+    public virtual void OnEnable() {
 
         if(current == null) {
             current = this as T;

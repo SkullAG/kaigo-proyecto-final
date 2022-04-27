@@ -1,19 +1,20 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Core.Characters;
 using Core.Actions;
 
-[RequireComponent(typeof(ButtonList))]
+[RequireComponent(typeof(CommandList))]
 public class UIItemList : MonoBehaviour
 {
 
     private Inventory _inventory;
-    private ButtonList _selectableList;
+    private CommandList _commandList;
 
     private int _lastItemCount;
 
     private void Start() {
 
-        _selectableList = GetComponent<ButtonList>();
+        _commandList = GetComponent<CommandList>();
         _inventory = PartyInventory.current.inventory;
 
     }
@@ -22,7 +23,7 @@ public class UIItemList : MonoBehaviour
 
         if(_inventory.items.Length != _lastItemCount) {
 
-            SetElements();
+            CreateCommands();
 
         }
 
@@ -30,11 +31,29 @@ public class UIItemList : MonoBehaviour
 
     }
 
-    private void SetElements() {
+    private void CreateCommands() {
 
-        // Set elements in UI list
-        var items = _inventory.items;
-        _selectableList.SetElements(items);
+        // Get inventory items
+        var _items = _inventory.items;
+        
+        List<CommandItem> _commands = new List<CommandItem>();
+
+        // Create commands for each available item in inventory
+        for(int i = 0; i < _items.Length; i++) {
+
+            CommandItem _c = new CommandItem(0, i) {
+
+                displayName = _items[i].id,
+                displayDescription = _items[i].description
+                
+            };
+
+            _commands.Add(_c);
+
+        }
+        
+        // Send commands to be listed
+        _commandList.SetCommands(_commands.ToArray());
 
     }
 

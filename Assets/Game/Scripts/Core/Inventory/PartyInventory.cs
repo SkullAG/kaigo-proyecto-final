@@ -8,9 +8,7 @@ public class PartyInventory : Singleton<PartyInventory>
     [HideInInspector]
     public Inventory inventory;
 
-    public override void Awake() {
-
-        base.Awake();
+    public void Awake() {
 
         inventory = GetComponent<Inventory>();
 

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ac57fe23aaadad4c98c6d71ac1a4b0a, type: 3}
-  m_Name: Battle Action
+  m_Name: Ice Spikes
   m_EditorClassIdentifier: 
-  displayName: 
+  displayName: Ice Spikes
   id: 0
   description: 
   hasTargetSelection: 0

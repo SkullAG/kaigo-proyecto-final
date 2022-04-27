@@ -77,6 +77,20 @@ namespace Core.Actions
 
         }
 
+        public GameAction GetAction(int index) {
+
+            for(int i = 0; i < _runtimeActions.Length; i++) {
+
+                if(i == index) {
+                    return _runtimeActions[i];
+                }
+
+            }
+
+            return null;
+
+        }
+
     }
     
 }

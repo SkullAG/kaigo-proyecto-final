@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac57fe23aaadad4c98c6d71ac1a4b0a, type: 3}
+  m_Name: Blaze
+  m_EditorClassIdentifier: 
+  displayName: Blaze
+  id: 0
+  description: 
+  hasTargetSelection: 0
+  running: 0
+  actor: {fileID: 0}
+  target: {fileID: 0}
+  damage:
+    Physical: 0
+    Magical: 0
+    Fire: 0
+    Thunder: 0
+    Ice: 0
+    Wind: 0
+    Void: 0
+    Poison: 0
+    Bleeding: 0
+  cost: 0
+  distanceToCast: 0
+  instantCast: 0
+  state: {fileID: 0}

@@ -8,9 +8,9 @@ public class InputSingleton : Singleton<InputSingleton>
 {
     public PlayerInput input;
 
-    public override void Awake()
-    {
-        base.Awake();
+    public void Awake() {
+
         DontDestroyOnLoad(this.gameObject);
+        
     }
 }

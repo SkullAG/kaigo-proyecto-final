@@ -1,66 +1,54 @@
 using UnityEngine.EventSystems;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
-
-public class CommandController : MonoBehaviour
+public class CommandController : Singleton<CommandController>
 {
 
-    [SerializeField]
-    private GameObject _commandContainer;
+    public GameObject _battleCommands;
+    public GameObject _actionCommands;
+    public GameObject _itemCommands;
 
-    [SerializeField]
-    private Command[] _commands;
+    [SerializeField] private InputActionReference _enableCommandsAction;
+    [SerializeField] private InputActionReference _disableCommandsAction;
 
     private EventSystem _eventSystem;
+    private CommandList _commandList;
 
-    public Button selectedButton => GetSelectedCommand(); 
-
-    private bool _enabled;
+    private bool _enabled = true;
 
     private void Awake() {
 
         _eventSystem = EventSystem.current;
+        _commandList = GetComponent<CommandList>();
 
     }
 
     private void Update() {
 
-        if(GetSelectedCommand() != null) {
+        if(_enableCommandsAction.action.triggered && !_enabled) {
 
-            
+            _battleCommands.SetActive(true);
+
+            _commandList.commandInstanced += OnCommandInstantiation;
+
+        } else if(_disableCommandsAction.action.triggered && _enabled) {
+
+            _battleCommands.SetActive(false);
+
+            _actionCommands.SetActive(false);
+            _itemCommands.SetActive(false);
+
+            _commandList.commandInstanced -= OnCommandInstantiation;
 
         }
-
+ 
     }
 
-    public void Toggle() {
+    private void OnCommandInstantiation(int count) {
 
-        _enabled = !_enabled;
-
-        if(_enabled) {
-
-            _commandContainer.SetActive(true);
-
-        } else {
-
-            _commandContainer.SetActive(false);
-            
-        }
-
-    }
-    
-    public Button GetSelectedCommand() {
-
-        GameObject _object = _eventSystem.currentSelectedGameObject;
-
-        if(_object.CompareTag("Command")) {
-
-            return _object.GetComponent<Button>();
-
-        }
-
-        return null;
+        // When buttons are done instantiating, select first button
+        _eventSystem.SetSelectedGameObject(_commandList.GetButtons()[0].gameObject);
 
     }
 
