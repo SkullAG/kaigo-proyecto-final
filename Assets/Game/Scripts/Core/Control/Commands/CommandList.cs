@@ -117,8 +117,6 @@ public class CommandList : MonoBehaviour
 
     private void OnButtonPress(Command command) {
 
-        Debug.Log("Pressing command button " + command.displayName);
-
         command.Execute();
 
     }

@@ -6,9 +6,6 @@ using Core.Actions;
 public class UIBattleCommands : MonoBehaviour
 {
 
-    [SerializeField] private CommandList _actionCommands;
-    [SerializeField] private CommandList _itemCommands;
-
     [SerializeField] private int _attackActionIndex = 0;
     
     private void Start() {
@@ -33,7 +30,7 @@ public class UIBattleCommands : MonoBehaviour
             },
 
             // Ability list command
-            new CommandFoldout(1, _actionCommands) {
+            new CommandFoldout(1, CommandController.SubcommandType.actions) {
 
                 displayName = "Abilities",
                 displayDescription = "List of available abilities for the selected character.",
@@ -41,7 +38,7 @@ public class UIBattleCommands : MonoBehaviour
             },
 
             // Item list command
-            new CommandFoldout(2, _itemCommands) {
+            new CommandFoldout(2, CommandController.SubcommandType.items) {
 
                 displayName = "Items",
                 displayDescription = "List of all items in party's inventory.",

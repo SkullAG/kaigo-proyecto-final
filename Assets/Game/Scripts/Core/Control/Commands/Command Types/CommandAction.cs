@@ -9,9 +9,9 @@ public class CommandAction : Command
     public int actionIndex = 0;
     
     private Character _selectedCharacter;
-    private ActionQueue _queue;
-    private Targetter _targetter;
     private GameAction _action;
+
+    private ActionQueue _queue;
 
     public CommandAction(int id, int actionIndex) : base(id) {
 
@@ -24,7 +24,8 @@ public class CommandAction : Command
         // Get current selected character
         PartyManager _manager = PartyManager.current;
 
-        _selectedCharacter = _manager.PartyMembers[_manager.selectedCharacter].GetComponent<Character>();
+        _selectedCharacter = _manager.GetSelectedCharacter();
+        _queue = _selectedCharacter.GetComponent<ActionQueue>();
 
         if(_selectedCharacter != null) {
 
@@ -36,8 +37,8 @@ public class CommandAction : Command
             if(_action.hasTargetSelection) {
 
                 // Enable target selection
-                _targetter.Enable();
-                _targetter.onTargetSelect += OnTargetSelected;
+                Targetter.current.Enable();
+                Targetter.current.onTargetSelect += OnTargetSelected;
 
             } else {
 
@@ -58,7 +59,7 @@ public class CommandAction : Command
         _queue.RequestExecution(_action);
 
         // When target is selected, unsubscribe from targetter event
-        _targetter.onTargetSelect -= OnTargetSelected;
+        Targetter.current.onTargetSelect -= OnTargetSelected;
 
     }
     

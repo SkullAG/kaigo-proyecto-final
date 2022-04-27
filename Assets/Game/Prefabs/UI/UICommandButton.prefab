@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4791203173912539724}
   - component: {fileID: 6473047140040282103}
   m_Layer: 5
-  m_Name: UIButton
+  m_Name: UICommandButton
   m_TagString: Command
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

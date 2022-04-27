@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0254f02f931f59a4fb20c8cdbb6e9dda, type: 3}
   m_Name: LifePotion
   m_EditorClassIdentifier: 
+  displayName: Life potion
   description: Gives life to player
   stackMax: 10
   id: 01

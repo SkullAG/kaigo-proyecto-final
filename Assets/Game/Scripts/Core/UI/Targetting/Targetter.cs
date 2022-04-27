@@ -5,13 +5,12 @@ using NaughtyAttributes;
 using UnityEngine.InputSystem;
 using System.Linq;
 
-public class Targetter : MonoBehaviour
+public class Targetter : Singleton<Targetter>
 {
 
     public event System.Action<Character> onTargetSelect = delegate {};
     public event System.Action<Character> onTargetSwitch = delegate {};
 
-    [SerializeField] private PlayerInput _input;
     [SerializeField] private TargetCursor _cursor;
     [SerializeField] private Character _target;
 
@@ -23,10 +22,11 @@ public class Targetter : MonoBehaviour
     [SerializeField] private Vector2[] _viewPositions;
     [SerializeField] private Character[] _characters;
 
-    private InputAction _navigateAction;
-    private InputAction _submitAction;
+    [SerializeField] private InputActionReference _navigateAction;
+    [SerializeField] private InputActionReference _submitAction;
 
     private VisibilityFilter _filter;
+    private PlayerInput _input;
 
     private bool _pressed = false;
 
@@ -37,12 +37,11 @@ public class Targetter : MonoBehaviour
         _filter = GetComponent<VisibilityFilter>();
         _cursor.gameObject.SetActive(false);
 
-        _navigateAction = _input.actions.FindAction("Navigate", true);
-        _submitAction = _input.actions.FindAction("Submit", true);
+        _input = InputSingleton.current.input;
 
     }
 
-    private void OnEnable() {
+    private void Start() {
 
         _filter.onCountUpdated += OnCountUpdated;
 
@@ -59,7 +58,7 @@ public class Targetter : MonoBehaviour
         if(_update) {
 
             Vector2 _targetViewPos = _filter.camera.WorldToViewportPoint(_target.transform.position);
-            Vector2 _control = _navigateAction.ReadValue<Vector2>();
+            Vector2 _control = _navigateAction.action.ReadValue<Vector2>();
 
             if(_control.magnitude > 0 != _pressed) {
 
@@ -82,7 +81,7 @@ public class Targetter : MonoBehaviour
 
             } 
 
-            if(_submitAction.triggered && _target != null) {
+            if(_submitAction.action.triggered && _target != null) {
 
                 onTargetSelect(_target);
                 Disable();

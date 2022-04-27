@@ -46,8 +46,17 @@ public class PlayAnimation : ActionPhase
 
         if(_animator != null) {
 
-            _animator.SetInteger(ACTION_ID_PARAM_NAME, _actionID); // Send action ID to Animator
-            _animator.SetInteger(INSTANT_CAST_PARAM_NAME, _instantCast ? 1 : 0); // Tell animator if action is casted instantly (without charging)
+            // Send action ID to Animator
+            _animator.SetInteger(
+                ACTION_ID_PARAM_NAME, 
+                _actionID
+            ); 
+
+            // Tell animator if action is casted instantly (without charging)
+            _animator.SetBool(
+                INSTANT_CAST_PARAM_NAME, 
+                _instantCast
+            ); 
 
         }
 
@@ -65,7 +74,6 @@ public class PlayAnimation : ActionPhase
 
         // Reset animator parameters
         _animator.SetInteger(ACTION_ID_PARAM_NAME, -1);
-        _animator.SetInteger(INSTANT_CAST_PARAM_NAME, -1);
 
         // Stop listening animation event
         _sender.onEventTriggered -= OnEventTriggered;

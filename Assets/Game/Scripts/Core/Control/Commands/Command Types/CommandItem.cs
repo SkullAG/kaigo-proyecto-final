@@ -5,18 +5,21 @@ using Core.Characters;
 public class CommandItem : Command
 {
 
-    [SerializeField]
-    private int _itemIndex;
+    public int itemIndex;
+
+    private Inventory _inventory;
 
     public CommandItem(int id, int itemIndex) : base(id) {
 
-        _itemIndex = itemIndex;
+        this.itemIndex = itemIndex;
+
+        _inventory = PartyInventory.current.inventory;
 
     }
 
     public override void Execute() {     
 
-        // Code responsible of using the selected item    
+        _inventory.Use(itemIndex);    
 
     }
     

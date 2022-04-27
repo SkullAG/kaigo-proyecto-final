@@ -1,5 +1,6 @@
 using UnityEngine;
 using NaughtyAttributes;
+using Core.Characters;
 
 namespace Core.Actions
 {
@@ -66,6 +67,15 @@ namespace Core.Actions
         public void RequestExecution(GameAction action) {
 
             _queuedAction = action;
+
+        }
+
+        // Overloaded for ease of access :3
+        public void RequestExecution(GameAction action, Character actor, Character target) {
+
+            _queuedAction = action;
+            _queuedAction.actor = actor;
+            _queuedAction.target = target;
 
         }
 

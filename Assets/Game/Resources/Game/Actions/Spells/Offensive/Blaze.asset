@@ -15,7 +15,7 @@ MonoBehaviour:
   displayName: Blaze
   id: 0
   description: 
-  hasTargetSelection: 0
+  hasTargetSelection: 1
   running: 0
   actor: {fileID: 0}
   target: {fileID: 0}

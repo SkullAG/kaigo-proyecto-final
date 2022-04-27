@@ -40,7 +40,7 @@ public class UIActionList : MonoBehaviour
         // Create commands for each available action
         for(int i = 0; i < _actionList.actions.Length; i++) {
 
-            CommandAction _c = new CommandAction(0, i) {
+            CommandAction _c = new CommandAction(i, i) {
 
                 displayName = _actionList.actions[i].displayName,
                 displayDescription = _actionList.actions[i].description

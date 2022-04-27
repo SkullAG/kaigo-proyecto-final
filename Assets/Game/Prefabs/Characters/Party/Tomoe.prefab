@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 5043851537257179175}
   - component: {fileID: 5043851537257179177}
   - component: {fileID: 5043851537257179176}
+  - component: {fileID: 1665371982}
   m_Layer: 3
   m_Name: Tomoe
   m_TagString: Ally
@@ -139,12 +140,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actions:
-  - {fileID: 11400000, guid: 51f2852ec587d34449e66e5d6c796f9c, type: 2}
-  - {fileID: 11400000, guid: 3d0b8b24e56ae9649960c245b509cbef, type: 2}
-  - {fileID: 11400000, guid: a91ee87ed377bab45b1e2cc0f96d81fe, type: 2}
-  - {fileID: 11400000, guid: 3fe9c399607f3fd49b3e4ac0cf814210, type: 2}
-  - {fileID: 11400000, guid: 283cbe5ac9f93b8429ca55c9bacb9b9c, type: 2}
-  - {fileID: 11400000, guid: 06b1754213064ae4db42a5aa377f82ca, type: 2}
+  - {fileID: 11400000, guid: 514f2c007f8b70442a1614a90269d369, type: 2}
+  - {fileID: 11400000, guid: 59be2a3b29a718348bc5e403a582c10a, type: 2}
+  - {fileID: 11400000, guid: dc0917284a420cd4db380621bea4ebf7, type: 2}
   _runtimeActions: []
 --- !u!114 &5043851537257179175
 MonoBehaviour:
@@ -195,15 +193,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5043851537257179180}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9f499d145df1734e9729778ed3caf72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gambits:
-  - _target: {fileID: 11400000, guid: cd5ab95b1af3a8945ac2c609b0d5601f, type: 2}
-    _condition: {fileID: 11400000, guid: a50b5dbb5aedb1a4882ff6bfd325224a, type: 2}
-    _action: {fileID: 11400000, guid: 51f2852ec587d34449e66e5d6c796f9c, type: 2}
+  _gambits: []
   _useGambits: 1
 --- !u!114 &5043851537257179176
 MonoBehaviour:
@@ -219,6 +214,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _availableStates: []
   _currentStates: []
+--- !u!114 &1665371982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5043851537257179180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 060caad1ee4b1834c888516042da800b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affinities:
+    Physical: 0
+    Magical: 0
+    Fire: 0
+    Thunder: 0
+    Ice: 0
+    Wind: 0
+    Void: 0
+    Poison: 0
+    Bleeding: 0
 --- !u!114 &7333614855870436072
 MonoBehaviour:
   m_ObjectHideFlags: 0

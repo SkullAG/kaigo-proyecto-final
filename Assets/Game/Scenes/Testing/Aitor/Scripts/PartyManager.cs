@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Core.Characters;
 
 public class PartyManager : Singleton<PartyManager>
 {
@@ -78,5 +79,11 @@ public class PartyManager : Singleton<PartyManager>
 		{
 			selectedCharacter++;
 		}
+	}
+
+	public Character GetSelectedCharacter() {
+
+		return PartyMembers[selectedCharacter].GetComponent<Character>();
+
 	}
 }

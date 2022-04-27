@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b8c52abd410a8749b97de331df471f6, type: 3}
   m_Name: Potion
   m_EditorClassIdentifier: 
+  displayName: Potion
   description: Gives life
   stackMax: 16
   id: 00

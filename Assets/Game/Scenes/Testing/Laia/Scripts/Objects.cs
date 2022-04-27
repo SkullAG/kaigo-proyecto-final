@@ -5,7 +5,8 @@ using Core.Characters;
 
 [CreateAssetMenu(fileName = "Inventory", menuName = "Inventory Sctiptable/BaseObject")]
 public class Objects : ScriptableObject
-{
+{   
+    public string displayName;
     public string description;
     public int stackMax;
     public string id;

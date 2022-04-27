@@ -7,6 +7,8 @@ using Core.Actions;
 public class UIItemList : MonoBehaviour
 {
 
+    [SerializeField] private Objects _testItem;
+
     private Inventory _inventory;
     private CommandList _commandList;
 
@@ -16,6 +18,8 @@ public class UIItemList : MonoBehaviour
 
         _commandList = GetComponent<CommandList>();
         _inventory = PartyInventory.current.inventory;
+
+        _inventory.Add(_testItem);
 
     }
 
@@ -41,9 +45,9 @@ public class UIItemList : MonoBehaviour
         // Create commands for each available item in inventory
         for(int i = 0; i < _items.Length; i++) {
 
-            CommandItem _c = new CommandItem(0, i) {
+            CommandItem _c = new CommandItem(i, i) {
 
-                displayName = _items[i].id,
+                displayName = _items[i].displayName,
                 displayDescription = _items[i].description
                 
             };

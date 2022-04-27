@@ -42,11 +42,6 @@ public class Inventory : MonoBehaviour
 	// Añadido: devuelve array de todos los objetos en el inventario
 	public Objects[] items => huecos.Values.Select(x => x.objeto).ToArray();
 
-	private void Awake()
-	{
-		_target.onTargetSelect += OnTargetSelect;
-	}
-
 	private void OnEnable()
 	{
 		SendOnInventoryChange.Invoke(huecos, nombres);
@@ -56,21 +51,27 @@ public class Inventory : MonoBehaviour
 	{
 		ApplyEffect(value);
 		Debug.Log("OnTargetSelect");
+		_target.onTargetSelect -= OnTargetSelect;
 	}
 	public void Use(int value)
 	{
 		if (notEmpty)
 		{
 			_target.Enable();
+			_target.onTargetSelect += OnTargetSelect;
 
 			this.value = value;
 		}      
 	}
 	public void ApplyEffect(int value)
 	{
-		Debug.Log("Usando " + huecos[nombres[value]].objeto.name);
-		huecos[nombres[value]].objeto.Use(_target.currentTarget);
-		huecos[nombres[value]].stack--;
+
+		string _name = nombres[value];
+
+		Debug.Log("Usando " + huecos[_name].objeto.name);
+
+		huecos[_name].objeto.Use(_target.currentTarget);
+		huecos[_name].stack--;
 
 		SendOnInventoryChange.Invoke(huecos, nombres);
 
