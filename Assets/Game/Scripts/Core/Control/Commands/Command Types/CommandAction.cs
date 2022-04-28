@@ -40,8 +40,9 @@ public class CommandAction : Command
                 // Enable target selection
                 Targetter.current.Enable();
 
-                // Listen to 
+                // Listen to targetter events
                 Targetter.current.targetConfirmed += OnTargetConfirmed;
+                Targetter.current.targetCancelled += OnTargetCancelled;
 
             } else {
 
@@ -63,6 +64,16 @@ public class CommandAction : Command
 
         // When target is selected, unsubscribe from targetter event
         Targetter.current.targetConfirmed -= OnTargetConfirmed;
+        Targetter.current.targetCancelled -= OnTargetCancelled;
+
+    }
+
+    private void OnTargetCancelled(Character lastTarget) {
+
+        Debug.Log("Targetting is cancelled!");
+
+        Targetter.current.targetConfirmed -= OnTargetConfirmed;
+        Targetter.current.targetCancelled -= OnTargetCancelled;
 
     }
     

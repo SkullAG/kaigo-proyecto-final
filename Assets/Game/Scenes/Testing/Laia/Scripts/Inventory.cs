@@ -52,8 +52,17 @@ public class Inventory : MonoBehaviour
 
 	public void OnTargetConfirmed(Character target) 
 	{
+		Debug.Log("Aplicando efecto");
 		ApplyEffect(value);
 		_target.targetConfirmed -= OnTargetConfirmed;
+		_target.targetCancelled -= OnTargetCancelled;
+	}
+
+	public void OnTargetCancelled(Character target) {
+
+		_target.targetConfirmed -= OnTargetConfirmed;
+		_target.targetCancelled -= OnTargetCancelled;
+
 	}
 
 	public void Use(int value)
@@ -62,6 +71,7 @@ public class Inventory : MonoBehaviour
 		{
 			_target.Enable();
 			_target.targetConfirmed += OnTargetConfirmed;
+			_target.targetCancelled += OnTargetCancelled;
 
 			this.value = value;
 		}      
@@ -69,6 +79,8 @@ public class Inventory : MonoBehaviour
 
 	public void ApplyEffect(int value)
 	{
+
+
 
 		string _name = nombres[value];
 
