@@ -3,7 +3,8 @@ using UnityEngine;
 using Core.Characters;
 using NaughtyAttributes;
 using UnityEngine.InputSystem;
-using System.Linq;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 
 public class Targetter : Singleton<Targetter>
 {
@@ -28,7 +29,6 @@ public class Targetter : Singleton<Targetter>
     [SerializeField] private InputActionReference _cancelAction;
 
     private VisibilityFilter _filter;
-    private PlayerInput _input;
 
     private bool _pressed = false;
 
@@ -38,9 +38,7 @@ public class Targetter : Singleton<Targetter>
 
         _filter = GetComponent<VisibilityFilter>();
         _cursor.gameObject.SetActive(false);
-
-        _input = InputSingleton.current.input;
-
+        
     }
 
     private void Start() {
@@ -104,8 +102,6 @@ public class Targetter : Singleton<Targetter>
     [Button]
     public void Enable() {
 
-        _input.SwitchCurrentActionMap("UI");
-
         _cursor.gameObject.SetActive(true);
 
         _filter.enabled = true;
@@ -124,8 +120,6 @@ public class Targetter : Singleton<Targetter>
 
     [Button]
     public void Disable() {
-
-        _input.SwitchCurrentActionMap("Player");
 
         _cursor.target = null;
         _cursor.gameObject.SetActive(false);

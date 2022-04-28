@@ -10,10 +10,10 @@ public class CommandController : Singleton<CommandController>
     [SerializeField] private InputActionReference _enableCommandsAction;
     [SerializeField] private InputActionReference _disableCommandsAction;
 
+    [SerializeField] private bool _enabled = true;
+
     private EventSystem _eventSystem;
     private CommandList _commandList;
-
-    private bool _enabled = true;
 
     public GameObject _battleCommands;
     public GameObject _actionCommands;
@@ -22,11 +22,13 @@ public class CommandController : Singleton<CommandController>
     private void Awake() {
 
         _eventSystem = EventSystem.current;
-        _commandList = GetComponent<CommandList>();
+        _commandList = _battleCommands.GetComponent<CommandList>();
 
+        SetEnabled(true);
+        
     }
 
-    private void Update() {
+    /*private void Update() {
 
         if(_enableCommandsAction.action.triggered && !_enabled) {
 
@@ -38,19 +40,30 @@ public class CommandController : Singleton<CommandController>
 
         }
  
-    }
+    }*/
 
     public void SetEnabled(bool enabled) {
 
-        _battleCommands.SetActive(enabled);
-
-        SetSubcommandsEnabled(SubcommandType.actions, false);
-        SetSubcommandsEnabled(SubcommandType.items, false);
-
         if(enabled) {
+
+            _enabled = true;
+
+            _battleCommands.SetActive(true);
+
+            // If enabling, wait to select first option
             _commandList.commandInstanced += OnCommandInstantiation;
+
         } else {
+
+            _enabled = false;
+
+            _battleCommands.SetActive(false);
+
+            SetSubcommandsEnabled(SubcommandType.actions, false);
+            SetSubcommandsEnabled(SubcommandType.items, false);
+            
             _commandList.commandInstanced -= OnCommandInstantiation;
+
         }
 
     }
@@ -95,6 +108,8 @@ public class CommandController : Singleton<CommandController>
 
         // When buttons are done instantiating, select first button
         _eventSystem.SetSelectedGameObject(_commandList.GetButtons()[0].gameObject);
+
+        _commandList.commandInstanced -= OnCommandInstantiation;
 
     }
 
