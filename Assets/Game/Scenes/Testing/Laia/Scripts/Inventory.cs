@@ -50,11 +50,10 @@ public class Inventory : MonoBehaviour
 		SendOnInventoryChange.Invoke(huecos, nombres);
 	}
 
-	public void OnTargetSelect(Character target) 
+	public void OnTargetConfirmed(Character target) 
 	{
 		ApplyEffect(value);
-		Debug.Log("OnTargetSelect");
-		_target.onTargetSelect -= OnTargetSelect;
+		_target.targetConfirmed -= OnTargetConfirmed;
 	}
 
 	public void Use(int value)
@@ -62,7 +61,7 @@ public class Inventory : MonoBehaviour
 		if (notEmpty)
 		{
 			_target.Enable();
-			_target.onTargetSelect += OnTargetSelect;
+			_target.targetConfirmed += OnTargetConfirmed;
 
 			this.value = value;
 		}      

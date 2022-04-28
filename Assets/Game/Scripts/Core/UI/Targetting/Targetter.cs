@@ -8,8 +8,9 @@ using System.Linq;
 public class Targetter : Singleton<Targetter>
 {
 
-    public event System.Action<Character> onTargetSelect = delegate {};
-    public event System.Action<Character> onTargetSwitch = delegate {};
+    public event System.Action<Character> targetSelected = delegate {};
+    public event System.Action<Character> targetConfirmed = delegate {};
+    public event System.Action<Character> targetCancelled = delegate {};
 
     [SerializeField] private TargetCursor _cursor;
     [SerializeField] private Character _target;
@@ -24,6 +25,7 @@ public class Targetter : Singleton<Targetter>
 
     [SerializeField] private InputActionReference _navigateAction;
     [SerializeField] private InputActionReference _submitAction;
+    [SerializeField] private InputActionReference _cancelAction;
 
     private VisibilityFilter _filter;
     private PlayerInput _input;
@@ -70,8 +72,8 @@ public class Targetter : Singleton<Targetter>
 
                     if(_index != -1) {
 
-                        SetTarget(_characters[_index]); 
-                        onTargetSwitch(_target);
+                        // Sets the current selected target
+                        SelectTarget(_characters[_index]); 
 
                     }
 
@@ -83,7 +85,14 @@ public class Targetter : Singleton<Targetter>
 
             if(_submitAction.action.triggered && _target != null) {
 
-                onTargetSelect(_target);
+                // Target is confirmed
+                targetConfirmed(_target);
+                Disable();
+
+            } else if (_cancelAction.action.triggered) {
+                
+                // Target is cancelled
+                targetCancelled(_target);
                 Disable();
 
             }
@@ -107,7 +116,7 @@ public class Targetter : Singleton<Targetter>
         if(_characters.Length > 0) {
             
             // Select first target
-            SetTarget(_characters[0]);
+            SelectTarget(_characters[0]);
 
         }
 
@@ -126,10 +135,12 @@ public class Targetter : Singleton<Targetter>
 
     }
 
-    private void SetTarget(Character character) {
+    private void SelectTarget(Character character) {
 
         _target = character;
         _cursor.target = _target.transform;
+
+        targetSelected(_target);
 
     }
 

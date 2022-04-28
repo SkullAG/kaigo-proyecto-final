@@ -39,7 +39,9 @@ public class CommandAction : Command
 
                 // Enable target selection
                 Targetter.current.Enable();
-                Targetter.current.onTargetSelect += OnTargetSelected;
+
+                // Listen to 
+                Targetter.current.targetConfirmed += OnTargetConfirmed;
 
             } else {
 
@@ -54,13 +56,13 @@ public class CommandAction : Command
     }
 
     // When target is selected, request action execution
-    private void OnTargetSelected(Character selected) {
+    private void OnTargetConfirmed(Character selected) {
 
         _action.target = selected;
         _queue.RequestExecution(_action);
 
         // When target is selected, unsubscribe from targetter event
-        Targetter.current.onTargetSelect -= OnTargetSelected;
+        Targetter.current.targetConfirmed -= OnTargetConfirmed;
 
     }
     
