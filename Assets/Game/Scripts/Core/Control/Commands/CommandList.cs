@@ -63,20 +63,6 @@ public class CommandList : MonoBehaviour
 
     }
 
-    public Button GetSelectedButton() {
-
-        Button _button = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
-
-        if(_button != null) {
-
-            return _buttons.FirstOrDefault(x => x == _button);
-
-        }
-
-        return null;
-
-    }
-
     private void DestroyChildren() {
 
         // Kill children >:)
@@ -98,7 +84,7 @@ public class CommandList : MonoBehaviour
         for(int i = 0; i < _commands.Length; i++) {
 
             // Instantiate button prefab
-            Button _button = Instantiate(_buttonPrefab).GetComponent<Button>();
+            CommandButton _button = Instantiate(_buttonPrefab).GetComponent<CommandButton>();
             _button.gameObject.name = _commands[i].displayName + " button";
 
             // Make it child
@@ -107,11 +93,8 @@ public class CommandList : MonoBehaviour
             // Set button text
             _button.GetComponentInChildren<TextMeshProUGUI>().text = _commands[i].displayName;
 
-            // Add command to button
-            CommandButton _commandButton =  _button.gameObject.AddComponent<CommandButton>();
-            
-            _commandButton.command = _commands[i];
-            _commandButton.pressed += OnButtonPress;
+            _button.command = _commands[i];
+            _button.pressed += OnButtonPress;
             
             // Add button to array
             _buttons[i] = _button;
