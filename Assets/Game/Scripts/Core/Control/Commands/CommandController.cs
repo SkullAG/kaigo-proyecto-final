@@ -29,8 +29,6 @@ public class CommandController : Singleton<CommandController>
         _eventSystem = EventSystem.current;
         _commandList = _battleCommands.GetComponentInChildren<CommandList>();
 
-        SetEnabled(true);
-
     }
 
     private void Start() {
@@ -65,12 +63,34 @@ public class CommandController : Singleton<CommandController>
             }
 
         }
+
+        if(_enableCommandsAction.action.triggered) {
+
+            if(_eventSystem.currentSelectedGameObject == null) {
+
+                // Select first button
+                _eventSystem.SetSelectedGameObject(_commandList.GetButtons()[0].gameObject);
+
+            }
+
+        }
+
+        if(_disableCommandsAction.action.triggered) {
+
+            // Disable subcommand lists
+            if(_actionCommands.gameObject.activeInHierarchy) SetSubcommandsEnabled(SubcommandType.actions, false);
+            if(_itemCommands.gameObject.activeInHierarchy) SetSubcommandsEnabled(SubcommandType.items, false);
+
+            // Select first button
+            _eventSystem.SetSelectedGameObject(_commandList.GetButtons()[0].gameObject);
+
+        }
  
     }
 
-    public void SetEnabled(bool enabled) {
+    public void SetEnabled(bool enable) {
 
-        if(enabled) {
+        if(enable && !_enabled) {
 
             _enabled = true;
 
@@ -79,7 +99,10 @@ public class CommandController : Singleton<CommandController>
             // If enabling, wait to select first option
             _commandList.commandInstanced += OnCommandInstantiation;
 
-        } else {
+            // Select first button
+            _eventSystem.SetSelectedGameObject(_commandList.GetButtons()[0].gameObject);
+
+        } else if (!enable && _enabled) {
 
             _enabled = false;
 

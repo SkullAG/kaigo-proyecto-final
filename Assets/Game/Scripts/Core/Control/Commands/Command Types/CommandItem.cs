@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using Core.Actions;
 
 [System.Serializable]
 public class CommandItem : Command
@@ -10,6 +11,10 @@ public class CommandItem : Command
     private Inventory _inventory;
     private Inventory.Casilla _slot;
     private CommandList _list;
+
+    private GameAction _action;
+
+    private bool _alreadyExecuting;
 
     public CommandItem(int id, int itemIndex) : base(id) {
 
@@ -32,9 +37,27 @@ public class CommandItem : Command
 
     public override void Execute() {     
 
-        _inventory.Use(itemIndex);    
+        if(!_alreadyExecuting) { // Prevent double execution
 
-        UpdateName();
+            _action = _inventory.items[itemIndex].itemAction;
+            _action.onActionEnd += OnActionEnd;
+
+            _inventory.Use(itemIndex);    
+
+            UpdateName();
+
+            _alreadyExecuting = true;
+
+        }
+
+
+    }
+
+    private void OnActionEnd() {
+
+        _alreadyExecuting = false;
+
+        _action.onActionEnd -= OnActionEnd;
 
     }
 

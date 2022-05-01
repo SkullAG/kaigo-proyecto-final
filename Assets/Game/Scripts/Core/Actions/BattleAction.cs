@@ -35,8 +35,6 @@ public class BattleAction : GameAction
 
         StartAction();
 
-        Debug.Log("Executing spell attack!");
-
         actor.stats.actionPoints.value -= cost; // Cost is applied at the start
         
     }

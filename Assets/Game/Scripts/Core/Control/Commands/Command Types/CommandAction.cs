@@ -2,6 +2,7 @@ using UnityEngine;
 using Core.Actions;
 using Core.Characters;
 using UnityEngine.UI;
+using System;
 
 [System.Serializable]
 public class CommandAction : Command
@@ -14,6 +15,8 @@ public class CommandAction : Command
 
     private ActionQueue _queue;
 
+    private bool _alreadyExecuted;
+
     public CommandAction(int id, int actionIndex) : base(id) {
 
         this.actionIndex = actionIndex;
@@ -22,49 +25,57 @@ public class CommandAction : Command
 
     public override void Execute() {     
 
-        // Get current selected character
-        PartyManager _manager = PartyManager.current;
+        if(!_alreadyExecuted) { // Prevent accidental execution
 
-        _selectedCharacter = _manager.GetSelectedCharacter();
-        _queue = _selectedCharacter.GetComponent<ActionQueue>();
+            _alreadyExecuted = true;
 
-        if(_selectedCharacter != null) {
+            // Get current selected character
+            PartyManager _manager = PartyManager.current;
 
-            // Get action by index
-            _action = _selectedCharacter.actions.GetAction(actionIndex);
+            _selectedCharacter = _manager.GetSelectedCharacter();
+            _queue = _selectedCharacter.GetComponent<ActionQueue>();
 
-            _action.actor = _selectedCharacter;
+            if(_selectedCharacter != null) {
 
-            if(_action.hasTargetSelection) {
+                // Get action by index
+                _action = _selectedCharacter.actions.GetAction(actionIndex);
 
-                // Enable target selection
-                Targetter.current.Enable();
+                _action.actor = _selectedCharacter;
 
-                // Listen to targetter events
-                Targetter.current.targetConfirmed += OnTargetConfirmed;
-                Targetter.current.targetCancelled += OnTargetCancelled;
+                if(_action.hasTargetSelection) {
 
-            } else {
+                    // Enable target selection
+                    Targetter.current.Enable();
 
-                // If action has no target selection, target is actor
-                _action.target = _selectedCharacter;
-                _queue.RequestExecution(_action);
-                
+                    // Listen to targetter events
+                    Targetter.current.targetConfirmed += OnTargetConfirmed;
+                    Targetter.current.targetCancelled += OnTargetCancelled;
+
+                } else {
+
+                    // If action has no target selection, target is actor
+                    _queue.RequestExecution(_action.displayName, _selectedCharacter, _selectedCharacter);
+                    
+                }
+
             }
 
+
         }
+
 
     }
 
     // When target is selected, request action execution
     private void OnTargetConfirmed(Character selected) {
 
-        _action.target = selected;
-        _queue.RequestExecution(_action);
+        _queue.RequestExecution(_action.displayName, _selectedCharacter, selected);
 
         // When target is selected, unsubscribe from targetter event
         Targetter.current.targetConfirmed -= OnTargetConfirmed;
         Targetter.current.targetCancelled -= OnTargetCancelled;
+
+        _alreadyExecuted = false;
 
     }
 
@@ -74,6 +85,8 @@ public class CommandAction : Command
 
         Targetter.current.targetConfirmed -= OnTargetConfirmed;
         Targetter.current.targetCancelled -= OnTargetCancelled;
+
+        _alreadyExecuted = false;
 
     }
     

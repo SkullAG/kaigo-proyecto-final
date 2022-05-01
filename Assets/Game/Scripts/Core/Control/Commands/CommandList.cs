@@ -18,6 +18,7 @@ public class CommandList : MonoBehaviour
     [SerializeReference] private Command[] _commands;
     [SerializeField] private Button[] _buttons;
 
+    private Command _command;
     private int _lastElementCount = 0;
 
     private void OnEnable() {
@@ -94,7 +95,7 @@ public class CommandList : MonoBehaviour
             _button.GetComponentInChildren<TextMeshProUGUI>().text = _commands[i].displayName;
 
             _button.command = _commands[i];
-            _button.pressed += OnButtonPress;
+            //_button.pressed += OnButtonPress;
             
             // Add button to array
             _buttons[i] = _button;
@@ -132,10 +133,10 @@ public class CommandList : MonoBehaviour
 
     }
 
-    private void OnButtonPress(Command command) {
+    /*private void OnButtonPress(Command command) {
 
-        command.Execute();
+        _command.Execute();
 
-    }
+    }*/
 
 }

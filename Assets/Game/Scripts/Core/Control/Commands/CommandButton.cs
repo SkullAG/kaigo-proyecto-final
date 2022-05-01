@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class CommandButton : Button
 {
     
-    public System.Action<Command> pressed;
+    public System.Action<Command> pressed = delegate {};
 
     public Command command;
 
@@ -18,11 +18,25 @@ public class CommandButton : Button
     }
 
     public override void OnPointerClick(PointerEventData eventData) {
-        pressed(command);
+
+        if(command != null) {
+
+            pressed(command);
+            command.Execute();
+
+        }
+
     }
 
     public override void OnSubmit(BaseEventData eventData) {
-        pressed(command);
+
+        if(command != null) {
+
+            pressed(command);
+            command.Execute();
+            
+        }
+
     }
 
     public void SetCommand(Command command) {

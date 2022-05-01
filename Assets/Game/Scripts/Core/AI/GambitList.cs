@@ -51,14 +51,9 @@ namespace Core.Gambits
 
                 if(_action != null) {
 
-                    _action.actor = _actor;
-                    _action.target = _target;
-
-                    //Debug.Log(_target == null ? "Target sent is NULL" : "Target sent is: " + _target);
-
                     if(_condition) {
 
-                        _actionQueue.RequestExecution(_action);
+                        _actionQueue.RequestExecution(_action.displayName, _actor, _target);
 
                         break;
 

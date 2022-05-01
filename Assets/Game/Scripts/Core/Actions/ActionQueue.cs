@@ -20,11 +20,19 @@ namespace Core.Actions
         [Space(15)]
 
         [SerializeField, ReadOnly, Expandable] private GameAction _currentAction;
+        
+        private ActionList _actionList;
 
         public bool isPerformingAction => _busy;
         public bool isReady => _ready;
 
         public float actionSpeed { set => _actionSpeed = Mathf.Clamp01(value); }
+
+        private void Awake() {
+
+            _actionList = GetComponent<ActionList>();
+
+        }
 
         private void FixedUpdate() {
 
@@ -82,18 +90,25 @@ namespace Core.Actions
 
         }
 
-        public void RequestExecution(GameAction action) {
+        public bool RequestExecution(string actionName, Character actor, Character target) {
+            
+            var _a = _actionList.GetAction(actionName);
+                
+            if(_a != null) {
 
-            _queuedAction = action;
+                _queuedAction = _a;
+                _a.actor = actor;
+                _a.target = target;
 
-        }
+                return true;
 
-        // Overloaded for ease of access :3
-        public void RequestExecution(GameAction action, Character actor, Character target) {
+            } else {
 
-            _queuedAction = action;
-            _queuedAction.actor = actor;
-            _queuedAction.target = target;
+                Debug.LogError("Action requested is not in the character's action list. Executing first action.");
+
+                return false;
+
+            }
 
         }
 

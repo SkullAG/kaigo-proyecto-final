@@ -25,7 +25,8 @@ public class Objects : ScriptableObject
         // Get selected character action queue and request execution of
         // the action assigned to this item.
         var _queue = _selectedCharacter.GetComponent<ActionQueue>();
-        _queue.RequestExecution(itemAction, _selectedCharacter, target);
+
+        _queue.RequestExecution(itemAction.displayName, _selectedCharacter, target);
 
         Debug.Log("Using item " + displayName + " on " + target.gameObject.name);
 

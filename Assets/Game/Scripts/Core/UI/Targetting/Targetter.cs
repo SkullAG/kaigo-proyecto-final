@@ -5,6 +5,7 @@ using NaughtyAttributes;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
+using System.Collections;
 
 public class Targetter : Singleton<Targetter>
 {
@@ -17,8 +18,8 @@ public class Targetter : Singleton<Targetter>
     [SerializeField] private Character _target;
 
     [SerializeField] private float _range;
-
     [SerializeField] private float _fieldOfView;
+    [SerializeField] private float _startDelay = 0.1f;
     [SerializeField, ReadOnly] private bool _update;
 
     [SerializeField] private Vector2[] _viewPositions;
@@ -100,7 +101,12 @@ public class Targetter : Singleton<Targetter>
     }
     
     [Button]
-    public void Enable() {
+    public void Enable() => StartCoroutine(_Enable());
+
+    private IEnumerator _Enable() {
+
+        // Delay the activation to avoid conflicts with UI inputs
+        yield return new WaitForSeconds(_startDelay);
 
         _cursor.gameObject.SetActive(true);
 
@@ -125,7 +131,7 @@ public class Targetter : Singleton<Targetter>
         _cursor.gameObject.SetActive(false);
 
         _filter.enabled = false;
-        _update = true;
+        _update = false;
 
     }
 
