@@ -37,27 +37,9 @@ public class CommandItem : Command
 
     public override void Execute() {     
 
-        if(!_alreadyExecuting) { // Prevent double execution
+        _inventory.Use(itemIndex);    
 
-            _action = _inventory.items[itemIndex].itemAction;
-            _action.onActionEnd += OnActionEnd;
-
-            _inventory.Use(itemIndex);    
-
-            UpdateName();
-
-            _alreadyExecuting = true;
-
-        }
-
-
-    }
-
-    private void OnActionEnd() {
-
-        _alreadyExecuting = false;
-
-        _action.onActionEnd -= OnActionEnd;
+        UpdateName();
 
     }
 
