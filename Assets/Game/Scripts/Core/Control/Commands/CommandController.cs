@@ -1,6 +1,9 @@
 using UnityEngine.EventSystems;
-using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine;
+
+using Core.Characters;
+using Core.Actions;
 
 public class CommandController : Singleton<CommandController>
 {
@@ -14,6 +17,7 @@ public class CommandController : Singleton<CommandController>
 
     private EventSystem _eventSystem;
     private CommandList _commandList;
+    private ActionQueue _queue;
 
     public GameObject _battleCommands;
     public GameObject _actionCommands;
@@ -22,25 +26,46 @@ public class CommandController : Singleton<CommandController>
     private void Awake() {
 
         _eventSystem = EventSystem.current;
-        _commandList = _battleCommands.GetComponent<CommandList>();
+        _commandList = _battleCommands.GetComponentInChildren<CommandList>();
 
         SetEnabled(true);
-        
+
     }
 
-    /*private void Update() {
+    private void Start() {
 
-        if(_enableCommandsAction.action.triggered && !_enabled) {
+        PartyManager.current.characterSelected += OnCharacterSelection;
 
-            SetEnabled(true);
+        _queue = 
+            PartyManager.current
+                .GetSelectedCharacter()
+                .GetComponent<ActionQueue>();
 
-        } else if(_disableCommandsAction.action.triggered && _enabled) {
+    }
 
-            SetEnabled(false);
+    private void Update() {
+
+        var _selectedCharacter = PartyManager.current.GetSelectedCharacter();
+
+        // If there is a selected character
+        // and its queue has been found:
+        if( _selectedCharacter && _queue) {
+            
+            // If character is not busy,
+            // enable command window!
+            if(_queue.isReady) {
+
+                SetEnabled(true);
+
+            } else {
+
+                SetEnabled(false);
+
+            }
 
         }
  
-    }*/
+    }
 
     public void SetEnabled(bool enabled) {
 
@@ -110,6 +135,13 @@ public class CommandController : Singleton<CommandController>
         _eventSystem.SetSelectedGameObject(_commandList.GetButtons()[0].gameObject);
 
         _commandList.commandInstanced -= OnCommandInstantiation;
+
+    }
+
+    private void OnCharacterSelection(Character character) {
+
+        // If character selection changed, change queue reference
+        _queue = PartyManager.current.GetSelectedCharacter().GetComponent<ActionQueue>();
 
     }
 

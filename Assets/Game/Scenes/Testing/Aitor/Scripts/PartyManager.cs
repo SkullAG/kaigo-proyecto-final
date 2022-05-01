@@ -7,6 +7,9 @@ using Core.Characters;
 
 public class PartyManager : Singleton<PartyManager>
 {
+
+	public System.Action<Character> characterSelected = delegate{}; // Leo
+
 	public NavBodyPuppeteer puppeteer;
 	[SerializeField]
 	[OnValueChanged("UpdatePartyInfo")]
@@ -17,6 +20,8 @@ public class PartyManager : Singleton<PartyManager>
 			partyInfoDrawer.setSelectedCharacter(_selectedCharacter);
 			puppeteer.character = PartyMembers[_selectedCharacter];
 			_camera.objective = PartyMembers[_selectedCharacter].transform;
+			
+			characterSelected(GetSelectedCharacter()); // Leo
 		} }
 	int _selectedCharacter = 0;
 	public PartyUIDrawer partyInfoDrawer;
