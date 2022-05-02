@@ -18,6 +18,7 @@ public class NavBodyPuppeteer : MonoBehaviour
 	InputAction _moveAction;
 	Vector2 _move;
 	Mouse _mouse;
+	EventSystem _eventSystem;
 
 	// Start is called before the first frame update
 	void Start()
@@ -25,8 +26,9 @@ public class NavBodyPuppeteer : MonoBehaviour
 		_camera = Camera.main;
 		_input = GetComponent<PlayerInput>();
 		_moveAction = _input.actions.FindAction("Move");
-
 		_mouse = Mouse.current;
+		_eventSystem = EventSystem.current;
+
 	}
 
 	// Update is called once per frame
@@ -44,7 +46,7 @@ public class NavBodyPuppeteer : MonoBehaviour
 			//character.ObjectivePoint = character.transform.position;
 		}
 
-		if (_mouse.leftButton.isPressed)
+		if (_mouse.leftButton.isPressed && !_eventSystem.IsPointerOverGameObject())
 		{
 			Vector3 mousePos = _camera.ScreenToWorldPoint((Vector3)_mouse.position.ReadValue() + Vector3.forward);
 
@@ -57,4 +59,5 @@ public class NavBodyPuppeteer : MonoBehaviour
 			}
 		}
 	}
+
 }
