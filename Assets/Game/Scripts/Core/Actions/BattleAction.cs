@@ -35,6 +35,8 @@ public class BattleAction : GameAction
 
         StartAction();
 
+        BattleLog.current.WriteLine(string.Format(BattleLogFormats.SKILL_USE, actor.name, displayName));
+
         actor.stats.actionPoints.value -= cost; // Cost is applied at the start
         
     }

@@ -34,7 +34,9 @@ public class ApplyDamage : ActionPhase
 
 			if(target != null) {
 
-				target.stats.healthPoints.value -= Mathf.FloorToInt(target.stats.constitution.DamageMultiplier * target.GetComponent<Affinities>().DamageCalculation(_elementalDamage));
+				int _damage = Mathf.FloorToInt(target.stats.constitution.DamageMultiplier * target.GetComponent<Affinities>().DamageCalculation(_elementalDamage));
+
+				target.stats.healthPoints.value -= _damage;
 
 				if (target.stats.healthPoints.depleted) {
 

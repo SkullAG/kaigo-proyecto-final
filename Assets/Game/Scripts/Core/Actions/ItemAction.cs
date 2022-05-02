@@ -42,6 +42,8 @@ public class ItemAction : GameAction
         // This starts the update of the action's phases.
         StartAction();
 
+        BattleLog.current.WriteLine(string.Format(BattleLogFormats.ITEM_USE, actor.name, displayName));
+
         // You can use "actor" and "targets" properties to get the
         // actor character that is executing this action and its targets.
         // Debug.Log("Action's actor is: " + actor);

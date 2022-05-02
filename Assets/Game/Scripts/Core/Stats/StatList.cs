@@ -1,5 +1,6 @@
 using UnityEngine;
 using NaughtyAttributes;
+using Core.Characters;
 
 namespace Core.Stats {
 
@@ -17,7 +18,11 @@ namespace Core.Stats {
         [BoxGroup("Base")] public Determination determination;
         [BoxGroup("Base")] public Agility agility;
 
+        private Character _user;
+
         private void Awake() {
+
+            _user = GetComponent<Character>();
 
             UpdateResource();
 
@@ -26,6 +31,9 @@ namespace Core.Stats {
 
             vitality.onValueChanged += OnAttributeValueChanged;
             determination.onValueChanged += OnAttributeValueChanged;
+
+            healthPoints.onValueUpdated += OnHealthUpdated;
+            actionPoints.onValueUpdated += OnActionPointsUpdated;
 
         }
 
@@ -45,6 +53,35 @@ namespace Core.Stats {
 
             healthPoints.max = Mathf.RoundToInt(vitality.CalculateMaximumHealth());
             actionPoints.max = Mathf.RoundToInt(determination.CalculateMaxActionPoints());
+
+        }
+
+        public void OnHealthUpdated(int lastValue, int currentValue) {
+
+            int _d = currentValue - lastValue;
+
+            if(_d < 0) {
+
+                BattleLog.current.WriteLine(string.Format(BattleLogFormats.DAMAGE_RECEIVED, _user.name, Mathf.Abs(_d)));
+
+            } else if (_d > 0) {
+
+                BattleLog.current.WriteLine(string.Format(BattleLogFormats.HEALTH_RECOVERED, _user.name, Mathf.Abs(_d)));
+
+            }
+
+        }
+
+        public void OnActionPointsUpdated(int lastValue, int currentValue) {
+
+            int _d = currentValue - lastValue;
+
+            // Don't log action points lost :S
+            if (_d > 0) {
+
+                BattleLog.current.WriteLine(string.Format(BattleLogFormats.ACTIONP_RECOVERED, _user.name, _d));
+
+            }
 
         }
 

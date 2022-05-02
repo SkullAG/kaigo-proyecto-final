@@ -7,9 +7,9 @@ namespace Core.Stats {
     public class Resource
     {
 
-        public System.Action<int> onValueUpdated = delegate {};
-        public System.Action<int> onValueMax = delegate {};
-        public System.Action<int> onValueMin = delegate {};
+        public System.Action<int, int> onValueUpdated = delegate {};
+        public System.Action<int, int> onValueMax = delegate {};
+        public System.Action<int, int> onValueMin = delegate {};
 
         [SerializeField]
         protected int _currentValue;
@@ -32,17 +32,18 @@ namespace Core.Stats {
 
         public void SetValue(int value) {
 
+            int _lastValue = _currentValue;
             _currentValue = Mathf.Clamp(value, 0, _maxValue);
-            onValueUpdated(_currentValue);
+            onValueUpdated(_lastValue, _currentValue);
 
             if(value == _maxValue) {
 
-                onValueMax(value);
+                onValueMax(_lastValue, _currentValue);
                 atMax = true;
 
             } else if (value == 0) {
 
-                onValueMin(value);
+                onValueMin(_lastValue, _currentValue);
                 depleted = false;
 
             } else {

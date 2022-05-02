@@ -24,6 +24,8 @@ public class ApplyRecovery : ActionPhase
 
             Debug.Log( target.name + " recovered " + _recoveredValue + " health points.");
 
+            BattleLog.current.WriteLine(string.Format(BattleLogFormats.HEALTH_RECOVERED, target.name, _recoveredValue));
+
             End(); // <---- Esto termina la fase, importante
 
         }

@@ -24,7 +24,7 @@ public class CoinsDrop : MonoBehaviour
         _character = GetComponent<Character>();
     }
 
-    public void drop(int f)
+    public void drop(int p, int f)
     {
         _inventory.coins = _inventory.coins + coinEnemy;
     }
