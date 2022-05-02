@@ -16,6 +16,8 @@ public class CommandController : Singleton<CommandController>
 
     [SerializeField] private bool _enabled = true;
 
+    private bool _targetterEnabled;
+
     private EventSystem _eventSystem;
     private CommandList _commandList;
     private ActionQueue _queue;
@@ -40,49 +42,55 @@ public class CommandController : Singleton<CommandController>
                 .GetSelectedCharacter()
                 .GetComponent<ActionQueue>();
 
+        Targetter.current.targettingStatusChanged += OnTargetterStatusChange;
+
     }
 
     private void Update() {
 
-        var _selectedCharacter = PartyManager.current.GetSelectedCharacter();
+        if(!_targetterEnabled) {
 
-        // If there is a selected character
-        // and its queue has been found:
-        if( _selectedCharacter && _queue) {
-            
-            // If character is not busy,
-            // enable command window!
-            if(_queue.isReady) {
+            var _selectedCharacter = PartyManager.current.GetSelectedCharacter();
 
-                SetEnabled(true);
+            // If there is a selected character
+            // and its queue has been found:
+            if( _selectedCharacter && _queue) {
+                
+                // If character is not busy,
+                // enable command window!
+                if(_queue.isReady) {
 
-            } else {
+                    SetEnabled(true);
 
-                SetEnabled(false);
+                } else {
+
+                    SetEnabled(false);
+
+                }
 
             }
 
-        }
+            if(_enableCommandsAction.action.triggered) {
 
-        if(_enableCommandsAction.action.triggered) {
+                if(_eventSystem.currentSelectedGameObject == null) {
 
-            if(_eventSystem.currentSelectedGameObject == null) {
+                    // Select first button
+                    _eventSystem.SetSelectedGameObject(_commandList.GetButtons()[0].gameObject);
+
+                }
+
+            }
+
+            if(_disableCommandsAction.action.triggered) {
+
+                // Disable subcommand lists
+                if(_actionCommands.gameObject.activeInHierarchy) SetSubcommandsEnabled(SubcommandType.actions, false);
+                if(_itemCommands.gameObject.activeInHierarchy) SetSubcommandsEnabled(SubcommandType.items, false);
 
                 // Select first button
                 _eventSystem.SetSelectedGameObject(_commandList.GetButtons()[0].gameObject);
 
             }
-
-        }
-
-        if(_disableCommandsAction.action.triggered) {
-
-            // Disable subcommand lists
-            if(_actionCommands.gameObject.activeInHierarchy) SetSubcommandsEnabled(SubcommandType.actions, false);
-            if(_itemCommands.gameObject.activeInHierarchy) SetSubcommandsEnabled(SubcommandType.items, false);
-
-            // Select first button
-            _eventSystem.SetSelectedGameObject(_commandList.GetButtons()[0].gameObject);
 
         }
  
@@ -166,6 +174,13 @@ public class CommandController : Singleton<CommandController>
 
         // If character selection changed, change queue reference
         _queue = PartyManager.current.GetSelectedCharacter().GetComponent<ActionQueue>();
+
+    }
+
+    private void OnTargetterStatusChange(bool enabled) {
+
+        _targetterEnabled = enabled;
+        SetEnabled(!_targetterEnabled); // Disable commands when targetter is enabled
 
     }
 

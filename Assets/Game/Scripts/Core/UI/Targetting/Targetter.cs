@@ -13,6 +13,7 @@ public class Targetter : Singleton<Targetter>
     public event System.Action<Character> targetSelected = delegate {};
     public event System.Action<Character> targetConfirmed = delegate {};
     public event System.Action<Character> targetCancelled = delegate {};
+    public event System.Action<bool> targettingStatusChanged = delegate {};
 
     [SerializeField] private TargetCursor _cursor;
     [SerializeField] private Character _target;
@@ -64,7 +65,6 @@ public class Targetter : Singleton<Targetter>
             if(_control.magnitude > 0 != _pressed) {
 
                 if(!_pressed) {
-
 
                     int _index = UtilityClass.FindClosestPointInDirection(_viewPositions, _targetViewPos, _control, _fieldOfView);
                     Debug.Log($"Pressed directional button ({_control.x}, {_control.y}). Index is: {_index}. ");
@@ -122,6 +122,8 @@ public class Targetter : Singleton<Targetter>
 
         }
 
+        targettingStatusChanged(true);
+
     }
 
     [Button]
@@ -132,6 +134,8 @@ public class Targetter : Singleton<Targetter>
 
         _filter.enabled = false;
         _update = false;
+
+        targettingStatusChanged(false);
 
     }
 
