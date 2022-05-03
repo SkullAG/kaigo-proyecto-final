@@ -35,29 +35,24 @@ public class BattleAction : GameAction
 
         StartAction();
 
-        BattleLog.current.WriteLine(string.Format(BattleLogFormats.SKILL_USE, actor.name, displayName));
+        if(!instantCast) {
+            BattleLog.current.WriteLine(string.Format(BattleLogFormats.SKILL_CHARGE, actor.name, displayName));
+        }
 
         actor.stats.actionPoints.value -= cost; // Cost is applied at the start
         
     }
 
-    protected override void OnUpdate() {
-        
-        
+    protected override void OnUpdate() {}
 
-    }
-
-    protected override void OnPhaseStart() {
-        
-        
-
-    }
+    protected override void OnPhaseStart() {}
     
     protected override void OnPhaseEnd() {
     
         if( OnLastPhase() ) {
 
             EndAction();
+            BattleLog.current.WriteLine(string.Format(BattleLogFormats.SKILL_USE, actor.name, displayName));
             return;
 
         }

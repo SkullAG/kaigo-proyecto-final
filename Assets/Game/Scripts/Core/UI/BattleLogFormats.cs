@@ -20,10 +20,10 @@ public static class BattleLogFormats
     public static string DAMAGE_RECEIVED = "{0} has received {1} points of damage!";
 
     /// <summary> Actor name, health points. </summary>
-    public static string HEALTH_RECOVERED = "{0} has recovered {1} health points!";
+    public static string HEALTH_RECOVERED = "{0} has recovered {1} HP!";
 
     /// <summary> Actor name, action points. </summary>
-    public static string ACTIONP_RECOVERED = "{0} has recovered {1} action points!";
+    public static string ACTIONP_RECOVERED = "{0} has recovered {1} AP!";
 
     /// <summary> Actor name. </summary>
     public static string ATTACK_EVASION = "{0} has evaded the attack!";
