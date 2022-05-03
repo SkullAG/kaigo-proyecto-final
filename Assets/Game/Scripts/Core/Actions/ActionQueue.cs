@@ -99,7 +99,7 @@ namespace Core.Actions
 
                 // Instantiate action from reference and set as queued
                 _queuedAction = _ref.Instantiate(actor, target); 
-
+                
                 return true;
 
             } else {
