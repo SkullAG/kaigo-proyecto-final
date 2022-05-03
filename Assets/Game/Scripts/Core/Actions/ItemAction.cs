@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using Core.Affinities;
 using Core.States;
 
-[CreateAssetMenu(fileName = "Item Action", menuName = "Game/Actions/Item Action")]
+//[CreateAssetMenu(fileName = "Item Action", menuName = "Game/Actions/Item Action")]
+[System.Serializable]
 public class ItemAction : GameAction
 {
 
@@ -17,6 +18,12 @@ public class ItemAction : GameAction
     public bool instantCast; // Si el objeto se usa instantáneamente o no (depende del animator)
     public State[] states; // Los estados alterados que aplica este objeto (puede ser ninguno)
 
+    public override GameAction Copy() {
+
+        return (ItemAction)this.MemberwiseClone();
+
+    }
+
     // Esta función tiene que devolver las fases que tiene el tipo de acción
     protected override ActionPhase[] GetPhases() {
         
@@ -25,7 +32,7 @@ public class ItemAction : GameAction
 
             new MoveToTarget(distanceToCast), // Se mueve hacia el objetivo 
 
-            new PlayAnimation(id, 0, instantCast), // Reproduce una animación con el mismo ID que la acción creada
+            new PlayAnimation(id), // Reproduce una animación con el mismo ID que la acción creada
 
             new ApplyRecovery(valueRecovered), // <---- Aquí se produce la recuperación de vida o puntos de acción
 

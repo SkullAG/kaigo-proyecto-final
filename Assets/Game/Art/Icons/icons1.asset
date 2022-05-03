@@ -80,8 +80,8 @@ MonoBehaviour:
     m_Unicode: 65534
     m_GlyphIndex: 0
     m_Scale: 1
-    m_Name: icons1_0
-    m_HashCode: 1245888358
+    m_Name: poison
+    m_HashCode: -11690620
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 1
@@ -6036,6 +6036,21 @@ MonoBehaviour:
     m_GlyphRect:
       m_X: 416
       m_Y: 163
+      m_Width: 32
+      m_Height: 32
+    m_Scale: 1.5
+    m_AtlasIndex: 0
+    sprite: {fileID: -2552386962249809711, guid: f0b704da26a1d7547ab227eeac30a7db, type: 3}
+  - m_Index: 284
+    m_Metrics:
+      m_Width: 32
+      m_Height: 32
+      m_HorizontalBearingX: -6
+      m_HorizontalBearingY: 23.4
+      m_HorizontalAdvance: 10
+    m_GlyphRect:
+      m_X: 0
+      m_Y: 835
       m_Width: 32
       m_Height: 32
     m_Scale: 1.5

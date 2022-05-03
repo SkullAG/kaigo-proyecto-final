@@ -90,21 +90,21 @@ namespace Core.Actions
 
         }
 
+        // Returns boolean indicating execution success
         public bool RequestExecution(string actionName, Character actor, Character target) {
             
-            var _a = _actionList.GetAction(actionName);
-                
-            if(_a != null) {
+            ActionReference _ref = _actionList.GetReference(actionName);
 
-                _queuedAction = _a;
-                _a.actor = actor;
-                _a.target = target;
+            if(_ref != null) {
+
+                // Instantiate action from reference and set as queued
+                _queuedAction = _ref.Instantiate(actor, target); 
 
                 return true;
 
             } else {
 
-                Debug.LogError("Action requested is not in the character's action list. Executing first action.");
+                Debug.LogError("Action requested is not in the character's action list or it's invalid.", this);
 
                 return false;
 

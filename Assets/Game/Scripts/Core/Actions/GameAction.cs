@@ -6,34 +6,29 @@ using Core.Characters;
 namespace Core.Actions
 {
 
-    public abstract class GameAction : ScriptableObject
+    [System.Serializable]
+    public abstract class GameAction// : ScriptableObject
     {
-
 
         public System.Action onActionStart = delegate {};
         public System.Action onActionEnd = delegate {};
 
         public string displayName;
-        public int id;
+        public string id;
 
-        [TextArea]
-        public string description;
-
+        [TextArea] public string description;
         public bool hasTargetSelection;
-
         public ActionPhase[] phases;
 
-        [SerializeField, ReadOnly]
         protected bool running = false;
-
+        
         protected ActionPhase currentPhase;
         protected ActionPhase lastPhase;
 
-        [ReadOnly] public Character actor;
-        [ReadOnly] public Character target;
+        [HideInInspector] public Character actor;
+        [HideInInspector] public Character target;
 
         protected int phaseIndex = 0;
-
 
         private void Reset() {
 
@@ -45,6 +40,8 @@ namespace Core.Actions
         }
 
         // Abstract methods
+        public abstract GameAction Copy();
+
         protected abstract ActionPhase[] GetPhases();
         protected abstract void OnExecution();
         protected abstract void OnPhaseStart();

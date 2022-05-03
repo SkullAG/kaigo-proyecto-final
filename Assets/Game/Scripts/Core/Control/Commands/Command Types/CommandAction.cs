@@ -11,10 +11,9 @@ public class CommandAction : Command
     public int actionIndex = 0;
     
     private Character _selectedCharacter;
-    private GameAction _action;
-
     private ActionQueue _queue;
 
+    private ActionReference _reference;
     private bool _alreadyExecuted;
 
     public CommandAction(int id, int actionIndex) : base(id) {
@@ -37,12 +36,12 @@ public class CommandAction : Command
 
             if(_selectedCharacter != null) {
 
-                // Get action by index
-                _action = _selectedCharacter.actions.GetAction(actionIndex);
+                // Get action reference by index
+                _reference = _selectedCharacter.actions.GetReference(actionIndex);
 
-                _action.actor = _selectedCharacter;
+                // Don't instance an action if it's being passed to the queue!
 
-                if(_action.hasTargetSelection) {
+                if(_reference.sharedAction.hasTargetSelection) {
 
                     // Enable target selection
                     Targetter.current.Enable();
@@ -54,7 +53,7 @@ public class CommandAction : Command
                 } else {
 
                     // If action has no target selection, target is actor
-                    _queue.RequestExecution(_action.displayName, _selectedCharacter, _selectedCharacter);
+                    _queue.RequestExecution(_reference.actionID, _selectedCharacter, _selectedCharacter);
                     
                 }
 
@@ -69,7 +68,7 @@ public class CommandAction : Command
     // When target is selected, request action execution
     private void OnTargetConfirmed(Character selected) {
 
-        _queue.RequestExecution(_action.displayName, _selectedCharacter, selected);
+        _queue.RequestExecution(_reference.actionID, _selectedCharacter, selected);
 
         // When target is selected, unsubscribe from targetter event
         Targetter.current.targetConfirmed -= OnTargetConfirmed;

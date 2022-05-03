@@ -1,77 +1,71 @@
 using UnityEngine;
-using System.Collections.Generic;
-using NaughtyAttributes;
+using System;
+using System.Linq;
+using Core.Characters;
 
 namespace Core.Actions
 {
 
+    [System.Serializable]
+    public class ActionReference {
+
+        public string actionID;
+        public GameActionList actions;
+
+        public GameAction sharedAction => GetSharedAction();
+
+        public GameAction Instantiate(Character actor, Character target) {
+
+            if(actions != null) {
+
+                GameAction _action = actions.FindAction(actionID);
+
+                _action.actor = actor;
+                _action.target = target;
+
+                return _action.Copy();
+
+            } 
+
+            return null;
+
+        }
+
+        public GameAction GetSharedAction() {
+
+            return actions?.FindAction(actionID);
+
+        }
+
+    }
+
     public class ActionList : MonoBehaviour
     {
-        
+
         [SerializeField]
-        private List<GameAction> _actions = new List<GameAction>();
+        private GameActionList _gameActions;
 
-        [SerializeField, NonReorderable, ReadOnly, Expandable]
-        private GameAction[] _runtimeActions;
+        [SerializeField]
+        private ActionReference[] _actionReferences;
 
-        public GameAction[] runtimeActions => _runtimeActions;
-        public GameAction[] actions => _actions.ToArray();
+        public ActionReference[] references => _actionReferences;
 
-        private void Awake() {
+        public ActionReference GetReference(string id) {
 
-            InstantiateAll();
-
-        }
-
-        private void OnDisable() {
-
-            DestroyAll();
+            return _actionReferences
+                .First(a => a.actionID == id);
 
         }
 
-        private void InstantiateAll() {
+        public ActionReference GetReference(int index) {
 
-            _runtimeActions = new GameAction[_actions.Count];
-
-            for(int i = 0; i < _actions.Count; i++) {
-                _runtimeActions[i] = Instantiate(_actions[i]);
-            }
+            return _actionReferences[index];
 
         }
 
-        private void DestroyAll() {
+        public bool Contains(ActionReference reference) {
 
-            for(int i = 0; i < _runtimeActions.Length; i++) {
-                Destroy( _runtimeActions[i] );
-            }
-
-        }
-
-        public GameAction GetAction(string name) {
-
-            for(int i = 0; i < _runtimeActions.Length; i++) {
-
-                if(_runtimeActions[i].displayName == name) {
-                    return _runtimeActions[i];
-                }
-
-            }
-
-            return null;
-
-        }
-
-        public GameAction GetAction(int index) {
-
-            for(int i = 0; i < _runtimeActions.Length; i++) {
-
-                if(i == index) {
-                    return _runtimeActions[i];
-                }
-
-            }
-
-            return null;
+            return _actionReferences.Contains(reference);
 
         }
 

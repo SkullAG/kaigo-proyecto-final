@@ -9,20 +9,17 @@ public class PlayAnimation : ActionPhase
     private const string ACTION_ID_PARAM_NAME = "ActionID";
     private const string INSTANT_CAST_PARAM_NAME = "InstantCast";
 
-    private int _actionID;
-    private int _animationLayer;
-    private bool _instantCast;
+    private string _stateName;
 
     private Animator _animator;
     private AnimationEventSender _sender;
 
     private bool _customEnd = true;
+    private bool _started = false;
 
-    public PlayAnimation(int actionID, int layer, bool instantCast) {
+    public PlayAnimation(string stateName) {
 
-        this._actionID = actionID;
-        this._animationLayer = layer;
-        this._instantCast = instantCast;
+        _stateName = stateName;
 
     }
 
@@ -44,19 +41,12 @@ public class PlayAnimation : ActionPhase
 
     public override void Update() {
 
-        if(_animator != null) {
+        if(_animator != null && !_started) {
 
-            // Send action ID to Animator
-            _animator.SetInteger(
-                ACTION_ID_PARAM_NAME, 
-                _actionID
-            ); 
+            // Play state with action name
+            _animator.Play(_stateName, 0);
 
-            // Tell animator if action is casted instantly (without charging)
-            _animator.SetBool(
-                INSTANT_CAST_PARAM_NAME, 
-                _instantCast
-            ); 
+            _started = true;
 
         }
 
@@ -71,9 +61,6 @@ public class PlayAnimation : ActionPhase
     }
 
     public override void End() {
-
-        // Reset animator parameters
-        _animator.SetInteger(ACTION_ID_PARAM_NAME, -1);
 
         // Stop listening animation event
         _sender.onEventTriggered -= OnEventTriggered;

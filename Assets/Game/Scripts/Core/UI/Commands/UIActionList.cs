@@ -38,12 +38,15 @@ public class UIActionList : MonoBehaviour
         List<CommandAction> _commands = new List<CommandAction>();
 
         // Create commands for each available action
-        for(int i = 0; i < _actionList.actions.Length; i++) {
+        for(int i = 0; i < _actionList.references.Length; i++) {
+
+            // Get shared action (not meant to be used at runtime)
+            GameAction _sharedAction = _actionList.references[i].sharedAction;
 
             CommandAction _c = new CommandAction(i, i) {
 
-                displayName = _actionList.actions[i].displayName,
-                displayDescription = _actionList.actions[i].description
+                displayName = _sharedAction.displayName,
+                displayDescription = _sharedAction.description
 
             };
 

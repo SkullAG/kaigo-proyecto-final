@@ -25,7 +25,7 @@ public class UIBattleCommands : MonoBehaviour
             new CommandAction(0, _attackActionIndex) { 
                 
                 displayName = "Attack",
-                displayDescription = _actionList.actions[_attackActionIndex].description, // Use description of action
+                displayDescription = _actionList.references[_attackActionIndex].sharedAction.description, // Use description of action
                 
             },
 

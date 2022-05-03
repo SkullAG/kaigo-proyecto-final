@@ -4,7 +4,7 @@ using Core.Characters;
 using System.Collections.Generic;
 using Core.Affinities;
 
-[CreateAssetMenu(fileName = "Example Action", menuName = "Game/Actions/Example/Action")]
+/*[CreateAssetMenu(fileName = "Example Action", menuName = "Game/Actions/Example/Action")]
 public class ExampleAction : GameAction
 {
     
@@ -82,4 +82,4 @@ public class ExampleAction : GameAction
 
     }
 
-}
+}*/

@@ -3,14 +3,14 @@ using Core.Actions;
 using Core.States;
 using Core.Affinities;
 
-[CreateAssetMenu(fileName = "Battle Action", menuName = "Game/Actions/Battle Action")]
+//[CreateAssetMenu(fileName = "Battle Action", menuName = "Game/Actions/Battle Action")]
+[System.Serializable]
 public class BattleAction : GameAction
 {
 
     public AffinityList damage;
     public int cost = 0;
     public float distanceToCast;
-    public bool instantCast;
     public State[] states;
 
     private float timer = 0;
@@ -18,12 +18,18 @@ public class BattleAction : GameAction
 
     private bool casting = false;
 
+    public override GameAction Copy() {
+
+        return (BattleAction)this.MemberwiseClone();
+        
+    }
+
     protected override ActionPhase[] GetPhases() {
 
         return new ActionPhase[] {
 
             new MoveToTarget(distanceToCast), // Move to target, stop at X distance
-            new PlayAnimation(id, 0, instantCast), // Start spell animation using action ID
+            new PlayAnimation(id), // Start animation with the action id
             new ApplyDamage(damage),
             new ApplyState(states)
 
@@ -35,9 +41,7 @@ public class BattleAction : GameAction
 
         StartAction();
 
-        if(!instantCast) {
-            BattleLog.current.WriteLine(string.Format(BattleLogFormats.SKILL_CHARGE, actor.name, displayName));
-        }
+        BattleLog.current.WriteLine(string.Format(BattleLogFormats.SKILL_CHARGE, actor.name, displayName));
 
         actor.stats.actionPoints.value -= cost; // Cost is applied at the start
         

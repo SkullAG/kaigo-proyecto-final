@@ -21,7 +21,7 @@ public class UIGambit : MonoBehaviour
 
     private TargetFilter _lastTargetFilter = null;
     private BehaviourCondition _lastCondition = null;
-    private GameAction _lastAction = null;
+    private ActionReference _lastAction = null;
     private CanvasGroup _group;
 
     private void Awake() {
@@ -35,13 +35,13 @@ public class UIGambit : MonoBehaviour
 
         if(interactable) {
 
-            if(gambit.target != _lastTargetFilter || gambit.condition != _lastCondition || gambit.action != _lastAction) {
+            if(gambit.target != _lastTargetFilter || gambit.condition != _lastCondition || gambit.actionReference != _lastAction) {
                 _updater.UpdateElements();
             }
 
             _lastTargetFilter = gambit.target;
             _lastCondition = gambit.condition;
-            _lastAction = gambit.action;
+            _lastAction = gambit.actionReference;
 
         }
 

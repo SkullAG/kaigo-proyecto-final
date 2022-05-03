@@ -47,13 +47,12 @@ namespace Core.Gambits
 
                 bool _condition = _target != null ? _gambits[i].condition.Evaluate(_actor, _target) : false;
 
-                GameAction _action = _actionList.GetAction(_gambits[i].action.displayName);
-
-                if(_action != null) {
+                // If action list has the gambit's action
+                if(_actionList.Contains(_gambits[i].actionReference)) {
 
                     if(_condition) {
 
-                        _actionQueue.RequestExecution(_action.displayName, _actor, _target);
+                        _actionQueue.RequestExecution(_gambits[i].actionReference.actionID, _actor, _target);
 
                         break;
 

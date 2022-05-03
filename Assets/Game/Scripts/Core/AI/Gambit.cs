@@ -16,11 +16,11 @@ namespace Core.Gambits
         private BehaviourCondition _condition;
 
         [SerializeField]
-        private GameAction _action;
+        private ActionReference _actionReference;
 
         public BehaviourCondition condition => _condition;
         public TargetFilter target => _target;
-        public GameAction action => _action;
+        public ActionReference actionReference => _actionReference;
 
     }
     
