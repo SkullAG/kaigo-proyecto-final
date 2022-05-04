@@ -91,22 +91,36 @@ namespace Core.Actions
         }
 
         // Returns boolean indicating execution success
-        public bool RequestExecution(string actionName, Character actor, Character target) {
+        public bool RequestExecution(ActionReference reference, Character actor, Character target, bool freeUse = false, bool throwError = true) {
             
-            ActionReference _ref = _actionList.GetReference(actionName);
-
-            if(_ref != null) {
-
-                // Instantiate action from reference and set as queued
-                _queuedAction = _ref.Instantiate(actor, target); 
+            // Free use allows to pass action without checking action list first
+            if(!freeUse) {
                 
-                return true;
+                // If action list has the reference (what is: character can perform action)
+                if(_actionList.Contains(reference)) {
+
+                    _queuedAction = reference.Instantiate(actor, target);
+                    
+                    return true;
+
+                } else {
+
+                    if(throwError) {
+
+                        Debug.LogError("Action requested is not in the character's action list or it's null.", this);
+
+                    }
+
+                    return false;
+
+                }
 
             } else {
 
-                Debug.LogError("Action requested is not in the character's action list or it's invalid.", this);
+                // Instantiate without checking
+                _queuedAction = reference.Instantiate(actor, target);
 
-                return false;
+                return true;
 
             }
 

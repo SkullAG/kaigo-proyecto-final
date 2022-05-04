@@ -3,14 +3,22 @@ using System;
 using System.Linq;
 using Core.Characters;
 
+using NaughtyAttributes;
+
 namespace Core.Actions
 {
 
     [System.Serializable]
     public class ActionReference {
-
-        public string actionID;
+        
         public GameActionList actions;
+
+        [Dropdown("ids"), ShowIf("actionsDefined")]
+        public string actionID;
+        
+        private string[] ids => actions?.IDs;
+
+        private bool actionsDefined => actions != null;
 
         public GameAction sharedAction => GetSharedAction();
 
@@ -65,7 +73,8 @@ namespace Core.Actions
 
         public bool Contains(ActionReference reference) {
 
-            return _actionReferences.Contains(reference);
+            // Identify by ID, not by reference of object lul
+            return _actionReferences.Any(r => r.actionID == reference.actionID);
 
         }
 

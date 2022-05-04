@@ -15,7 +15,7 @@ public class ItemAction : GameAction
 
     public int valueRecovered; // El valor recuperado de vida o puntos de acción
     public float distanceToCast; // La distancia máxima a la que el personaje puede usar el objeto
-    public bool instantCast; // Si el objeto se usa instantáneamente o no (depende del animator)
+    public bool blockMovement = true;
     public State[] states; // Los estados alterados que aplica este objeto (puede ser ninguno)
 
     public override GameAction Copy() {
@@ -32,7 +32,7 @@ public class ItemAction : GameAction
 
             new MoveToTarget(distanceToCast), // Se mueve hacia el objetivo 
 
-            new PlayAnimation(id), // Reproduce una animación con el mismo ID que la acción creada
+            new PlayAnimation(id, blockMovement), // Reproduce una animación con el mismo ID que la acción creada
 
             new ApplyRecovery(valueRecovered), // <---- Aquí se produce la recuperación de vida o puntos de acción
 
@@ -45,6 +45,7 @@ public class ItemAction : GameAction
     // This happens once after the action is executed,
     // that is, when an actor has triggered the action.
     protected override void OnExecution() {
+
 
         // This starts the update of the action's phases.
         StartAction();
@@ -68,7 +69,8 @@ public class ItemAction : GameAction
     
         if( OnLastPhase() ) {
 
-            EndAction();
+            EndAction(); 
+
             return;
 
         }
