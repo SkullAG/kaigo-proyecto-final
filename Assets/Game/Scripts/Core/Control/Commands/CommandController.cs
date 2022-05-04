@@ -26,6 +26,9 @@ public class CommandController : Singleton<CommandController>
     public GameObject _actionCommands;
     public GameObject _itemCommands;
 
+    [SerializeField]
+    private GameObject _corner;
+
     private void Awake() {
 
         _eventSystem = EventSystem.current;
@@ -103,6 +106,7 @@ public class CommandController : Singleton<CommandController>
             _enabled = true;
 
             _battleCommands.SetActive(true);
+            _corner.SetActive(true);
 
             // If enabling, wait to select first option
             _commandList.commandInstanced += OnCommandInstantiation;
@@ -115,6 +119,7 @@ public class CommandController : Singleton<CommandController>
             _enabled = false;
 
             _battleCommands.SetActive(false);
+            _corner.SetActive(false);
 
             SetSubcommandsEnabled(SubcommandType.actions, false);
             SetSubcommandsEnabled(SubcommandType.items, false);
