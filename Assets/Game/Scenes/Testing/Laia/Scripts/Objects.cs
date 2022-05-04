@@ -7,13 +7,15 @@ using Core.Actions;
 [CreateAssetMenu(fileName = "Consumable Item", menuName = "Game/Inventory/Consumable")]
 public class Objects : ScriptableObject
 {   
-    public string id;
     public string displayName;
+    public string id;
+
+    [TextArea]
     public string description;
 
     public int stackMax;
 
-    public GameAction itemAction;
+    public ActionReference actionReference;
 
     private Character _selectedCharacter;
 
@@ -26,7 +28,7 @@ public class Objects : ScriptableObject
         // the action assigned to this item.
         var _queue = _selectedCharacter.GetComponent<ActionQueue>();
 
-        _queue.RequestExecution(itemAction.displayName, _selectedCharacter, target);
+        _queue.RequestExecution(actionReference, _selectedCharacter, target);
 
         Debug.Log("Using item " + displayName + " on " + target.gameObject.name);
 

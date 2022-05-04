@@ -11,6 +11,7 @@ public class BattleAction : GameAction
     public AffinityList damage;
     public int cost = 0;
     public float distanceToCast;
+    public bool blockMovement = true;
     public State[] states;
 
     private float timer = 0;
@@ -29,7 +30,7 @@ public class BattleAction : GameAction
         return new ActionPhase[] {
 
             new MoveToTarget(distanceToCast), // Move to target, stop at X distance
-            new PlayAnimation(id), // Start animation with the action id
+            new PlayAnimation(id, blockMovement), // Start animation with the action id
             new ApplyDamage(damage),
             new ApplyState(states)
 
@@ -57,6 +58,7 @@ public class BattleAction : GameAction
 
             EndAction();
             BattleLog.current.WriteLine(string.Format(BattleLogFormats.SKILL_USE, actor.name, displayName));
+
             return;
 
         }

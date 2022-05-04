@@ -13,7 +13,10 @@ namespace Core.Gambits
         private List<Gambit> _gambits = new List<Gambit>();
 
         [SerializeField]
-        private bool _useGambits = true;
+        private bool _enabled = true;
+
+        [SerializeField]
+        private bool _freeUse = false;
 
         private Character _actor;
         private ActionQueue _actionQueue;
@@ -31,11 +34,17 @@ namespace Core.Gambits
 
         private void FixedUpdate() {
 
-            if(_useGambits) {
+            if(_enabled) {
 
                 EvaluateGambits();
 
             }
+
+        }
+
+        public void SetEnabled(bool enabled) {
+
+            _enabled = enabled;
 
         }
 
@@ -48,15 +57,11 @@ namespace Core.Gambits
                 bool _condition = _target != null ? _gambits[i].condition.Evaluate(_actor, _target) : false;
 
                 // If action list has the gambit's action
-                if(_actionList.Contains(_gambits[i].actionReference)) {
+                if(_condition) {
 
-                    if(_condition) {
+                    _actionQueue.RequestExecution(_gambits[i].actionReference, _actor, _target, _freeUse);
 
-                        _actionQueue.RequestExecution(_gambits[i].actionReference.actionID, _actor, _target);
-
-                        break;
-
-                    }
+                    break;
 
                 }
 

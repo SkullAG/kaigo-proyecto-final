@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43997788, g: 0.48845708, b: 0.5686563, a: 1}
+  m_IndirectSpecularColor: {r: 0.43997738, g: 0.48845655, b: 0.56865585, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1108,13 +1108,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583784076}
-  m_LocalRotation: {x: 0.3826831, y: -0, z: -0, w: 0.92387974}
-  m_LocalPosition: {x: 0, y: 4.82, z: -4.81}
+  m_LocalRotation: {x: 0.16472806, y: -0.8339047, z: 0.34541446, w: 0.39768904}
+  m_LocalPosition: {x: 3.87, y: 4.82, z: 3.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: -129.007, z: 0}
 --- !u!114 &583784080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2093,6 +2093,30 @@ PrefabInstance:
       propertyPath: _actionReferences.Array.data[0].actionID
       value: blaze
       objectReference: {fileID: 0}
+    - target: {fileID: 5043851537257179177, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043851537257179177, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
+      propertyPath: _gambits.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043851537257179177, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
+      propertyPath: _gambits.Array.data[0]._target
+      value: 
+      objectReference: {fileID: 11400000, guid: cd5ab95b1af3a8945ac2c609b0d5601f, type: 2}
+    - target: {fileID: 5043851537257179177, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
+      propertyPath: _gambits.Array.data[0]._condition
+      value: 
+      objectReference: {fileID: 11400000, guid: a50b5dbb5aedb1a4882ff6bfd325224a, type: 2}
+    - target: {fileID: 5043851537257179177, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
+      propertyPath: _gambits.Array.data[0]._actionReference.actions
+      value: 
+      objectReference: {fileID: 11400000, guid: 1ce4e4b17fcd18d4a8e1436cb1cb74f8, type: 2}
+    - target: {fileID: 5043851537257179177, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
+      propertyPath: _gambits.Array.data[0]._actionReference.actionID
+      value: blaze
+      objectReference: {fileID: 0}
     - target: {fileID: 5043851537257179180, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
       propertyPath: m_Name
       value: Tomoe
@@ -2103,7 +2127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5043851537257179181, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.79
+      value: 3.51
       objectReference: {fileID: 0}
     - target: {fileID: 5043851537257179181, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2111,7 +2135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5043851537257179181, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.93
+      value: 2.05
       objectReference: {fileID: 0}
     - target: {fileID: 5043851537257179181, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2426,6 +2450,10 @@ PrefabInstance:
     - target: {fileID: 8657649740238381031, guid: 8e1f21cf82505a24f9991bbb2a8c0c20, type: 3}
       propertyPath: m_Name
       value: Mikari Baba
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657649740238381031, guid: 8e1f21cf82505a24f9991bbb2a8c0c20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8657649740238381037, guid: 8e1f21cf82505a24f9991bbb2a8c0c20, type: 3}
       propertyPath: m_RootOrder
@@ -2879,6 +2907,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Yamabozu_edited
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e25731bbaf312e343bedbb6d8bdfff0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5797384429611982230, guid: e25731bbaf312e343bedbb6d8bdfff0f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3028,6 +3060,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ba39a7dc036474c41afbeca544b20a5b, type: 3}
       propertyPath: m_Name
       value: Yamabozu
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ba39a7dc036474c41afbeca544b20a5b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5797384429611982230, guid: ba39a7dc036474c41afbeca544b20a5b, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3569,11 +3605,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 411419333934145755, guid: f215e5093f1963a48866931d6695fab0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 411419333934145755, guid: f215e5093f1963a48866931d6695fab0, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 411419333934145755, guid: f215e5093f1963a48866931d6695fab0, type: 3}
       propertyPath: m_SizeDelta.x
@@ -3677,11 +3713,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4493436941612478863, guid: f215e5093f1963a48866931d6695fab0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4493436941612478863, guid: f215e5093f1963a48866931d6695fab0, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4493436941612478863, guid: f215e5093f1963a48866931d6695fab0, type: 3}
       propertyPath: m_SizeDelta.x
@@ -3693,7 +3729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4493436941612478863, guid: f215e5093f1963a48866931d6695fab0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -68.3948
       objectReference: {fileID: 0}
     - target: {fileID: 4722013018431833421, guid: f215e5093f1963a48866931d6695fab0, type: 3}
       propertyPath: m_Name
