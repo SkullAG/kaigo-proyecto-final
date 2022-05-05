@@ -5,7 +5,8 @@ using Core.Characters;
 public class PlayAnimation : ActionPhase
 {
 
-    private const string DAMAGE_EVENT_NAME = "ApplyDamage";
+    private const string END_EVENT_NAME = "End";
+    private const string END_STATE_NAME = "End";
     private const string ACTION_ID_PARAM_NAME = "ActionID";
     private const string INSTANT_CAST_PARAM_NAME = "InstantCast";
 
@@ -53,13 +54,23 @@ public class PlayAnimation : ActionPhase
 
             _started = true;
 
+        } else {
+
+            // End phase if animator reached End state
+            if(_animator.GetCurrentAnimatorStateInfo(0).IsName(END_STATE_NAME)) {
+
+                End();
+
+            }
+
         }
 
     }
 
+    // Trigger end of phase by animation event
     private void OnEventTriggered(string name) {
 
-        if(name == DAMAGE_EVENT_NAME) {
+        if(name == END_EVENT_NAME) {
             End();
         }
 
