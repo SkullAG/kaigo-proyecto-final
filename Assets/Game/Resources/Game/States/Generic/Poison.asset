@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effects:
   - {fileID: 11400000, guid: dc6e2eaf836b6a4409a74307a5a977fb, type: 2}
-  id: Poison
+  allowMultipleInstances: 1
+  blendMode: 8
+  _id: simple_poison

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5852901802018738726}
   - component: {fileID: 5852901802018738727}
   - component: {fileID: 5852901802018738724}
-  - component: {fileID: 2208423620771748443}
+  - component: {fileID: 2120214996}
   m_Layer: 3
   m_Name: Yamabozu
   m_TagString: Ally
@@ -93,6 +93,7 @@ MonoBehaviour:
   fieldOfView: 180
   turnBeforeJump: 1
   isBeingControled: 0
+  isParalized: 0
 --- !u!114 &5852901802018738715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,10 +124,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _updating: 1
   _busy: 0
-  _actionTimer: 0
+  _ready: 1
   _actionSpeed: 1
-  _queuedAction: {fileID: 0}
-  _currentAction: {fileID: 0}
+  _actionTimer: 0
 --- !u!114 &5852901802018738713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,14 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230a9506c8066bf4b9fce24fcb221045, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actions:
-  - {fileID: 11400000, guid: 51f2852ec587d34449e66e5d6c796f9c, type: 2}
-  - {fileID: 11400000, guid: 3d0b8b24e56ae9649960c245b509cbef, type: 2}
-  - {fileID: 11400000, guid: a91ee87ed377bab45b1e2cc0f96d81fe, type: 2}
-  - {fileID: 11400000, guid: 3fe9c399607f3fd49b3e4ac0cf814210, type: 2}
-  - {fileID: 11400000, guid: 283cbe5ac9f93b8429ca55c9bacb9b9c, type: 2}
-  - {fileID: 11400000, guid: 06b1754213064ae4db42a5aa377f82ca, type: 2}
-  _runtimeActions: []
+  _gameActions: {fileID: 0}
+  _actionReferences: []
 --- !u!114 &5852901802018738726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +183,17 @@ MonoBehaviour:
     _rawValue: 5
     _modifiedValue: 0
     modifiers: []
+  affinity:
+    affinities:
+      Physical: 0
+      Magical: 0
+      Fire: 0
+      Thunder: 0
+      Ice: 0
+      Wind: 0
+      Void: 0
+      Poison: 0
+      Bleeding: 0
 --- !u!114 &5852901802018738727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,8 +209,11 @@ MonoBehaviour:
   _gambits:
   - _target: {fileID: 11400000, guid: cd5ab95b1af3a8945ac2c609b0d5601f, type: 2}
     _condition: {fileID: 11400000, guid: a50b5dbb5aedb1a4882ff6bfd325224a, type: 2}
-    _action: {fileID: 11400000, guid: 51f2852ec587d34449e66e5d6c796f9c, type: 2}
-  _useGambits: 1
+    _actionReference:
+      actions: {fileID: 0}
+      actionID: 
+  _enabled: 1
+  _freeUse: 0
 --- !u!114 &5852901802018738724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,9 +227,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _availableStates:
-  - {fileID: 11400000, guid: a4eb56b5783311c4e97f861acacb64f4, type: 2}
+  - {fileID: 11400000, guid: 87cb1f909346d8d48a8ca3edd9e29a18, type: 2}
   _currentStates: []
---- !u!114 &2208423620771748443
+--- !u!114 &2120214996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -230,19 +238,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5852901802018738722}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 060caad1ee4b1834c888516042da800b, type: 3}
+  m_Script: {fileID: 11500000, guid: 89411dd7c026af848995e5842bf54d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  affinities:
-    Physical: -0.25
-    Magical: 0.75
-    Fire: -0.1
-    Thunder: 0
-    Ice: -0.25
-    Wind: 0
-    Void: 0.5
-    Poison: 0.25
-    Bleeding: -0.25
+  _stateID: simple_poison
+  _stateDuration: 100
+  _power: 0
 --- !u!95 &5852901801262158029
 Animator:
   serializedVersion: 3

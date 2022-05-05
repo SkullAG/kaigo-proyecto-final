@@ -12,7 +12,8 @@ public class ApplyDamage : ActionPhase
 
 
 	//private int _damage;
-	private string _deathStateName = "Death";
+	[SerializeField]
+	private State _deathState;
 
 	private bool _healthDepleted = false;
 
@@ -34,14 +35,14 @@ public class ApplyDamage : ActionPhase
 
 			if(target != null) {
 
-				int _damage = Mathf.FloorToInt(target.stats.constitution.DamageMultiplier * target.GetComponent<Affinities>().DamageCalculation(_elementalDamage));
+				int _damage = Mathf.RoundToInt(Affinities.CalculateDamageDealt(target, _elementalDamage));
 
 				target.stats.healthPoints.value -= _damage;
 
 				if (target.stats.healthPoints.depleted) {
 
 					// Add Death state to character
-					target.states.AddState(_deathStateName);
+					target.states.AddState(_deathState, Mathf.Infinity); // otro caso de morir fortisimo!
 
 				}
 

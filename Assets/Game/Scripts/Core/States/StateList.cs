@@ -5,110 +5,115 @@ using Core.Characters;
 
 namespace Core.States {
 
-    public class StateList : MonoBehaviour
-    {
-        
-        [SerializeField]
-        private List<State> _availableStates = new List<State>();
+	public class StateList : MonoBehaviour
+	{
+		
+		[SerializeField]
+		private List<State> _availableStates = new List<State>();
 
-        [SerializeField, NonReorderable, ReadOnly]
-        private List<State> _currentStates = new List<State>();
+		[SerializeField, NonReorderable, ReadOnly]
+		private List<State> _currentStates = new List<State>();
 
-        private Character _actor;
+		private Character _actor;
 
-        private void Awake() {
+		private void Awake() {
 
-            _actor = GetComponent<Character>();
+			_actor = GetComponent<Character>();
 
-        }
+		}
 
-        private void OnEnable() {
+		private void OnEnable() {
 
-            for(int i = 0; i < _availableStates.Count; i++) {
+			for(int i = 0; i < _availableStates.Count; i++) {
 
-                if(_availableStates[i] != null) {
+				if(_availableStates[i] != null) {
 
-                    _availableStates[i] = Instantiate(_availableStates[i]);
+					_availableStates[i] = Instantiate(_availableStates[i]);
 
-                }
+					//AddState(_availableStates[i], 10, 1);
 
-            }
+				}
 
-        }
+			}
 
-        private void OnDisable() {
+		}
 
-            for(int i = 0; i < _availableStates.Count; i++) {
-                Destroy(_availableStates[i]);
-            }
+		private void OnDisable() {
 
-        }
+			for(int i = 0; i < _availableStates.Count; i++) {
+				Destroy(_availableStates[i]);
+			}
 
-        private void Update() {
+		}
 
-            for(int i = 0; i < _currentStates.Count; i++) {
-                _currentStates[i].Affect(_actor);
-            }
+		private void Update() {
 
-        }
+			for(int i = 0; i < _currentStates.Count; i++) {
 
-        public void AddState(string id) {
+				if(_currentStates[i].Affect(_actor))
+				{
+					RemoveState(_currentStates[i]);
+				}
+			}
 
-            State _state = GetState(id);
+		}
 
-            if(_state != null) {
-                
-                if(!_currentStates.Contains(_state) && _availableStates.Contains(_state)) {
+		public void AddState(string id, float duration, float power = 1) { // pueeeeeees, los a valores se suman?
 
-                    _currentStates.Add(_state);
+			State _state = GetState(id);
 
-                }
+			if(_state != null) {
 
-            }
+				_state.StartState(duration, power);
 
-        }
+				if (!_currentStates.Contains(_state) && _availableStates.Contains(_state)) {
+					_currentStates.Add(_state);
+				}
 
-        public void AddState(State state) {
+			}
 
-            if(state != null) {
-                
-                if(!_currentStates.Contains(state) && _availableStates.Contains(state)) {
+		}
 
-                    _currentStates.Add(state);
+		public void AddState(State baseStateSO, float duration, float power = 1) { //Aitor: y no hace falat mas, le mandas el SO plano inicial y te lo pilla, de nada.
+			AddState(baseStateSO.id, duration, power);
+		}
 
-                }
+		public void AddState(StateAndDuration state)
+		{
+			AddState(state.state.id, state.duration, state.power);
+		}
 
-            }
+		public void RemoveState(string id) {
 
-        }
+			State _state = GetState(id);
 
-        public void RemoveState(string id) {
+			if(_state != null) {
+				_currentStates.Remove(_state);
+			}
 
-            State _state = GetState(id);
+		}
 
-            if(_state != null) {
-                _currentStates.Remove(_state);
-            }
+		public void RemoveState(State baseStateSO){
+			RemoveState(baseStateSO.id);
+		}
 
-        }
+		public State GetState(string id) {
 
-        public State GetState(string id) {
+			for(int i = 0; i < _availableStates.Count; i++) {
 
-            for(int i = 0; i < _availableStates.Count; i++) {
+				if(_availableStates[i].id == id) {
 
-                if(_availableStates[i].id == id) {
+					return _availableStates[i];
 
-                    return _availableStates[i];
+				}
 
-                }
+			}
 
-            }
+			return null;
 
-            return null;
+		}
 
-        }
-
-    }
+	}
 
 }
 

@@ -3,6 +3,8 @@ using Core.Actions;
 using Core.States;
 using Core.Affinities;
 using Core.Characters;
+using NaughtyAttributes;
+using System;
 
 //[CreateAssetMenu(fileName = "Battle Action", menuName = "Game/Actions/Battle Action")]
 [System.Serializable]
@@ -16,7 +18,7 @@ public class BattleAction : GameAction
 
     public float distanceToCast;
     public bool blockMovement = true;
-    public State[] states;
+	public StateAndProbability[] states;
 
     [HideInInspector] public bool hasHPCost => costOverHP > 0;
     [HideInInspector] public bool hasAPCost => costOverAP > 0;
@@ -24,36 +26,39 @@ public class BattleAction : GameAction
     private float timer = 0;
     private int counter = 0;
 
-    private bool casting = false;
+	//public bool applyState = true;
+	//[ShowIf("applyState")]
 
-    public override GameAction Copy() {
+	private bool casting = false;
 
-        return (BattleAction)this.MemberwiseClone();
-        
-    }
+	public override GameAction Copy() {
 
-    protected override ActionPhase[] GetPhases() {
+		return (BattleAction)this.MemberwiseClone();
+		
+	}
 
-        return new ActionPhase[] {
+	protected override ActionPhase[] GetPhases() {
 
-            new MoveToTarget(distanceToCast), // Move to target, stop at X distance
-            new PlayAnimation(id, blockMovement), // Start animation with the action id
-            new ApplyDamage(damage),
-            new ApplyState(states)
+		return new ActionPhase[] {
 
-        };
+			new MoveToTarget(distanceToCast), // Move to target, stop at X distance
+			new PlayAnimation(id, blockMovement), // Start animation with the action id
+			new ApplyDamage(damage),
+			new ApplyState(states)
 
-    }
+		};
 
-    protected override void OnExecution() {
+	}
 
-        StartAction();
+	protected override void OnExecution() {
 
-        BattleLog.current.WriteLine(string.Format(BattleLogFormats.SKILL_CHARGE, actor.name, displayName));
+		StartAction();
 
-        ApplyCost();
-        
-    }
+		BattleLog.current.WriteLine(string.Format(BattleLogFormats.SKILL_CHARGE, actor.name, displayName));
+
+		ApplyCost();
+		
+	}
 
     private void ApplyCost() {
 
@@ -62,24 +67,24 @@ public class BattleAction : GameAction
 
     }
 
-    protected override void OnUpdate() {}
+	protected override void OnUpdate() {}
 
-    protected override void OnPhaseStart() {}
-    
-    protected override void OnPhaseEnd() {
-    
-        if( OnLastPhase() ) {
+	protected override void OnPhaseStart() {}
+	
+	protected override void OnPhaseEnd() {
+	
+		if( OnLastPhase() ) {
 
-            EndAction();
-            BattleLog.current.WriteLine(string.Format(BattleLogFormats.SKILL_USE, actor.name, displayName));
+			EndAction();
+			BattleLog.current.WriteLine(string.Format(BattleLogFormats.SKILL_USE, actor.name, displayName));
 
-            return;
+			return;
 
-        }
+		}
 
-        NextPhase();
+		NextPhase();
 
-    }
+	}
 
     public override bool IsUsableBy(Character character) {
         

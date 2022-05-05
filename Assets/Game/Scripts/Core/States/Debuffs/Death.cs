@@ -6,7 +6,7 @@ using UnityEngine;
 public class Death : Effect
 {
 
-    public override void Apply(Character actor) {
+    public override void Apply(Character actor, float power = Mathf.Infinity /*Esta muerto pero muy fuerte!*/) { //pq muerte es un estado? bueno, se puede estar muerto un tiempo?! me interesa la idea
         
         Debug.Log("Applying death!");
 
