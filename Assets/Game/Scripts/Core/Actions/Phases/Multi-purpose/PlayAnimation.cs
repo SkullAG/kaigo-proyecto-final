@@ -16,7 +16,6 @@ public class PlayAnimation : ActionPhase
     private Animator _animator;
     private AnimationEventSender _sender;
 
-    private bool _customEnd = true;
     private bool _started = false;
 
     public PlayAnimation(string stateName, bool blockMovement) {
@@ -54,14 +53,12 @@ public class PlayAnimation : ActionPhase
 
             _started = true;
 
-        } else {
+        }
 
-            // End phase if animator reached End state
-            if(_animator.GetCurrentAnimatorStateInfo(0).IsName(END_STATE_NAME)) {
+        // End phase if animator reached End state
+        if(_animator.GetCurrentAnimatorStateInfo(0).IsName(END_STATE_NAME)) {
 
-                End();
-
-            }
+            End();
 
         }
 
@@ -81,10 +78,7 @@ public class PlayAnimation : ActionPhase
         // Stop listening animation event
         _sender.onEventTriggered -= OnEventTriggered;
 
-        // Give end permision to animation
-        _animator.SetTrigger("End");
-
-        // Attempt to stop movement
+        // Attempt to resume movement
         if(_blockMovement) actor.GetComponent<NavBodySistem>().isParalized = false;
 
         base.End();
