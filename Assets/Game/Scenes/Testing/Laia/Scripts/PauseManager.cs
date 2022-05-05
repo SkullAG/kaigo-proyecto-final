@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class PauseManager : MonoBehaviour
 {
     public static bool GameIsPaused = false;
+    public InputActionReference _ref;
 
     public GameObject pausedId;
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(_ref.action.triggered)
         {
             if(GameIsPaused)
             {

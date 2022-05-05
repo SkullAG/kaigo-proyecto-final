@@ -9,7 +9,7 @@ using System.Linq;
 
 public class Inventory : MonoBehaviour
 {    
-	public Transform _capsule;
+	//public Transform _capsule;
 	bool notEmpty = false;
 	public Targetter _target;
 	private int value;
@@ -20,7 +20,7 @@ public class Inventory : MonoBehaviour
 	public UnityEvent<Dictionary<string, Casilla>, List<string>> SendOnInventoryChange;
 	public void boton()    
 	{        
-		_capsule.gameObject.SetActive(true);
+		//_capsule.gameObject.SetActive(true);
 	}
 
 	[Serializable]
