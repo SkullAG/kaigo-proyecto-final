@@ -12,6 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef775aea10c9b9c45b1b5004bb00ced3, type: 3}
   m_Name: RegenEffect
   m_EditorClassIdentifier: 
+  started: 0
+  visualEffect: {fileID: 0}
   affectedResource: 0
+  affectionType: 1
   timeBetweenTicks: 2
   valuePerTick: 1
+  normalizeElements: 0
+  elementMultiplicator:
+    Physical: 0
+    Magical: 0
+    Fire: 0
+    Thunder: 0
+    Ice: 0
+    Wind: 0
+    Void: 0
+    Poison: 0
+    Bleeding: 0

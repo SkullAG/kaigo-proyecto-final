@@ -4,57 +4,74 @@ using UnityEngine;
 using Core.Actions;
 using Core.Characters;
 using Core.States;
+using Core.Affinities;
+using System.Linq;
 
 public class ApplyState : ActionPhase
 {
-    
-    private State[] _states;
-    private string _deathStateName = "Death";
+	
+	private StateAndProbability[] _states;
+	private string _deathStateName = "Death";
 
-    private bool _healthDepleted = false;
+	private bool _healthDepleted = false;
 
-    public ApplyState(State[] states) {
+	public ApplyState(StateAndProbability[] states)
+	{
 
-        this._states = states;
+		this._states = states;
+	}
 
-    }
-    
-    // Update phase's processing
-    public override void Update() {
+	public ApplyState(StateAndDuration[] states) {
 
-        if(started) {
+		this._states = states.Select(field => new StateAndProbability(field)).ToArray();
+	}
+	
+	// Update phase's processing
+	public override void Update() {
 
-            // End action if there are no states to apply
-            if(_states == null || _states.Length == 0) {
+		if(started) {
 
-                End();
-                return;
+			// End action if there are no states to apply
+			if(_states == null || _states.Length == 0) {
 
-            }
+				End();
+				return;
 
-            if(target != null) {
+			}
 
-                // Applies each state
-                foreach (var state in _states) {
+			if(target != null) {
 
-                    target.states.AddState(state);
+				// Applies each state
+				foreach (var state in _states) {
 
-                }
+					foreach (StateAndProbability s in _states)
+					{
+						Debug.Log(target);
+						if (CustomMath.Probability(s.applyStateRawProbability * target.stats.affinity.affinities.GetValue(s.elementType), 1f))
+						{
+							Debug.Log(s.state.power);
+							target.states.AddState(s.state);
+						}
+					}
 
-                // Maybe this shouldn't be here :S
-                if(target.stats.healthPoints.depleted) {
+					//aaaaa luego lo arreglo bien (tuvo que ser en ese momento)
 
-                    // Add Death state to character
-                    target.states.AddState(_deathStateName);
+				}
 
-                }
+				// Maybe this shouldn't be here :S
+				if(target.stats.healthPoints.depleted) {
 
-                End();
+					// Add Death state to character
+					target.states.AddState(_deathStateName, Mathf.Infinity);
 
-            }
+				}
 
-        }
+				End();
 
-    }
+			}
+
+		}
+
+	}
 
 }

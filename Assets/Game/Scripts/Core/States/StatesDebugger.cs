@@ -7,7 +7,13 @@ public class StatesDebugger : MonoBehaviour
 
     [SerializeField]
     private string _stateID;
-    
+
+    [SerializeField]
+    private float _stateDuration;
+
+    [SerializeField]
+    private float _power;
+
     private StateList _stateList;
 
     private void Awake() {
@@ -19,7 +25,7 @@ public class StatesDebugger : MonoBehaviour
     [Button]
     private void AddState() {
 
-        _stateList.AddState(_stateID);
+        _stateList.AddState(_stateID, _stateDuration, _power);
 
     }
 

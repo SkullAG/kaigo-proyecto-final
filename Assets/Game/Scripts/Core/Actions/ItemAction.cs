@@ -16,7 +16,8 @@ public class ItemAction : GameAction
     public int valueRecovered; // El valor recuperado de vida o puntos de acción
     public float distanceToCast; // La distancia máxima a la que el personaje puede usar el objeto
     public bool blockMovement = true;
-    public State[] states; // Los estados alterados que aplica este objeto (puede ser ninguno)
+    public bool instantCast; // Si el objeto se usa instantáneamente o no (depende del animator)
+    public StateAndDuration[] states; // Los estados alterados que aplica este objeto (puede ser ninguno)
 
     public override GameAction Copy() {
 

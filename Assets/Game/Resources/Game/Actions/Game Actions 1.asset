@@ -15,7 +15,7 @@ MonoBehaviour:
   actions:
   - id: 0
   - id: 1
-  _actionType: BattleAction
+  _actionType: ItemAction
   references:
     version: 1
     00000000:
@@ -40,8 +40,14 @@ MonoBehaviour:
           Bleeding: 0
         cost: 20
         distanceToCast: 3
+        states:
+        - state:
+            state: {fileID: 11400000, guid: 87cb1f909346d8d48a8ca3edd9e29a18, type: 2}
+            duration: 2
+            power: 2
+          elementType: Fire
+          _Probability: 75
         blockMovement: 1
-        states: []
     00000001:
       type: {class: BattleAction, ns: , asm: Assembly-CSharp}
       data:
@@ -63,5 +69,5 @@ MonoBehaviour:
           Bleeding: 0
         cost: 0
         distanceToCast: 0
-        blockMovement: 1
         states: []
+        blockMovement: 1

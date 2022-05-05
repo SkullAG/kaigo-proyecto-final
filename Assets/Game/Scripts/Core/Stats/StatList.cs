@@ -1,6 +1,7 @@
 using UnityEngine;
 using NaughtyAttributes;
 using Core.Characters;
+using Core.Affinities;
 
 namespace Core.Stats {
 
@@ -17,6 +18,9 @@ namespace Core.Stats {
         [BoxGroup("Base")] public Vitality vitality;
         [BoxGroup("Base")] public Determination determination;
         [BoxGroup("Base")] public Agility agility;
+
+        // Affinity stats
+        [BoxGroup("Affinities")] public Affinities.Affinities affinity;
 
         private Character _user;
 

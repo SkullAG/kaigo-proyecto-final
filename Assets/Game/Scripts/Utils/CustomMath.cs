@@ -196,6 +196,21 @@ public static class CustomMath
 		return go.AddComponent<T>().GetCopyOf(toAdd) as T;
 	}
 
+	public static bool Probability(float probability, float maxProbability = 100)
+    {
+			return UnityEngine.Random.Range(0, maxProbability) <= probability;
+    }
+
+	public static bool Probability(int probability, int maxProbability = 100)
+	{
+		return UnityEngine.Random.Range(0, maxProbability) <= probability;
+	}
+
+	public static int ThrowDice(int faces)
+	{
+		return UnityEngine.Random.Range(0, faces);
+	}
+
 	/*public static T OverlapCircleAll<T>(Vector2 point, float radius,int layerMask = Physics.DefaultRaycastLayers, float minDepth = -Mathf.Infinity, float maxDepth = Mathf.Infinity) where T : Collider2D
     {
 		Collider2D[] collides = Physics2D.OverlapCircleAll(point, radius, layerMask, minDepth, maxDepth);

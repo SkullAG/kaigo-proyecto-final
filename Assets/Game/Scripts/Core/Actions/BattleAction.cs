@@ -2,69 +2,76 @@ using UnityEngine;
 using Core.Actions;
 using Core.States;
 using Core.Affinities;
+using NaughtyAttributes;
+using System;
 
 //[CreateAssetMenu(fileName = "Battle Action", menuName = "Game/Actions/Battle Action")]
 [System.Serializable]
 public class BattleAction : GameAction
 {
 
-    public AffinityList damage;
-    public int cost = 0;
-    public float distanceToCast;
-    public bool blockMovement = true;
-    public State[] states;
+	public AffinityList damage;
+	public int cost = 0;
+	public float distanceToCast;
 
-    private float timer = 0;
-    private int counter = 0;
 
-    private bool casting = false;
+	//public bool applyState = true;
+	//[ShowIf("applyState")]
+	public StateAndProbability[] states;
 
-    public override GameAction Copy() {
+	public bool blockMovement = true;
 
-        return (BattleAction)this.MemberwiseClone();
-        
-    }
+	private float timer = 0;
+	private int counter = 0;
 
-    protected override ActionPhase[] GetPhases() {
+	private bool casting = false;
 
-        return new ActionPhase[] {
+	public override GameAction Copy() {
 
-            new MoveToTarget(distanceToCast), // Move to target, stop at X distance
-            new PlayAnimation(id, blockMovement), // Start animation with the action id
-            new ApplyDamage(damage),
-            new ApplyState(states)
+		return (BattleAction)this.MemberwiseClone();
+		
+	}
 
-        };
+	protected override ActionPhase[] GetPhases() {
 
-    }
+		return new ActionPhase[] {
 
-    protected override void OnExecution() {
+			new MoveToTarget(distanceToCast), // Move to target, stop at X distance
+			new PlayAnimation(id, blockMovement), // Start animation with the action id
+			new ApplyDamage(damage),
+			new ApplyState(states)
 
-        StartAction();
+		};
 
-        BattleLog.current.WriteLine(string.Format(BattleLogFormats.SKILL_CHARGE, actor.name, displayName));
+	}
 
-        actor.stats.actionPoints.value -= cost; // Cost is applied at the start
-        
-    }
+	protected override void OnExecution() {
 
-    protected override void OnUpdate() {}
+		StartAction();
 
-    protected override void OnPhaseStart() {}
-    
-    protected override void OnPhaseEnd() {
-    
-        if( OnLastPhase() ) {
+		BattleLog.current.WriteLine(string.Format(BattleLogFormats.SKILL_CHARGE, actor.name, displayName));
 
-            EndAction();
-            BattleLog.current.WriteLine(string.Format(BattleLogFormats.SKILL_USE, actor.name, displayName));
+		actor.stats.actionPoints.value -= cost; // Cost is applied at the start
+		
+	}
 
-            return;
+	protected override void OnUpdate() {}
 
-        }
+	protected override void OnPhaseStart() {}
+	
+	protected override void OnPhaseEnd() {
+	
+		if( OnLastPhase() ) {
 
-        NextPhase();
+			EndAction();
+			BattleLog.current.WriteLine(string.Format(BattleLogFormats.SKILL_USE, actor.name, displayName));
 
-    }
+			return;
+
+		}
+
+		NextPhase();
+
+	}
 
 }
