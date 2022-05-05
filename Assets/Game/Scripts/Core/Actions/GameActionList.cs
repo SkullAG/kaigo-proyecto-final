@@ -26,10 +26,14 @@ namespace Core.Actions
         [SerializeReference]
         public List<GameAction> actions = new List<GameAction>();
 
-        [Dropdown("names"), SerializeField]
+        [Dropdown("_names"), SerializeField]
         private string _actionType;
 
-        private string[] names => _factory.GetNames();
+        // String array of type names
+        private string[] _names => _factory.GetNames();
+
+        // String array of action IDs
+        public string[] IDs => actions.Select(a => a.id).ToArray();
 
         [Button]
         private void Add() {

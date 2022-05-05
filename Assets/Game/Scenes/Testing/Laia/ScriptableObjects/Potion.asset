@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b8c52abd410a8749b97de331df471f6, type: 3}
   m_Name: Potion
   m_EditorClassIdentifier: 
-  id: 00
   displayName: Potion
+  id: 00
   description: Gives life
   stackMax: 16
-  itemAction: {fileID: 11400000, guid: d9acc72c9407e0e44987b025e03032ae, type: 2}
+  actionReference:
+    actions: {fileID: 11400000, guid: 1ce4e4b17fcd18d4a8e1436cb1cb74f8, type: 2}
+    actionID: blaze

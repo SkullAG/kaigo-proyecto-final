@@ -49,7 +49,7 @@ public class NavBodySistem : MonoBehaviour
 	[HideInInspector]
 	public bool isBeingControled = false;
 	public bool isJumping { get; private set; }
-
+	public bool isParalized;
 	public bool isFalling { get; private set; }
 	public NavMeshHit ground { get; private set; }
 
@@ -95,9 +95,7 @@ public class NavBodySistem : MonoBehaviour
 	{
 		CheckForGround();
 
-		
-
-		if (!isFalling && !isJumping)
+		if (!isFalling && !isJumping && !isParalized)
 		{
 			CalculatePath();
 
@@ -108,14 +106,15 @@ public class NavBodySistem : MonoBehaviour
 				if (!blockRotation)
 				{
 					Vector3 dir = new Vector3(path.corners[1].x - transform.position.x, 0, path.corners[1].z - transform.position.z).normalized;
-					float targetAngle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
+					
+					float _angle = RotateTowards(dir);
 
-					transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), Mathf.Min(Mathf.Abs(Mathf.DeltaAngle(transform.rotation.eulerAngles.y, targetAngle)), rotationVelocity * Time.deltaTime));
 					//Debug.Log(transform.rotation.eulerAngles.y + ", " + targetAngle);
-					if (Mathf.Abs(Mathf.DeltaAngle(transform.rotation.eulerAngles.y, targetAngle)) <= fieldOfView / 2)
+					if (Mathf.Abs(_angle) <= fieldOfView / 2)
 					{
 						MoveTowardsPoint(path.corners[1]);
 					}
+
 				}
 				else
 				{
@@ -132,6 +131,16 @@ public class NavBodySistem : MonoBehaviour
 
 			//Debug.Log("aire");
 		}
+	}
+
+	public float RotateTowards(Vector3 dir) {
+
+		float targetAngle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
+
+		transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), Mathf.Min(Mathf.Abs(Mathf.DeltaAngle(transform.rotation.eulerAngles.y, targetAngle)), rotationVelocity * Time.deltaTime));
+
+		return Mathf.DeltaAngle(transform.rotation.eulerAngles.y, targetAngle);
+
 	}
 
     void calculateLinks()
@@ -217,7 +226,8 @@ public class NavBodySistem : MonoBehaviour
 		//Debug.Log(transform.rotation.eulerAngles.y + ", " + targetAngle);
 		while (Mathf.Abs(Mathf.DeltaAngle(transform.rotation.eulerAngles.y, targetAngle)) > 0 && turnBeforeJump)
 		{
-			transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), Mathf.Min(Mathf.Abs(Mathf.DeltaAngle(transform.rotation.eulerAngles.y, targetAngle)), rotationVelocity * Time.deltaTime));
+
+			RotateTowards(dir);
 
 			yield return new WaitForFixedUpdate();
 		}

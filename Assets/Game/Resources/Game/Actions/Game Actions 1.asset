@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions:
   - id: 0
+  - id: 1
   _actionType: BattleAction
   references:
     version: 1
@@ -39,4 +40,28 @@ MonoBehaviour:
           Bleeding: 0
         cost: 20
         distanceToCast: 3
+        blockMovement: 1
+        states: []
+    00000001:
+      type: {class: BattleAction, ns: , asm: Assembly-CSharp}
+      data:
+        displayName: Bane
+        id: bane
+        description: Poisons the target.
+        hasTargetSelection: 0
+        actor: {fileID: 0}
+        target: {fileID: 0}
+        damage:
+          Physical: 0
+          Magical: 0
+          Fire: 0
+          Thunder: 0
+          Ice: 0
+          Wind: 0
+          Void: 0
+          Poison: 0
+          Bleeding: 0
+        cost: 0
+        distanceToCast: 0
+        blockMovement: 1
         states: []

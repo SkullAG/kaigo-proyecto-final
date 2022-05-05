@@ -53,7 +53,7 @@ public class CommandAction : Command
                 } else {
 
                     // If action has no target selection, target is actor
-                    _queue.RequestExecution(_reference.actionID, _selectedCharacter, _selectedCharacter);
+                    _queue.RequestExecution(_reference, _selectedCharacter, _selectedCharacter);
                     
                 }
 
@@ -68,7 +68,7 @@ public class CommandAction : Command
     // When target is selected, request action execution
     private void OnTargetConfirmed(Character selected) {
 
-        _queue.RequestExecution(_reference.actionID, _selectedCharacter, selected);
+        _queue.RequestExecution(_reference, _selectedCharacter, selected);
 
         // When target is selected, unsubscribe from targetter event
         Targetter.current.targetConfirmed -= OnTargetConfirmed;

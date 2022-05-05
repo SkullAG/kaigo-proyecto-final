@@ -10,6 +10,7 @@ public class PlayAnimation : ActionPhase
     private const string INSTANT_CAST_PARAM_NAME = "InstantCast";
 
     private string _stateName;
+    private bool _blockMovement;
 
     private Animator _animator;
     private AnimationEventSender _sender;
@@ -17,9 +18,10 @@ public class PlayAnimation : ActionPhase
     private bool _customEnd = true;
     private bool _started = false;
 
-    public PlayAnimation(string stateName) {
+    public PlayAnimation(string stateName, bool blockMovement) {
 
         _stateName = stateName;
+        _blockMovement = blockMovement;
 
     }
 
@@ -46,6 +48,9 @@ public class PlayAnimation : ActionPhase
             // Play state with action name
             _animator.Play(_stateName, 0);
 
+            // Attempt to stop movement
+            if(_blockMovement) actor.GetComponent<NavBodySistem>().isParalized = true;
+
             _started = true;
 
         }
@@ -67,6 +72,9 @@ public class PlayAnimation : ActionPhase
 
         // Give end permision to animation
         _animator.SetTrigger("End");
+
+        // Attempt to stop movement
+        if(_blockMovement) actor.GetComponent<NavBodySistem>().isParalized = false;
 
         base.End();
 
