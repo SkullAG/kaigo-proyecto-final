@@ -21,8 +21,9 @@ public class Objects : ScriptableObject
 
     public void Use(Character target)
     {
-
+        Debug.Log("a");
         _selectedCharacter = PartyManager.current.GetSelectedCharacter();
+        
 
         // Get selected character action queue and request execution of
         // the action assigned to this item.

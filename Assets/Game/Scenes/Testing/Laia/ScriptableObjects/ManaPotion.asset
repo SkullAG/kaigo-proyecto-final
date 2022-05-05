@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: ManaPotion
   m_EditorClassIdentifier: 
   displayName: Mana potion
+  id: 3
   description: mana
   stackMax: 10
-  id: 3
-  _gameObject: {fileID: 0}
+  actionReference:
+    actions: {fileID: 11400000, guid: 1ce4e4b17fcd18d4a8e1436cb1cb74f8, type: 2}
+    actionID: blaze

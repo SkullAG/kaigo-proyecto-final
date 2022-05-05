@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Game/Scenes/Testing/Laia/Menus.unity
+    guid: dc6fb8edbde158d4f9be9cbfed7873cd
+  - enabled: 1
+    path: Assets/Game/Scenes/Testing/EscenaBuild.unity
+    guid: 8b87d3e7c14e54c4e833b803a0e4f7dd
   m_configObjects: {}
