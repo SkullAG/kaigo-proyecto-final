@@ -8,8 +8,11 @@ using UnityEngine.InputSystem.UI;
 public class CameraManager : MonoBehaviour
 {
 	public Transform objective;
+
 	public float acceleration;
+
 	public Vector3 transformedRotOffset { get { return transform.localToWorldMatrix.MultiplyVector(rotationOffset); } private set { } }
+	
 	public Vector3 rotationOffset = Vector3.zero;
 	public Vector3 offset = Vector3.zero;
 
@@ -65,7 +68,11 @@ public class CameraManager : MonoBehaviour
 				transform.rotation = Quaternion.Euler(finalAngle);
 
 				transform.position = transform.position - actualOffset + transformedRotOffset;
+
 			}
+
         }
+
 	}
+
 }
