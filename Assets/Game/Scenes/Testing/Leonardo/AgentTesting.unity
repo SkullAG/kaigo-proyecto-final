@@ -1698,7 +1698,7 @@ MonoBehaviour:
   PartyMembers:
   - {fileID: 1200736505}
   partyInfoDrawer: {fileID: 1285747486}
-  _camera: {fileID: 0}
+  _camera: {fileID: 1363599891}
 --- !u!4 &1148466513
 Transform:
   m_ObjectHideFlags: 0
@@ -3544,6 +3544,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1665253905674719400, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
+      propertyPath: _testItem
+      value: 
+      objectReference: {fileID: 11400000, guid: d687697eadfc9204da991737670ebe10, type: 2}
     - target: {fileID: 1950298714541947406, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3734,7 +3738,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6339043796366161934, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6339043796366161935, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
       propertyPath: m_RenderMode

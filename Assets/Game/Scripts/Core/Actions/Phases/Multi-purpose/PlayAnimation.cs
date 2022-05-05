@@ -5,8 +5,8 @@ using Core.Characters;
 public class PlayAnimation : ActionPhase
 {
 
-    private const string END_EVENT_NAME = "End";
-    private const string END_STATE_NAME = "End";
+    private const string END_EVENT_NAME = "EndPhase";
+    private const string END_STATE_NAME = "Movement";
     private const string ACTION_ID_PARAM_NAME = "ActionID";
     private const string INSTANT_CAST_PARAM_NAME = "InstantCast";
 
@@ -29,6 +29,13 @@ public class PlayAnimation : ActionPhase
 
         base.Start(actor, target);
 
+        if(_stateName == "") {
+
+            End();
+            return;
+
+        }
+
         _animator = actor.gameObject.GetComponentInChildren<Animator>();
         _sender = _animator.GetComponent<AnimationEventSender>();
 
@@ -45,20 +52,24 @@ public class PlayAnimation : ActionPhase
 
         if(_animator != null && !_started) {
 
-            // Play state with action name
-            _animator.Play(_stateName, 0);
+            if(!_started) {
 
-            // Attempt to stop movement
-            if(_blockMovement) actor.GetComponent<NavBodySistem>().isParalized = true;
+                // Play state with action name
+                _animator.Play(_stateName, 0);
 
-            _started = true;
+                // Attempt to stop movement
+                if(_blockMovement) actor.GetComponent<NavBodySistem>().isParalized = true;
 
-        }
+                _started = true;
 
-        // End phase if animator reached End state
-        if(_animator.GetCurrentAnimatorStateInfo(0).IsName(END_STATE_NAME)) {
+            }
 
-            End();
+            // End phase if animator is not playing any action animation
+            if(_animator.GetCurrentAnimatorStateInfo(0).IsName(END_STATE_NAME)) {
+
+                End();
+
+            }
 
         }
 
@@ -76,7 +87,7 @@ public class PlayAnimation : ActionPhase
     public override void End() {
 
         // Stop listening animation event
-        _sender.onEventTriggered -= OnEventTriggered;
+        if(_sender) _sender.onEventTriggered -= OnEventTriggered;
 
         // Attempt to resume movement
         if(_blockMovement) actor.GetComponent<NavBodySistem>().isParalized = false;

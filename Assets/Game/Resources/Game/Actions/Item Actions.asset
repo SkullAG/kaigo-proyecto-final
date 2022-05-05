@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions:
   - id: 0
-  - id: 1
   _actionType: ItemAction
   references:
     version: 1
@@ -22,7 +21,7 @@ MonoBehaviour:
       type: {class: ItemAction, ns: , asm: Assembly-CSharp}
       data:
         displayName: 
-        id: 
+        id: yakitori
         description: 
         hasTargetSelection: 0
         actor: {fileID: 0}
@@ -30,21 +29,6 @@ MonoBehaviour:
         animationState: object
         healthRecovered: 15
         actionPointsRecovered: 0
-        distanceToCast: 1
-        blockMovement: 1
-        states: []
-    00000001:
-      type: {class: ItemAction, ns: , asm: Assembly-CSharp}
-      data:
-        displayName: 
-        id: 
-        description: 
-        hasTargetSelection: 0
-        actor: {fileID: 0}
-        target: {fileID: 0}
-        animationState: object
-        healthRecovered: 0
-        actionPointsRecovered: 20
         distanceToCast: 1
         blockMovement: 1
         states: []

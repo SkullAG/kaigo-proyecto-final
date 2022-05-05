@@ -15,10 +15,65 @@ MonoBehaviour:
   actions:
   - id: 0
   - id: 1
-  _actionType: ItemAction
+  - id: 2
+  - id: 3
+  - id: 4
+  - id: 5
+  _actionType: BattleAction
   references:
     version: 1
     00000000:
+      type: {class: BattleAction, ns: , asm: Assembly-CSharp}
+      data:
+        displayName: Punch
+        id: punch
+        description: Weak hit to a single enemy.
+        hasTargetSelection: 1
+        actor: {fileID: 0}
+        target: {fileID: 0}
+        animationState: 
+        damage:
+          Physical: 1
+          Magical: 0
+          Fire: 0
+          Thunder: 0
+          Ice: 0
+          Wind: 0
+          Void: 0
+          Poison: 0
+          Bleeding: 0
+        costOverHP: 0
+        costOverAP: 0
+        distanceToCast: 0.5
+        blockMovement: 1
+        states: []
+    00000001:
+      type: {class: BattleAction, ns: , asm: Assembly-CSharp}
+      data:
+        displayName: Cold Spikes
+        id: cold_spikes
+        description: Throws a talisman to the enemy that conjures cold spikes that
+          pierce and slash.
+        hasTargetSelection: 1
+        actor: {fileID: 0}
+        target: {fileID: 0}
+        animationState: 
+        damage:
+          Physical: 0
+          Magical: 5
+          Fire: 0
+          Thunder: 0
+          Ice: 7.5
+          Wind: 0
+          Void: 0
+          Poison: 0
+          Bleeding: 10
+        costOverHP: 0
+        costOverAP: 10
+        distanceToCast: 5
+        blockMovement: 1
+        states: []
+    00000002:
       type: {class: BattleAction, ns: , asm: Assembly-CSharp}
       data:
         displayName: Blaze
@@ -28,6 +83,7 @@ MonoBehaviour:
         hasTargetSelection: 1
         actor: {fileID: 0}
         target: {fileID: 0}
+        animationState: 
         damage:
           Physical: 0
           Magical: 5
@@ -38,18 +94,63 @@ MonoBehaviour:
           Void: 0
           Poison: 0
           Bleeding: 0
-        costOverHP: 5
-        costOverAP: 10
-        distanceToCast: 3
-        states:
-        - state:
-            state: {fileID: 11400000, guid: 87cb1f909346d8d48a8ca3edd9e29a18, type: 2}
-            duration: 2
-            power: 2
-          elementType: Fire
-          _Probability: 75
+        costOverHP: 0
+        costOverAP: 5
+        distanceToCast: 5
         blockMovement: 1
-    00000001:
+        states: []
+    00000003:
+      type: {class: BattleAction, ns: , asm: Assembly-CSharp}
+      data:
+        displayName: Collapse
+        id: collapse
+        description: Throws a talisman that conjures a big rock over the enemy's
+          head.
+        hasTargetSelection: 1
+        actor: {fileID: 0}
+        target: {fileID: 0}
+        animationState: 
+        damage:
+          Physical: 15
+          Magical: 0
+          Fire: 0
+          Thunder: 0
+          Ice: 0
+          Wind: 0
+          Void: 5
+          Poison: 0
+          Bleeding: 5
+        costOverHP: 0
+        costOverAP: 10
+        distanceToCast: 0
+        blockMovement: 1
+        states: []
+    00000004:
+      type: {class: BattleAction, ns: , asm: Assembly-CSharp}
+      data:
+        displayName: Thunder
+        id: thunder
+        description: Throws a talisman that conjures a lightning bolt.
+        hasTargetSelection: 0
+        actor: {fileID: 0}
+        target: {fileID: 0}
+        animationState: 
+        damage:
+          Physical: 0
+          Magical: 0
+          Fire: 0
+          Thunder: 20
+          Ice: 0
+          Wind: 5
+          Void: 0
+          Poison: 0
+          Bleeding: 0
+        costOverHP: 0
+        costOverAP: 15
+        distanceToCast: 0
+        blockMovement: 1
+        states: []
+    00000005:
       type: {class: BattleAction, ns: , asm: Assembly-CSharp}
       data:
         displayName: Bane
@@ -58,6 +159,7 @@ MonoBehaviour:
         hasTargetSelection: 0
         actor: {fileID: 0}
         target: {fileID: 0}
+        animationState: 
         damage:
           Physical: 0
           Magical: 0
@@ -71,5 +173,5 @@ MonoBehaviour:
         costOverHP: 0
         costOverAP: 0
         distanceToCast: 0
-        states: []
         blockMovement: 1
+        states: []

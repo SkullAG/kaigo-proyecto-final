@@ -28,6 +28,14 @@ namespace Core.Actions
 
                 GameAction _action = actions.FindAction(actionID);
 
+                if(_action == null) {
+
+                    Debug.LogError("Couldn't find action with ID " + actionID + " in " + actions.name);
+
+                    return null;
+
+                }
+
                 _action.actor = actor;
                 _action.target = target;
 
@@ -49,9 +57,6 @@ namespace Core.Actions
 
     public class ActionList : MonoBehaviour
     {
-
-        [SerializeField]
-        private GameActionList _gameActions;
 
         [SerializeField]
         private ActionReference[] _actionReferences;

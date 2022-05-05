@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b8c52abd410a8749b97de331df471f6, type: 3}
   m_Name: Yakitori
   m_EditorClassIdentifier: 
-  displayName: Life Potion
+  displayName: Yakitori
   id: 01
   description: Heal a small amount of HP.
   stackMax: 16
   actionReference:
-    actions: {fileID: 11400000, guid: 1ce4e4b17fcd18d4a8e1436cb1cb74f8, type: 2}
-    actionID: blaze
+    actions: {fileID: 11400000, guid: 0c75124dd5012f44484caa2b7baca8db, type: 2}
+    actionID: 
