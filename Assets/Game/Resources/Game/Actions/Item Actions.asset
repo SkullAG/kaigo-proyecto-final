@@ -20,9 +20,9 @@ MonoBehaviour:
     00000000:
       type: {class: ItemAction, ns: , asm: Assembly-CSharp}
       data:
-        displayName: 
+        displayName: Yakitori
         id: yakitori
-        description: 
+        description: qqefqe
         hasTargetSelection: 0
         actor: {fileID: 0}
         target: {fileID: 0}

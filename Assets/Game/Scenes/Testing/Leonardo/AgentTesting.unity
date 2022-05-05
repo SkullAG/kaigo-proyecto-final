@@ -1776,8 +1776,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 1ce4e4b17fcd18d4a8e1436cb1cb74f8, type: 2}
     - target: {fileID: 5043851537257179174, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
+      propertyPath: _actionReferences.Array.data[1].actions
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c75124dd5012f44484caa2b7baca8db, type: 2}
+    - target: {fileID: 5043851537257179174, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
       propertyPath: _actionReferences.Array.data[0].actionID
-      value: blaze
+      value: punch
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043851537257179174, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
+      propertyPath: _actionReferences.Array.data[1].actionID
+      value: yakitori
       objectReference: {fileID: 0}
     - target: {fileID: 5043851537257179177, guid: e242953319cba324192f0fafe0b49cf4, type: 3}
       propertyPath: _enabled
@@ -2094,6 +2102,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1162334739616342349, guid: 8e1f21cf82505a24f9991bbb2a8c0c20, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bd96971e78a47e941b531507de59272f, type: 2}
+    - target: {fileID: 1162334739616342349, guid: 8e1f21cf82505a24f9991bbb2a8c0c20, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: b62c2b6801856bf4b94df7f0320eabc3, type: 2}
+    - target: {fileID: 2905478158672978365, guid: 8e1f21cf82505a24f9991bbb2a8c0c20, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 90d582de6f58ca04aaa74cd26005858d, type: 2}
     - target: {fileID: 8657649740238381027, guid: 8e1f21cf82505a24f9991bbb2a8c0c20, type: 3}
       propertyPath: _actions.Array.size
       value: 0
