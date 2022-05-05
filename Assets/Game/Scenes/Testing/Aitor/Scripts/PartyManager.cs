@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Core.Characters;
+using Core.Stats;
 
 public class PartyManager : Singleton<PartyManager>
 {
@@ -39,6 +40,17 @@ public class PartyManager : Singleton<PartyManager>
 
 		puppeteer.character = PartyMembers[_selectedCharacter];
 		_camera.objective = PartyMembers[_selectedCharacter].transform;
+
+		foreach(NavBodySistem nbs in PartyMembers)
+        {
+			StatList sl = nbs.GetComponent<StatList>();
+
+			sl.healthPoints.onMaxUpdated += reciveUpdate;
+			sl.healthPoints.onValueUpdated += reciveUpdate;
+
+			sl.actionPoints.onMaxUpdated += reciveUpdate;
+			sl.actionPoints.onValueUpdated += reciveUpdate;
+		}
 	}
 
     //private void OnEnable()
@@ -67,6 +79,11 @@ public class PartyManager : Singleton<PartyManager>
 	public List<NavBodySistem> getPartyMembers()
 	{
 		return PartyMembers;
+	}
+
+	void reciveUpdate(int ignore1, int ignore2)
+    {
+		UpdatePartyInfo();
 	}
 
 	void UpdatePartyInfo()

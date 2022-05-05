@@ -8,6 +8,7 @@ namespace Core.Stats {
     {
 
         public System.Action<int, int> onValueUpdated = delegate {};
+        public System.Action<int, int> onMaxUpdated = delegate { };
         public System.Action<int, int> onValueMax = delegate {};
         public System.Action<int, int> onValueMin = delegate {};
 
@@ -60,6 +61,8 @@ namespace Core.Stats {
         }
 
         public void SetMax(int maximum) {
+            
+            onMaxUpdated.Invoke(_maxValue, maximum);
             _maxValue = maximum;
         }
 
