@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 8657649740238381026}
   - component: {fileID: 8657649740238381029}
   - component: {fileID: 8657649740238381028}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Mikari Baba
   m_TagString: Enemy
   m_Icon: {fileID: 0}
