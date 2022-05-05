@@ -21,7 +21,7 @@ public class Objects : ScriptableObject
 
     public void Use(Character target)
     {
-        Debug.Log("a");
+        //Debug.Log("a");
         _selectedCharacter = PartyManager.current.GetSelectedCharacter();
         
 
@@ -29,7 +29,7 @@ public class Objects : ScriptableObject
         // the action assigned to this item.
         var _queue = _selectedCharacter.GetComponent<ActionQueue>();
 
-        _queue.RequestExecution(actionReference, _selectedCharacter, target);
+        _queue.RequestExecution(actionReference, _selectedCharacter, target, true);
 
         Debug.Log("Using item " + displayName + " on " + target.gameObject.name);
 

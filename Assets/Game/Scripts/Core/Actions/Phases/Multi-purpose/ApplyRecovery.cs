@@ -4,13 +4,16 @@ using Core.Actions;
 public class ApplyRecovery : ActionPhase
 {
 
-    private int _recoveredValue;
+    //private int _recoveredValue;
+    private int heal;
+    private int mana;
 
     // Cualquier parámetro configurable debe pasarse por el constructor
-    public ApplyRecovery(int recoveredValue)
+    public ApplyRecovery(int heal, int mana)
     {
 
-        _recoveredValue = recoveredValue;
+        this.heal = heal;
+        this.mana = mana;
 
     }
 
@@ -22,9 +25,8 @@ public class ApplyRecovery : ActionPhase
             // Aquí se produce la recuperación
             // La fase debe poder configurarse para recuperar vida, mana, o las dos cosas
 
-            Debug.Log( target.name + " recovered " + _recoveredValue + " health points.");
-
-            BattleLog.current.WriteLine(string.Format(BattleLogFormats.HEALTH_RECOVERED, target.name, _recoveredValue));
+            target.stats.healthPoints.value += heal;
+            target.stats.actionPoints.value += mana;
 
             End(); // <---- Esto termina la fase, importante
 

@@ -7,7 +7,6 @@ public class EnterShop : MonoBehaviour
     public GameObject shop;
     private void OnTriggerEnter(Collider other)
     {
-        
         shop.SetActive(true);
     }
 

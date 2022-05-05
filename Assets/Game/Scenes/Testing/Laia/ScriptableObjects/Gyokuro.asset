@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b8c52abd410a8749b97de331df471f6, type: 3}
-  m_Name: Potion
+  m_Name: Gyokuro
   m_EditorClassIdentifier: 
-  displayName: Life Potion
-  id: 00
-  description: Gives life
-  stackMax: 16
+  displayName: Mana potion
+  id: 02
+  description: Gives 20 mana
+  stackMax: 10
   actionReference:
     actions: {fileID: 11400000, guid: 1ce4e4b17fcd18d4a8e1436cb1cb74f8, type: 2}
     actionID: blaze

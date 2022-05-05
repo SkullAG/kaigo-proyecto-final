@@ -14,7 +14,8 @@ public class ItemAction : GameAction
     // fases
 
     public string animationState;
-    public int valueRecovered; // El valor recuperado de vida o puntos de acción
+    public int healthRecovered; // El valor recuperado de vida
+    public int actionPointsRecovered; // El valor recuperado de puntos de acción
     public float distanceToCast; // La distancia máxima a la que el personaje puede usar el objeto
     public bool blockMovement = true;
     public StateAndDuration[] states; // Los estados alterados que aplica este objeto (puede ser ninguno)
@@ -35,7 +36,7 @@ public class ItemAction : GameAction
 
             new PlayAnimation(animationState, blockMovement), // Reproduce una animación con el mismo ID que la acción creada
 
-            new ApplyRecovery(valueRecovered), // <---- Aquí se produce la recuperación de vida o puntos de acción
+            new ApplyRecovery(healthRecovered,actionPointsRecovered), // <---- Aquí se produce la recuperación de vida o puntos de acción
 
             new ApplyState(states) // Aplica un estado alterado sobre el objetivo
 
