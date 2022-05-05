@@ -79,4 +79,12 @@ public class ItemAction : GameAction
 
     }
 
+    // Devuelve true si la acción es utilizable por el personaje
+    public override bool IsUsableBy(Character character)
+    {
+        
+        return true;
+
+    }
+
 }

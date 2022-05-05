@@ -12,6 +12,10 @@ public abstract class Command
 
     public abstract void Execute();
 
+    public virtual bool IsExecutable() {
+        return true;
+    }
+
     public Command(int id) {
 
         this.id = id;

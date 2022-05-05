@@ -14,30 +14,28 @@ public class CommandAction : Command
     private ActionQueue _queue;
 
     private ActionReference _reference;
-    private bool _alreadyExecuted;
 
     public CommandAction(int id, int actionIndex) : base(id) {
 
         this.actionIndex = actionIndex;
 
+        // Get current selected character
+        PartyManager _manager = PartyManager.current;
+
+        _selectedCharacter = _manager.GetSelectedCharacter();
+        _queue = _selectedCharacter.GetComponent<ActionQueue>();
+
+        // Get action reference by index
+        _reference = _selectedCharacter.actions.GetReference(actionIndex);
+
     }
 
     public override void Execute() {     
 
-        if(!_alreadyExecuted) { // Prevent accidental execution
-
-            _alreadyExecuted = true;
-
-            // Get current selected character
-            PartyManager _manager = PartyManager.current;
-
-            _selectedCharacter = _manager.GetSelectedCharacter();
-            _queue = _selectedCharacter.GetComponent<ActionQueue>();
-
-            if(_selectedCharacter != null) {
-
-                // Get action reference by index
-                _reference = _selectedCharacter.actions.GetReference(actionIndex);
+        if(_selectedCharacter != null) {
+            
+            // Check if action can actually be used by selected character
+            if(_reference.sharedAction.IsUsableBy(_selectedCharacter)) {
 
                 // Don't instance an action if it's being passed to the queue!
 
@@ -74,8 +72,6 @@ public class CommandAction : Command
         Targetter.current.targetConfirmed -= OnTargetConfirmed;
         Targetter.current.targetCancelled -= OnTargetCancelled;
 
-        _alreadyExecuted = false;
-
     }
 
     private void OnTargetCancelled(Character lastTarget) {
@@ -85,7 +81,24 @@ public class CommandAction : Command
         Targetter.current.targetConfirmed -= OnTargetConfirmed;
         Targetter.current.targetCancelled -= OnTargetCancelled;
 
-        _alreadyExecuted = false;
+    }
+
+    public override bool IsExecutable() {
+
+        if(_reference != null) {
+
+            var _action = (BattleAction)_reference.sharedAction;
+
+            int _hp = _selectedCharacter.stats.healthPoints.value - _action.costOverHP;
+            int _ap = _selectedCharacter.stats.actionPoints.value - _action.costOverAP;
+
+            return _hp >= 0 && _ap >= 0;
+
+        } else {
+
+            return false;
+
+        }
 
     }
     

@@ -7,6 +7,8 @@ public class UICommandHelp : MonoBehaviour
     
     [SerializeField] private Transform _container;
     [SerializeField] private TextMeshProUGUI _textMesh;
+    
+    [Tooltip("Format parameters are: command name and command description.")]
     [SerializeField, TextArea] private string _format;
 
     private void Update() {

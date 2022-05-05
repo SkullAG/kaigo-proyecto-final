@@ -38,7 +38,8 @@ MonoBehaviour:
           Void: 0
           Poison: 0
           Bleeding: 0
-        cost: 20
+        costOverHP: 5
+        costOverAP: 10
         distanceToCast: 3
         blockMovement: 1
         states: []
@@ -61,7 +62,8 @@ MonoBehaviour:
           Void: 0
           Poison: 0
           Bleeding: 0
-        cost: 0
+        costOverHP: 0
+        costOverAP: 0
         distanceToCast: 0
         blockMovement: 1
         states: []

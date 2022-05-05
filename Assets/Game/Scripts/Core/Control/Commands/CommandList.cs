@@ -13,19 +13,35 @@ public class CommandList : MonoBehaviour
     public System.Action<GameObject> commandConfirmed = delegate {};
     
     [SerializeField] private Transform _buttonPrefab;
-    [SerializeField] private bool _updateAutomatically = true;
+    [SerializeField] private bool _update = true;
 
     [SerializeReference] private Command[] _commands;
-    [SerializeField] private Button[] _buttons;
+    [SerializeField] private CommandButton[] _buttons;
 
     private Command _command;
     private int _lastElementCount = 0;
+
+    public bool instancedButtons;
 
     private void OnEnable() {
 
         if(_commands != null) {
 
             InstantiateButtons();
+
+        }
+
+    }
+
+    private void Update() {
+
+        if(_update && instancedButtons) {
+
+            for(int i = 0; i < _commands.Length; i++) {
+
+                _buttons[i].SetInteractable(_commands[i].IsExecutable());
+
+            }
 
         }
 
@@ -39,7 +55,7 @@ public class CommandList : MonoBehaviour
 
     }
 
-    public Button[] GetButtons() {
+    public CommandButton[] GetButtons() {
 
         return _buttons;
 
@@ -79,7 +95,7 @@ public class CommandList : MonoBehaviour
 
         DestroyChildren();
 
-        _buttons = new Button[_commands.Length];
+        _buttons = new CommandButton[_commands.Length];
 
         // Instantiate each command prefab as children
         for(int i = 0; i < _commands.Length; i++) {
@@ -103,6 +119,7 @@ public class CommandList : MonoBehaviour
         }
 
         commandInstanced(_commands.Length);
+        instancedButtons = true;
 
     }
 
@@ -132,11 +149,5 @@ public class CommandList : MonoBehaviour
         }
 
     }
-
-    /*private void OnButtonPress(Command command) {
-
-        _command.Execute();
-
-    }*/
 
 }

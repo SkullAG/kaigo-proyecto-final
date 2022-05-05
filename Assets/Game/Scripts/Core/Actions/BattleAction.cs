@@ -2,6 +2,7 @@ using UnityEngine;
 using Core.Actions;
 using Core.States;
 using Core.Affinities;
+using Core.Characters;
 
 //[CreateAssetMenu(fileName = "Battle Action", menuName = "Game/Actions/Battle Action")]
 [System.Serializable]
@@ -9,10 +10,16 @@ public class BattleAction : GameAction
 {
 
     public AffinityList damage;
-    public int cost = 0;
+
+    public int costOverHP = 0;
+    public int costOverAP = 0;
+
     public float distanceToCast;
     public bool blockMovement = true;
     public State[] states;
+
+    [HideInInspector] public bool hasHPCost => costOverHP > 0;
+    [HideInInspector] public bool hasAPCost => costOverAP > 0;
 
     private float timer = 0;
     private int counter = 0;
@@ -44,8 +51,15 @@ public class BattleAction : GameAction
 
         BattleLog.current.WriteLine(string.Format(BattleLogFormats.SKILL_CHARGE, actor.name, displayName));
 
-        actor.stats.actionPoints.value -= cost; // Cost is applied at the start
+        ApplyCost();
         
+    }
+
+    private void ApplyCost() {
+
+        actor.stats.healthPoints.value -= costOverHP;
+        actor.stats.actionPoints.value -= costOverAP;
+
     }
 
     protected override void OnUpdate() {}
@@ -64,6 +78,15 @@ public class BattleAction : GameAction
         }
 
         NextPhase();
+
+    }
+
+    public override bool IsUsableBy(Character character) {
+        
+        int _hp = character.stats.healthPoints.value - costOverHP;
+        int _ap = character.stats.actionPoints.value - costOverAP;
+
+        return _hp >= 0 && _ap >= 0;
 
     }
 

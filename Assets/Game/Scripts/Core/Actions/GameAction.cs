@@ -47,6 +47,7 @@ namespace Core.Actions
         protected abstract void OnPhaseStart();
         protected abstract void OnPhaseEnd();
         protected abstract void OnUpdate();
+        public abstract bool IsUsableBy(Character character);
 
         public void Update() {
 
@@ -135,6 +136,7 @@ namespace Core.Actions
             return phaseIndex == phases.Length - 1;
             
         }
+
 
     }
     
