@@ -82,7 +82,7 @@ namespace Core.Affinities
 					float val = (float)p.GetValue(this);
 					p.SetValue(outVal, val * factor);
 					
-					if(val != 0)
+					//if(val != 0)
 					//Debug.Log(p.Name + " = " + val * factor);
                 }
 			}
