@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29fbd16454ecfa249abcc3c634e76b4d, type: 3}
-  m_Name: Poison
+  m_Name: Burnt
   m_EditorClassIdentifier: 
   _effects:
-  - {fileID: 11400000, guid: 4673167de672f1846b0f18e2370e84e0, type: 2}
+  - {fileID: 11400000, guid: dc6e2eaf836b6a4409a74307a5a977fb, type: 2}
   allowMultipleInstances: 1
   blendMode: 8
-  _id: simple_poison
+  _id: simple_fire

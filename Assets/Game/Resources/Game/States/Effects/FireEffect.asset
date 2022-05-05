@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef775aea10c9b9c45b1b5004bb00ced3, type: 3}
-  m_Name: PoisonEffect
+  m_Name: FireEffect
   m_EditorClassIdentifier: 
   started: 0
-  visualEffect: {fileID: 8647243477221645673, guid: 86808ef582d7c0545a5a56bd28e3baa5, type: 3}
+  visualEffect: {fileID: 8647243477221645673, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
   affectedResource: 0
   affectionType: 1
   timeBetweenTicks: 2
@@ -22,10 +22,10 @@ MonoBehaviour:
   elementMultiplicator:
     Physical: 0
     Magical: 0
-    Fire: 0
+    Fire: 1
     Thunder: 0
     Ice: 0
     Wind: 0
     Void: 0
-    Poison: 1
+    Poison: 0
     Bleeding: 0

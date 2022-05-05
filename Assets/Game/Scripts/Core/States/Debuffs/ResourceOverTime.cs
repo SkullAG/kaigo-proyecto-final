@@ -3,13 +3,11 @@ using Core.States;
 using Core.Characters;
 using Core.Affinities;
 using NaughtyAttributes;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "Resource Over Time Effect", menuName = "Game/States/Effects/Resource Over Time")]
 public class ResourceOverTime : Effect
 {
-	public GameObject visualEffect;
-	private ParticleSystem particles;
-
 	public enum ResourceType { HP, AP }
 	public enum AffectionType { plainValue, elemental}
 
@@ -27,38 +25,19 @@ public class ResourceOverTime : Effect
 	[Tooltip("The product o the multiplication between Power and Value gets transformed to its elemental values")]
 	public AffinityList elementMultiplicator;
 
-	private bool visualsStarted = false;
+	
 
 	private float _timer;
 
 	private void OnEnable() {
 
 		_timer = 0;
-		visualsStarted = false;
 
 	}
 
-	public override void Apply(Character actor, float power) {
-		
-		//Debug.Log(visualsStarted);
-		if (!visualsStarted && visualEffect)
-		{
-			Debug.Log("poison");
+	public override void Apply(Character actor, ref Dictionary<Effect, GameObject> instancedVisuals, float power) {
 
-			particles = Instantiate(visualEffect, actor.transform).GetComponent<ParticleSystem>();
-
-			Collider col = actor.GetComponent<Collider>();
-
-			particles.transform.localRotation = Quaternion.identity;
-			particles.transform.localPosition = col.bounds.center - particles.transform.position;
-
-			var sh = particles.shape;
-			sh.scale = col.bounds.size;
-
-			//visualEffect.transform.localScale = actor.GetComponent<Collider>().bounds.size;
-
-			visualsStarted = true;
-		}
+		base.Apply(actor, ref instancedVisuals, power);
 
 		_timer += Time.deltaTime; 
 

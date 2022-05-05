@@ -1,5 +1,6 @@
 using UnityEngine;
 using Core.Characters;
+using System.Collections.Generic;
 
 namespace Core.States {
 
@@ -7,7 +8,41 @@ namespace Core.States {
 	{
 		public bool started = false;
 
-		public abstract void Apply(Character actor, float power = 1);
+		public GameObject visualEffect;
+		private ParticleSystem particles;
+
+		public virtual void Apply(Character actor, ref Dictionary<Effect, GameObject> instancedVisuals, float power = 1)
+        {
+			ManageVisuals(actor, ref instancedVisuals);
+		}
+
+		public void ManageVisuals(Character actor, ref Dictionary<Effect, GameObject> instantiedVisuals)
+        {
+			//Debug.Log(visualsStarted);
+			if (!instantiedVisuals.ContainsKey(this) && visualEffect)
+			{
+				Debug.Log("poison");
+
+				particles = Instantiate(visualEffect, actor.transform).GetComponent<ParticleSystem>();
+
+				Collider col = actor.GetComponent<Collider>();
+
+				particles.transform.localRotation = Quaternion.identity;
+				particles.transform.localPosition = col.bounds.center - particles.transform.position;
+
+				var sh = particles.shape;
+				sh.scale = col.bounds.size;
+
+				//visualEffect.transform.localScale = actor.GetComponent<Collider>().bounds.size;
+
+				instantiedVisuals.Add( this, particles.gameObject);
+			}
+			else if (instantiedVisuals.ContainsKey(this) && !instantiedVisuals[this].activeInHierarchy)
+			{
+				instantiedVisuals[this].SetActive(true);
+
+			}
+		}
 	}
 
 }

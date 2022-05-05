@@ -98,7 +98,13 @@ MonoBehaviour:
         costOverAP: 5
         distanceToCast: 5
         blockMovement: 1
-        states: []
+        states:
+        - state:
+            state: {fileID: 11400000, guid: abb051467d68db44da367a2465175dc7, type: 2}
+            duration: 6
+            power: 1
+          elementType: Fire
+          _Probability: 75
     00000003:
       type: {class: BattleAction, ns: , asm: Assembly-CSharp}
       data:

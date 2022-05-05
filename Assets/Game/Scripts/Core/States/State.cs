@@ -77,6 +77,9 @@ namespace Core.States {
 		[SerializeField]
 		private List<Effect> _effects = new List<Effect>();
 
+		[NonSerialized]
+		public Dictionary<Effect, GameObject> instancedVisuals = new Dictionary<Effect, GameObject>();
+
 		public bool allowMultipleInstances = false;
 
 		[HideIf("allowMultipleInstances")]
@@ -197,7 +200,13 @@ namespace Core.States {
 						}
 					}
 					
-					_effects[i].Apply(actor, resultPow);
+					_effects[i].Apply(actor, ref instancedVisuals, resultPow);
+
+					if (instancedVisuals.ContainsKey(_effects[i]))
+					{
+						instancedVisuals[_effects[i]].SetActive(instances.Count > 0);
+
+					}
 				}
 
 				return !(instances.Count > 0);
@@ -208,7 +217,14 @@ namespace Core.States {
 				for (int i = 0; i < _effects.Count; i++)
 				{
 
-					_effects[i].Apply(actor, mainInstance.power);
+					_effects[i].Apply(actor, ref instancedVisuals, mainInstance.power);
+
+					if (instancedVisuals.ContainsKey(_effects[i]))
+					{
+						instancedVisuals[_effects[i]].SetActive(mainInstance.duration > 0);
+
+					}
+					
 
 				}
 				return mainInstance.duration <= 0;

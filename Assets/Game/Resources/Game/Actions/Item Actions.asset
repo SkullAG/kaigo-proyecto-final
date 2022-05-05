@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions:
   - id: 0
+  - id: 1
+  - id: 2
   _actionType: ItemAction
   references:
     version: 1
@@ -22,12 +24,42 @@ MonoBehaviour:
       data:
         displayName: Yakitori
         id: yakitori
-        description: qqefqe
-        hasTargetSelection: 0
+        description: 
+        hasTargetSelection: 1
         actor: {fileID: 0}
         target: {fileID: 0}
-        animationState: object
+        animationState: 
         healthRecovered: 15
+        actionPointsRecovered: 0
+        distanceToCast: 1
+        blockMovement: 1
+        states: []
+    00000001:
+      type: {class: ItemAction, ns: , asm: Assembly-CSharp}
+      data:
+        displayName: Gyokuro
+        id: gyokuro
+        description: 
+        hasTargetSelection: 1
+        actor: {fileID: 0}
+        target: {fileID: 0}
+        animationState: 
+        healthRecovered: 0
+        actionPointsRecovered: 20
+        distanceToCast: 1
+        blockMovement: 1
+        states: []
+    00000002:
+      type: {class: ItemAction, ns: , asm: Assembly-CSharp}
+      data:
+        displayName: FireOfuda
+        id: fireofuda
+        description: 
+        hasTargetSelection: 1
+        actor: {fileID: 0}
+        target: {fileID: 0}
+        animationState: 
+        healthRecovered: -20
         actionPointsRecovered: 0
         distanceToCast: 1
         blockMovement: 1

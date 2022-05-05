@@ -17,6 +17,6 @@ MonoBehaviour:
   range: 5
   mask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 776
   triggerQuery: 2
   tag: Enemy
