@@ -26,14 +26,14 @@ public class UIGambitHandle : MonoBehaviour, ISelectHandler, IMoveHandler, IDese
     public void OnSelect(BaseEventData eventData) {
 
         isSelected = true;
-        //_parent.localPosition = (Vector2)_originalPosition + Vector2.right * _offset;
+        _parent.localPosition = (Vector2)_originalPosition + Vector2.right * _offset;
 
     }
 
     public void OnDeselect(BaseEventData eventData) {
 
         isSelected = false;
-        //_parent.localPosition = _originalPosition;
+        _parent.localPosition = _originalPosition;
 
     }
 
