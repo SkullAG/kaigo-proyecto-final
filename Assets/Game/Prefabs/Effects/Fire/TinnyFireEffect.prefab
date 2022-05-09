@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8616649269700251406
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 183291004104955053, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: refferenceRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 183291004104955053, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: refferenceIntensity
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 359790667843209495, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 359790667843209495, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 359790667843209495, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 359790667843209495, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 359790667843209495, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803481008397988890, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: m_Range
+      value: 0.46984547
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803481008397988890, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: m_DrawHalo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803481008397988890, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: m_Intensity
+      value: 2.06617
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146525833609571093, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146525833609571093, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146525833609571093, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146525833609571093, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146525833609571093, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0025
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146525833609571093, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146525833609571093, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146525833609571093, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146525833609571093, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146525833609571093, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146525833609571093, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146525833609571093, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146525833609571093, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146525833609571093, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8647243477221645673, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
+      propertyPath: m_Name
+      value: TinnyFireEffect
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 69dd9be58e16e6049910c84b69bc2056, type: 3}
