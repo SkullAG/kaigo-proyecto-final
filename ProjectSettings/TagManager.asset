@@ -11,13 +11,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Party
+  - PartyMember
   - Water
   - UI
   - Obstacles
-  - Shop
-  - Ally
-  - Enemy
+  - NonPlayable
+  - InteractionTrigger
+  - 
   - 
   - 
   - 

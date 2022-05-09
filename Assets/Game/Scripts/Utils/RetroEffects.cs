@@ -27,6 +27,9 @@ public class RetroEffects : MonoBehaviour
         _profile.TryGet(out _precisionVolume);
         _profile.TryGet(out _cameraVolume);
 
+        // BUILD PRESENTACION
+        SetEnabled(false);
+
     }
 
     private void OnValidate() {
@@ -41,7 +44,13 @@ public class RetroEffects : MonoBehaviour
 
         effectsActivated = !effectsActivated;
 
-        if(effectsActivated) {
+        SetEnabled(effectsActivated);
+
+    }
+
+    public void SetEnabled(bool enabled) {
+
+        if(enabled) {
 
             _precisionVolume.geometryEnabled.value = true;
             _precisionVolume.geometry.value = 0.8f;
