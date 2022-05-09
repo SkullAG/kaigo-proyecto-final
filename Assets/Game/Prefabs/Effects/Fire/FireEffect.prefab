@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 359790667843209495}
   - component: {fileID: 1458800159521981781}
   - component: {fileID: 1803481008397988890}
-  - component: {fileID: 183291004104955053}
   m_Layer: 0
   m_Name: FireEffect
   m_TagString: Untagged
@@ -4820,8 +4819,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.4096553, b: 0, a: 1}
-  m_Intensity: 3
-  m_Range: 30
+  m_Intensity: 2
+  m_Range: 20
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -4870,20 +4869,3 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &183291004104955053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8647243477221645673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90e3210fa692db34098e249960877cb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  refferenceIntensity: 3
-  refferenceRange: 40
-  flickInterval: 0.1
-  flickIntensity: 0.5
-  flickRange: 0

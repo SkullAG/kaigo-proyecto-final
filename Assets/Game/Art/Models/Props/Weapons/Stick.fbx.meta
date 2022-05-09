@@ -3,12 +3,7 @@ guid: b5ce0d4cb5de28f46a651ffec1af3522
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Deffault
-    second: {fileID: 2100000, guid: 18438a9c73a311c429d22addc0fc285b, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
