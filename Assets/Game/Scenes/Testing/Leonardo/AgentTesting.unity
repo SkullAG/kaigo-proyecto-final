@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43997738, g: 0.48845655, b: 0.56865585, a: 1}
+  m_IndirectSpecularColor: {r: 0.43997788, g: 0.48845708, b: 0.5686563, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3727,22 +3727,6 @@ PrefabInstance:
     - target: {fileID: 6339043796366161932, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6339043796366161934, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6339043796366161934, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6339043796366161934, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 6339043796366161934, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 6339043796366161939, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
       propertyPath: m_Name
