@@ -516,6 +516,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bushi
       objectReference: {fileID: 0}
+    - target: {fileID: 7656454334376871847, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1632254920750415346}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
 --- !u!4 &7799737209241797285 stripped

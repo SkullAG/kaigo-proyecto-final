@@ -53,6 +53,12 @@ public class NavBodySistem : MonoBehaviour
 	public bool isFalling { get; private set; }
 	public NavMeshHit ground { get; private set; }
 
+	[ReadOnly]
+	public float movementFactor = 0;
+
+	[ReadOnly]
+	public float rotationFactor = 0;
+
 	float dowVel = 0;
 
 	[Flags]
@@ -93,6 +99,9 @@ public class NavBodySistem : MonoBehaviour
 
 	private void Update()
 	{
+		movementFactor = 0;
+		rotationFactor = 0;
+
 		CheckForGround();
 
 		if (!isFalling && !isJumping && !isParalized)
@@ -137,7 +146,11 @@ public class NavBodySistem : MonoBehaviour
 
 		float targetAngle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
 
-		transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), Mathf.Min(Mathf.Abs(Mathf.DeltaAngle(transform.rotation.eulerAngles.y, targetAngle)), rotationVelocity * Time.deltaTime));
+		float deltaAngle = Mathf.DeltaAngle(transform.rotation.eulerAngles.y, targetAngle);
+
+		transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), Mathf.Min(Mathf.Abs(deltaAngle), rotationVelocity * Time.deltaTime));
+
+		rotationFactor = Mathf.Clamp(deltaAngle / (rotationVelocity * Time.deltaTime), -1, 1);
 
 		return Mathf.DeltaAngle(transform.rotation.eulerAngles.y, targetAngle);
 
@@ -170,7 +183,9 @@ public class NavBodySistem : MonoBehaviour
 
 		mov = CustomMath.CloseTo0(mov, dir);
 
-		if(correctWithNavMesh)
+		movementFactor = mov.magnitude / (velocity * Time.deltaTime);
+
+		if (correctWithNavMesh)
         {
 			//Debug.Log("a");
 			Debug.DrawRay(transform.position + pivot + mov, Vector3.up, Color.blue);

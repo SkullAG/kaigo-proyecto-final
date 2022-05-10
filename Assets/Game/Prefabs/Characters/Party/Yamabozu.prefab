@@ -778,7 +778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819960, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.043
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819960, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -786,7 +786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819960, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.392
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819960, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -856,6 +856,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Yamabozu
       objectReference: {fileID: 0}
+    - target: {fileID: 7656454334376871847, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 3969417422293560265}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
 --- !u!4 &5061109991797713800 stripped
