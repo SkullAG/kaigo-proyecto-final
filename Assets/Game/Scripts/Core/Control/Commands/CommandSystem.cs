@@ -15,7 +15,7 @@ public class CommandSystem : Singleton<CommandSystem>
 
             CommandButton _button = _selected.GetComponent<CommandButton>();
 
-            return _button.command;
+            return _button ? _button.command : null;
 
         }
 

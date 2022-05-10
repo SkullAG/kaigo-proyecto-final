@@ -2,15 +2,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Core.Characters;
 using Core.Actions;
+using NaughtyAttributes;
 
 namespace Core.Gambits
 {
     
     public class GambitList : MonoBehaviour
     {
-        
-        [SerializeField]
-        private List<Gambit> _gambits = new List<Gambit>();
+
+        [Expandable]
+        public GambitSet set;
 
         [SerializeField]
         private bool _enabled = true;
@@ -21,8 +22,6 @@ namespace Core.Gambits
         private Character _actor;
         private ActionQueue _actionQueue;
         private ActionList _actionList;
-
-        public List<Gambit> list => _gambits;
 
         private void Awake() {
 
@@ -50,16 +49,16 @@ namespace Core.Gambits
 
         private void EvaluateGambits() {
 
-            for(int i = 0; i < _gambits.Count; i++) {
+            for(int i = 0; i < set.list.Count; i++) {
                 
-                Character _target = _gambits[i].target?.GetTarget(_actor);
+                Character _target = set.list[i].target?.GetTarget(_actor);
 
-                bool _condition = _target != null ? _gambits[i].condition.Evaluate(_actor, _target) : false;
+                bool _condition = _target != null ? set.list[i].condition.Evaluate(_actor, _target) : false;
 
                 // If action list has the gambit's action
                 if(_condition) {
 
-                    _actionQueue.RequestExecution(_gambits[i].actionReference, _actor, _target, _freeUse);
+                    _actionQueue.RequestExecution(set.list[i].actionReference, _actor, _target, _freeUse);
 
                     break;
 
@@ -69,53 +68,23 @@ namespace Core.Gambits
 
         }  
 
-        public void ShiftGambit(int shift, Gambit gambit) {
-
-            if( _gambits.Contains(gambit) ) {
-
-                int _currentIndex = _gambits.IndexOf(gambit);
-                int _nextIndex = Mathf.Clamp(_currentIndex + shift, 0, _gambits.Count - 1);
-
-                //Debug.Log("Swapping gambit " + _currentIndex + " with " + _nextIndex);
-
-                var _temp = _gambits[_nextIndex];
-
-                _gambits[_nextIndex] = _gambits[_currentIndex];
-                _gambits[_currentIndex] = _temp;
-
-            }
-
-        }
-
-        public void AddGambit(Gambit gambit) {
-
-            _gambits.Add(gambit);
-
-        }
-
-        public void RemoveGambit(Gambit gambit) {
-
-            _gambits.Remove(gambit);
-
-        }
-
         #if UNITY_EDITOR
 
         private void OnDrawGizmos() {
 
-            if(_gambits != null) {
+            /*if(set.list != null) {
 
-                if( _gambits.Count > 0 ) {
+                if( set.list.Count > 0 ) {
 
-                    for (int i = 0; i < _gambits.Count; i++) {
+                    for (int i = 0; i < set.list.Count; i++) {
                         
-                        _gambits[i].target.DrawGizmos(_actor);
+                        set.list[i].target.DrawGizmos(_actor);
 
                     }
 
                 }
 
-            }
+            }*/
 
         }
 

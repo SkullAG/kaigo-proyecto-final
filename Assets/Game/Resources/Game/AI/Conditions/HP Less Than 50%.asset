@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb25b00bc33b54a48b4bda25d3b9564c, type: 3}
   m_Name: HP Less Than 50%
   m_EditorClassIdentifier: 
-  id: HP Less Than 50%
+  displayName: HP < 50%
+  id: hp_lessthan_50p
   description: 
   _resourceToEvaluate: 0
   _operator: 0

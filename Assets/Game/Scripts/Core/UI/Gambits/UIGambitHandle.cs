@@ -45,13 +45,13 @@ public class UIGambitHandle : MonoBehaviour, ISelectHandler, IMoveHandler, IDese
         switch(eventData.moveDir) {
 
             case MoveDirection.Up:
-                _updater.gambitList.ShiftGambit(-1, _gambit);
-                Debug.Log("Move up!");
+                _updater.gambitList.set.ShiftGambit(-1, _gambit);
+                //Debug.Log("Move up!");
                 break;
 
             case MoveDirection.Down:
-                _updater.gambitList.ShiftGambit(1, _gambit);
-                Debug.Log("Move down!");
+                _updater.gambitList.set.ShiftGambit(1, _gambit);
+                //Debug.Log("Move down!");
                 break;
 
         }

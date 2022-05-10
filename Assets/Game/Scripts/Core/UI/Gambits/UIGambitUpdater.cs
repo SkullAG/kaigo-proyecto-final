@@ -9,6 +9,7 @@ public class UIGambitUpdater : MonoBehaviour
     [SerializeField] private GameObject[] _gambitObjects;
     [SerializeField] private GameObject _selectedGambitObject;
     [SerializeField] private string _emptyText = "Empty";
+    [SerializeField] private int _maxDisplayableGambits = 6;
 
     private GambitList _gambitList;
     private int _lastGambitCount = 0;
@@ -27,11 +28,11 @@ public class UIGambitUpdater : MonoBehaviour
 
         if(_gambitList != null) {
 
-            if(_lastGambitCount != _gambitList.list.Count) {
+            if(_lastGambitCount != _gambitList.set.list.Count) {
                 UpdateElements();
             }
 
-            _lastGambitCount = _gambitList.list.Count;
+            _lastGambitCount = _gambitList.set.list.Count;
 
         }
 
@@ -43,7 +44,7 @@ public class UIGambitUpdater : MonoBehaviour
 
             Debug.Log("Update gambits!");
 
-            for ( int i = 0; i < Mathf.Max(_gambitList.list.Count, _gambitObjects.Length); i ++) {
+            for ( int i = 0; i < Mathf.Max(_gambitList.set.list.Count, _maxDisplayableGambits); i ++) {
 
                 var _gambitUI = _gambitObjects[i].GetComponent<UIGambit>();
 
@@ -53,22 +54,26 @@ public class UIGambitUpdater : MonoBehaviour
 
                 if(i < _gambitObjects.Length) {
 
-                    if( i < _gambitList.list.Count ) {
-
+                    if( i < _gambitList.set.list.Count ) {
+                        
                         _gambitUI.SetInteractable(true);
+                        _gambitUI.gameObject.SetActive(true);
 
-                        var _gambit = _gambitList.list[i];
+                        var _gambit = _gambitList.set.list[i];
 
-                        _targetText.text = _gambit.target != null ? _gambit.target.id : _emptyText;
-                        _conditionText.text = _gambit.condition != null ? _gambit.condition.id : _emptyText;
-                        _actionText.text = _gambit.actionReference != null ? _gambit.actionReference.sharedAction.displayName : _emptyText;
+                        _targetText.text = _gambit.target != null ? _gambit.target.displayName : _emptyText;
+                        _conditionText.text = _gambit.condition != null ? _gambit.condition.displayName : _emptyText;
+                        _actionText.text = _gambit.actionReference.sharedAction != null ? _gambit.actionReference.sharedAction.displayName : _emptyText;
 
                         _gambitUI.gambit = _gambit;
 
                     } else {
+                        
+                        _gambitUI.gameObject.SetActive(false);
 
-                        _gambitUI.SetInteractable(false);
-                        _gambitUI.gambit = null;
+                        // Set gambit as non interactable
+                        //_gambitUI.SetInteractable(false);
+                        //_gambitUI.gambit = null;
                         
                     }
 

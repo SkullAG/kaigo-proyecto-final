@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-[RequireComponent(typeof(VerticalLayoutGroup))]
 public class CommandList : MonoBehaviour
 {
 

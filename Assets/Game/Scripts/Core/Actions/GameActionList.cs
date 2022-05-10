@@ -7,7 +7,7 @@ using System.Linq;
 namespace Core.Actions
 {
 
-    [CreateAssetMenu(fileName = "Game Actions", menuName = "Game/Settings/Game Actions")]
+    [CreateAssetMenu(fileName = "Game Actions", menuName = "Game/Actions/Game Actions")]
     public class GameActionList : ScriptableObject
     {
         
