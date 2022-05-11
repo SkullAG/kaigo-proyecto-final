@@ -54,7 +54,7 @@ public class ScrollRectInputsHandler : MonoBehaviour
 
 					if (minButX < minViewX)
 					{
-						scroll.horizontalScrollbar.value -= (minButX - minViewX) / contentRect.rect.height;
+						scroll.horizontalScrollbar.value += (minButX - minViewX) / contentRect.rect.height;
 					}
 
 					float maxButX = but.transform.position.x + rectBut.xMax;
@@ -62,7 +62,7 @@ public class ScrollRectInputsHandler : MonoBehaviour
 
 					if (maxButX > maxViewX)
 					{
-						scroll.horizontalScrollbar.value -= (maxButX - maxViewX) / contentRect.rect.width;
+						scroll.horizontalScrollbar.value += (maxButX - maxViewX) / contentRect.rect.width;
 					}
 				}
 			}
