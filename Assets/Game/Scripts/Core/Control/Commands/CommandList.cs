@@ -15,7 +15,9 @@ public class CommandList : MonoBehaviour
     [SerializeField] private bool _update = true;
 
     [SerializeReference] private Command[] _commands;
-    [SerializeField] private CommandButton[] _buttons;
+    [SerializeField] private List<CommandButton> _buttons = new List<CommandButton>();
+
+    public List<CommandButton> buttons => _buttons;
 
     private Command _command;
     private int _lastElementCount = 0;
@@ -54,7 +56,7 @@ public class CommandList : MonoBehaviour
 
     }
 
-    public CommandButton[] GetButtons() {
+    public List<CommandButton> GetButtons() {
 
         return _buttons;
 
@@ -65,7 +67,7 @@ public class CommandList : MonoBehaviour
 
         if(_buttons != null) {
 
-            if(_buttons.Length > 0) {
+            if(_buttons.Count > 0) {
                 EventSystem.current.SetSelectedGameObject(_buttons[index].gameObject);
             }
 
@@ -92,9 +94,9 @@ public class CommandList : MonoBehaviour
 
     private void InstantiateButtons() {
 
-        DestroyChildren();
+        DestroyChildren(); // >:)
 
-        _buttons = new CommandButton[_commands.Length];
+        _buttons.Clear();
 
         // Instantiate each command prefab as children
         for(int i = 0; i < _commands.Length; i++) {
@@ -113,7 +115,7 @@ public class CommandList : MonoBehaviour
             //_button.pressed += OnButtonPress;
             
             // Add button to array
-            _buttons[i] = _button;
+            _buttons.Add(_button);
 
         }
 

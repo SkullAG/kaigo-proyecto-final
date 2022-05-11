@@ -1,21 +1,40 @@
 using UnityEngine;
 using Core.AI;
 using NaughtyAttributes;
+using UnityEngine.UI;
+using System.Linq;
 
 public class UIGambitElementList : MonoBehaviour
 {
     
     [SerializeField, Expandable] private GameGambitList gameGambitList;
     [Space(15)]
-    [SerializeField] private CommandList _targetFilterList;
-    [SerializeField] private CommandList _conditionList;
-    [SerializeField] private CommandList _actionList;
+
+    [SerializeField] private RectTransform _targetFilters;
+    [SerializeField] private RectTransform _conditions;
+    [SerializeField] private RectTransform _actions;
+
+    private CommandList _targetFilterList;
+    private CommandList _conditionList;
+    private CommandList _actionList;
+
+    private ScrollRectInputsHandler _targetFiltersHandler;
+    private ScrollRectInputsHandler _conditionsHandler;
+    private ScrollRectInputsHandler _actionsHandler;
 
     private bool _commandsInstanced = false;
 
     public enum ListType { none = -1, targets, conditions, actions }
 
     private void Start() {
+
+        _targetFilterList = _targetFilters.GetComponentInChildren<CommandList>();
+        _conditionList = _conditions.GetComponentInChildren<CommandList>();
+        _actionList = _actions.GetComponentInChildren<CommandList>();
+
+        _targetFiltersHandler = _targetFilters.GetComponent<ScrollRectInputsHandler>();
+        _conditionsHandler = _conditions.GetComponent<ScrollRectInputsHandler>();
+        _actionsHandler = _actions.GetComponent<ScrollRectInputsHandler>();
 
         CreateCommands();
 
@@ -30,13 +49,20 @@ public class UIGambitElementList : MonoBehaviour
         Command[] _targetCommands = new Command[_gambits.targetFilters.Length];
 
         for(int i = 0; i < _targetCommands.Length; i++) {
+
             _targetCommands[i] = new Command(i) {
                 displayName = _gambits.targetFilters[i].displayName,
                 displayDescription = _gambits.targetFilters[i].description
             };
+
         }
 
         _targetFilterList.SetCommands(_targetCommands);
+
+        Debug.Log(_targetFilterList.GetButtons()[0]);
+        Debug.Break();
+
+        //_targetFiltersHandler.SetButtons(_targetFilterList.GetButtons().Cast());
 
         // Create condition commands
         Command[] _conditionCommands = new Command[_gambits.behaviourConditions.Length];
@@ -52,6 +78,8 @@ public class UIGambitElementList : MonoBehaviour
 
         _conditionList.SetCommands(_conditionCommands);
 
+        //_conditionsHandler.SetButtons(_conditionList.GetButtons());
+
         // Create action commands
         Command[] _actionCommands = new Command[_selectedCharacter.actions.references.Length];
 
@@ -66,6 +94,8 @@ public class UIGambitElementList : MonoBehaviour
 
         _actionList.SetCommands(_actionCommands);
 
+        //_actionsHandler.SetButtons(_actionList.GetButtons());
+
         _commandsInstanced = true;
 
     }
@@ -74,22 +104,22 @@ public class UIGambitElementList : MonoBehaviour
 
         if(!_commandsInstanced) CreateCommands();
 
-        _targetFilterList.gameObject.SetActive(false);
-        _conditionList.gameObject.SetActive(false);
-        _actionList.gameObject.SetActive(false);
+        _targetFilters.gameObject.SetActive(false);
+        _conditions.gameObject.SetActive(false);
+        _actions.gameObject.SetActive(false);
 
         switch(type) {
 
             case (int)ListType.targets:
-                _targetFilterList.gameObject.SetActive(true);
+                _targetFilters.gameObject.SetActive(true);
                 return;
 
             case (int)ListType.conditions:
-                _conditionList.gameObject.SetActive(true);
+                _conditions.gameObject.SetActive(true);
                 return;
                 
             case (int)ListType.actions:
-                _actionList.gameObject.SetActive(true);
+                _actions.gameObject.SetActive(true);
                 return;
 
             default: return;
@@ -100,9 +130,9 @@ public class UIGambitElementList : MonoBehaviour
 
     public void Deactivate() {
 
-        _targetFilterList.gameObject.SetActive(false);
-        _conditionList.gameObject.SetActive(false);
-        _actionList.gameObject.SetActive(false);
+        _targetFilters.gameObject.SetActive(false);
+        _conditions.gameObject.SetActive(false);
+        _actions.gameObject.SetActive(false);
 
         _commandsInstanced = false;
 

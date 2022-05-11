@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Linq;
 
 [RequireComponent(typeof(ScrollRect))]
 public class ScrollRectInputsHandler : MonoBehaviour
@@ -12,19 +13,23 @@ public class ScrollRectInputsHandler : MonoBehaviour
 	public RectTransform viewportRect => scroll.viewport;
 	public RectTransform contentRect => scroll.content;
 
-	public List<Button> buttonList = new List<Button>(); //Leo cambia la forma en la que se consigue esto 
+	[SerializeField]
+	List<Button> buttonList; //Leo cambia la forma en la que se consigue esto 
 
 	GameObject CurrSelGO => EventSystem.current.currentSelectedGameObject;
 
-	void Start()
-	{
+	void Start() {
+
 		scroll = GetComponent<ScrollRect>();
+
 	}
 
     void Update()
 	{
+
 		foreach (Button but in buttonList)
 		{
+
 			if (but.gameObject == CurrSelGO)
 			{
 				Rect rectBut = ((RectTransform)but.transform).rect;
@@ -68,4 +73,11 @@ public class ScrollRectInputsHandler : MonoBehaviour
 			}
 		}
 	}
+
+	public void SetButtons(List<Button> buttons) {
+
+		buttonList = buttons;
+
+	}
+
 }
