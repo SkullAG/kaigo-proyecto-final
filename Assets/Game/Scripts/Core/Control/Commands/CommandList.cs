@@ -20,7 +20,7 @@ public class CommandList : MonoBehaviour
     public List<CommandButton> buttons => _buttons;
 
     private Command _command;
-    private int _lastElementCount = 0;
+    private int _lastElementCount = -1;
 
     public bool instancedButtons;
 
@@ -59,6 +59,12 @@ public class CommandList : MonoBehaviour
     public List<CommandButton> GetButtons() {
 
         return _buttons;
+
+    }
+
+    public List<Button> GetNormalButtons() {
+
+        return _buttons.Cast<Button>().ToList();
 
     }
     

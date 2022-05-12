@@ -36,7 +36,20 @@ public class UIGambitElementList : MonoBehaviour
         _conditionsHandler = _conditions.GetComponent<ScrollRectInputsHandler>();
         _actionsHandler = _actions.GetComponent<ScrollRectInputsHandler>();
 
+        // Subscribe :D
+        _targetFilterList.commandInstanced += SetButtons;
+        _conditionList.commandInstanced += SetButtons;
+        _actionList.commandInstanced += SetButtons;
+
         CreateCommands();
+
+    }
+
+    private void OnDisable() {
+
+        _targetFilterList.commandInstanced -= SetButtons;
+        _conditionList.commandInstanced -= SetButtons;
+        _actionList.commandInstanced -= SetButtons;
 
     }
 
@@ -59,11 +72,6 @@ public class UIGambitElementList : MonoBehaviour
 
         _targetFilterList.SetCommands(_targetCommands);
 
-        Debug.Log(_targetFilterList.GetButtons()[0]);
-        Debug.Break();
-
-        //_targetFiltersHandler.SetButtons(_targetFilterList.GetButtons().Cast());
-
         // Create condition commands
         Command[] _conditionCommands = new Command[_gambits.behaviourConditions.Length];
 
@@ -78,8 +86,6 @@ public class UIGambitElementList : MonoBehaviour
 
         _conditionList.SetCommands(_conditionCommands);
 
-        //_conditionsHandler.SetButtons(_conditionList.GetButtons());
-
         // Create action commands
         Command[] _actionCommands = new Command[_selectedCharacter.actions.references.Length];
 
@@ -93,8 +99,6 @@ public class UIGambitElementList : MonoBehaviour
         }
 
         _actionList.SetCommands(_actionCommands);
-
-        //_actionsHandler.SetButtons(_actionList.GetButtons());
 
         _commandsInstanced = true;
 
@@ -135,6 +139,14 @@ public class UIGambitElementList : MonoBehaviour
         _actions.gameObject.SetActive(false);
 
         _commandsInstanced = false;
+
+    }
+
+    private void SetButtons(int count) {
+
+        _targetFiltersHandler.SetButtons(_targetFilterList.GetNormalButtons());
+        _conditionsHandler.SetButtons(_conditionList.GetNormalButtons());
+        _actionsHandler.SetButtons(_actionList.GetNormalButtons());
 
     }
 
