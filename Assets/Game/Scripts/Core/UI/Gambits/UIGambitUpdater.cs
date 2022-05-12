@@ -15,6 +15,7 @@ public class UIGambitUpdater : MonoBehaviour
     private int _lastGambitCount = 0;
 
     public GambitList gambitList => _gambitList;
+    public GameObject[] gambitButton => _gambitObjects;
 
     private void Start() {
 
@@ -88,6 +89,18 @@ public class UIGambitUpdater : MonoBehaviour
     public void SetCharacter(Character character) {
 
         _gambitList = character.gambits;
+
+    }
+
+    public void SetInteractable(bool interactable) {
+
+        foreach (GameObject obj in _gambitObjects) {
+            
+            var _gambitUI = obj.GetComponent<UIGambit>();
+
+            _gambitUI.SetInteractable(interactable);
+
+        }
 
     }
 

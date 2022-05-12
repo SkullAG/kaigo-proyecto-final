@@ -8,8 +8,10 @@ public class UIGambitElementList : MonoBehaviour
 {
     
     [SerializeField, Expandable] private GameGambitList gameGambitList;
+
     [Space(15)]
 
+    [SerializeField] private UIGambitUpdater _gambitUpdater;
     [SerializeField] private RectTransform _targetFilters;
     [SerializeField] private RectTransform _conditions;
     [SerializeField] private RectTransform _actions;
@@ -37,9 +39,12 @@ public class UIGambitElementList : MonoBehaviour
         _actionsHandler = _actions.GetComponent<ScrollRectInputsHandler>();
 
         // Subscribe :D
-        _targetFilterList.commandInstanced += SetButtons;
-        _conditionList.commandInstanced += SetButtons;
-        _actionList.commandInstanced += SetButtons;
+        _targetFilterList.commandInstanced += OnButtonsInstanced;
+        _conditionList.commandInstanced += OnButtonsInstanced;
+        _actionList.commandInstanced += OnButtonsInstanced;
+        _targetFilterList.commandConfirmed += OnButtonConfirmation;
+        _conditionList.commandConfirmed += OnButtonConfirmation;
+        _actionList.commandConfirmed += OnButtonConfirmation;
 
         CreateCommands();
 
@@ -47,9 +52,12 @@ public class UIGambitElementList : MonoBehaviour
 
     private void OnDisable() {
 
-        _targetFilterList.commandInstanced -= SetButtons;
-        _conditionList.commandInstanced -= SetButtons;
-        _actionList.commandInstanced -= SetButtons;
+        _targetFilterList.commandInstanced -= OnButtonsInstanced;
+        _conditionList.commandInstanced -= OnButtonsInstanced;
+        _actionList.commandInstanced -= OnButtonsInstanced;
+        _targetFilterList.commandConfirmed -= OnButtonConfirmation;
+        _conditionList.commandConfirmed -= OnButtonConfirmation;
+        _actionList.commandConfirmed -= OnButtonConfirmation;
 
     }
 
@@ -108,6 +116,8 @@ public class UIGambitElementList : MonoBehaviour
 
         if(!_commandsInstanced) CreateCommands();
 
+        _gambitUpdater.SetInteractable(false);
+
         _targetFilters.gameObject.SetActive(false);
         _conditions.gameObject.SetActive(false);
         _actions.gameObject.SetActive(false);
@@ -134,6 +144,8 @@ public class UIGambitElementList : MonoBehaviour
 
     public void Deactivate() {
 
+        _gambitUpdater.SetInteractable(true);
+
         _targetFilters.gameObject.SetActive(false);
         _conditions.gameObject.SetActive(false);
         _actions.gameObject.SetActive(false);
@@ -142,11 +154,19 @@ public class UIGambitElementList : MonoBehaviour
 
     }
 
-    private void SetButtons(int count) {
+    private void OnButtonsInstanced(int count) {
 
         _targetFiltersHandler.SetButtons(_targetFilterList.GetNormalButtons());
         _conditionsHandler.SetButtons(_conditionList.GetNormalButtons());
         _actionsHandler.SetButtons(_actionList.GetNormalButtons());
+
+    }
+
+    private void OnButtonConfirmation(GameObject button) {
+
+        var _commandButton = button.GetComponent<CommandButton>();
+
+        Deactivate();
 
     }
 
