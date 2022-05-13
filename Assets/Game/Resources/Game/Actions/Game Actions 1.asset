@@ -32,6 +32,7 @@ MonoBehaviour:
         actor: {fileID: 0}
         target: {fileID: 0}
         animationState: 
+        visualEffect: {fileID: 0}
         damage:
           Physical: 1
           Magical: 0
@@ -57,7 +58,8 @@ MonoBehaviour:
         hasTargetSelection: 1
         actor: {fileID: 0}
         target: {fileID: 0}
-        animationState: 
+        animationState: ofuda_throw
+        visualEffect: {fileID: 0}
         damage:
           Physical: 0
           Magical: 5
@@ -70,7 +72,7 @@ MonoBehaviour:
           Bleeding: 10
         costOverHP: 0
         costOverAP: 10
-        distanceToCast: 5
+        distanceToCast: 1.5
         blockMovement: 1
         states: []
     00000002:
@@ -83,7 +85,8 @@ MonoBehaviour:
         hasTargetSelection: 1
         actor: {fileID: 0}
         target: {fileID: 0}
-        animationState: 
+        animationState: ofuda_throw
+        visualEffect: {fileID: 745399650858561089, guid: a29f77b41ac18d944aba00dd8cd5fe5c, type: 3}
         damage:
           Physical: 0
           Magical: 5
@@ -96,7 +99,7 @@ MonoBehaviour:
           Bleeding: 0
         costOverHP: 0
         costOverAP: 5
-        distanceToCast: 5
+        distanceToCast: 1.5
         blockMovement: 1
         states:
         - state:
@@ -116,6 +119,7 @@ MonoBehaviour:
         actor: {fileID: 0}
         target: {fileID: 0}
         animationState: 
+        visualEffect: {fileID: 0}
         damage:
           Physical: 15
           Magical: 0
@@ -141,6 +145,7 @@ MonoBehaviour:
         actor: {fileID: 0}
         target: {fileID: 0}
         animationState: 
+        visualEffect: {fileID: 0}
         damage:
           Physical: 0
           Magical: 0
@@ -166,6 +171,7 @@ MonoBehaviour:
         actor: {fileID: 0}
         target: {fileID: 0}
         animationState: 
+        visualEffect: {fileID: 0}
         damage:
           Physical: 0
           Magical: 0

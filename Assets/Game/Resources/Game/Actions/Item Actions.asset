@@ -28,12 +28,15 @@ MonoBehaviour:
         hasTargetSelection: 1
         actor: {fileID: 0}
         target: {fileID: 0}
-        animationState: 
+        animationState: eating
         healthRecovered: 15
         actionPointsRecovered: 0
         distanceToCast: 1
         blockMovement: 1
-        states: []
+        states:
+        - state: {fileID: 11400000, guid: 87cb1f909346d8d48a8ca3edd9e29a18, type: 2}
+          duration: 50
+          power: 0
     00000001:
       type: {class: ItemAction, ns: , asm: Assembly-CSharp}
       data:
@@ -43,7 +46,7 @@ MonoBehaviour:
         hasTargetSelection: 1
         actor: {fileID: 0}
         target: {fileID: 0}
-        animationState: 
+        animationState: eating
         healthRecovered: 0
         actionPointsRecovered: 20
         distanceToCast: 1

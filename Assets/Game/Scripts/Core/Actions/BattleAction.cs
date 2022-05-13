@@ -12,6 +12,7 @@ public class BattleAction : GameAction
 {
 
     public string animationState;
+	public AutonomousVisualsHandler visualEffect;
 
     public AffinityList damage;
 
@@ -45,9 +46,9 @@ public class BattleAction : GameAction
 
 			new MoveToTarget(distanceToCast), // Move to target, stop at X distance
 			new PlayAnimation(animationState, blockMovement), // Start animation with the action id
+			new PlayVisuals(visualEffect),
 			new ApplyDamage(damage),
 			new ApplyState(states)
-
 		};
 
 	}
