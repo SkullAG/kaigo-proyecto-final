@@ -12,7 +12,7 @@ namespace Core.Affinities
 	[Serializable]
 	public class AffinityList
 	{
-		public const float None = 0;
+		public const float none = 0;
 		public float Physical = 0;
 		public float Magical = 0;
 		public float Fire = 0;
@@ -56,6 +56,7 @@ namespace Core.Affinities
 
 		public float GetValue(string valueName)
 		{
+			Debug.Log(valueName);
 			return (-(float)GetType().GetField(valueName).GetValue(this) + 1);
 		}
 

@@ -10,7 +10,6 @@ public class ApplyDamage : ActionPhase
 {
 	private AffinityList _elementalDamage;
 
-
 	//private int _damage;
 	[SerializeField]
 	private State _deathState;

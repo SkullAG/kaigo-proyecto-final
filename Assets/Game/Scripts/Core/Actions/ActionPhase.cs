@@ -9,8 +9,8 @@ namespace Core.Actions
     public abstract class ActionPhase// : ScriptableObject
     {
 
-        public event System.Action onPhaseEnd;
-        public event System.Action onPhaseStart;
+        public event System.Action onPhaseEnd = delegate{ };
+        public event System.Action onPhaseStart = delegate { };
 
         public bool started = false;
 

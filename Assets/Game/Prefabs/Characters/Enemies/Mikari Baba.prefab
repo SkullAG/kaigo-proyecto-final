@@ -10,7 +10,7 @@ Animator:
   m_GameObject: {fileID: 8750387159413926868}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f4bc15df7820fcb48831caec75f3538f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -114,6 +114,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 7656454334376871847, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 5921918473277720676}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
 --- !u!4 &2469287126566079159 stripped
@@ -186,7 +190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7967778925011368724, guid: 9318df0375cdea44abaa9b53cd8753c2, type: 3}
       propertyPath: m_Intensity
-      value: 1.9367601
+      value: 1.2615448
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9318df0375cdea44abaa9b53cd8753c2, type: 3}

@@ -50,7 +50,7 @@ public class PlayAnimation : ActionPhase
 
     public override void Update() {
 
-        if(_animator != null && !_started) {
+        if(_animator != null) {
 
             if(!_started) {
 
@@ -65,11 +65,11 @@ public class PlayAnimation : ActionPhase
             }
 
             // End phase if animator is not playing any action animation
-            if(_animator.GetCurrentAnimatorStateInfo(0).IsName(END_STATE_NAME)) {
+            /*if(_animator.GetCurrentAnimatorStateInfo(0).IsName(END_STATE_NAME)) {
 
                 End();
 
-            }
+            }*/
 
         }
 
