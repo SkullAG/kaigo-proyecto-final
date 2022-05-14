@@ -32,7 +32,6 @@ public class Objects : ScriptableObject
         _queue.RequestExecution(actionReference, _selectedCharacter, target, true);
 
         Debug.Log("Using item " + displayName + " on " + target.gameObject.name);
-
     }
 
 }

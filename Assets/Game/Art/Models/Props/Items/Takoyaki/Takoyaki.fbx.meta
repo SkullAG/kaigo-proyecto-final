@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 008c1592d31dc5b45bf67ab3392fc3dd
+guid: 456fdedb071e73545a59fabd1c1ed005
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: d24e22b3aa876a64c93726c96a021eb1, type: 2}
+      name: takoyaki
+    second: {fileID: 2100000, guid: 294cde9c5b37c5546a19956ec5d44d84, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
