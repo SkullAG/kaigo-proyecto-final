@@ -79,9 +79,6 @@ public class Inventory : MonoBehaviour
 
 	public void ApplyEffect(int value)
 	{
-
-
-
 		string _name = nombres[value];
 
 		huecos[_name].objeto.Use(_target.currentTarget);
@@ -123,7 +120,7 @@ public class Inventory : MonoBehaviour
 		}
 		else
 		{
-			Debug.Log("A�adiendo ");
+			Debug.Log("Anadiendo ");
 			notEmpty = true;
 			Casilla c = new Casilla(obj);
 			huecos.Add(obj.name, c);
