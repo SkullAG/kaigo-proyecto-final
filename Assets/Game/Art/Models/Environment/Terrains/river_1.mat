@@ -27,7 +27,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 56b5ecb049b8f534bb0b5e7cea83152c, type: 3}
-        m_Scale: {x: 3, y: 3}
+        m_Scale: {x: 20, y: 20}
         m_Offset: {x: 0, y: 0}
     - _ReflectionCubemap:
         m_Texture: {fileID: 0}
@@ -79,6 +79,6 @@ Material:
     - _PrecisionColorOverrideParameters: {r: 0, g: 0, b: 0, a: 0}
     - _PrecisionGeometryOverrideParameters: {r: 0, g: 0, b: 0, a: 0}
     - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _UVAnimationParameters: {r: 0, g: 0.005, b: 0, a: 0}
+    - _UVAnimationParameters: {r: -0.01, g: 0, b: 0, a: 0}
     - _UVAnimationParametersFrameLimit: {r: 0, g: 60, b: 0, a: 0}
   m_BuildTextureStacks: []

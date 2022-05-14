@@ -32,12 +32,12 @@ MonoBehaviour:
     max: 10
   color:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.75
     min: 0
     max: 1
   chroma:
     m_OverrideState: 1
-    m_Value: 0.75
+    m_Value: 1
     min: 0
     max: 1
   alpha:
@@ -332,7 +332,7 @@ MonoBehaviour:
     m_Value: 0
   color:
     m_OverrideState: 1
-    m_Value: {r: 0, g: 0, b: 0, a: 1}
+    m_Value: {r: 0.15886438, g: 0.17946343, b: 0.23584908, a: 1}
     hdr: 0
     showAlpha: 1
     showEyeDropper: 1
@@ -457,11 +457,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdadb30f615c5d5499a6de3fe4216ef6, type: 3}
   m_Name: SkyVolume
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   m_AdvancedMode: 0
   skyMode:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 2
   framebufferDitherWeight:
     m_OverrideState: 0
     m_Value: 1
@@ -474,8 +474,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   skyboxTexture:
-    m_OverrideState: 0
-    m_Value: {fileID: 0}
+    m_OverrideState: 1
+    m_Value: {fileID: 8900000, guid: 58cd7db65d1fff04c93c43bda8de9bf5, type: 3}
   tiledLayersSkyHeightScale:
     m_OverrideState: 0
     m_Value: 0.25

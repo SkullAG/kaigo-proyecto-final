@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 
-[RequireComponent(typeof(PlayerInput))]
 public class NavBodyPuppeteer : MonoBehaviour
 {
 	public LayerMask layerMask;
@@ -24,7 +23,7 @@ public class NavBodyPuppeteer : MonoBehaviour
 	void Start()
 	{
 		_camera = Camera.main;
-		_input = GetComponent<PlayerInput>();
+		_input = InputSingleton.current.input;
 		_moveAction = _input.actions.FindAction("Move");
 		_mouse = Mouse.current;
 		_eventSystem = EventSystem.current;

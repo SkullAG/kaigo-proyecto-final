@@ -13,21 +13,21 @@ MonoBehaviour:
   m_Name: Tomoe Gambit Set 1
   m_EditorClassIdentifier: 
   _gambits:
-  - _target: {fileID: 0}
-    _condition: {fileID: 0}
+  - _target: {fileID: 11400000, guid: cd5ab95b1af3a8945ac2c609b0d5601f, type: 2}
+    _condition: {fileID: 11400000, guid: 7f172fb8c2813874a8c52b76c90a1c79, type: 2}
     _actionReference:
-      actions: {fileID: 0}
-      actionID: 
-  - _target: {fileID: 0}
-    _condition: {fileID: 0}
+      actions: {fileID: 11400000, guid: 1ce4e4b17fcd18d4a8e1436cb1cb74f8, type: 2}
+      actionID: punch
+  - _target: {fileID: 11400000, guid: cd5ab95b1af3a8945ac2c609b0d5601f, type: 2}
+    _condition: {fileID: 11400000, guid: abbff9475a9f2b547beb44d02e338676, type: 2}
     _actionReference:
-      actions: {fileID: 0}
-      actionID: 
-  - _target: {fileID: 0}
-    _condition: {fileID: 0}
+      actions: {fileID: 11400000, guid: 1ce4e4b17fcd18d4a8e1436cb1cb74f8, type: 2}
+      actionID: collapse
+  - _target: {fileID: 11400000, guid: cd5ab95b1af3a8945ac2c609b0d5601f, type: 2}
+    _condition: {fileID: 11400000, guid: 65c2795d667946a45b79f22858b3a784, type: 2}
     _actionReference:
-      actions: {fileID: 0}
-      actionID: 
+      actions: {fileID: 11400000, guid: 1ce4e4b17fcd18d4a8e1436cb1cb74f8, type: 2}
+      actionID: thunder
   - _target: {fileID: 0}
     _condition: {fileID: 0}
     _actionReference:

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f32199a8c0b49418f224ed786009fe, type: 3}
   m_Name: Closest Target
   m_EditorClassIdentifier: 
+  displayName: Closest Enemy
   id: Closest Enemy
   description: Finds the closest enemy inside a range.
   range: 5

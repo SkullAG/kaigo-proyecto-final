@@ -9,9 +9,9 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: rock
   m_Shader: {fileID: 4800000, guid: 055eab4e84dc70a47ae75b3125a22de6, type: 3}
-  m_ShaderKeywords: _BRDF_MODE_LAMBERT _FOG_ON _LIGHTING_BAKED_ON _LIGHTING_DYNAMIC_ON
+  m_ShaderKeywords: _BRDF_MODE_LAMBERT _EMISSION _FOG_ON _LIGHTING_BAKED_ON _LIGHTING_DYNAMIC_ON
     _SHADING_EVALUATION_MODE_PER_VERTEX _TEXTURE_FILTER_MODE_TEXTURE_IMPORT_SETTINGS
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2000
@@ -22,19 +22,19 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _EmissionTexture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 51db2cb830c82b64d8bda4b04e7b5a52, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 3f57aa89318c22346a9622376974900d, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 5, y: 5}
         m_Offset: {x: 0, y: 0}
     - _ReflectionCubemap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ReflectionTexture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 51db2cb830c82b64d8bda4b04e7b5a52, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -74,11 +74,11 @@ Material:
     - _AlphaClippingScaleBiasMinMax: {r: 1, g: 0, b: 0, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _DrawDistanceOverride: {r: 100, g: 10000, b: 0, a: 0}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissionColor: {r: 0.18369523, g: 0.2368687, b: 0.56603765, a: 1}
     - _MainColor: {r: 1, g: 1, b: 1, a: 1}
     - _PrecisionColorOverrideParameters: {r: 0, g: 0, b: 0, a: 0}
     - _PrecisionGeometryOverrideParameters: {r: 0, g: 0, b: 0, a: 0}
     - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _UVAnimationParameters: {r: 1, g: 1, b: 0, a: 0}
+    - _UVAnimationParameters: {r: 4, g: 4, b: 10, a: 0}
     - _UVAnimationParametersFrameLimit: {r: 0, g: 60, b: 0, a: 0}
   m_BuildTextureStacks: []
