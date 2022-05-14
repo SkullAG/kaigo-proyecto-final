@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FireMat
+  m_Name: Ligting
   m_Shader: {fileID: 4800000, guid: 055eab4e84dc70a47ae75b3125a22de6, type: 3}
-  m_ShaderKeywords: _BRDF_MODE_LAMBERT _EMISSION _FOG_ON _SHADING_EVALUATION_MODE_PER_PIXEL
+  m_ShaderKeywords: _BRDF_MODE_LAMBERT _EMISSION _FOG_ON _SHADING_EVALUATION_MODE_PER_VERTEX
     _TEXTURE_FILTER_MODE_TEXTURE_IMPORT_SETTINGS _VERTEX_COLOR_MODE_COLOR
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -21,24 +21,12 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _BumpMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _EmissionMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _EmissionTexture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c27128bfcf9bb12429447fb4d235923c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 4cff154e38459b84986709bba4958e97, type: 3}
+        m_Texture: {fileID: 2800000, guid: c27128bfcf9bb12429447fb4d235923c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ReflectionCubemap:
@@ -51,38 +39,22 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - PixelSnap: 0
     - _AffineTextureWarpingWeight: 1
     - _AlphaClip: 0
     - _AlphaClippingDitherIsEnabled: 0
     - _BRDFMode: 0
     - _Blend: 2
     - _BlendOp: 0
-    - _BumpScale: 1
-    - _CameraFadingEnabled: 0
-    - _CameraFarFadeDistance: 2
-    - _CameraNearFadeDistance: 1
     - _ColorMask: 15
-    - _ColorMode: 1
     - _Cull: 2
-    - _Cutoff: 0.5
-    - _DistortionBlend: 0.5
-    - _DistortionEnabled: 0
-    - _DistortionStrength: 1
-    - _DistortionStrengthScaled: 0
     - _DoubleSidedNormalMode: 0
     - _DrawDistanceOverrideMode: 0
     - _DstBlend: 1
     - _EmissionBakedMultiplier: 1
-    - _EmissionEnabled: 0
-    - _EnableExternalAlpha: 0
-    - _FlipbookMode: 0
     - _FogWeight: 1
     - _LightingBaked: 1
     - _LightingDynamic: 1
-    - _LightingEnabled: 0
     - _LightingMode: 1
-    - _Mode: 0
     - _PrecisionColorOverrideMode: 0
     - _PrecisionGeometryOverrideMode: 0
     - _PrecisionGeometryWeight: 1
@@ -90,10 +62,7 @@ Material:
     - _ReflectionBlendMode: 0
     - _ReflectionDirectionMode: 0
     - _RenderQueueCategory: 0
-    - _ShadingEvaluationMode: 1
-    - _SoftParticlesEnabled: 0
-    - _SoftParticlesFarFadeDistance: 1
-    - _SoftParticlesNearFadeDistance: 0
+    - _ShadingEvaluationMode: 0
     - _SrcBlend: 5
     - _Surface: 1
     - _TextureFilterMode: 0
@@ -103,20 +72,13 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - _AlphaClippingScaleBiasMinMax: {r: 1, g: 0, b: 0, a: 1}
-    - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorAddSubDiff: {r: 1, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _DrawDistanceOverride: {r: 100, g: 10000, b: 0, a: 0}
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 0}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 2.1185474, g: 2.1185474, b: 2.1185474, a: 0}
     - _MainColor: {r: 1, g: 1, b: 1, a: 1}
     - _PrecisionColorOverrideParameters: {r: 0, g: 0, b: 0, a: 0}
     - _PrecisionGeometryOverrideParameters: {r: 0, g: 0, b: 0, a: 0}
     - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
-    - _Tint: {r: 0, g: 0, b: 0, a: 1}
     - _UVAnimationParameters: {r: 1, g: 1, b: 0, a: 0}
     - _UVAnimationParametersFrameLimit: {r: 0, g: 60, b: 0, a: 0}
   m_BuildTextureStacks: []
