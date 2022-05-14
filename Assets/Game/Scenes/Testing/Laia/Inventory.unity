@@ -237,7 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da6cf54a7d0620f4ea203cd32ad240e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _profile: {fileID: 11400000, guid: 81df94d6e6df9b742ae0df64a3723389, type: 2}
+  _retroProfile: {fileID: 0}
+  _modernProfile: {fileID: 0}
   effectsActivated: 0
 --- !u!1 &205569153
 GameObject:
@@ -572,6 +573,17 @@ MonoBehaviour:
     _rawValue: 0
     _modifiedValue: 0
     modifiers: []
+  affinity:
+    affinities:
+      Physical: 0
+      Magical: 0
+      Fire: 0
+      Thunder: 0
+      Ice: 0
+      Wind: 0
+      Void: 0
+      Poison: 0
+      Bleeding: 0
 --- !u!114 &602982594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1067,6 +1079,17 @@ MonoBehaviour:
     _rawValue: 0
     _modifiedValue: 0
     modifiers: []
+  affinity:
+    affinities:
+      Physical: 0
+      Magical: 0
+      Fire: 0
+      Thunder: 0
+      Ice: 0
+      Wind: 0
+      Void: 0
+      Poison: 0
+      Bleeding: 0
 --- !u!114 &752723604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1235,6 +1258,17 @@ MonoBehaviour:
     _rawValue: 0
     _modifiedValue: 0
     modifiers: []
+  affinity:
+    affinities:
+      Physical: 0
+      Magical: 0
+      Fire: 0
+      Thunder: 0
+      Ice: 0
+      Wind: 0
+      Void: 0
+      Poison: 0
+      Bleeding: 0
 --- !u!114 &921311136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2004,11 +2038,11 @@ PrefabInstance:
       objectReference: {fileID: 752723604}
     - target: {fileID: 5500673849605603526, guid: f5256a9b01aae6847b86ad1c86ad3fd6, type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5500673849605603526, guid: f5256a9b01aae6847b86ad1c86ad3fd6, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5500673849605603526, guid: f5256a9b01aae6847b86ad1c86ad3fd6, type: 3}
       propertyPath: m_RootOrder
@@ -2032,11 +2066,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5500673849605603526, guid: f5256a9b01aae6847b86ad1c86ad3fd6, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 1920
       objectReference: {fileID: 0}
     - target: {fileID: 5500673849605603526, guid: f5256a9b01aae6847b86ad1c86ad3fd6, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500673849605603526, guid: f5256a9b01aae6847b86ad1c86ad3fd6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500673849605603526, guid: f5256a9b01aae6847b86ad1c86ad3fd6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500673849605603526, guid: f5256a9b01aae6847b86ad1c86ad3fd6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5500673849605603526, guid: f5256a9b01aae6847b86ad1c86ad3fd6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2068,11 +2114,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5500673849605603526, guid: f5256a9b01aae6847b86ad1c86ad3fd6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 960
       objectReference: {fileID: 0}
     - target: {fileID: 5500673849605603526, guid: f5256a9b01aae6847b86ad1c86ad3fd6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 540
       objectReference: {fileID: 0}
     - target: {fileID: 5500673849605603526, guid: f5256a9b01aae6847b86ad1c86ad3fd6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2085,6 +2131,14 @@ PrefabInstance:
     - target: {fileID: 5500673849605603526, guid: f5256a9b01aae6847b86ad1c86ad3fd6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500673849605603528, guid: f5256a9b01aae6847b86ad1c86ad3fd6, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500673849605603529, guid: f5256a9b01aae6847b86ad1c86ad3fd6, type: 3}
+      propertyPath: m_RenderMode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5500673849605603530, guid: f5256a9b01aae6847b86ad1c86ad3fd6, type: 3}
       propertyPath: m_Name
