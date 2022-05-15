@@ -141,14 +141,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8485067572918118916}
-  m_LocalRotation: {x: 0.16472806, y: -0.8339047, z: 0.34541446, w: 0.39768904}
+  m_LocalRotation: {x: 0.16472836, y: -0.8339044, z: 0.3454145, w: 0.39768946}
   m_LocalPosition: {x: 3.87, y: 4.82, z: 3.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8485067571013705370}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: -129.007, z: 0}
 --- !u!114 &8485067572918118918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +163,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objective: {fileID: 0}
   acceleration: 8
-  rotationOffset: {x: 0, y: 0.5, z: -8}
-  offset: {x: 0, y: 0, z: 0}
-  sensitivity: 1
+  _rotatedOffset: {x: 0, y: 0, z: -9}
+  minZoomFactor: 0.3
+  zoomFactor: 1
+  offset: {x: 0, y: 1, z: 0}
+  sensitivity: 0.5
+  zoomSensitivity: 0.5
   mouseSentivityMultiplier: 0.5
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  secondObjective: {fileID: 0}
+  autoRotationVelocity: 8
+  hasLookPoint: 0
+  lookPoint: {x: 0, y: 0, z: 0}
