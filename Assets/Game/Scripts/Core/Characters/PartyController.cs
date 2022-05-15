@@ -6,8 +6,6 @@ using UnityEngine.InputSystem;
 public class PartyController : Singleton<PartyController>
 {
     
-    public enum PartyState { field, action } 
-
     public float distanceToFollow = 1.5f;
     public bool lookAtLeaderOnStandby = true;
     public float timeToStandby = 5;
@@ -16,10 +14,8 @@ public class PartyController : Singleton<PartyController>
     private InputActionReference _escapeInputAction;
 
     private float _standbyTimer = 0;
-    private bool _overrideState = false;
-    private PartyState _currentState; 
-
-    public PartyState currentState => _overrideState ? _currentState : EvaluateState();
+    private bool _inAction = false;
+    private bool _gambitsDisabled = false;
 
     private PartyManager _manager;
     private Character[] _party;
@@ -61,21 +57,34 @@ public class PartyController : Singleton<PartyController>
 
     private void Update() {
 
-        // If escape input is pressed, party will be on field mode
-        if(_escapeInputAction.action.ReadValue<bool>() ) {
-            
-            _overrideState = true;
-            _currentState = PartyState.field;
+        if(_escapeInputAction.action.ReadValue<float>() > InputSystem.settings.defaultButtonPressPoint) {
+
+            Debug.Log("Escaping!");
+
+            // Force party to not be in action
+            _inAction = false;
 
         } else {
 
-            _overrideState = false;
+            // Check party's state if not escaping
+            _inAction = IsPartyInAction();
 
         }
 
-        // Set following behaviour depending on state
-        if(currentState == PartyState.field) {
+        if(!_inAction) {
 
+            // Disable gambits when not in action
+            if(!_gambitsDisabled) {
+
+                for (int i = 0; i < _noLeaderParty.Length; i++) {
+                    _noLeaderParty[i].gambits.SetEnabled(false);
+                }
+
+                _gambitsDisabled = true;
+
+            }
+
+            // Follow leader in row
             for (int i = 0; i < _noLeaderParty.Length; i++) {
 
                 Character _member = _noLeaderParty[i];
@@ -116,11 +125,26 @@ public class PartyController : Singleton<PartyController>
  
             }
 
+        } else {
+
+            Debug.Log("Party in action!");
+
+            // Enable gambits when in action
+            if(_gambitsDisabled) {
+
+                for (int i = 0; i < _noLeaderParty.Length; i++) {
+                    _noLeaderParty[i].gambits.SetEnabled(true);
+                }
+
+                _gambitsDisabled = false;
+
+            }
+
         }
 
     }
 
-    private PartyState EvaluateState() {
+    public bool IsPartyInAction() {
 
         foreach (Character c in _party) {
 
@@ -129,13 +153,13 @@ public class PartyController : Singleton<PartyController>
 
             if( c.queue.isPerformingAction || c.isBeingTargetted ) {
 
-                return PartyState.action;
+                return true;
 
             }
             
         }
 
-        return PartyState.field;
+        return false;
 
     }
 
