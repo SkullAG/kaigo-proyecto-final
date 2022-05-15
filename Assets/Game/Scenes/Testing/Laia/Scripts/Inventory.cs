@@ -17,6 +17,9 @@ public class Inventory : MonoBehaviour
 
 	public System.Action effectApplied = delegate {};
 
+	Character chosenTarget;
+	Character selectedCharacter;
+
 	public UnityEvent<Dictionary<string, Casilla>, List<string>> SendOnInventoryChange;
 	public void boton()    
 	{        
@@ -53,6 +56,7 @@ public class Inventory : MonoBehaviour
 	public void OnTargetConfirmed(Character target) 
 	{
 		Debug.Log("Aplicando efecto");
+		chosenTarget = target;
 		ApplyEffect(value);
 		_target.targetConfirmed -= OnTargetConfirmed;
 		_target.targetCancelled -= OnTargetCancelled;
@@ -67,21 +71,39 @@ public class Inventory : MonoBehaviour
 
 	public void Use(int value)
 	{
+
+		selectedCharacter = PartyManager.current.GetSelectedCharacter();
+
 		if (notEmpty)
 		{
-			_target.Enable();
-			_target.targetConfirmed += OnTargetConfirmed;
-			_target.targetCancelled += OnTargetCancelled;
 
-			this.value = value;
-		}      
+			string _name = nombres[value];
+
+			if(huecos[_name].objeto.actionReference.sharedAction.hasTargetSelection) { // revisar si la acción tiene selección de objetivo
+
+				_target.Enable();
+				_target.targetConfirmed += OnTargetConfirmed;
+				_target.targetCancelled += OnTargetCancelled;
+
+				this.value = value;
+
+			} else {
+
+				chosenTarget = selectedCharacter;
+				Debug.Log("Aplicando efecto");
+				ApplyEffect(value);
+
+			}
+
+		}    
+
 	}
 
 	public void ApplyEffect(int value)
 	{
 		string _name = nombres[value];
 
-		huecos[_name].objeto.Use(_target.currentTarget);
+		huecos[_name].objeto.Use(chosenTarget);
 		huecos[_name].stack--;
 
 		SendOnInventoryChange.Invoke(huecos, nombres);
