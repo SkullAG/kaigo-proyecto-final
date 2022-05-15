@@ -25,7 +25,7 @@ MonoBehaviour:
         displayName: Yakitori
         id: yakitori
         description: 
-        hasTargetSelection: 1
+        hasTargetSelection: 0
         actor: {fileID: 0}
         target: {fileID: 0}
         animationState: eating
