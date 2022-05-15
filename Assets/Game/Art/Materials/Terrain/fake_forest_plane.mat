@@ -41,7 +41,7 @@ Material:
     m_Floats:
     - _AffineTextureWarpingWeight: 1
     - _AlphaClip: 1
-    - _AlphaClippingDitherIsEnabled: 1
+    - _AlphaClippingDitherIsEnabled: 0
     - _BRDFMode: 0
     - _Blend: 0
     - _BlendOp: 0
@@ -71,7 +71,7 @@ Material:
     - _VertexColorMode: 0
     - _ZWrite: 1
     m_Colors:
-    - _AlphaClippingScaleBiasMinMax: {r: 1.1474952, g: -0.14749509, b: 0.12853658, a: 1}
+    - _AlphaClippingScaleBiasMinMax: {r: 99864.38, g: -96868.45, b: 0.97, a: 0.97001004}
     - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _DrawDistanceOverride: {r: 100, g: 10000, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
