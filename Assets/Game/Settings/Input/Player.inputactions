@@ -286,7 +286,7 @@
                 {
                     "name": "",
                     "id": "2843e237-04d4-42c0-a57b-e1d015d05421",
-                    "path": "<Keyboard>/enter",
+                    "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -297,7 +297,7 @@
                 {
                     "name": "",
                     "id": "177d2dbd-bd78-42ed-a575-e9a40882be00",
-                    "path": "<Keyboard>/escape",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
