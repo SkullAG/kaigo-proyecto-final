@@ -4,23 +4,26 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
-public class PauseManager : MonoBehaviour
+public class PauseManager : Singleton<PauseManager>   
 {
     public static bool GameIsPaused = false;
     public InputActionReference _ref;
-
+    public bool pausedAvailable = true;
     public GameObject pausedId;
     void Update()
     {
-        if(_ref.action.triggered)
+        if(pausedAvailable)
         {
-            if(GameIsPaused)
+            if(_ref.action.triggered)
             {
-                Resume();
-            }
-            else
-            {
-                Pause();
+                if(GameIsPaused)
+                {
+                    Resume();
+                }
+                else
+                {
+                    Pause();
+                }
             }
         }
     }
