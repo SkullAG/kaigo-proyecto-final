@@ -10,6 +10,8 @@ public class PartyManager : Singleton<PartyManager>
 {
 
 	public System.Action<Character> characterSelected = delegate{}; // Leo
+	public System.Action<Character> partyMemberAdded = delegate {};
+	public System.Action<Character> partyMemberRemoved = delegate {};
 
 	public NavBodyPuppeteer puppeteer;
 	[SerializeField]
@@ -66,12 +68,14 @@ public class PartyManager : Singleton<PartyManager>
 	public void addPartyMember(NavBodySistem character)
 	{
 		PartyMembers.Add(character);
+		addPartyMember(character);
 
 		UpdatePartyInfo();
 	}
 	public void removePartyMember(NavBodySistem character)
 	{
 		PartyMembers.Remove(character);
+		removePartyMember(character);
 
 		UpdatePartyInfo();
 	}

@@ -22,7 +22,8 @@ namespace Core.Actions
         [SerializeField, ReadOnly, Expandable] private GameAction _currentAction;
         
         private ActionList _actionList;
-
+        
+        public Character currentTarget;
         public bool isPerformingAction => _busy;
         public bool isReady => _ready;
 
@@ -83,6 +84,10 @@ namespace Core.Actions
 
             _currentAction.onActionEnd -= OnActionEnd; // Stop listening action end event
 
+            currentTarget.isBeingTargetted = false;
+            currentTarget.targettedBy = null;
+            currentTarget = null; 
+
             // When action ends, timer resets
             _actionTimer = 1;
 
@@ -98,6 +103,10 @@ namespace Core.Actions
                 
                 // If action list has the reference (what is: character can perform action)
                 if(_actionList.Contains(reference)) {
+
+                    currentTarget = target;
+                    currentTarget.isBeingTargetted = true;
+                    currentTarget.targettedBy = actor;
 
                     _queuedAction = reference.Instantiate(actor, target);
                     
@@ -118,6 +127,10 @@ namespace Core.Actions
             } else {
 
                 // Instantiate without checking
+                currentTarget = target;
+                currentTarget.isBeingTargetted = true;
+                currentTarget.targettedBy = actor;
+
                 _queuedAction = reference.Instantiate(actor, target);
 
                 return true;
