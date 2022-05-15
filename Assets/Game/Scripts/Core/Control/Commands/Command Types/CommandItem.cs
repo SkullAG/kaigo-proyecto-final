@@ -26,12 +26,16 @@ public class CommandItem : Command
         _list = CommandController.current.GetSubcommandList(CommandController.SubcommandType.items);
 
         _inventory.effectApplied += UpdateName;
+        _inventory.itemAdded += UpdateName;
+        _inventory.itemRemoved += UpdateName;
 
     }
 
     ~CommandItem() {
 
         _inventory.effectApplied -= UpdateName;
+        _inventory.itemAdded -= UpdateName;
+        _inventory.itemRemoved -= UpdateName;
 
     }
 
@@ -44,6 +48,8 @@ public class CommandItem : Command
     }
 
     private void UpdateName() {
+
+        Debug.Log("Actualizando nombre de objeto");
 
         // Add x for stacks over 1 
         if(_slot.stack > 1) {

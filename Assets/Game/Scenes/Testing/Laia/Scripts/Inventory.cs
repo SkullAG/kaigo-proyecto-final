@@ -16,6 +16,8 @@ public class Inventory : MonoBehaviour
 	public int coins;
 
 	public System.Action effectApplied = delegate {};
+	public System.Action itemAdded = delegate {};
+	public System.Action itemRemoved = delegate {};
 
 	Character chosenTarget;
 	Character selectedCharacter;
@@ -149,10 +151,14 @@ public class Inventory : MonoBehaviour
 			nombres.Add(obj.name);
 			SendOnInventoryChange.Invoke(huecos, nombres);
 		}
+
+		itemAdded();
+
 	}
 
 	public void Quit(int value) 
 	{
+
 		if (notEmpty)
 		{
 			Debug.Log("Tirando " + huecos[nombres[value]].objeto.name);
@@ -168,6 +174,9 @@ public class Inventory : MonoBehaviour
 				SendOnInventoryChange.Invoke(huecos, nombres);
 			}
 		}
+
+		itemRemoved();
+
 	}
 
 	public void ShowDic()
