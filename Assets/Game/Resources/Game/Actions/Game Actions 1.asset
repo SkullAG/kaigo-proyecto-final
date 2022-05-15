@@ -30,7 +30,7 @@ MonoBehaviour:
         hasTargetSelection: 1
         actor: {fileID: 0}
         target: {fileID: 0}
-        animationState: 
+        animationState: punch
         visualEffect: {fileID: 0}
         damage:
           Physical: 1
@@ -44,7 +44,7 @@ MonoBehaviour:
           Bleeding: 0
         costOverHP: 0
         costOverAP: 0
-        distanceToCast: 0.5
+        distanceToCast: 1
         blockMovement: 1
         states: []
     00000001:
