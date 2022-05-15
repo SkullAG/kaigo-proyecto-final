@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Core.Actions;
+using Core.Characters;
 
 public class UIBattleCommands : MonoBehaviour
 {
@@ -9,6 +10,14 @@ public class UIBattleCommands : MonoBehaviour
     [SerializeField] private int _attackActionIndex = 0;
     
     private void Start() {
+
+        CreateCommands();
+
+        PartyManager.current.characterSelected += OnCharacterSelected;
+
+    }
+
+    private void OnCharacterSelected(Character character) {
 
         CreateCommands();
 
