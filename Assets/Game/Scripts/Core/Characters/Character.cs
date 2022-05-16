@@ -4,6 +4,7 @@ using Core.Gambits;
 using Core.Actions;
 using Core.States;
 using NaughtyAttributes;
+using System.Collections.Generic;
 
 namespace Core.Characters {
 
@@ -11,7 +12,7 @@ namespace Core.Characters {
     {
         
         [ReadOnly] public bool isBeingTargetted = false;
-        [ReadOnly] public Character targettedBy = null;
+        [ReadOnly] public HashSet<Character> targettedBy = new HashSet<Character>();
 
         public StatList stats;
         public ActionList actions;
@@ -20,6 +21,9 @@ namespace Core.Characters {
         public ActionQueue queue;
         public NavBodySistem navBody;
 
+        public bool isAlly => gameObject.CompareTag(BattleController.current.allyTag);
+        public bool isEnemy => gambits.CompareTag(BattleController.current.enemyTag);
+        
         private void Awake() {
 
             stats = GetComponent<StatList>();
