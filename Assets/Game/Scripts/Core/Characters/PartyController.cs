@@ -10,6 +10,8 @@ public class PartyController : Singleton<PartyController>
     public bool lookAtLeaderOnStandby = true;
     public float timeToStandby = 5;
 
+    public Character[] members => _party;
+
     [SerializeField]
     private InputActionReference _escapeInputAction;
 
@@ -61,19 +63,7 @@ public class PartyController : Singleton<PartyController>
 
             Debug.Log("Escaping!");
 
-            // Force party to not be in action
-            _inAction = false;
-
-        } else {
-
-            // Check party's state if not escaping
-            _inAction = IsPartyInAction();
-
-        }
-
-        if(!_inAction) {
-
-            // Disable gambits when not in action
+            // Disable gambits when escaping
             if(!_gambitsDisabled) {
 
                 for (int i = 0; i < _noLeaderParty.Length; i++) {
@@ -83,6 +73,29 @@ public class PartyController : Singleton<PartyController>
                 _gambitsDisabled = true;
 
             }
+
+            // Force party to not be in action
+            _inAction = false;
+
+        } else {
+
+            // Check party's state if not escaping
+            _inAction = IsPartyInAction();
+
+            // Enable gambits when not escaping
+            if(_gambitsDisabled) {
+
+                for (int i = 0; i < _noLeaderParty.Length; i++) {
+                    _noLeaderParty[i].gambits.SetEnabled(true);
+                }
+
+                _gambitsDisabled = false;
+
+            }
+
+        }
+
+        if(!_inAction) {
 
             // Follow leader in row
             for (int i = 0; i < _noLeaderParty.Length; i++) {
@@ -123,21 +136,6 @@ public class PartyController : Singleton<PartyController>
 
                 }
  
-            }
-
-        } else {
-
-            Debug.Log("Party in action!");
-
-            // Enable gambits when in action
-            if(_gambitsDisabled) {
-
-                for (int i = 0; i < _noLeaderParty.Length; i++) {
-                    _noLeaderParty[i].gambits.SetEnabled(true);
-                }
-
-                _gambitsDisabled = false;
-
             }
 
         }
