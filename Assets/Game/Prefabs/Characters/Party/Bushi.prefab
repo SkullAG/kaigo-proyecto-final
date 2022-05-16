@@ -2510,51 +2510,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: agility._rawValue
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
-      propertyPath: bravery._rawValue
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
-      propertyPath: vitality._rawValue
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
-      propertyPath: actionPoints._maxValue
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
+      propertyPath: bravery._rawValue
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
+      propertyPath: vitality._rawValue
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
+      propertyPath: actionPoints._maxValue
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: agility._modifiedValue
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: bravery._modifiedValue
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: constitution._rawValue
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: healthPoints._maxValue
-      value: 150
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: determination._rawValue
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: vitality._modifiedValue
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: constitution._modifiedValue
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: determination._modifiedValue
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819967, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: m_Name
