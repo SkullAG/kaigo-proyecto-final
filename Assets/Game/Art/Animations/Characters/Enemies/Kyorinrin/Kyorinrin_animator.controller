@@ -218,7 +218,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: spit
+  m_Name: spell
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -232,7 +232,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 4afb6043856c62b4982614260d526a0d, type: 2}
+  m_Motion: {fileID: 7400000, guid: 80a4b83d15c028c48a30a13de420c4a8, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -297,7 +297,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: mikaribaba_animator
+  m_Name: Kyorinrin_animator
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: movementFactor
@@ -406,7 +406,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 13bb06ea4e41bfe4baa16b448d6bad35, type: 2}
+    m_Motion: {fileID: 7400000, guid: ada1e0fd70758264db994bcd489474bb, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -414,7 +414,7 @@ BlendTree:
     m_DirectBlendParameter: MovementBlend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 17dc9f779e11da44881e20340d90f347, type: 2}
+    m_Motion: {fileID: 7400000, guid: dc8dab0e26ca07a49a7c1828d8a98b17, type: 2}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -623,7 +623,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: hit
+  m_Name: punch
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -637,7 +637,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ff70094017518124e85f825154346991, type: 2}
+  m_Motion: {fileID: 7400000, guid: 5b3bdae2d7ea8274e8b3077bf53e2909, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -746,7 +746,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions: []
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: -648176933857625923}
+  m_DstState: {fileID: 0}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
