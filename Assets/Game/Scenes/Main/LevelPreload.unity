@@ -492,10 +492,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomoe
       objectReference: {fileID: 0}
-    - target: {fileID: 4828396821759475538, guid: 9c037811003b6ab479817e060548c1ed, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4828396821759475541, guid: 9c037811003b6ab479817e060548c1ed, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -539,18 +535,6 @@ PrefabInstance:
     - target: {fileID: 4828396821759475541, guid: 9c037811003b6ab479817e060548c1ed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4828396821759475543, guid: 9c037811003b6ab479817e060548c1ed, type: 3}
-      propertyPath: set
-      value: 
-      objectReference: {fileID: 11400000, guid: b1eb446305681474b877978d5d76219f, type: 2}
-    - target: {fileID: 4828396821759475543, guid: 9c037811003b6ab479817e060548c1ed, type: 3}
-      propertyPath: _enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4828396821759475543, guid: 9c037811003b6ab479817e060548c1ed, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c037811003b6ab479817e060548c1ed, type: 3}
@@ -1032,10 +1016,6 @@ PrefabInstance:
     - target: {fileID: 5061109991797713807, guid: 9cdf9f96325818e46b93313b057696b1, type: 3}
       propertyPath: m_Name
       value: Yamabozu
-      objectReference: {fileID: 0}
-    - target: {fileID: 5061109991797713807, guid: 9cdf9f96325818e46b93313b057696b1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cdf9f96325818e46b93313b057696b1, type: 3}
