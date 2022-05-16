@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29fbd16454ecfa249abcc3c634e76b4d, type: 3}
   m_Name: Kazembo
   m_EditorClassIdentifier: 
+  displayName: Kazembo
   _effects:
   - {fileID: 11400000, guid: 0d4ebb497e6a62f40bf964d206ddc9f3, type: 2}
   allowMultipleInstances: 0

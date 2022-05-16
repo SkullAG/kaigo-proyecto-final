@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29fbd16454ecfa249abcc3c634e76b4d, type: 3}
   m_Name: Ichijama
   m_EditorClassIdentifier: 
+  displayName: Ichijama
   _effects:
   - {fileID: 11400000, guid: 6ac9d472d6808f64b805f9be548e9f8d, type: 2}
   allowMultipleInstances: 0

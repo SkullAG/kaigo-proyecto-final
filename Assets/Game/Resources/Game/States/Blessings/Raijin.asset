@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29fbd16454ecfa249abcc3c634e76b4d, type: 3}
   m_Name: Raijin
   m_EditorClassIdentifier: 
+  displayName: Raijin
   _effects:
   - {fileID: 11400000, guid: df4561a8ca4e0974e84fe43f4e2ecaf3, type: 2}
   allowMultipleInstances: 0

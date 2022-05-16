@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29fbd16454ecfa249abcc3c634e76b4d, type: 3}
   m_Name: Omoikane
   m_EditorClassIdentifier: 
+  displayName: Omoikane
   _effects:
   - {fileID: 11400000, guid: 1a3672ffa3e3ce448a8c7f29a65f7b43, type: 2}
   allowMultipleInstances: 0

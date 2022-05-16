@@ -66,6 +66,8 @@ namespace Core.States {
 
 				if (!_currentStates.Contains(_state) && _availableStates.Contains(_state)) {
 
+					BattleLog.current.WriteLine(string.Format(BattleLogFormats.STATUS_AFFLICTION, _actor.name, _state.displayName));
+
 					_state.StartState(_actor, duration, power);
 					_currentStates.Add(_state);
 
@@ -93,6 +95,8 @@ namespace Core.States {
 			State _state = GetState(id);
 
 			if(_state != null) {
+
+				BattleLog.current.WriteLine(string.Format(BattleLogFormats.STATE_DISPELLED, _state.displayName, _actor.name));
 
 				_state.EndState(_actor);
 				_currentStates.Remove(_state);

@@ -53,6 +53,8 @@ namespace Core.States {
 	public class State : ScriptableObject
 	{
 
+		public string displayName;
+
 		[System.Serializable]
 		public class InstanceValues
 		{

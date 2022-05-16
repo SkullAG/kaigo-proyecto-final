@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29fbd16454ecfa249abcc3c634e76b4d, type: 3}
   m_Name: Fudakaeshi
   m_EditorClassIdentifier: 
+  displayName: Fudakaeshi
   _effects:
   - {fileID: 11400000, guid: c9021f4792065b5428bbfbf048e7dfc9, type: 2}
   allowMultipleInstances: 0

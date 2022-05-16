@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29fbd16454ecfa249abcc3c634e76b4d, type: 3}
   m_Name: Goryo
   m_EditorClassIdentifier: 
+  displayName: Goryo
   _effects:
   - {fileID: 11400000, guid: 70a40772c5fd4b347b80a8a2251bb446, type: 2}
   allowMultipleInstances: 0

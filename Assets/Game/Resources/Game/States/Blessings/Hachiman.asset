@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29fbd16454ecfa249abcc3c634e76b4d, type: 3}
   m_Name: Hachiman
   m_EditorClassIdentifier: 
+  displayName: Hachiman
   _effects:
   - {fileID: 11400000, guid: 8a46824146046ab4786cbc406afb92bb, type: 2}
   allowMultipleInstances: 0
