@@ -28,7 +28,7 @@ namespace Core.Stats {
 
             _user = GetComponent<Character>();
 
-            UpdateResource();
+            UpdateValues();
 
             healthPoints.value = healthPoints.max;
             actionPoints.value = actionPoints.max;
@@ -43,20 +43,26 @@ namespace Core.Stats {
 
         private void OnValidate() {
 
-            UpdateResource();
+            UpdateValues();
 
         }
 
         private void OnAttributeValueChanged(float value) {
 
-            UpdateResource();
+            UpdateValues();
             
         }
 
-        public void UpdateResource() {
+        public void UpdateValues() {
 
             healthPoints.max = Mathf.RoundToInt(vitality.CalculateMaximumHealth());
             actionPoints.max = Mathf.RoundToInt(determination.CalculateMaxActionPoints());
+
+            bravery.CalculateModifiers();
+            constitution.CalculateModifiers();
+            vitality.CalculateModifiers();
+            determination.CalculateModifiers();
+            agility.CalculateModifiers();
 
         }
 

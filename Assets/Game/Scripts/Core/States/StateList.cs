@@ -64,10 +64,13 @@ namespace Core.States {
 
 			if(_state != null) {
 
-				_state.StartState(duration, power);
-
 				if (!_currentStates.Contains(_state) && _availableStates.Contains(_state)) {
+
+					_state.StartState(_actor, duration, power);
 					_currentStates.Add(_state);
+
+					Debug.Log("State added");
+
 				}
 
 			}
@@ -85,16 +88,23 @@ namespace Core.States {
 
 		public void RemoveState(string id) {
 
+			Debug.Log("State removed");
+
 			State _state = GetState(id);
 
 			if(_state != null) {
+
+				_state.EndState(_actor);
 				_currentStates.Remove(_state);
+
 			}
 
 		}
 
 		public void RemoveState(State baseStateSO){
+
 			RemoveState(baseStateSO.id);
+
 		}
 
 		public State GetState(string id) {

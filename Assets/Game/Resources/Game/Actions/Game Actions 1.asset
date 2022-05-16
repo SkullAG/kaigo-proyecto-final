@@ -18,6 +18,7 @@ MonoBehaviour:
   - id: 2
   - id: 3
   - id: 4
+  - id: 5
   _actionType: BattleAction
   references:
     version: 1
@@ -160,3 +161,35 @@ MonoBehaviour:
         distanceToCast: 3
         blockMovement: 1
         states: []
+    00000005:
+      type: {class: BattleAction, ns: , asm: Assembly-CSharp}
+      data:
+        displayName: Test
+        id: test
+        description: 
+        hasTargetSelection: 0
+        actor: {fileID: 0}
+        target: {fileID: 0}
+        animationState: 
+        visualEffect: {fileID: 0}
+        damage:
+          Physical: 0
+          Magical: 0
+          Fire: 0
+          Thunder: 0
+          Ice: 0
+          Wind: 0
+          Void: 0
+          Poison: 0
+          Bleeding: 0
+        costOverHP: 0
+        costOverAP: 0
+        distanceToCast: 0
+        blockMovement: 1
+        states:
+        - state:
+            state: {fileID: 11400000, guid: 40e9c3347ee11714dad790f0e7387040, type: 2}
+            duration: 99
+            power: 1
+          elementType: none
+          _Probability: 100

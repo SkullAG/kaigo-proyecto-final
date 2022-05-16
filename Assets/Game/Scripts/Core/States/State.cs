@@ -85,7 +85,6 @@ namespace Core.States {
 		[HideIf("allowMultipleInstances")]
 		public StateValuesBlendMode blendMode = StateValuesBlendMode.none;
 
-
 		private InstanceValues mainInstance = new InstanceValues(0, 1);
 
 		private List<InstanceValues> instances = new List<InstanceValues>();
@@ -95,8 +94,15 @@ namespace Core.States {
 
 		public string id { get { return _id; } }
 
-		public void StartState(float duration, float power = 1)
+		public void StartState(Character actor, float duration, float power = 1)
 		{
+
+			Debug.Log("La duracion es de: " + duration);
+
+			foreach(Effect effect in _effects) {
+				effect.OnEffectActivated(actor);
+			}
+
 			if(allowMultipleInstances)
 			{
 				instances.Add(new InstanceValues(duration, power));
@@ -110,6 +116,15 @@ namespace Core.States {
 			{
 				BlendValues(duration, power);
 			}
+			
+		}
+
+		public void EndState(Character actor) {
+
+			foreach(Effect effect in _effects) {
+				effect.OnEffectExpired(actor);
+			}
+
 		}
 
 		public void BlendValues(float duration, float power)
@@ -182,6 +197,8 @@ namespace Core.States {
 		/// <returns>true if it's the last frame of the action</returns>
 		public bool Affect(Character actor)
 		{
+
+			Debug.Log("Entra");
 			if(allowMultipleInstances)
 			{
 				for (int i = 0; i < _effects.Count; i++)
@@ -213,6 +230,9 @@ namespace Core.States {
 			}
 			else
 			{
+
+				//Debug.Log("Duration is " + mainInstance.duration + "...");
+
 				mainInstance.duration -= Time.deltaTime;
 				for (int i = 0; i < _effects.Count; i++)
 				{
@@ -230,6 +250,7 @@ namespace Core.States {
 				return mainInstance.duration <= 0;
 			}
 		}
+
 	}
 }
 

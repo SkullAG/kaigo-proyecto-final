@@ -17,6 +17,13 @@ namespace Core.Stats {
 
         public float factor = 0;
 
+        public Modifier(Type type, float factor) {
+
+            _type = type;
+            this.factor = factor;
+
+        }
+
         public float CalculateValue(float baseValue, float lastValue) {
             
             if(_type == Type.flat) {

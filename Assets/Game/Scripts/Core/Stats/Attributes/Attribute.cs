@@ -23,21 +23,31 @@ namespace Core.Stats {
         public const float _MAX = 10;
 
         public float value {
-            get => GetValue();
-            set => SetRawValue(value);
+
+            get  {
+                Debug.Log("Returning modified value " + this.GetType().Name);
+                return GetValue();
+            }
+
+            set {
+                Debug.Log("Setting raw value " + this.GetType().Name);
+                SetRawValue(value);
+            }
+
         }
 
         public virtual float GetValue() {
 
-            float _result = ApplyModifiers(_rawValue);
-            _modifiedValue = _result;
+            _modifiedValue = CalculateModifiers();
 
             return _modifiedValue;
 
         }
 
         public virtual float GetRawValue() {
+
             return _rawValue;
+
         }
 
         public virtual void SetRawValue(float value) {
@@ -45,7 +55,18 @@ namespace Core.Stats {
             if(value < 0) _rawValue = 0;
             else _rawValue = value;
 
+            _modifiedValue = CalculateModifiers();
+
             onValueChanged(_rawValue);
+
+        }
+
+        public float CalculateModifiers() {
+
+            float _result = ApplyModifiers(_rawValue);
+            _modifiedValue = _result;
+
+            return _modifiedValue;
 
         }
 

@@ -13,8 +13,13 @@ namespace Core.States {
 
 		public virtual void Apply(Character actor, ref Dictionary<Effect, GameObject> instancedVisuals, float power = 1)
         {
+		
 			ManageVisuals(actor, ref instancedVisuals);
+
 		}
+
+		public virtual void OnEffectActivated(Character actor) { }
+		public virtual void OnEffectExpired(Character actor) { }
 
 		public void ManageVisuals(Character actor, ref Dictionary<Effect, GameObject> instantiedVisuals)
         {
