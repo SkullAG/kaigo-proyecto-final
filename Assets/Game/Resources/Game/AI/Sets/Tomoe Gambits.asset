@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Tomoe Gambits
   m_EditorClassIdentifier: 
   _gambits:
-  - _target: {fileID: 11400000, guid: cd5ab95b1af3a8945ac2c609b0d5601f, type: 2}
-    _condition: {fileID: 11400000, guid: 4494bd3e930e8cf47861cac74b572258, type: 2}
+  - _target: {fileID: 11400000, guid: 27b594262d1a2634a9ab741585a3c3c3, type: 2}
+    _condition: {fileID: 11400000, guid: d9493d5a655226e41a3064122bd7ad07, type: 2}
     _actionReference:
       actions: {fileID: 11400000, guid: 1ce4e4b17fcd18d4a8e1436cb1cb74f8, type: 2}
-      actionID: punch
+      actionID: blaze

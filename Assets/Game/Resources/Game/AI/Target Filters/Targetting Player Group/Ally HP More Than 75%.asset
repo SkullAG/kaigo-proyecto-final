@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06f32199a8c0b49418f224ed786009fe, type: 3}
-  m_Name: Farthest Ally
+  m_Script: {fileID: 11500000, guid: db2b01caec8ac1f4088f5841d94661d8, type: 3}
+  m_Name: Ally HP More Than 75%
   m_EditorClassIdentifier: 
-  displayName: Farthest ally
-  id: farthest_ally
-  description: The farthest ally to the caster.
-  filterScope: 2147483647
-  mode: 1
+  displayName: Ally HP > 75%
+  id: ally_hp_mt_75
+  description: Any ally with an HP greater than 75%.
+  filterScope: 1
+  percentage: 75
+  logicOperator: 1
+  resourceType: 0

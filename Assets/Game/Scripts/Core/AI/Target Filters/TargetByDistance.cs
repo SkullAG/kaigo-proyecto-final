@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEditor;
 using NaughtyAttributes;
 
-[CreateAssetMenu(fileName = "Closest Target Filter", menuName = "Game/AI/Target Filters/Closest Target")]
+[CreateAssetMenu(fileName = "Target By Distance", menuName = "Game/AI/Target Filters/Target By Distance")]
 public class TargetByDistance : TargetFilter
 {
     
@@ -22,11 +22,11 @@ public class TargetByDistance : TargetFilter
     public override Character GetTarget(Character actor) {
 
         // Get valid characters by scope
-        _characters = GetValidCharacters(filterScope);
+        _characters = GetValidCharacters(actor, filterScope);
 
         if(_characters != null) {
 
-            Debug.Log("Valid characters: " + _characters.ToString());
+            //Debug.Log("Valid characters: " + _characters.ToString());
 
             Character _chosenCharacter = null;
             
@@ -36,7 +36,7 @@ public class TargetByDistance : TargetFilter
 
             foreach (Character character in _characters) {
 
-                if(character == actor) continue; // Don't evaluate distance with self lul
+                //if(character == actor && excludeSelf) continue; // Don't evaluate distance with self lul
                 
                 float _distance = (character.transform.position - actor.transform.position).sqrMagnitude;
 

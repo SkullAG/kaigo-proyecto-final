@@ -65,13 +65,17 @@ public class BattleController : Singleton<BattleController>
                 }
 
             // If member is targetting an enemy 
-            } else if (partyMember.queue.isPerformingAction && partyMember.queue.currentTarget.CompareTag(enemyTag)) {
+            } else if (partyMember.queue.isPerformingAction && partyMember.queue.currentTarget != null) {
 
-                Character _target = partyMember.queue.currentTarget;
+                if(partyMember.queue.currentTarget.CompareTag(enemyTag)) {
 
-                _enemies.Add(_target);
+                    Character _target = partyMember.queue.currentTarget;
 
-                Debug.Log("Found enemy: " + _target.name);
+                    _enemies.Add(_target);
+
+                    Debug.Log("Found enemy: " + _target.name);
+
+                }
 
             }
 
