@@ -2508,6 +2508,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4021926938695819961, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
+      propertyPath: _availableStates.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021926938695819961, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
+      propertyPath: _availableStates.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4cfe8513331d2624e8f8d912abeebd03, type: 2}
+    - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
+      propertyPath: deathState
+      value: 
+      objectReference: {fileID: 11400000, guid: 4cfe8513331d2624e8f8d912abeebd03, type: 2}
     - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: agility._rawValue
       value: 5

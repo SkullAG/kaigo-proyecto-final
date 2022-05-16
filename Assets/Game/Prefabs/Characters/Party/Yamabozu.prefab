@@ -1548,6 +1548,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4021926938695819961, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
+      propertyPath: _availableStates.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021926938695819961, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
+      propertyPath: _availableStates.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4cfe8513331d2624e8f8d912abeebd03, type: 2}
+    - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
+      propertyPath: deathState
+      value: 
+      objectReference: {fileID: 11400000, guid: 4cfe8513331d2624e8f8d912abeebd03, type: 2}
     - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: agility._rawValue
       value: 7
@@ -1558,7 +1570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: vitality._rawValue
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: actionPoints._maxValue
@@ -1578,7 +1590,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: healthPoints._maxValue
-      value: 175
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: determination._rawValue
@@ -1586,7 +1598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: vitality._modifiedValue
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: constitution._modifiedValue

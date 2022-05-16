@@ -2,11 +2,14 @@ using UnityEngine;
 using NaughtyAttributes;
 using Core.Characters;
 using Core.Affinities;
+using Core.States;
 
 namespace Core.Stats {
 
     public class StatList : MonoBehaviour
     {
+
+        [SerializeField] private State deathState;
         
         // Resource stats
         [BoxGroup("Resource")] public Resource healthPoints;
@@ -73,6 +76,14 @@ namespace Core.Stats {
             if(_d < 0) {
 
                 BattleLog.current.WriteLine(string.Format(BattleLogFormats.DAMAGE_RECEIVED, _user.name, Mathf.Abs(_d)));
+
+                if(currentValue <= 0) { // Add death when health is 0
+
+                    Debug.Log("CHaracter died!");
+
+                    _user.states.AddState(deathState, Mathf.Infinity, 1);
+
+                }
 
             } else if (_d > 0) {
 

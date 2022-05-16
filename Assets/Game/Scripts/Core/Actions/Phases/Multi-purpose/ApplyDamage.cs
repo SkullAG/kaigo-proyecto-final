@@ -10,10 +10,6 @@ public class ApplyDamage : ActionPhase
 {
 	private AffinityList _elementalDamage;
 
-	//private int _damage;
-	[SerializeField]
-	private State _deathState;
-
 	private bool _healthDepleted = false;
 
 	public ApplyDamage(AffinityList elementalDamage) {
@@ -38,12 +34,12 @@ public class ApplyDamage : ActionPhase
 
 				target.stats.healthPoints.value -= _damage;
 
-				if (target.stats.healthPoints.depleted) {
+				/*if (target.stats.healthPoints.depleted) {
 
 					// Add Death state to character
 					target.states.AddState(_deathState, Mathf.Infinity); // otro caso de morir fortisimo!
 
-				}
+				}*/
 
 				End();
 
