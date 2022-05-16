@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1080358528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3346704329256232311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599e169830dfa2749a2ef5ec3b8b497d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioAssets:
+  - {fileID: 11400000, guid: d15005232f710074a892a664f4b58418, type: 2}
 --- !u!114 &1999340574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1752,9 +1766,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3248603605804096339, guid: dc8045f2dcba4c84989a8bd5791b7691, type: 3}
   m_PrefabInstance: {fileID: 2499647373976360998}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &4167176658041622670 stripped
+--- !u!4 &4903273657277148619 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 1973774131640371368, guid: dc8045f2dcba4c84989a8bd5791b7691, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7402621889984706029, guid: dc8045f2dcba4c84989a8bd5791b7691, type: 3}
   m_PrefabInstance: {fileID: 2499647373976360998}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2458788121915071381 stripped
@@ -1932,9 +1946,9 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: dc8045f2dcba4c84989a8bd5791b7691, type: 3}
   m_PrefabInstance: {fileID: 2499647373976360998}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &4903273657277148619 stripped
+--- !u!4 &4167176658041622670 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7402621889984706029, guid: dc8045f2dcba4c84989a8bd5791b7691, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1973774131640371368, guid: dc8045f2dcba4c84989a8bd5791b7691, type: 3}
   m_PrefabInstance: {fileID: 2499647373976360998}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7671842868694240704 stripped

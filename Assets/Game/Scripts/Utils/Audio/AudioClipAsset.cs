@@ -7,7 +7,7 @@ using UnityEngine.Audio;
 public class AudioClipAsset : ScriptableObject
 {
 
-    public AudioClip clip;
+    public AudioClip[] clips;
     public AudioMixer mixer;
     public AudioMixerGroup group;
 

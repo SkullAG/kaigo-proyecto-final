@@ -32,11 +32,12 @@ public class AudioManager : Singleton<AudioManager>
         AudioSource _source = _sourcePool.FirstOrDefault( x => !x.isPlaying );
 
         if(_source == null) {
-            Debug.LogWarning("No available audio sources to play " + audioClipAsset.clip.name + "!");
+            Debug.LogWarning("No available audio sources to play " + audioClipAsset.name + "!");
             return;
         }
 
-        _source.clip = audioClipAsset.clip;
+        _source.clip = audioClipAsset.clips[Random.Range(0, audioClipAsset.clips.Length)];
+
         _source.volume = audioClipAsset.volume;
         _source.pitch = audioClipAsset.GetPitch();
         _source.loop = audioClipAsset.loop;
@@ -49,7 +50,7 @@ public class AudioManager : Singleton<AudioManager>
 
     public void Stop(AudioClipAsset audioClipAsset) {
 
-        AudioSource _source = _sourcePool.FirstOrDefault( x => x.isPlaying && x.clip == audioClipAsset.clip );
+        AudioSource _source = _sourcePool.FirstOrDefault( x => x.isPlaying && x.clip == audioClipAsset.clips[0] ); // Mal
 
         if(_source == null) {
             return;
