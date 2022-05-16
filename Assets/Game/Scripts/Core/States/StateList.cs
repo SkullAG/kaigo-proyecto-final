@@ -123,6 +123,12 @@ namespace Core.States {
 
 		}
 
+		public bool IsSufferingState(State state) {
+
+			return _currentStates.Contains(state);
+
+		}
+
 	}
 
 }

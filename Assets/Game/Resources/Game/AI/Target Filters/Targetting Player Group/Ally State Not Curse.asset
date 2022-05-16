@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77f00e1e3a5e30d4f9f8cb0c9836f779, type: 3}
+  m_Name: Ally State Not Curse
+  m_EditorClassIdentifier: 
+  displayName: Ally cursed
+  id: ally_state_curse
+  description: An ally being afflicted by any curse.
+  filterScope: 1
+  excludeSelf: 1
+  states:
+  - {fileID: 11400000, guid: 857a86ce2e221f045bfbe22ec38cbebd, type: 2}
+  - {fileID: 11400000, guid: b149bbc117fa11a4485c72d064bc0308, type: 2}
+  - {fileID: 11400000, guid: 6b3561481890a7c40a8b2d061b440343, type: 2}
+  - {fileID: 11400000, guid: cb0d3a5a1a965b94a95c19d3d9d6cb9b, type: 2}
+  - {fileID: 11400000, guid: 84a6645c04c496548928b8788733f849, type: 2}
+  notBeingAfflicted: 1
