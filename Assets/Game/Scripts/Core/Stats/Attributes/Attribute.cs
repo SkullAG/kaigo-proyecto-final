@@ -25,12 +25,12 @@ namespace Core.Stats {
         public float value {
 
             get  {
-                Debug.Log("Returning modified value " + this.GetType().Name);
+                //Debug.Log("Returning modified value " + this.GetType().Name);
                 return GetValue();
             }
 
             set {
-                Debug.Log("Setting raw value " + this.GetType().Name);
+                //Debug.Log("Setting raw value " + this.GetType().Name);
                 SetRawValue(value);
             }
 

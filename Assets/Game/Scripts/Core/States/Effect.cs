@@ -26,7 +26,7 @@ namespace Core.States {
 			//Debug.Log(visualsStarted);
 			if (!instantiedVisuals.ContainsKey(this) && visualEffect)
 			{
-				Debug.Log("poison");
+				//Debug.Log("poison");
 
 				particles = Instantiate(visualEffect, actor.transform).GetComponent<ParticleSystem>();
 

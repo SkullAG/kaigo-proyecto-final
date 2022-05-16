@@ -9,7 +9,7 @@ public static class Tick
     [RuntimeInitializeOnLoadMethod]
 	static void OnRuntimeMethodLoad()
 	{
-		Debug.Log("finjamos que hay ticks");
+		//Debug.Log("finjamos que hay ticks");
 		//NavigationTick();
 	}
 

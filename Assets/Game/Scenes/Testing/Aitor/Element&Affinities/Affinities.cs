@@ -56,7 +56,7 @@ namespace Core.Affinities
 
 		public float GetValue(string valueName)
 		{
-			Debug.Log(valueName);
+			//Debug.Log(valueName);
 			return (-(float)GetType().GetField(valueName).GetValue(this) + 1);
 		}
 

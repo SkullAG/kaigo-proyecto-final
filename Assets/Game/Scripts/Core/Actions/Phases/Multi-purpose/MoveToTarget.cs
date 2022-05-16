@@ -39,7 +39,7 @@ public class MoveToTarget : ActionPhase
 
                 if( _dist > _distanceToStop && _distanceToStop > 0 ) {
 
-                    Debug.Log("Moving");
+                    //Debug.Log("Moving");
 
                     // Move
                     _navigator.ObjectivePoint = target.transform.position;
@@ -48,7 +48,7 @@ public class MoveToTarget : ActionPhase
 
                 } else {
 
-                    Debug.Log("Finished moving?");
+                    //Debug.Log("Finished moving?");
                     
                     if(!_stopped) Stop();
                     
@@ -64,13 +64,13 @@ public class MoveToTarget : ActionPhase
 
     private void LookAtTarget() {
 
-        Debug.Log("Looking at target");
+        //Debug.Log("Looking at target");
 
         Vector3 _dir = (target.transform.position - actor.transform.position).normalized;
 
         float _angle = _navigator.RotateTowards(_dir);
 
-        Debug.Log("Angle: " + _angle);
+        //Debug.Log("Angle: " + _angle);
 
         if( CustomMath.Aproximately(_angle, 0, _angleToStop) ) {
         
@@ -82,7 +82,7 @@ public class MoveToTarget : ActionPhase
 
     private void Stop() {
 
-        Debug.Log("Stopping");
+        //Debug.Log("Stopping");
 
         // Stop
         _navigator.Objective = null;

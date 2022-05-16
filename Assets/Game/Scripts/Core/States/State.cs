@@ -97,7 +97,7 @@ namespace Core.States {
 		public void StartState(Character actor, float duration, float power = 1)
 		{
 
-			Debug.Log("La duracion es de: " + duration);
+			//Debug.Log("La duracion es de: " + duration);
 
 			foreach(Effect effect in _effects) {
 				effect.OnEffectActivated(actor);
@@ -198,7 +198,7 @@ namespace Core.States {
 		public bool Affect(Character actor)
 		{
 
-			Debug.Log("Entra");
+			//Debug.Log("Entra");
 			if(allowMultipleInstances)
 			{
 				for (int i = 0; i < _effects.Count; i++)
