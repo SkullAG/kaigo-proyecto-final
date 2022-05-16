@@ -24,6 +24,7 @@ namespace Core.Actions
         private ActionList _actionList;
         
         public Character currentTarget;
+
         public bool isPerformingAction => _busy;
         public bool isReady => _ready;
 
@@ -84,9 +85,14 @@ namespace Core.Actions
 
             _currentAction.onActionEnd -= OnActionEnd; // Stop listening action end event
 
-            currentTarget.isBeingTargetted = false;
-            currentTarget.targettedBy = null;
-            currentTarget = null; 
+            if(currentTarget != null) {
+
+                currentTarget.isBeingTargetted = false;
+                currentTarget.targettedBy.Remove(_currentAction.actor);
+
+                currentTarget = null; 
+
+            }
 
             // When action ends, timer resets
             _actionTimer = 1;
@@ -106,7 +112,7 @@ namespace Core.Actions
 
                     currentTarget = target;
                     currentTarget.isBeingTargetted = true;
-                    currentTarget.targettedBy = actor;
+                    currentTarget.targettedBy.Add(actor);
 
                     _queuedAction = reference.Instantiate(actor, target);
                     
@@ -116,7 +122,7 @@ namespace Core.Actions
 
                     if(throwError) {
 
-                        Debug.LogError("Action requested is not in the character's action list or it's null.", this);
+                        Debug.LogError("Action " + reference.sharedAction.displayName + " is not in the character's action list or it's null.", this);
 
                     }
 
@@ -129,7 +135,7 @@ namespace Core.Actions
                 // Instantiate without checking
                 currentTarget = target;
                 currentTarget.isBeingTargetted = true;
-                currentTarget.targettedBy = actor;
+                currentTarget.targettedBy.Add(actor);
 
                 _queuedAction = reference.Instantiate(actor, target);
 

@@ -72,19 +72,15 @@ namespace Core.Gambits
 
         private void OnDrawGizmos() {
 
-            /*if(set.list != null) {
+            if(set) {
 
-                if( set.list.Count > 0 ) {
-
-                    for (int i = 0; i < set.list.Count; i++) {
+                for (int i = 0; i < set.list.Count; i++) {
                         
-                        set.list[i].target.DrawGizmos(_actor);
-
-                    }
+                    set.list[i].target.DrawGizmos(_actor);
 
                 }
 
-            }*/
+            }
 
         }
 

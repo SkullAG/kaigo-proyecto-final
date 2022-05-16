@@ -10,14 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06f32199a8c0b49418f224ed786009fe, type: 3}
-  m_Name: Closest Target
+  m_Name: Closest Ally
   m_EditorClassIdentifier: 
-  displayName: Closest Enemy
-  id: Closest Enemy
-  description: Finds the closest enemy inside a range.
-  range: 5
-  mask:
-    serializedVersion: 2
-    m_Bits: 776
-  triggerQuery: 2
-  tag: Enemy
+  displayName: Closest ally
+  id: closest_ally
+  description: The closest ally to the caster.
+  filterScope: 1
+  mode: 0
