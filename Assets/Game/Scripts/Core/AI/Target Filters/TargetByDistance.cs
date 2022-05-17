@@ -80,7 +80,7 @@ public class TargetByDistance : TargetFilter
     #if UNITY_EDITOR
     public override void DrawGizmos(Character actor) {
 
-        if(_characters != null) {
+        /*if(_characters != null) {
 
             foreach(Character character in _characters) {
 
@@ -88,7 +88,7 @@ public class TargetByDistance : TargetFilter
 
             }
 
-        }
+        }*/
 
     }
     #endif

@@ -19,14 +19,15 @@ public class Targetter : Singleton<Targetter>
     [SerializeField] private TargetCursor _cursor;
     [SerializeField] private Character _target;
     [SerializeField] private CameraManager _cameraManager;
+    [SerializeField] private GameObject _targetterMessageWindow;
 
     [SerializeField] private float _range;
     [SerializeField] private float _fieldOfView;
     [SerializeField] private float _startDelay = 0.1f;
     [SerializeField, ReadOnly] private bool _update;
 
-    [SerializeField] private Vector2[] _viewPositions;
-    [SerializeField] private Character[] _characters;
+    [SerializeField, ReadOnly] private Vector2[] _viewPositions;
+    [SerializeField, ReadOnly] private Character[] _characters;
 
     [SerializeField] private InputActionReference _navigateAction;
     [SerializeField] private InputActionReference _submitAction;
@@ -135,6 +136,8 @@ public class Targetter : Singleton<Targetter>
         //_cameraManager.SetLookPoint(_cursor.transform.position);
 
         _cameraManager.rotationEnabled = false;
+        _targetterMessageWindow.SetActive(true);
+        _selectedCharacter.navBody.isParalized = true;
 
         targettingStatusChanged(true);
 
@@ -151,6 +154,8 @@ public class Targetter : Singleton<Targetter>
 
         _cameraManager.RemoveLookPoint();
         _cameraManager.rotationEnabled = true;
+        _targetterMessageWindow.SetActive(false);
+        _selectedCharacter.navBody.isParalized = false;
 
         targettingStatusChanged(false);
 

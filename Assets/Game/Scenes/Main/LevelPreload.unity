@@ -779,11 +779,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5930511782396821684, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5930511782396821684, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5930511782396821684, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
       propertyPath: m_SizeDelta.x
@@ -911,11 +911,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7611975797883703776, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7611975797883703776, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7611975797883703776, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
       propertyPath: m_SizeDelta.x
@@ -927,7 +927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7611975797883703776, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -68.3948
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
@@ -961,6 +961,10 @@ PrefabInstance:
       propertyPath: _cameraManager
       value: 
       objectReference: {fileID: 539521991}
+    - target: {fileID: 8279407076153259121, guid: d659e75298fdf034a8357f6a6fdd553e, type: 3}
+      propertyPath: _targetterMessageWindow
+      value: 
+      objectReference: {fileID: 5758966322875330498}
     - target: {fileID: 8279407076153259126, guid: d659e75298fdf034a8357f6a6fdd553e, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1222,6 +1226,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2965457261503065842, guid: d29eb375f95978e4493b3038d3adfa61, type: 3}
   m_PrefabInstance: {fileID: 3348229941790238398}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5758966322875330498 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5758966323491286343, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
+  m_PrefabInstance: {fileID: 1565082245}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6008360693250001616
 PrefabInstance:
