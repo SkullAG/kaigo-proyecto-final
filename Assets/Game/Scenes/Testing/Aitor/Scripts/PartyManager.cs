@@ -9,6 +9,9 @@ using Core.Stats;
 public class PartyManager : Singleton<PartyManager>
 {
 
+	[Layer] public string _leaderLayer;
+	[Layer] public string _partyLayer;
+
 	public System.Action<Character> characterSelected = delegate{}; // Leo
 	public System.Action<Character> partyMemberAdded = delegate {};
 	public System.Action<Character> partyMemberRemoved = delegate {};
@@ -17,16 +20,38 @@ public class PartyManager : Singleton<PartyManager>
 	[SerializeField]
 	[OnValueChanged("UpdatePartyInfo")]
 	public List<NavBodySistem> PartyMembers = new List<NavBodySistem>();
-	public int selectedCharacter { get { return _selectedCharacter; } set 
-		{ 
+
+	public int selectedCharacter { 
+		
+		get { return _selectedCharacter; } 
+		
+		set { 
+				
 			_selectedCharacter = value;
 			partyInfoDrawer.setSelectedCharacter(_selectedCharacter);
+
 			puppeteer.character = PartyMembers[_selectedCharacter];
 			_camera.objective = PartyMembers[_selectedCharacter].transform;
 			
 			characterSelected(GetSelectedCharacter()); // Leo
-		} }
+
+			// Set selected as leader
+			PartyMembers[_selectedCharacter].gameObject.layer = LayerMask.NameToLayer(_leaderLayer);
+
+			// Set rest of party as party
+			foreach(var c in PartyMembers) { 
+				if(c != PartyMembers[_selectedCharacter]) {
+					c.gameObject.layer = LayerMask.NameToLayer(_partyLayer);
+				}
+			 }
+
+		} 
+		
+	}
+
+
 	int _selectedCharacter = 0;
+
 	public PartyUIDrawer partyInfoDrawer;
 	public CameraManager _camera;
 
@@ -38,6 +63,10 @@ public class PartyManager : Singleton<PartyManager>
 		InputSingleton.current.input.actions.FindAction("ChangeCharacter").started += selectedCharacterPlus1;
 
 		UpdatePartyInfo();
+
+		// Call character selection once at star
+		selectedCharacter = _selectedCharacter;
+
 		partyInfoDrawer.setSelectedCharacter(_selectedCharacter);
 
 		puppeteer.character = PartyMembers[_selectedCharacter];
