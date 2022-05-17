@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f197e93cea9e494bb5274816d1f9fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathState: {fileID: 0}
+  deathState: {fileID: 11400000, guid: 4cfe8513331d2624e8f8d912abeebd03, type: 2}
   healthPoints:
     _currentValue: 0
     _maxValue: 50
@@ -231,6 +231,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 87cb1f909346d8d48a8ca3edd9e29a18, type: 2}
   - {fileID: 11400000, guid: abb051467d68db44da367a2465175dc7, type: 2}
   - {fileID: 11400000, guid: 942826979c12ca44aacb46607df0bbbf, type: 2}
+  - {fileID: 11400000, guid: 4cfe8513331d2624e8f8d912abeebd03, type: 2}
   _currentStates: []
 --- !u!114 &7656454334376871847
 MonoBehaviour:

@@ -30,4 +30,11 @@ public class AnimationSoundPlayer : MonoBehaviour
 
     }
 
+    public void Play3D(string name)
+    {
+
+        AudioManager.current?.Play3D(_dictionary[name], transform.position);
+
+    }
+
 }

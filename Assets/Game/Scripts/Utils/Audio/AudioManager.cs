@@ -21,8 +21,11 @@ public class AudioManager : Singleton<AudioManager>
         _sourcePool = new AudioSource[_sourceNumber];
 
         for(int i = 0; i < _sourceNumber; i++) {
-            _sourcePool[i] = _sourceContainer.gameObject.AddComponent<AudioSource>();
+            _sourcePool[i] = new GameObject().AddComponent<AudioSource>();//_sourceContainer.gameObject.AddComponent<AudioSource>();
+            _sourcePool[i].transform.parent = transform;
+            _sourcePool[i].transform.position = Vector3.zero;
             _sourcePool[i].playOnAwake = false;
+            _sourcePool[i].rolloffMode = AudioRolloffMode.Linear;
         }
 
     }
@@ -43,6 +46,40 @@ public class AudioManager : Singleton<AudioManager>
         _source.loop = audioClipAsset.loop;
 
         _source.outputAudioMixerGroup = audioClipAsset.group;
+
+        _source.transform.position = Vector3.zero;
+
+        _source.spatialBlend = 0;
+
+        _source.Play();
+
+    }
+
+    public void Play3D(AudioClipAsset audioClipAsset, Vector3 position)
+    {
+        AudioSource _source = _sourcePool.FirstOrDefault(x => !x.isPlaying);
+
+        if (_source == null)
+        {
+            Debug.LogWarning("No available audio sources to play " + audioClipAsset.name + "!");
+            return;
+        }
+
+        _source.clip = audioClipAsset.clips[Random.Range(0, audioClipAsset.clips.Length)];
+
+        _source.volume = audioClipAsset.volume;
+        _source.pitch = audioClipAsset.GetPitch();
+        _source.loop = audioClipAsset.loop;
+
+        _source.outputAudioMixerGroup = audioClipAsset.group;
+
+        _source.transform.position = position;
+
+        _source.spatialBlend = 1;
+
+        _source.maxDistance = audioClipAsset.maxDistance;
+        _source.minDistance = audioClipAsset.minDistance;
+
 
         _source.Play();
 

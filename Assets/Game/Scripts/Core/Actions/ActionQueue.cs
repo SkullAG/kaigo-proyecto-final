@@ -25,6 +25,8 @@ namespace Core.Actions
         
         public Character currentTarget;
 
+        public bool update { get { return _updating; } set { _updating = value; } }
+
         public bool isPerformingAction => _busy;
         public bool isReady => _ready;
 

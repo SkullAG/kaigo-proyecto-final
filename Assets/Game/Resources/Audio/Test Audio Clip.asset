@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2dc0801fe6dc34881a3d48a4d58aaf, type: 3}
   m_Name: Test Audio Clip
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clips: []
   mixer: {fileID: 0}
   group: {fileID: 0}
   loop: 0
@@ -21,3 +21,5 @@ MonoBehaviour:
   randomizePitch: 0
   minPitch: 0
   maxPitch: 0
+  maxDistance: 15
+  minDistance: 0
