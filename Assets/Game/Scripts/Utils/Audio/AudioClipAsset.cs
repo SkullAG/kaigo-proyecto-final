@@ -29,6 +29,9 @@ public class AudioClipAsset : ScriptableObject
     [Range(-3, 3)]
     public float maxPitch;
 
+    public float maxDistance;
+    public float minDistance;
+
     public float GetPitch() {
 
         if(randomizePitch) {
