@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9edb761705bcdca46a9e7148b5c9315b, type: 3}
+  m_Name: Hihi Gambits
+  m_EditorClassIdentifier: 
+  _gambits:
+  - _target: {fileID: 11400000, guid: cd5ab95b1af3a8945ac2c609b0d5601f, type: 2}
+    _condition: {fileID: 11400000, guid: 84f22ccd597c5f540a0f8855560dce5f, type: 2}
+    _actionReference:
+      actions: {fileID: 11400000, guid: 062ee716686721740bc7b7221648d42b, type: 2}
+      actionID: throw_poop
+  - _target: {fileID: 11400000, guid: cd5ab95b1af3a8945ac2c609b0d5601f, type: 2}
+    _condition: {fileID: 11400000, guid: d15d3e6245a0dea4eb93f46f10601f15, type: 2}
+    _actionReference:
+      actions: {fileID: 11400000, guid: 062ee716686721740bc7b7221648d42b, type: 2}
+      actionID: punch
+  - _target: {fileID: 11400000, guid: cd5ab95b1af3a8945ac2c609b0d5601f, type: 2}
+    _condition: {fileID: 11400000, guid: abbff9475a9f2b547beb44d02e338676, type: 2}
+    _actionReference:
+      actions: {fileID: 11400000, guid: 062ee716686721740bc7b7221648d42b, type: 2}
+      actionID: enrage
+  - _target: {fileID: 11400000, guid: 862edc9fc0317a34ea7cb6769cd98dab, type: 2}
+    _condition: {fileID: 11400000, guid: a50b5dbb5aedb1a4882ff6bfd325224a, type: 2}
+    _actionReference:
+      actions: {fileID: 11400000, guid: 062ee716686721740bc7b7221648d42b, type: 2}
+      actionID: laugh

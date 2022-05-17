@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10249f2b637dc1e47abe879da9720f31, type: 3}
-  m_Name: BozuActions
+  m_Name: HihiActions
   m_EditorClassIdentifier: 
   actions:
   - id: 0
   - id: 1
   - id: 2
   - id: 3
-  - id: 4
   _actionType: BattleAction
   references:
     version: 1
@@ -26,122 +25,107 @@ MonoBehaviour:
       data:
         displayName: Punch
         id: punch
-        description: Weak hit to a single enemy.
-        hasTargetSelection: 1
+        description: 
+        hasTargetSelection: 0
         actor: {fileID: 0}
         target: {fileID: 0}
-        animationState: punch
+        animationState: 
         visualEffect: {fileID: 0}
         damage:
-          Physical: 1
+          Physical: 20
           Magical: 0
           Fire: 0
           Thunder: 0
           Ice: 0
           Wind: 0
           Void: 0
-          Poison: 0
+          Poison: 5
           Bleeding: 0
         costOverHP: 0
         costOverAP: 0
-        distanceToCast: 1
-        blockMovement: 1
-        states: []
-    00000001:
-      type: {class: BattleAction, ns: , asm: Assembly-CSharp}
-      data:
-        displayName: Curse
-        id: curse
-        description: Applies a random curse to the selected target.
-        hasTargetSelection: 1
-        actor: {fileID: 0}
-        target: {fileID: 0}
-        animationState: curse
-        visualEffect: {fileID: 0}
-        damage:
-          Physical: 0
-          Magical: 0
-          Fire: 0
-          Thunder: 0
-          Ice: 0
-          Wind: 0
-          Void: 0
-          Poison: 0
-          Bleeding: 0
-        costOverHP: 0
-        costOverAP: 5
-        distanceToCast: 3
+        distanceToCast: 0
         blockMovement: 1
         states:
         - state:
-            state: {fileID: 11400000, guid: abb051467d68db44da367a2465175dc7, type: 2}
-            duration: 6
+            state: {fileID: 0}
+            duration: 0
+            power: 0
+          elementType: Poison
+          _Probability: 5
+    00000001:
+      type: {class: BattleAction, ns: , asm: Assembly-CSharp}
+      data:
+        displayName: Laugh
+        id: laugh
+        description: 
+        hasTargetSelection: 0
+        actor: {fileID: 0}
+        target: {fileID: 0}
+        animationState: 
+        visualEffect: {fileID: 0}
+        damage:
+          Physical: 0
+          Magical: 0
+          Fire: 0
+          Thunder: 0
+          Ice: 0
+          Wind: 0
+          Void: 0
+          Poison: 0
+          Bleeding: 0
+        costOverHP: 0
+        costOverAP: 0
+        distanceToCast: 0
+        blockMovement: 1
+        states:
+        - state:
+            state: {fileID: 11400000, guid: 23db1e1c4df63574e9595fedb7674fd2, type: 2}
+            duration: 7
             power: 1
-          elementType: Fire
-          _Probability: 75
+          elementType: none
+          _Probability: 25
     00000002:
       type: {class: BattleAction, ns: , asm: Assembly-CSharp}
       data:
-        displayName: Purify
-        id: purify
-        description: Plazes an amulet on the target that erases its curses and blessings
-          making a bit of damage in the process.
-        hasTargetSelection: 1
+        displayName: Throw Poop
+        id: throw_poop
+        description: 
+        hasTargetSelection: 0
         actor: {fileID: 0}
         target: {fileID: 0}
-        animationState: punch
+        animationState: 
         visualEffect: {fileID: 0}
         damage:
-          Physical: 2
+          Physical: 5
           Magical: 0
           Fire: 0
           Thunder: 0
           Ice: 0
           Wind: 0
           Void: 0
-          Poison: 0
+          Poison: 42
           Bleeding: 0
         costOverHP: 0
-        costOverAP: 5
-        distanceToCast: 1
+        costOverAP: 0
+        distanceToCast: 0
         blockMovement: 1
-        states: []
+        states:
+        - state:
+            state: {fileID: 11400000, guid: 87cb1f909346d8d48a8ca3edd9e29a18, type: 2}
+            duration: 10
+            power: 1
+          elementType: Poison
+          _Probability: 50
     00000003:
       type: {class: BattleAction, ns: , asm: Assembly-CSharp}
       data:
-        displayName: Bless
-        id: bless
-        description: Applies a random blessing to the selected target.
-        hasTargetSelection: 1
-        actor: {fileID: 0}
-        target: {fileID: 0}
-        animationState: curse
-        visualEffect: {fileID: 0}
-        damage:
-          Physical: 0
-          Magical: 0
-          Fire: 0
-          Thunder: 0
-          Ice: 0
-          Wind: 0
-          Void: 0
-          Poison: 0
-          Bleeding: 0
-        costOverHP: 0
-        costOverAP: 0
-        distanceToCast: 3
-        blockMovement: 1
-        states: []
-    00000004:
-      type: {class: BattleAction, ns: , asm: Assembly-CSharp}
-      data:
-        displayName: Resurect
-        id: resurect
+        displayName: Enrage
+        id: enrage
         description: 
-        hasTargetSelection: 1
+        hasTargetSelection: 0
         actor: {fileID: 0}
         target: {fileID: 0}
-        animationState: punch
+        animationState: 
         visualEffect: {fileID: 0}
         damage:
           Physical: 0
@@ -155,6 +139,12 @@ MonoBehaviour:
           Bleeding: 0
         costOverHP: 0
         costOverAP: 0
-        distanceToCast: 1
+        distanceToCast: 0
         blockMovement: 1
-        states: []
+        states:
+        - state:
+            state: {fileID: 11400000, guid: c444cfe829e3a4c419f7a65b8f6824b9, type: 2}
+            duration: 120
+            power: 1
+          elementType: none
+          _Probability: 25
