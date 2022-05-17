@@ -12,4 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9edb761705bcdca46a9e7148b5c9315b, type: 3}
   m_Name: Yamabozu Gambits
   m_EditorClassIdentifier: 
-  _gambits: []
+  _gambits:
+  - _target: {fileID: 11400000, guid: 7b9082df0dd19954ebcf60172a6cb12d, type: 2}
+    _condition: {fileID: 11400000, guid: 5f2a59bbfc22f2f48949450088f60396, type: 2}
+    _actionReference:
+      actions: {fileID: 11400000, guid: 3c3a78f5f2a88bd45b05a5659481356c, type: 2}
+      actionID: punch
+  - _target: {fileID: 11400000, guid: ee5eb45c2d6759841bc4cbfcfef0fec4, type: 2}
+    _condition: {fileID: 11400000, guid: 84f22ccd597c5f540a0f8855560dce5f, type: 2}
+    _actionReference:
+      actions: {fileID: 11400000, guid: 3c3a78f5f2a88bd45b05a5659481356c, type: 2}
+      actionID: curse
+  - _target: {fileID: 11400000, guid: 7e050759b56bdf0439a1848a5b02f47d, type: 2}
+    _condition: {fileID: 11400000, guid: d15d3e6245a0dea4eb93f46f10601f15, type: 2}
+    _actionReference:
+      actions: {fileID: 11400000, guid: 3c3a78f5f2a88bd45b05a5659481356c, type: 2}
+      actionID: purify
+  - _target: {fileID: 11400000, guid: c5ca4cc0e9ae10a4c8a1a602a1436378, type: 2}
+    _condition: {fileID: 11400000, guid: 84f22ccd597c5f540a0f8855560dce5f, type: 2}
+    _actionReference:
+      actions: {fileID: 11400000, guid: 3c3a78f5f2a88bd45b05a5659481356c, type: 2}
+      actionID: bless
+  - _target: {fileID: 11400000, guid: f0c428ced00088e45925aad97c3a29e8, type: 2}
+    _condition: {fileID: 11400000, guid: 84f22ccd597c5f540a0f8855560dce5f, type: 2}
+    _actionReference:
+      actions: {fileID: 11400000, guid: 3c3a78f5f2a88bd45b05a5659481356c, type: 2}
+      actionID: resurect

@@ -13,8 +13,28 @@ MonoBehaviour:
   m_Name: Tomoe Gambits
   m_EditorClassIdentifier: 
   _gambits:
-  - _target: {fileID: 11400000, guid: 27b594262d1a2634a9ab741585a3c3c3, type: 2}
+  - _target: {fileID: 11400000, guid: 7b9082df0dd19954ebcf60172a6cb12d, type: 2}
+    _condition: {fileID: 11400000, guid: 5f2a59bbfc22f2f48949450088f60396, type: 2}
+    _actionReference:
+      actions: {fileID: 11400000, guid: 1ce4e4b17fcd18d4a8e1436cb1cb74f8, type: 2}
+      actionID: punch
+  - _target: {fileID: 11400000, guid: f7762b493a9695e429771193898cdc7f, type: 2}
     _condition: {fileID: 11400000, guid: d9493d5a655226e41a3064122bd7ad07, type: 2}
     _actionReference:
       actions: {fileID: 11400000, guid: 1ce4e4b17fcd18d4a8e1436cb1cb74f8, type: 2}
+      actionID: cold_spikes
+  - _target: {fileID: 11400000, guid: d3d7e6c4c7509e645aceef67a1232675, type: 2}
+    _condition: {fileID: 11400000, guid: 84f22ccd597c5f540a0f8855560dce5f, type: 2}
+    _actionReference:
+      actions: {fileID: 11400000, guid: 1ce4e4b17fcd18d4a8e1436cb1cb74f8, type: 2}
+      actionID: collapse
+  - _target: {fileID: 11400000, guid: 6a7a174d8a4e433459308b3cd0b3e083, type: 2}
+    _condition: {fileID: 11400000, guid: d15d3e6245a0dea4eb93f46f10601f15, type: 2}
+    _actionReference:
+      actions: {fileID: 11400000, guid: 1ce4e4b17fcd18d4a8e1436cb1cb74f8, type: 2}
       actionID: blaze
+  - _target: {fileID: 11400000, guid: ee5eb45c2d6759841bc4cbfcfef0fec4, type: 2}
+    _condition: {fileID: 11400000, guid: 65c2795d667946a45b79f22858b3a784, type: 2}
+    _actionReference:
+      actions: {fileID: 11400000, guid: 1ce4e4b17fcd18d4a8e1436cb1cb74f8, type: 2}
+      actionID: thunder
