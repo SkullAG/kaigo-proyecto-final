@@ -58,7 +58,7 @@ public class BattleController : Singleton<BattleController>
                         // Track enemies targetting any party member
                         _enemies.Add(other);
 
-                        Debug.Log("Found enemy: " + other.name);
+                        //Debug.Log("Found enemy: " + other.name);
 
                     }
 
@@ -73,7 +73,7 @@ public class BattleController : Singleton<BattleController>
 
                     _enemies.Add(_target);
 
-                    Debug.Log("Found enemy: " + _target.name);
+                    //Debug.Log("Found enemy: " + _target.name);
 
                 }
 

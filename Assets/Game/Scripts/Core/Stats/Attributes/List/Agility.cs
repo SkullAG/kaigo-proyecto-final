@@ -15,8 +15,8 @@ namespace Core.Stats {
         public const int MIN_SPEED = 3;
         public const int MAX_SPEED = 8;
 
-        public const int MAX_ACTIONSPEED = 2;
-        public const int MIN_ACTIONSPEED = 10;
+        public const int MAX_ACTIONSPEED = 10;
+        public const int MIN_ACTIONSPEED = 2;
 
         public const float ATTRIBUTE_MAX = 99;
 
@@ -30,7 +30,7 @@ namespace Core.Stats {
 
         public float CalculateActionSpeed() {
 
-            float _result = value * (MAX_ACTIONSPEED - MIN_ACTIONSPEED) / 10 + MIN_ACTIONSPEED; 
+            float _result = value / MAX_ACTIONSPEED; 
 
             return _result;
 
