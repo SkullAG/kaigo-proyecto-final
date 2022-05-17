@@ -710,6 +710,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cd300d20fed1b5499f020200c052a1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _leaderLayer: PartyLeader
+  _partyLayer: Party
   puppeteer: {fileID: 91965595}
   PartyMembers:
   - {fileID: 161130787}

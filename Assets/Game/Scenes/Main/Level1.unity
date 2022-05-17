@@ -3096,6 +3096,10 @@ PrefabInstance:
       value: Mikari Baba (4)
       objectReference: {fileID: 0}
     - target: {fileID: 2469287126566079152, guid: 56804e124abfda042800920eb73891c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469287126566079152, guid: 56804e124abfda042800920eb73891c0, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -3151,13 +3155,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8201168128150521849, guid: 56804e124abfda042800920eb73891c0, type: 3}
+      propertyPath: m_Range
+      value: 0.20000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201168128150521849, guid: 56804e124abfda042800920eb73891c0, type: 3}
+      propertyPath: m_Intensity
+      value: 0.2911465
+      objectReference: {fileID: 0}
     - target: {fileID: 8266171693890078016, guid: 56804e124abfda042800920eb73891c0, type: 3}
       propertyPath: m_Range
-      value: 0
+      value: 0.20000005
       objectReference: {fileID: 0}
     - target: {fileID: 8266171693890078016, guid: 56804e124abfda042800920eb73891c0, type: 3}
       propertyPath: m_Intensity
-      value: 0
+      value: 1.9631993
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56804e124abfda042800920eb73891c0, type: 3}
@@ -5951,6 +5963,10 @@ PrefabInstance:
       value: Mikari Baba (3)
       objectReference: {fileID: 0}
     - target: {fileID: 2469287126566079152, guid: 56804e124abfda042800920eb73891c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469287126566079152, guid: 56804e124abfda042800920eb73891c0, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -6006,13 +6022,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8201168128150521849, guid: 56804e124abfda042800920eb73891c0, type: 3}
+      propertyPath: m_Range
+      value: 0.20000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201168128150521849, guid: 56804e124abfda042800920eb73891c0, type: 3}
+      propertyPath: m_Intensity
+      value: 0.25169444
+      objectReference: {fileID: 0}
     - target: {fileID: 8266171693890078016, guid: 56804e124abfda042800920eb73891c0, type: 3}
       propertyPath: m_Range
-      value: 0
+      value: 0.20000005
       objectReference: {fileID: 0}
     - target: {fileID: 8266171693890078016, guid: 56804e124abfda042800920eb73891c0, type: 3}
       propertyPath: m_Intensity
-      value: 0
+      value: 1.1514719
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56804e124abfda042800920eb73891c0, type: 3}
@@ -10459,13 +10483,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8266171693890078016, guid: 56804e124abfda042800920eb73891c0, type: 3}
+    - target: {fileID: 8201168128150521849, guid: 56804e124abfda042800920eb73891c0, type: 3}
       propertyPath: m_Range
-      value: 0
+      value: 0.20000005
       objectReference: {fileID: 0}
-    - target: {fileID: 8266171693890078016, guid: 56804e124abfda042800920eb73891c0, type: 3}
+    - target: {fileID: 8201168128150521849, guid: 56804e124abfda042800920eb73891c0, type: 3}
       propertyPath: m_Intensity
-      value: 0
+      value: 0.34439924
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56804e124abfda042800920eb73891c0, type: 3}
@@ -16189,6 +16213,10 @@ PrefabInstance:
       value: Mikari Baba (6)
       objectReference: {fileID: 0}
     - target: {fileID: 2469287126566079152, guid: 56804e124abfda042800920eb73891c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469287126566079152, guid: 56804e124abfda042800920eb73891c0, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -16244,13 +16272,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8201168128150521849, guid: 56804e124abfda042800920eb73891c0, type: 3}
+      propertyPath: m_Range
+      value: 0.20000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201168128150521849, guid: 56804e124abfda042800920eb73891c0, type: 3}
+      propertyPath: m_Intensity
+      value: 0.3211323
+      objectReference: {fileID: 0}
     - target: {fileID: 8266171693890078016, guid: 56804e124abfda042800920eb73891c0, type: 3}
       propertyPath: m_Range
-      value: 0
+      value: 0.20000005
       objectReference: {fileID: 0}
     - target: {fileID: 8266171693890078016, guid: 56804e124abfda042800920eb73891c0, type: 3}
       propertyPath: m_Intensity
-      value: 0
+      value: 1.7669066
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56804e124abfda042800920eb73891c0, type: 3}
@@ -19346,6 +19382,10 @@ PrefabInstance:
       value: Mikari Baba (5)
       objectReference: {fileID: 0}
     - target: {fileID: 2469287126566079152, guid: 56804e124abfda042800920eb73891c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469287126566079152, guid: 56804e124abfda042800920eb73891c0, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -19401,13 +19441,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8201168128150521849, guid: 56804e124abfda042800920eb73891c0, type: 3}
+      propertyPath: m_Range
+      value: 0.20000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201168128150521849, guid: 56804e124abfda042800920eb73891c0, type: 3}
+      propertyPath: m_Intensity
+      value: 0.32283747
+      objectReference: {fileID: 0}
     - target: {fileID: 8266171693890078016, guid: 56804e124abfda042800920eb73891c0, type: 3}
       propertyPath: m_Range
-      value: 0
+      value: 0.20000005
       objectReference: {fileID: 0}
     - target: {fileID: 8266171693890078016, guid: 56804e124abfda042800920eb73891c0, type: 3}
       propertyPath: m_Intensity
-      value: 0
+      value: 1.6114769
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56804e124abfda042800920eb73891c0, type: 3}
