@@ -8,6 +8,9 @@ namespace Core.States {
 	public class StateList : MonoBehaviour
 	{
 		
+		public event System.Action<State> stateAdded = delegate {};
+		public event System.Action<State> stateRemoved = delegate {};
+
 		[SerializeField]
 		private List<State> _availableStates = new List<State>();
 
@@ -71,6 +74,8 @@ namespace Core.States {
 					_state.StartState(_actor, duration, power);
 					_currentStates.Add(_state);
 
+					stateAdded(_state);
+
 					Debug.Log("State added");
 
 				}
@@ -97,6 +102,8 @@ namespace Core.States {
 			if(_state != null) {
 
 				BattleLog.current.WriteLine(string.Format(BattleLogFormats.STATE_DISPELLED, _state.displayName, _actor.name));
+
+				stateRemoved(_state);
 
 				_state.EndState(_actor);
 				_currentStates.Remove(_state);
