@@ -56,7 +56,7 @@ public class EnemyBehaviour : MonoBehaviour
 
                 if(_elementInView) {
 
-                    Debug.Log("Enabling enemy gambits");
+                    //Debug.Log("Enabling enemy gambits");
 
                     _timer = 0;
 
@@ -123,12 +123,12 @@ public class EnemyBehaviour : MonoBehaviour
 
                 float _angle = Mathf.Abs(Vector3.Angle(_dir, transform.forward));
 
-                Debug.Log("Angle: " + _angle);
+                //Debug.Log("Angle: " + _angle);
 
                 if(_angle < _detectionAngle / 2) {
 
-                    Debug.Log("Player is seen");
-                    Debug.Break();
+                    //Debug.Log("Player is seen");
+                    //Debug.Break();
 
                     return true;
 
@@ -138,7 +138,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         }
 
-        Debug.Log("Player not is seen");
+        //Debug.Log("Player not is seen");
 
         return false;
 
