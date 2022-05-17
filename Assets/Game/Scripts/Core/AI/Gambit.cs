@@ -2,6 +2,8 @@ using UnityEngine;
 using Core.Actions;
 using Core.AI;
 
+using NaughtyAttributes;
+
 namespace Core.Gambits
 {
     
@@ -9,10 +11,10 @@ namespace Core.Gambits
     public class Gambit
     {
         
-        [SerializeField]
+        [SerializeField, Expandable]
         private TargetFilter _target;
 
-        [SerializeField]
+        [SerializeField, Expandable]
         private BehaviourCondition _condition;
 
         [SerializeField]
