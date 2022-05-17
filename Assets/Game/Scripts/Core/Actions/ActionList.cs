@@ -1,5 +1,5 @@
 using UnityEngine;
-using System;
+using System.Collections.Generic;
 using System.Linq;
 using Core.Characters;
 
@@ -61,7 +61,27 @@ namespace Core.Actions
         [SerializeField]
         private ActionReference[] _actionReferences;
 
+        [Space(15)]
+
+        [SerializeField]
+        private GameActionList _addFromList;
+
         public ActionReference[] references => _actionReferences;
+
+        [Button]
+        private void Load() {
+
+            List<ActionReference> _list = _actionReferences.ToList();
+
+            foreach (var item in _addFromList.actions) {
+
+                _list.Add( new ActionReference() { actions = _addFromList,  actionID = item.id } );
+                
+            }
+
+            _actionReferences = _actionReferences.Union(_list).ToArray();
+
+        }
 
         public ActionReference GetReference(string id) {
 
