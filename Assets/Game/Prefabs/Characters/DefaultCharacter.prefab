@@ -113,8 +113,8 @@ MonoBehaviour:
   actions: {fileID: 4021926938695819908}
   gambits: {fileID: 4021926938695819962}
   states: {fileID: 4021926938695819961}
-  queue: {fileID: 0}
-  navBody: {fileID: 0}
+  queue: {fileID: 4021926938695819909}
+  navBody: {fileID: 4021926938695819911}
 --- !u!114 &4021926938695819909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +230,7 @@ MonoBehaviour:
   _availableStates:
   - {fileID: 11400000, guid: 87cb1f909346d8d48a8ca3edd9e29a18, type: 2}
   - {fileID: 11400000, guid: abb051467d68db44da367a2465175dc7, type: 2}
+  - {fileID: 11400000, guid: 942826979c12ca44aacb46607df0bbbf, type: 2}
   _currentStates: []
 --- !u!114 &7656454334376871847
 MonoBehaviour:

@@ -16,6 +16,8 @@ MonoBehaviour:
   - id: 0
   - id: 1
   - id: 2
+  - id: 3
+  - id: 4
   _actionType: BattleAction
   references:
     version: 1
@@ -101,6 +103,58 @@ MonoBehaviour:
           Bleeding: 0
         costOverHP: 0
         costOverAP: 5
+        distanceToCast: 1
+        blockMovement: 1
+        states: []
+    00000003:
+      type: {class: BattleAction, ns: , asm: Assembly-CSharp}
+      data:
+        displayName: Bleess
+        id: bless
+        description: Applies a random blessing to the selected target
+        hasTargetSelection: 1
+        actor: {fileID: 0}
+        target: {fileID: 0}
+        animationState: curse
+        visualEffect: {fileID: 0}
+        damage:
+          Physical: 0
+          Magical: 0
+          Fire: 0
+          Thunder: 0
+          Ice: 0
+          Wind: 0
+          Void: 0
+          Poison: 0
+          Bleeding: 0
+        costOverHP: 0
+        costOverAP: 0
+        distanceToCast: 3
+        blockMovement: 1
+        states: []
+    00000004:
+      type: {class: BattleAction, ns: , asm: Assembly-CSharp}
+      data:
+        displayName: Resurect
+        id: resurect
+        description: 
+        hasTargetSelection: 1
+        actor: {fileID: 0}
+        target: {fileID: 0}
+        animationState: punch
+        visualEffect: {fileID: 0}
+        damage:
+          Physical: 0
+          Magical: 0
+          Fire: 0
+          Thunder: 0
+          Ice: 0
+          Wind: 0
+          Void: 0
+          Poison: 0
+          Bleeding: 0
+        costOverHP: 0
+        costOverAP: 0
         distanceToCast: 1
         blockMovement: 1
         states: []

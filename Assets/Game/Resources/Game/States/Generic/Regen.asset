@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Regen
   _effects:
-  - {fileID: 11400000, guid: a4642c6a23faa3d429dea5bb8b18bd3e, type: 2}
+  - {fileID: 11400000, guid: dc6e2eaf836b6a4409a74307a5a977fb, type: 2}
   allowMultipleInstances: 1
   blendMode: 8
   _id: regen
