@@ -16,6 +16,7 @@ MonoBehaviour:
   - id: 0
   - id: 1
   - id: 2
+  - id: 3
   _actionType: ItemAction
   references:
     version: 1
@@ -67,3 +68,21 @@ MonoBehaviour:
         distanceToCast: 1
         blockMovement: 1
         states: []
+    00000003:
+      type: {class: ItemAction, ns: , asm: Assembly-CSharp}
+      data:
+        displayName: Oniguiri
+        id: oniguiri
+        description: 
+        hasTargetSelection: 0
+        actor: {fileID: 0}
+        target: {fileID: 0}
+        animationState: eating
+        healthRecovered: 0
+        actionPointsRecovered: 0
+        distanceToCast: 0
+        blockMovement: 1
+        states:
+        - state: {fileID: 11400000, guid: 942826979c12ca44aacb46607df0bbbf, type: 2}
+          duration: 10
+          power: 2

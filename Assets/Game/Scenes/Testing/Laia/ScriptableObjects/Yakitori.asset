@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Yakitori
   id: yakitori
+  value: 10
   description: Heal a small amount of HP.
   stackMax: 16
   actionReference:

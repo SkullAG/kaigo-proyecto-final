@@ -9,6 +9,7 @@ public class Objects : ScriptableObject
 {   
     public string displayName;
     public string id;
+    public int value;
 
     [TextArea]
     public string description;

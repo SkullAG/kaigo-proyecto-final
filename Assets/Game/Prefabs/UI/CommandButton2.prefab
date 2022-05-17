@@ -63,6 +63,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CommandButton2
       objectReference: {fileID: 0}
+    - target: {fileID: 7847871086194725488, guid: 84c4f0f80e976ce4ead6bea18d1db4b9, type: 3}
+      propertyPath: m_spriteAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4435a555129db6045a35bf23ddb935ec, type: 2}
     - target: {fileID: 8353620745551045223, guid: 84c4f0f80e976ce4ead6bea18d1db4b9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

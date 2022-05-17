@@ -121,7 +121,7 @@ public class Inventory : MonoBehaviour
 
 	}
 	
-	public void Add(Objects obj)
+	public bool Add(Objects obj)
 	{
 
 		if (huecos.ContainsKey(obj.name))
@@ -136,10 +136,14 @@ public class Inventory : MonoBehaviour
 
 				SendOnInventoryChange.Invoke(huecos, nombres);
 				Debug.Log("Sumando al stack " + huecos[obj.name].objeto.name);
+
+				itemAdded();
+				return true;
 			}
 			else
 			{
 				Debug.Log("Stack Maximo alcanzado " + huecos[obj.name].objeto.stackMax);
+				return false;
 			}
 		}
 		else
@@ -150,9 +154,12 @@ public class Inventory : MonoBehaviour
 			huecos.Add(obj.name, c);
 			nombres.Add(obj.name);
 			SendOnInventoryChange.Invoke(huecos, nombres);
+
+			itemAdded();
+			return true;
 		}
 
-		itemAdded();
+		
 
 	}
 

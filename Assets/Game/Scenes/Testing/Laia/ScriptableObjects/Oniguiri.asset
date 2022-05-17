@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b8c52abd410a8749b97de331df471f6, type: 3}
-  m_Name: Gyokuro
+  m_Name: Oniguiri
   m_EditorClassIdentifier: 
-  displayName: Gyokuro
-  id: gyokuro
-  value: 5
-  description: Gives 20 mana
+  displayName: Oniguiri
+  id: oniguiri
+  value: 10
+  description: Heal a small amount of HP.
   stackMax: 16
   actionReference:
     actions: {fileID: 11400000, guid: 0c75124dd5012f44484caa2b7baca8db, type: 2}
-    actionID: gyokuro
+    actionID: yakitori

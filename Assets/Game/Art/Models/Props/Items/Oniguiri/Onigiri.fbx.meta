@@ -9,6 +9,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Material
     second: {fileID: 2100000, guid: b4d78eaab02ce32469e2ec2594472f93, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Onigiri
+    second: {fileID: 2100000, guid: b4d78eaab02ce32469e2ec2594472f93, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Paper
+    second: {fileID: 2100000, guid: d988c8bf8d61fa745b62839a38e79281, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

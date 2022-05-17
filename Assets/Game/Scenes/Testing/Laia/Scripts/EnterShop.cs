@@ -60,10 +60,10 @@ public class EnterShop : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        
+        shop.SetActive(false);
         if (other == _other)
-        {
-            shop.SetActive(false);
+
+        {            
             other = null;
             StopAllCoroutines();
 

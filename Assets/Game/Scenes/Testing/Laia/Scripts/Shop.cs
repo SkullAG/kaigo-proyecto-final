@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shop : MonoBehaviour
 {
     //public Objects scriptableObject;
-    public int valueObject;
+    //public int valueObject;
 
     public CommandList _commandList;
 
@@ -13,6 +13,8 @@ public class Shop : MonoBehaviour
     public List<Objects> ShopObjects = new List<Objects>();
 
     private Inventory _inventory;
+
+    public string MoneyIconId;
 
     private void OnEnable()
     {
@@ -25,11 +27,11 @@ public class Shop : MonoBehaviour
 
     public void GiveObject(int index)
     {
-        if (_inventory.coins >= valueObject)
+        if (_inventory.coins >= ShopObjects[index].value)
         {
             _inventory.Add(ShopObjects[index]);
 
-            _inventory.coins = _inventory.coins  - valueObject;
+            _inventory.coins = _inventory.coins  - ShopObjects[index].value;
         }
     }
 
@@ -40,7 +42,7 @@ public class Shop : MonoBehaviour
         for (int i = 0; i < ShopObjects.Count; i++)
         {
             _CShop[i] = new CommandShop(i) {
-                displayName = ShopObjects[i].displayName,
+                displayName = ShopObjects[i].displayName + " <sprite name=" + MoneyIconId + ">" + ShopObjects[i].value,
                 displayDescription = ShopObjects[i].description,
                 shop = this,
                 index = i
