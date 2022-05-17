@@ -16,6 +16,7 @@ MonoBehaviour:
   - id: 0
   - id: 1
   - id: 2
+  - id: 3
   _actionType: BattleAction
   references:
     version: 1
@@ -105,3 +106,36 @@ MonoBehaviour:
             power: 1
           elementType: Fire
           _Probability: 75
+    00000003:
+      type: {class: BattleAction, ns: , asm: Assembly-CSharp}
+      data:
+        displayName: Counter
+        id: counter
+        description: Applies himself a buff that allows him to attack with no cost
+          when attacked.
+        hasTargetSelection: 1
+        actor: {fileID: 0}
+        target: {fileID: 0}
+        animationState: 
+        visualEffect: {fileID: 0}
+        damage:
+          Physical: 0
+          Magical: 0
+          Fire: 0
+          Thunder: 0
+          Ice: 0
+          Wind: 0
+          Void: 0
+          Poison: 0
+          Bleeding: 0
+        costOverHP: 0
+        costOverAP: 0
+        distanceToCast: 0
+        blockMovement: 1
+        states:
+        - state:
+            state: {fileID: 0}
+            duration: 0
+            power: 0
+          elementType: none
+          _Probability: 0

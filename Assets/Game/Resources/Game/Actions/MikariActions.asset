@@ -122,7 +122,7 @@ MonoBehaviour:
           Poison: 0
           Bleeding: 0
         costOverHP: 0
-        costOverAP: 5
+        costOverAP: 0
         distanceToCast: 2.5
         blockMovement: 1
         states:
