@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
 using System.Collections;
+using System.Linq;
 
 public class Targetter : Singleton<Targetter>
 {
@@ -17,6 +18,7 @@ public class Targetter : Singleton<Targetter>
 
     [SerializeField] private TargetCursor _cursor;
     [SerializeField] private Character _target;
+    [SerializeField] private CameraManager _cameraManager;
 
     [SerializeField] private float _range;
     [SerializeField] private float _fieldOfView;
@@ -35,6 +37,8 @@ public class Targetter : Singleton<Targetter>
     private bool _pressed = false;
 
     public Character currentTarget => _target;
+    
+    private Character _selectedCharacter;
 
     private void Awake() {
 
@@ -58,6 +62,8 @@ public class Targetter : Singleton<Targetter>
     private void Update() {
 
         if(_update) {
+
+            _cameraManager.SetLookPoint(_cursor.transform.position);
 
             Vector2 _targetViewPos = _filter.camera.WorldToViewportPoint(_target.transform.position);
             Vector2 _control = _navigateAction.action.ReadValue<Vector2>();
@@ -113,14 +119,22 @@ public class Targetter : Singleton<Targetter>
         _filter.enabled = true;
         _update = true;
 
+        _selectedCharacter = PartyManager.current.GetSelectedCharacter();
         _characters = FindVisibleCharacters();
 
         if(_characters.Length > 0) {
+
+            // Sort targets based on distance
+            _characters.OrderBy(x => Vector3.Distance(x.transform.position, _selectedCharacter.transform.position));
             
-            // Select first target
+            // Select first target (closest one)
             SelectTarget(_characters[0]);
 
         }
+
+        //_cameraManager.SetLookPoint(_cursor.transform.position);
+
+        _cameraManager.rotationEnabled = false;
 
         targettingStatusChanged(true);
 
@@ -134,6 +148,9 @@ public class Targetter : Singleton<Targetter>
 
         _filter.enabled = false;
         _update = false;
+
+        _cameraManager.RemoveLookPoint();
+        _cameraManager.rotationEnabled = true;
 
         targettingStatusChanged(false);
 
@@ -170,7 +187,7 @@ public class Targetter : Singleton<Targetter>
         foreach(VisibilityChecker checker in _filter.visibleObjects) {
 
             // Performant way of measuring distance
-            float _sqrDistance = (transform.position - checker.transform.position).sqrMagnitude;
+            float _sqrDistance = (_selectedCharacter.transform.position - checker.transform.position).sqrMagnitude;
 
             if( _sqrDistance < _range * _range ) {
 

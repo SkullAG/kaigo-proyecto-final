@@ -50,6 +50,8 @@ public class CameraManager : MonoBehaviour
 	public bool hasLookPoint = false;
 	public Vector3 lookPoint = Vector3.zero;
 
+	public bool rotationEnabled = true;
+
 	//Vector2 _lastMousePos = Vector2.zero;
 
 	void Start()
@@ -69,34 +71,38 @@ public class CameraManager : MonoBehaviour
 	{
 		transform.position = Vector3.Lerp(transform.position, objective.position + transformedRotOffset + offset, acceleration * Time.deltaTime);
 
-		Vector2 deltaLook = _lookInput.ReadValue<Vector2>();
-		if(deltaLook != Vector2.zero)
-        {
-			bool rc = true;
-			if (_lookInput.activeControl.device is Mouse)
-			{
-				rc = _RightClick.ReadValue<float>() == 1;
+		if(rotationEnabled) {
 
-				deltaLook *= mouseSentivityMultiplier;
+			Vector2 deltaLook = _lookInput.ReadValue<Vector2>();
+			if(deltaLook != Vector2.zero)
+			{
+				bool rc = true;
+				if (_lookInput.activeControl.device is Mouse)
+				{
+					rc = _RightClick.ReadValue<float>() == 1;
+
+					deltaLook *= mouseSentivityMultiplier;
+				}
+
+				if (rc)
+				{
+					Vector3 deltaAngle = new Vector3(deltaLook.y, deltaLook.x, 0) * sensitivity;
+
+					Vector3 finalAngle = deltaAngle + positionRotation.eulerAngles;
+
+					finalAngle.x = Mathf.Clamp(finalAngle.x, 0, 90);
+
+					Vector3 actualOffset = transformedRotOffset;
+
+					positionRotation = Quaternion.Euler(finalAngle);
+
+					transform.position = transform.position - actualOffset + transformedRotOffset;
+
+				}
+
 			}
 
-			if (rc)
-			{
-				Vector3 deltaAngle = new Vector3(deltaLook.y, deltaLook.x, 0) * sensitivity;
-
-				Vector3 finalAngle = deltaAngle + positionRotation.eulerAngles;
-
-				finalAngle.x = Mathf.Clamp(finalAngle.x, 0, 90);
-
-				Vector3 actualOffset = transformedRotOffset;
-
-				positionRotation = Quaternion.Euler(finalAngle);
-
-				transform.position = transform.position - actualOffset + transformedRotOffset;
-
-			}
-
-        }
+		}
 
 		float zoom = Mathf.Clamp(_zoomInput.ReadValue<float>(),-10, 10) * zoomSensitivity * Time.deltaTime;
 
