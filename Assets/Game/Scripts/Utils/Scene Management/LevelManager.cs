@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using NaughtyAttributes;
+using System.Linq;
 
 public class LevelManager : Singleton<LevelManager>
 {
 
     [SerializeField] private GameObject _partyContainer;
 
-    [SerializeField]
-    private List<TransferData> _transferDataList = new List<TransferData>();
+    public static List<TransferData> transferDataList = new List<TransferData>();
 
     [System.Serializable]
     public class TransferData {
@@ -33,7 +33,7 @@ public class LevelManager : Singleton<LevelManager>
 
     public TransferData GetData(string identifier) {
 
-        foreach (var data in _transferDataList) {
+        foreach (var data in transferDataList) {
 
             if(data.identifier == identifier) {
                 return data;
@@ -45,16 +45,37 @@ public class LevelManager : Singleton<LevelManager>
 
     }
 
-    public void RegisterSpawnPoint(SpawnPoint spawnPoint) {
+    public static void RegisterSpawnPoint(SpawnPoint spawnPoint) {
 
-        TransferData _data = new TransferData(
-            spawnPoint.uniqueIdentifier,
-            spawnPoint.scene.name,
-            spawnPoint.transform.position,
-            spawnPoint.transform.rotation
-        );
+        string _id = spawnPoint.uniqueIdentifier;
 
-        _transferDataList.Add(_data);
+        if(!string.IsNullOrWhiteSpace(_id)) {
+
+            // If there isn't a spawnpoint with that id
+            if(!transferDataList.Any(x => x.identifier == spawnPoint.uniqueIdentifier)) {
+
+                TransferData _data = new TransferData(
+                    spawnPoint.uniqueIdentifier,
+                    spawnPoint.scene.name,
+                    spawnPoint.transform.position,
+                    spawnPoint.transform.rotation
+                );
+
+                transferDataList.Add(_data);
+
+                Debug.LogWarning("Spawn point: " + _data.identifier +" registered successfully!");
+
+            } else {
+
+                Debug.LogWarning("Spawn point with the id " + spawnPoint.uniqueIdentifier +" is already registered!");
+
+            }
+
+        } else {
+
+            Debug.LogWarning( "Invalid spawn point name." );
+
+        }
 
     }
 
@@ -82,7 +103,7 @@ public class LevelManager : Singleton<LevelManager>
 
             } else {
 
-                MoveParty(_data.position);
+                MoveParty(_data.position); // Normal TP
 
             }
 

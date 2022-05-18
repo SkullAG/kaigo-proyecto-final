@@ -14,7 +14,7 @@ public class SpawnPoint : MonoBehaviour {
     [Button]
     private void AddToLevelManager() {
         
-        LevelManager.current.RegisterSpawnPoint(this);
+        LevelManager.RegisterSpawnPoint(this);
 
     }
 
