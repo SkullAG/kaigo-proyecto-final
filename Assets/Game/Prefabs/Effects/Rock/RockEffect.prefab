@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7684299234510114375}
   - component: {fileID: 7684299234510114374}
   - component: {fileID: 7684299234510114377}
+  - component: {fileID: 3628732495983305824}
   m_Layer: 0
   m_Name: RockEffect
   m_TagString: Untagged
@@ -68,6 +69,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useTimer: 0
   time: 1
+--- !u!114 &3628732495983305824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7684299234510114376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599e169830dfa2749a2ef5ec3b8b497d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioAssets:
+  - {fileID: 11400000, guid: 8488673156cf4294d92be0d11a55c7a3, type: 2}
 --- !u!1 &7684299234735687434
 GameObject:
   m_ObjectHideFlags: 0

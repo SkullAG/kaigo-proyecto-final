@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RegenEffect
   m_EditorClassIdentifier: 
   started: 0
-  visualEffect: {fileID: 0}
+  visualEffect: {fileID: 8249779919150476512, guid: 69f46e806c5545a4ea323ebceaa045dd, type: 3}
   affectedResource: 0
   affectionType: 1
   timeBetweenTicks: 2

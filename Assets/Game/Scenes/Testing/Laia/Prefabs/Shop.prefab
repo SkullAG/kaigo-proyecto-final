@@ -67,7 +67,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d687697eadfc9204da991737670ebe10, type: 2}
   - {fileID: 11400000, guid: c4dcc591cc6d805488e250ed623ee0a6, type: 2}
   _textMesh: {fileID: 4458215077826857917}
-  MoneyIconId: 
+  MoneyIconId: pay_money
 --- !u!114 &360343908332528390
 MonoBehaviour:
   m_ObjectHideFlags: 0
