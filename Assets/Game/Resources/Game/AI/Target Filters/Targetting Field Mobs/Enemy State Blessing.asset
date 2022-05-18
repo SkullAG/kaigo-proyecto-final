@@ -18,8 +18,9 @@ MonoBehaviour:
   filterScope: 2
   excludeSelf: 1
   states:
-  - {fileID: 11400000, guid: 857a86ce2e221f045bfbe22ec38cbebd, type: 2}
-  - {fileID: 11400000, guid: b149bbc117fa11a4485c72d064bc0308, type: 2}
-  - {fileID: 11400000, guid: 6b3561481890a7c40a8b2d061b440343, type: 2}
-  - {fileID: 11400000, guid: cb0d3a5a1a965b94a95c19d3d9d6cb9b, type: 2}
-  - {fileID: 11400000, guid: 84a6645c04c496548928b8788733f849, type: 2}
+  - {fileID: 11400000, guid: fe9a69e4f04c12f41be75e1719f9d9af, type: 2}
+  - {fileID: 11400000, guid: 8d9fe2c3089d2b14fa60d1f1dfe43c42, type: 2}
+  - {fileID: 11400000, guid: d6572237c1009f4409a3aae21bbb42ec, type: 2}
+  - {fileID: 11400000, guid: 2eb235c260d977e4380efd221e4e6207, type: 2}
+  - {fileID: 11400000, guid: d4d824fea4c460942bd2a4d6ac86a6d4, type: 2}
+  notBeingAfflicted: 0

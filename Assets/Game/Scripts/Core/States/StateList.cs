@@ -136,7 +136,21 @@ namespace Core.States {
 
 		public bool IsSufferingState(State state) {
 
-			return _currentStates.Contains(state);
+			for(int i = 0; i < _currentStates.Count; i++) {
+
+				Debug.Log("Checking state: " + state.id);
+
+				if(_currentStates[i].id == state.id) {
+
+					Debug.Log("Affected by " + state.id + "!");
+
+					return true;
+
+				}
+
+			}
+
+			return false;
 
 		}
 

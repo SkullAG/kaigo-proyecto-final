@@ -24,33 +24,45 @@ public class TargetByState : TargetFilter
         // Get valid characters by scope
         _characters = GetValidCharacters(actor, filterScope);
 
-        int _count = 0;
-
         if(_characters != null) {
 
             foreach (Character character in _characters) {
+
+                int _afflictionCount = 0;
                 
                 foreach(State state in states) {
 
-                    bool _afflicted = character.states.IsSufferingState(state);
+                    if(character.states.IsSufferingState(state)) {
 
-                    if(!notBeingAfflicted) {
-
-                        if(_afflicted) return character;
-
-                    } else {
-
-                        if(!_afflicted) {
-                            _count++;
-                        }
-
-                        if(_count == states.Length) return character;
+                        _afflictionCount ++;
 
                     }
 
                 }
 
+                Debug.Log("Character " + character.name + " is being afflicted by " + _afflictionCount + " states from the list");
+
+                if(notBeingAfflicted) {
+
+                    if(_afflictionCount == 0) {
+
+                        Debug.Log("Character chosen is " + character.name);
+
+                        return character;
+
+                    }
+
+                } else if (_afflictionCount > 0) {
+
+                    Debug.Log("Character chosen is " + character.name);
+
+                    return character;
+
+                }
+
             }
+
+
 
         }
 
