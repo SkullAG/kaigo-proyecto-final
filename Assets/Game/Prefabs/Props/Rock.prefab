@@ -31,8 +31,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &2301323133298997692
-SphereCollider:
+--- !u!136 &4850746753869529263
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -41,9 +41,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.195418
-  m_Center: {x: -0.021956919, y: 0.95675474, z: -0.04628193}
+  m_Radius: 1.1954181
+  m_Height: 3.913835
+  m_Direction: 1
+  m_Center: {x: -0.02195692, y: 1.7182543, z: -0.046281934}
 --- !u!1001 &5235150393632050711
 PrefabInstance:
   m_ObjectHideFlags: 0
