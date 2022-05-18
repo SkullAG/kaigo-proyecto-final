@@ -19,11 +19,14 @@ public class Shop : MonoBehaviour
 
     public string MoneyIconId;
 
-    private void OnEnable()
+    public void OnEnable()
     {
+        Debug.Log("Created singleton shop");
+
         CreateCommands();
         _textMesh.text = _inventory.coins.ToString();
     }
+    
     private void Start()
     {
         _inventory = PartyInventory.current.inventory;
