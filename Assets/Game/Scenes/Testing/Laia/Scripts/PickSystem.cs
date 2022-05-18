@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PickSystem : MonoBehaviour
 {
-    public Inventory _inventory;
+    //public Inventory _inventory;
     public bool PickObj(Objects obj)
     {
-        return _inventory.Add(obj);
+        return PartyInventory.current.inventory.Add(obj);
     }
 }

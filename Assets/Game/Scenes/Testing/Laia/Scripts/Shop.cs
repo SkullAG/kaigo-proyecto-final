@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Shop : MonoBehaviour
 {
@@ -14,15 +15,20 @@ public class Shop : MonoBehaviour
 
     private Inventory _inventory;
 
+    public TextMeshProUGUI _textMesh;
+
     public string MoneyIconId;
 
     private void OnEnable()
     {
         CreateCommands();
+        _textMesh.text = _inventory.coins.ToString();
     }
     private void Start()
     {
         _inventory = PartyInventory.current.inventory;
+
+        _textMesh.text = _inventory.coins.ToString();
     }
 
     public void GiveObject(int index)
@@ -32,6 +38,8 @@ public class Shop : MonoBehaviour
             _inventory.Add(ShopObjects[index]);
 
             _inventory.coins = _inventory.coins  - ShopObjects[index].value;
+
+            _textMesh.text = _inventory.coins.ToString();
         }
     }
 

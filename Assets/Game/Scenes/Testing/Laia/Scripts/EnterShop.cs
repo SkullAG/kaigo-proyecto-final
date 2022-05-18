@@ -9,88 +9,40 @@ public class EnterShop : MonoBehaviour
     public InputActionReference OpenShopAction;
     public InputActionReference CloseShopAction;
 
-    private NavBodySistem _other;
+    private Collider _other;
 
     private float angle;
     public float maxAngle;
 
-    private bool ActivatingShop = false;
+    private bool ActivatedShop = false;
+    private bool InsideTrigger;
 
     private void Update()
-    {
-        
-            if (OpenShopAction.action.triggered && !PauseManager.GameIsPaused && _other && !ActivatingShop)
-            {
-
-                Vector3 direction = (transform.position - _other.transform.position).normalized;
-
-                StartCoroutine(ActiveShop(direction, _other));
-
-                Debug.Log("Intentando abrir tienda");
-
-                /*if (Mathf.Abs(angle) < maxAngle)
-                {
-                    shop.SetActive(true);
-                }*/
-            }
-        
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!ActivatingShop)
+    {        
+        if (OpenShopAction.action.triggered && !PauseManager.GameIsPaused && !ActivatedShop && InsideTrigger)
         {
-            _other = other.GetComponent<NavBodySistem>();
-        }
-        /*if (OpenShopAction.action.triggered && !PauseManager.GameIsPaused)
-        {
-            
-            Vector3 direction = (transform.position - other.transform.position).normalized;
-
-            StartCoroutine(ActiveShop(direction, other.GetComponent<NavBodySistem>()));
+            Vector3 direction = (transform.position - _other.transform.position).normalized;
 
             Debug.Log("Intentando abrir tienda");
 
-            /*if (Mathf.Abs(angle) < maxAngle)
+            if (Mathf.Abs(angle) < maxAngle)
             {
                 shop.SetActive(true);
-            }*/
-       
-        //shop.SetActive(true);
+            }
+        }        
+    }
+
+    private void OnTriggerStay(Collider other)    
+    {
+        InsideTrigger = true;
+        _other = other;
     }
 
     private void OnTriggerExit(Collider other)
     {
         shop.SetActive(false);
-        if (other == _other)
-
-        {            
-            other = null;
-            StopAllCoroutines();
-
-            ActivatingShop = false;
-        }
+        InsideTrigger = false;
+        _other = null;
     }
-    
-    IEnumerator ActiveShop(Vector3 dir, NavBodySistem other)
-    {
-
-        if(other == null)
-        {
-            yield break;
-        }
-        ActivatingShop = true;
-
-        while (!(Mathf.Abs(angle) < maxAngle))
-        {
-            other.RotateTowards(dir);
-            angle = Vector3.Angle(dir, other.transform.forward);
-            yield return new WaitForEndOfFrame();
-        }
-
-        ActivatingShop = false;
-
-        shop.SetActive(true);
-    }
-
 
 }

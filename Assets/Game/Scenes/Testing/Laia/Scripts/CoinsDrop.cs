@@ -7,8 +7,9 @@ public class CoinsDrop : MonoBehaviour
 {
     private Character _character;
     private Inventory _inventory;
+    public GameObject _object;
 
-    public int coinEnemy;
+    public int coinEnemy = 10;
     private void OnEnable()
     {
         _character.stats.healthPoints.onValueMin += drop;
@@ -27,5 +28,6 @@ public class CoinsDrop : MonoBehaviour
     public void drop(int p, int f)
     {
         _inventory.coins = _inventory.coins + coinEnemy;
+        Instantiate(_object, transform.position, Quaternion.identity);
     }
 }
