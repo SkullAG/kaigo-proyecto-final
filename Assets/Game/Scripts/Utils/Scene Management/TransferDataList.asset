@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed040bfdd94d8cf4c9cbcaaaf12d7061, type: 3}
-  m_Name: Vitality Buff
+  m_Script: {fileID: 11500000, guid: 7b2338aabaf4dc84ca711dc21c0c6ba4, type: 3}
+  m_Name: TransferDataList
   m_EditorClassIdentifier: 
-  started: 0
-  visualEffect: {fileID: 8249779919150476512, guid: 69f46e806c5545a4ea323ebceaa045dd, type: 3}
-  attributeAffected: 0
-  modifierType: 0
-  factor: 50
+  transferDataList: []
