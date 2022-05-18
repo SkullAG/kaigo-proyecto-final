@@ -137,14 +137,14 @@ MonoBehaviour:
       data:
         displayName: Resurect
         id: resurect
-        description: 
+        description: Punches the target awaking it or even bringing it to life
         hasTargetSelection: 1
         actor: {fileID: 0}
         target: {fileID: 0}
         animationState: punch
         visualEffect: {fileID: 0}
         damage:
-          Physical: 0
+          Physical: -2
           Magical: 0
           Fire: 0
           Thunder: 0

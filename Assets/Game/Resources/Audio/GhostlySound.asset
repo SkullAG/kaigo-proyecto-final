@@ -20,7 +20,7 @@ MonoBehaviour:
   volume: 0.75
   pitch: 1.5
   randomizePitch: 1
-  minPitch: 0.75
+  minPitch: 1
   maxPitch: 1.5
   maxDistance: 30
   minDistance: 0
