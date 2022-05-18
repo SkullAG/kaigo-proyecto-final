@@ -22,5 +22,5 @@ MonoBehaviour:
   randomizePitch: 1
   minPitch: 0.8
   maxPitch: 1.2
-  maxDistance: 15
+  maxDistance: 30
   minDistance: 0

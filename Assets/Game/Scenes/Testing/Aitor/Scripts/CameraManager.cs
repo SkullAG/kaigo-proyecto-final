@@ -52,9 +52,17 @@ public class CameraManager : MonoBehaviour
 
 	public bool rotationEnabled = true;
 
-	//Vector2 _lastMousePos = Vector2.zero;
+	public static CameraManager current;
 
-	void Start()
+    //Vector2 _lastMousePos = Vector2.zero;
+
+    private void Awake()
+    {
+		current = this;
+
+	}
+
+    void Start()
 	{
 		_camera = GetComponent<Camera>();
 

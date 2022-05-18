@@ -9,17 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd2dc0801fe6dc34881a3d48a4d58aaf, type: 3}
-  m_Name: Test Audio Clip
+  m_Script: {fileID: 11500000, guid: a0358266a5ca42a468be25b553defe9b, type: 3}
+  m_Name: TestPhase2
   m_EditorClassIdentifier: 
-  clips: []
-  mixer: {fileID: 0}
-  group: {fileID: 0}
-  loop: 0
-  volume: 1
-  pitch: 1
-  randomizePitch: 0
-  minPitch: 0
-  maxPitch: 0
-  maxDistance: 30
-  minDistance: 0
+  actions: []
+  type: 0
+  references:
+    version: 1

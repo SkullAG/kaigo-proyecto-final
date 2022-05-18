@@ -8,10 +8,13 @@ public class PartyUIDrawer : MonoBehaviour
 {
 	public List<CharacterUIDrawer> characterUI;
 
+	public static PartyUIDrawer current;
+
 	// Start is called before the first frame update
 	void Start()
 	{
 		characterUI = GetComponentsInChildren<CharacterUIDrawer>().ToList();
+		current = this;
 	}
 
 	// Update is called once per frame

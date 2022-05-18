@@ -11,6 +11,13 @@ public class UICommandHelp : MonoBehaviour
     [Tooltip("Format parameters are: command name and command description.")]
     [SerializeField, TextArea] private string _format;
 
+    public static UICommandHelp current;
+
+    private void Start()
+    {
+        current = this;
+    }
+
     private void Update() {
 
         Command _c = CommandSystem.current?.selectedCommand;
