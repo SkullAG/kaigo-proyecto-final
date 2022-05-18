@@ -1309,6 +1309,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 464137394492903671}
+  - component: {fileID: 6363594729810582995}
   m_Layer: 5
   m_Name: OptionsMenu
   m_TagString: Untagged
@@ -1336,6 +1337,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6363594729810582995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464137394492903670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35b42dd5d20cd22438a740ac88a6a285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgm: 1
+  _bgmSlider: {fileID: 464137393989920226}
+  _bgmGroup: {fileID: -7424207813458849335, guid: 62a0a96d901d7e247b9e2eb956654fde, type: 2}
+  bgs: 1
+  _bgsSlider: {fileID: 464137394159153140}
+  _bgsGroup: {fileID: 24300002, guid: 62a0a96d901d7e247b9e2eb956654fde, type: 2}
+  se: 1
+  _seSlider: {fileID: 464137393525160650}
+  _seGroup: {fileID: -1050770559319554371, guid: 62a0a96d901d7e247b9e2eb956654fde, type: 2}
 --- !u!1 &464137394517228462
 GameObject:
   m_ObjectHideFlags: 0
