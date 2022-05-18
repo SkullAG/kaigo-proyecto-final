@@ -101,7 +101,7 @@ public class DialogManager : MonoBehaviour
 		Debug.Log("Exiting dialog");
 		if (currentSequence)
 		{
-			currentSequence.AbortPhase(currentPhaseIndex - 1, this);
+			currentSequence.PlayEnd(this);
 		}
 
 		// Activar cosas
