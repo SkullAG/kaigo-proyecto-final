@@ -48,8 +48,8 @@ public class TargetByResource : TargetFilter
                 float _fraction = (_resource.max * percentage) / 100;
 
                 // Select evaluation (< or >) depending on enum
-                if(logicOperator == ComparisonOperator.greaterThan) _evaluation = _resource.value > _fraction;
-                else if(logicOperator == ComparisonOperator.lessThan) _evaluation = _resource.value < _fraction;
+                if(logicOperator == ComparisonOperator.greaterThan) _evaluation = _resource.value >= _fraction;
+                else if(logicOperator == ComparisonOperator.lessThan) _evaluation = _resource.value <= _fraction;
 
                 if(_evaluation) {
 

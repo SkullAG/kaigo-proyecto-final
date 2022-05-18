@@ -242,6 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _partyContainer: {fileID: 1332303121}
+  _transferDataList: []
 --- !u!4 &291800284
 Transform:
   m_ObjectHideFlags: 0
