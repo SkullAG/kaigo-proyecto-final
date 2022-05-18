@@ -22,6 +22,7 @@ public class DialogPhase : ScriptableObject
 
 	public void Abort(DialogManager dialogManager)
 	{
+		dialogManager.StopAllCoroutines();
 		foreach (DialogAction a in actions)
 		{
 			a.AbortAction(dialogManager);
@@ -37,7 +38,7 @@ public class DialogPhase : ScriptableObject
 				actions.Add(new DialogAction());
 				break;
 			case DialogAction.dialogActionType.TransformTranslate:
-				actions.Add(new TransformScale());
+				actions.Add(new TransformTranslate());
 				break;
 			case DialogAction.dialogActionType.TransformRotate:
 				actions.Add(new TransformRotate());
@@ -112,7 +113,7 @@ public class TransformTranslate : DialogAction
 	{
 		Vector3 initPos = obj.position;
 
-		for (float timer = 0; timer <= time; timer++)
+		for (float timer = 0; timer <= time; timer += Time.deltaTime)
 		{
 			obj.position = Vector3.Lerp(initPos, pos, timer / time);
 
@@ -154,7 +155,7 @@ public class TransformRotate : DialogAction
 	{
 		Quaternion initRot = obj.rotation;
 
-		for (float timer = 0; timer <= time; timer++)
+		for (float timer = 0; timer <= time; timer += Time.deltaTime)
 		{
 			obj.rotation = Quaternion.Lerp(initRot, rot, timer / time);
 
@@ -196,7 +197,7 @@ public class TransformScale : DialogAction
 	{
 		Vector3 initLoc = obj.localScale;
 
-		for (float timer = 0; timer <= time; timer++)
+		for (float timer = 0; timer <= time; timer += Time.deltaTime)
 		{
 			obj.localScale = Vector3.Lerp(initLoc, loc, timer / time);
 

@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PartyController : Singleton<PartyController>
 {
+    public event System.Action partydeath = delegate { };
     
     public float distanceToFollow = 1.5f;
     public bool lookAtLeaderOnStandby = true;
@@ -159,6 +160,19 @@ public class PartyController : Singleton<PartyController>
 
         return false;
 
+    }
+
+    public bool IsPartyAlive()
+    {
+        for (int i = 0; i < members.Length; i++)
+        {
+            if (!members[i].stats.healthPoints.depleted)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }

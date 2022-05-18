@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0358266a5ca42a468be25b553defe9b, type: 3}
+  m_Name: InitialPhase 8
+  m_EditorClassIdentifier: 
+  actions:
+  - id: 0
+  - id: 1
+  - id: 2
+  - id: 3
+  - id: 4
+  - id: 5
+  type: 5
+  references:
+    version: 1
+    00000000:
+      type: {class: WriteText, ns: , asm: Assembly-CSharp}
+      data:
+        Speaker: Zashiki
+        Text: I'l pray for you, heroes.
+    00000001:
+      type: {class: TransformTranslate, ns: , asm: Assembly-CSharp}
+      data:
+        lerpOverTime: 0
+        duration: 0
+        objIndex: 1
+        endPosition: {x: -35, y: -1, z: 27}
+    00000002:
+      type: {class: TransformRotate, ns: , asm: Assembly-CSharp}
+      data:
+        lerpOverTime: 0
+        duration: 0
+        objIndex: 1
+        rotation: {x: 0, y: 0.9063078, z: 0, w: 0.42261824}
+    00000003:
+      type: {class: TransformTranslate, ns: , asm: Assembly-CSharp}
+      data:
+        lerpOverTime: 0
+        duration: 0
+        objIndex: 0
+        endPosition: {x: -34, y: -2.2, z: 26.1}
+    00000004:
+      type: {class: TransformRotate, ns: , asm: Assembly-CSharp}
+      data:
+        lerpOverTime: 0
+        duration: 0
+        objIndex: 0
+        rotation: {x: 0, y: -0.42261827, z: 0, w: 0.90630776}
+    00000005:
+      type: {class: PlaySound, ns: , asm: Assembly-CSharp}
+      data:
+        audioClipAsset: {fileID: 11400000, guid: 11cd1e15e6990f849a04b1b1f44dd91c, type: 2}
+        is3D: 0
+        position: {x: 0, y: 0, z: 0}
