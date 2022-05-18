@@ -12,6 +12,7 @@ public class PickableObject : MonoBehaviour
 
         if(picker && picker.PickObj(_obj))
         {
+            BattleLog.current.WriteLine("You picked up " + _obj.displayName);
             gameObject.SetActive(false);
         }
     }
