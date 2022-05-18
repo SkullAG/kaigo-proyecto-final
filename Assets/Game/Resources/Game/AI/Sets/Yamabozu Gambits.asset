@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gambits:
   - _target: {fileID: 11400000, guid: 7b9082df0dd19954ebcf60172a6cb12d, type: 2}
-    _condition: {fileID: 11400000, guid: 5f2a59bbfc22f2f48949450088f60396, type: 2}
+    _condition: {fileID: 11400000, guid: 84f22ccd597c5f540a0f8855560dce5f, type: 2}
     _actionReference:
       actions: {fileID: 11400000, guid: 3c3a78f5f2a88bd45b05a5659481356c, type: 2}
       actionID: punch
@@ -24,7 +24,7 @@ MonoBehaviour:
       actions: {fileID: 11400000, guid: 3c3a78f5f2a88bd45b05a5659481356c, type: 2}
       actionID: curse
   - _target: {fileID: 11400000, guid: 7e050759b56bdf0439a1848a5b02f47d, type: 2}
-    _condition: {fileID: 11400000, guid: d15d3e6245a0dea4eb93f46f10601f15, type: 2}
+    _condition: {fileID: 11400000, guid: 996e1c9eac314bc46a175aefa1cb28df, type: 2}
     _actionReference:
       actions: {fileID: 11400000, guid: 3c3a78f5f2a88bd45b05a5659481356c, type: 2}
       actionID: purify
