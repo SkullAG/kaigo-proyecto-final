@@ -17,4 +17,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2c83df89b10af15458fdf3c93a5d09b0, type: 2}
   allowMultipleInstances: 0
   blendMode: 1
-  _id: InNeedOfId
+  _id: death

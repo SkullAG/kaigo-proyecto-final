@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Determination Debuff
   m_EditorClassIdentifier: 
   started: 0
-  visualEffect: {fileID: 0}
+  visualEffect: {fileID: 4102558629319508447, guid: d743ea07d719c514fae268e13fcb5cb8, type: 3}
   attributeAffected: 0
   modifierType: 0
   factor: -50

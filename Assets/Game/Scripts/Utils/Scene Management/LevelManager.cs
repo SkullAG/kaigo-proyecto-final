@@ -10,7 +10,9 @@ public class LevelManager : Singleton<LevelManager>
 
     [SerializeField] private GameObject _partyContainer;
 
-    public static List<TransferData> transferDataList = new List<TransferData>();
+    public TransferDataList transferDataSO;
+
+    public List<TransferData> transferDataList => transferDataSO.transferDataList;
 
     [System.Serializable]
     public class TransferData {
@@ -42,40 +44,6 @@ public class LevelManager : Singleton<LevelManager>
         }
 
         return null;
-
-    }
-
-    public static void RegisterSpawnPoint(SpawnPoint spawnPoint) {
-
-        string _id = spawnPoint.uniqueIdentifier;
-
-        if(!string.IsNullOrWhiteSpace(_id)) {
-
-            // If there isn't a spawnpoint with that id
-            if(!transferDataList.Any(x => x.identifier == spawnPoint.uniqueIdentifier)) {
-
-                TransferData _data = new TransferData(
-                    spawnPoint.uniqueIdentifier,
-                    spawnPoint.scene.name,
-                    spawnPoint.transform.position,
-                    spawnPoint.transform.rotation
-                );
-
-                transferDataList.Add(_data);
-
-                Debug.LogWarning("Spawn point: " + _data.identifier +" registered successfully!");
-
-            } else {
-
-                Debug.LogWarning("Spawn point with the id " + spawnPoint.uniqueIdentifier +" is already registered!");
-
-            }
-
-        } else {
-
-            Debug.LogWarning( "Invalid spawn point name." );
-
-        }
 
     }
 

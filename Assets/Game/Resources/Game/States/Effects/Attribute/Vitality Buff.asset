@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Vitality Buff
   m_EditorClassIdentifier: 
   started: 0
-  visualEffect: {fileID: 0}
+  visualEffect: {fileID: 8249779919150476512, guid: 69f46e806c5545a4ea323ebceaa045dd, type: 3}
   attributeAffected: 0
   modifierType: 0
   factor: 50

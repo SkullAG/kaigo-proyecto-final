@@ -26,7 +26,7 @@ MonoBehaviour:
       type: {class: WriteText, ns: , asm: Assembly-CSharp}
       data:
         Speaker: Zashiki
-        Text: All of them have found their end in hands of the king of this mountainntain.
+        Text: All of them have found their end in hands of the king of this mountain.
     00000001:
       type: {class: TransformTranslate, ns: , asm: Assembly-CSharp}
       data:

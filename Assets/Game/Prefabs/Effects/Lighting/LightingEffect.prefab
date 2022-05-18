@@ -4895,6 +4895,7 @@ GameObject:
   - component: {fileID: 956112971403985438}
   - component: {fileID: 956112971403985439}
   - component: {fileID: 956112971403985411}
+  - component: {fileID: -6324039854384663880}
   m_Layer: 0
   m_Name: LightingEffect
   m_TagString: Untagged
@@ -5063,6 +5064,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-6324039854384663880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956112971403985436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599e169830dfa2749a2ef5ec3b8b497d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioAssets:
+  - {fileID: 11400000, guid: 145026de98060e64dbeb909ad99cba52, type: 2}
 --- !u!1 &956112971665128262
 GameObject:
   m_ObjectHideFlags: 0

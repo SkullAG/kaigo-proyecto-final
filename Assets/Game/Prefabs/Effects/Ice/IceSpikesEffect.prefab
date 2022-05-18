@@ -4959,6 +4959,7 @@ GameObject:
   - component: {fileID: 3258032593647795047}
   - component: {fileID: 3258032593647795042}
   - component: {fileID: 3258032593647795041}
+  - component: {fileID: 3405037518260438976}
   m_Layer: 0
   m_Name: IceSpikesEffect
   m_TagString: Untagged
@@ -9791,6 +9792,20 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &3405037518260438976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3258032593647795045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599e169830dfa2749a2ef5ec3b8b497d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioAssets:
+  - {fileID: 11400000, guid: 449b00398dca48647a6499068c0b6909, type: 2}
 --- !u!1001 &3258032592928562547
 PrefabInstance:
   m_ObjectHideFlags: 0

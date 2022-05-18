@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29fbd16454ecfa249abcc3c634e76b4d, type: 3}
-  m_Name: Kyokotsu
+  m_Script: {fileID: 11500000, guid: 7b2338aabaf4dc84ca711dc21c0c6ba4, type: 3}
+  m_Name: TransferDataList
   m_EditorClassIdentifier: 
-  displayName: Kyokotsu
-  _effects:
-  - {fileID: 11400000, guid: d0ad8585f854b334ebb770b3ffd07846, type: 2}
-  allowMultipleInstances: 0
-  blendMode: 1
-  _id: Kyokotsu
+  transferDataList: []

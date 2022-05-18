@@ -11,10 +11,12 @@ public class SpawnPoint : MonoBehaviour {
 
     public Scene scene => gameObject.scene;
 
+    public TransferDataList tfl;
+
     [Button]
     private void AddToLevelManager() {
-        
-        LevelManager.RegisterSpawnPoint(this);
+
+        tfl.RegisterSpawnPoint(this);
 
     }
 
