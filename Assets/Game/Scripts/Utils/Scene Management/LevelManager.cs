@@ -9,14 +9,34 @@ public class LevelManager : Singleton<LevelManager>
 
     [SerializeField] private GameObject _partyContainer;
 
-    public HashSet<SpawnPoint> spawnPoints = new HashSet<SpawnPoint>();
+    [SerializeField]
+    private List<TransferData> _transferDataList = new List<TransferData>();
 
-    public SpawnPoint GetPoint(string identifier) {
+    [System.Serializable]
+    public class TransferData {
 
-        foreach (var access in spawnPoints) {
+        public string identifier;
+        public string sceneName;
+        public Vector3 position;
+        public Quaternion rotation;
 
-            if(access.uniqueIdentifier == identifier) {
-                return access;
+        public TransferData(string identifier, string sceneName, Vector3 position, Quaternion rotation) {
+
+            this.identifier = identifier;
+            this.sceneName = sceneName;
+            this.position = position;
+            this.rotation = rotation;
+
+        }
+
+    }
+
+    public TransferData GetData(string identifier) {
+
+        foreach (var data in _transferDataList) {
+
+            if(data.identifier == identifier) {
+                return data;
             }
             
         }
@@ -25,29 +45,50 @@ public class LevelManager : Singleton<LevelManager>
 
     }
 
-    public void Teleport(Scene sceneOfOrigin, string spawnPointIdentifier) {
+    public void RegisterSpawnPoint(SpawnPoint spawnPoint) {
 
-        SpawnPoint _spawnPoint = GetPoint(spawnPointIdentifier);
+        TransferData _data = new TransferData(
+            spawnPoint.uniqueIdentifier,
+            spawnPoint.scene.name,
+            spawnPoint.transform.position,
+            spawnPoint.transform.rotation
+        );
 
-        if(_spawnPoint) {
+        _transferDataList.Add(_data);
 
-            // If spawnpoint is in another scene
-            if(_spawnPoint.scene != sceneOfOrigin) {
+    }
 
-                SceneManager.LoadScene(_spawnPoint.scene.name);
+    public void Teleport(Scene sceneOfOrigin, string identifier) {
 
-                MoveParty(_spawnPoint.transform.position);
+        TransferData _data = GetData(identifier);
+
+        if(_data != null) {
+
+            // If spawn point is in another scene
+            if(SceneManager.GetSceneByName(_data.sceneName) != sceneOfOrigin) {
+
+                Scene _previous = SceneManager.GetActiveScene();
+
+                AsyncOperation _op = SceneManager.LoadSceneAsync(_data.sceneName, LoadSceneMode.Additive);
+
+                _op.completed += op => {
+
+                    MoveParty(_data.position);
+
+                    SceneManager.UnloadSceneAsync(_previous);
+
+                };
                 
 
             } else {
 
-                MoveParty(_spawnPoint.transform.position);
+                MoveParty(_data.position);
 
             }
 
         } else {
 
-            Debug.LogError("Spawn point with id: " + _spawnPoint + " doesn't exist.");
+            Debug.LogError("Spawn point with id: " + _data.identifier + " doesn't exist.");
 
         }
 
