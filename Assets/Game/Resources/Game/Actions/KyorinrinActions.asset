@@ -71,8 +71,14 @@ MonoBehaviour:
         blockMovement: 1
         states:
         - state:
-            state: {fileID: 11400000, guid: abb051467d68db44da367a2465175dc7, type: 2}
-            duration: 6
+            state: {fileID: 11400000, guid: 87cb1f909346d8d48a8ca3edd9e29a18, type: 2}
+            duration: 10
             power: 1
           elementType: Fire
-          _Probability: 75
+          _Probability: 100
+        - state:
+            state: {fileID: 11400000, guid: b149bbc117fa11a4485c72d064bc0308, type: 2}
+            duration: 10
+            power: 1
+          elementType: Fire
+          _Probability: 100
