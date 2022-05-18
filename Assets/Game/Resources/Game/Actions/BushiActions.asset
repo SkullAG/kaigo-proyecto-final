@@ -87,8 +87,8 @@ MonoBehaviour:
         visualEffect: {fileID: 0}
         damage:
           Physical: 0
-          Magical: 5
-          Fire: 10
+          Magical: 0
+          Fire: 0
           Thunder: 0
           Ice: 0
           Wind: 0
@@ -96,16 +96,16 @@ MonoBehaviour:
           Poison: 0
           Bleeding: 0
         costOverHP: 0
-        costOverAP: 2
+        costOverAP: 5
         distanceToCast: 0
         blockMovement: 1
         states:
         - state:
-            state: {fileID: 11400000, guid: abb051467d68db44da367a2465175dc7, type: 2}
-            duration: 6
+            state: {fileID: 11400000, guid: ff45279186c7ffc4d82f01e4521b334f, type: 2}
+            duration: 20
             power: 1
-          elementType: Fire
-          _Probability: 75
+          elementType: none
+          _Probability: 100
     00000003:
       type: {class: BattleAction, ns: , asm: Assembly-CSharp}
       data:
