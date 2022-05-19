@@ -40,13 +40,13 @@ public class TargetByState : TargetFilter
 
                 }
 
-                Debug.Log("Character " + character.name + " is being afflicted by " + _afflictionCount + " states from the list");
+                //Debug.Log("Character " + character.name + " is being afflicted by " + _afflictionCount + " states from the list");
 
                 if(notBeingAfflicted) {
 
                     if(_afflictionCount == 0) {
 
-                        Debug.Log("Character chosen is " + character.name);
+                        //Debug.Log("Character chosen is " + character.name);
 
                         return character;
 
@@ -54,7 +54,7 @@ public class TargetByState : TargetFilter
 
                 } else if (_afflictionCount > 0) {
 
-                    Debug.Log("Character chosen is " + character.name);
+                    //Debug.Log("Character chosen is " + character.name);
 
                     return character;
 

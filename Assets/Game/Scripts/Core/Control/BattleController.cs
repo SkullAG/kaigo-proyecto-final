@@ -48,32 +48,25 @@ public class BattleController : Singleton<BattleController>
         foreach (Character partyMember in _party)  {
             
             // If member is being targetted or an action is being casted to an enemy
-            if(partyMember.isBeingTargetted) {
+            if(partyMember.targettedBy.CompareTag(enemyTag)) {
 
-                foreach (Character other in partyMember.targettedBy) {
+                // Track enemies targetting any party member
+                _enemies.Add(partyMember.targettedBy);
 
-                    // By an enemy
-                    if(other.CompareTag(enemyTag)) {
+                //Debug.Log("Found enemy: " + other.name);
 
-                        // Track enemies targetting any party member
-                        _enemies.Add(other);
-
-                        //Debug.Log("Found enemy: " + other.name);
-
-                    }
-
-                }
+            }  
 
             // If member is targetting an enemy 
-            } else if (partyMember.queue.isPerformingAction && partyMember.queue.currentTarget != null) {
+            else if (partyMember.queue.isPerformingAction && partyMember.queue.currentTarget != null) {
 
                 if(partyMember.queue.currentTarget.CompareTag(enemyTag)) {
 
                     Character _target = partyMember.queue.currentTarget;
 
-                    _enemies.Add(_target);
-
-                    //Debug.Log("Found enemy: " + _target.name);
+                    if(_target.isAlive) {
+                        _enemies.Add(_target);
+                    }
 
                 }
 

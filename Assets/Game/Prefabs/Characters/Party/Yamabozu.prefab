@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioAssets:
   - {fileID: 11400000, guid: d15005232f710074a892a664f4b58418, type: 2}
+  - {fileID: 11400000, guid: 049f9a3a45942a147820222f17b17a1c, type: 2}
 --- !u!114 &8007440196708739228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1662,6 +1663,10 @@ PrefabInstance:
       propertyPath: set
       value: 
       objectReference: {fileID: 11400000, guid: 0e5f4bb556e849047ae258c521da6ef0, type: 2}
+    - target: {fileID: 4021926938695819962, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
+      propertyPath: _enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819962, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: m_Enabled
       value: 1

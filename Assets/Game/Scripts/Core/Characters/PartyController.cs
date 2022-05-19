@@ -37,6 +37,11 @@ public class PartyController : Singleton<PartyController>
 
         OnPartyUpdate(null);
 
+        // Disable all gambits
+        for (int i = 0; i < _noLeaderParty.Length; i++) {
+            _party[i].gambits.SetEnabled(false);
+        }
+
     }
 
     private void OnDisable() {
@@ -67,11 +72,7 @@ public class PartyController : Singleton<PartyController>
             // Disable gambits when escaping
             if(!_gambitsDisabled) {
 
-                for (int i = 0; i < _noLeaderParty.Length; i++) {
-                    _noLeaderParty[i].gambits.SetEnabled(false);
-                }
-
-                _gambitsDisabled = true;
+                SetGambitsEnabled(false);
 
             }
 
@@ -83,14 +84,14 @@ public class PartyController : Singleton<PartyController>
             // Check party's state if not escaping
             _inAction = IsPartyInAction();
 
-            // Enable gambits when not escaping
-            if(_gambitsDisabled) {
+            // Enable gambits when not escaping and in action
+            if(_inAction) {
 
-                for (int i = 0; i < _noLeaderParty.Length; i++) {
-                    _noLeaderParty[i].gambits.SetEnabled(true);
-                }
+                SetGambitsEnabled(true);
 
-                _gambitsDisabled = false;
+            } else {
+
+                SetGambitsEnabled(false);
 
             }
 
@@ -143,16 +144,41 @@ public class PartyController : Singleton<PartyController>
 
     }
 
+    public void SetGambitsEnabled(bool enabled) {
+
+        if(enabled) {
+
+            for (int i = 0; i < _noLeaderParty.Length; i++) {
+
+                _noLeaderParty[i].gambits.SetEnabled(true);
+
+            }
+
+            _gambitsDisabled = false;
+
+        } else {
+
+            for (int i = 0; i < _noLeaderParty.Length; i++) {
+
+                _noLeaderParty[i].gambits.SetEnabled(false);
+
+            }
+
+            _gambitsDisabled = true;
+
+        }
+
+    }
+
     public bool IsPartyInAction() {
 
         foreach (Character c in _party) {
 
-            // If any character from party is performing action
-            // or is being targetted, party is in action mode.
+            // If any character from party is being targetted by enemy
 
-            if( c.queue.isPerformingAction || c.isBeingTargetted ) {
+            if( c.isBeingTargetted ) {
 
-                return true;
+                return c.targettedBy.isEnemy;
 
             }
             

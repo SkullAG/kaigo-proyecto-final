@@ -12,7 +12,9 @@ namespace Core.Characters {
     {
         
         [ReadOnly] public bool isBeingTargetted = false;
-        [ReadOnly] public HashSet<Character> targettedBy = new HashSet<Character>();
+        [ReadOnly] public Character targettedBy;
+
+        public bool isAlive => stats.healthPoints.value > 0;
 
         public StatList stats;
         public ActionList actions;
@@ -22,7 +24,7 @@ namespace Core.Characters {
         public NavBodySistem navBody;
 
         public bool isAlly => gameObject.CompareTag(BattleController.current.allyTag);
-        public bool isEnemy => gambits.CompareTag(BattleController.current.enemyTag);
+        public bool isEnemy => gameObject.CompareTag(BattleController.current.enemyTag);
         
         private void Awake() {
 

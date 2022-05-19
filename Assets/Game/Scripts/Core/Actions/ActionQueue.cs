@@ -90,7 +90,7 @@ namespace Core.Actions
             if(currentTarget != null) {
 
                 currentTarget.isBeingTargetted = false;
-                currentTarget.targettedBy.Remove(_currentAction.actor);
+                currentTarget.targettedBy = null;
 
                 currentTarget = null; 
 
@@ -114,7 +114,7 @@ namespace Core.Actions
 
                     currentTarget = target;
                     currentTarget.isBeingTargetted = true;
-                    currentTarget.targettedBy.Add(actor);
+                    currentTarget.targettedBy = actor;
 
                     _queuedAction = reference.Instantiate(actor, target);
                     
@@ -137,7 +137,7 @@ namespace Core.Actions
                 // Instantiate without checking
                 currentTarget = target;
                 currentTarget.isBeingTargetted = true;
-                currentTarget.targettedBy.Add(actor);
+                currentTarget.targettedBy = actor;
 
                 _queuedAction = reference.Instantiate(actor, target);
 

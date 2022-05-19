@@ -44,6 +44,8 @@ namespace Core.AI
 
                     HashSet<Character> _list = new HashSet<Character>(_battle.enemies);
 
+                    _list.RemoveWhere(x => !x.isAlive); // no lo soporto más
+
                     if(excludeSelf) _list.Remove(actor);
                     
                     // Return list of enemies
