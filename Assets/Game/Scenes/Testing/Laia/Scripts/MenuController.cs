@@ -10,14 +10,13 @@ public class MenuController : MonoBehaviour
     public void Jugar_al_lvl()
     {
 
-        SceneManager.LoadScene(1);
-
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
 
     }
     public void Jugar_al_tutorial()
     {
 
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
 
 
     }
