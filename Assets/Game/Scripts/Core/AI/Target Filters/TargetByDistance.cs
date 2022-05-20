@@ -31,9 +31,12 @@ public class TargetByDistance : TargetFilter
             .OrderBy( x => (x.transform.position - actor.transform.position).sqrMagnitude )
             .ToList();
 
-        if(mode == Mode.closer) return _sortedCharacters[0];
-        else if (mode == Mode.farthest) return _sortedCharacters[_sortedCharacters.Count - 1];
-        else return null;
+        if(_sortedCharacters.Count >= 1)
+        {
+            if(mode == Mode.closer) return _sortedCharacters[0];
+            else if (mode == Mode.farthest) return _sortedCharacters[_sortedCharacters.Count - 1];
+        }
+        return null;
 
     }
 

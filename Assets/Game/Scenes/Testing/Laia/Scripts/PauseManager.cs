@@ -13,13 +13,13 @@ public class PauseManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("entro en pause");
+        //Debug.Log("entro en pause");
         if(pausedAvailable)
         {
-            Debug.Log("first");
+            //Debug.Log("first");
             if (_ref.action.triggered)
             {
-                Debug.Log("trigger");
+                //Debug.Log("trigger");
                 if (GameIsPaused)
                 {
                     Resume();

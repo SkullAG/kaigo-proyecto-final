@@ -527,7 +527,8 @@ GameObject:
   - component: {fileID: 7784568162912669658}
   - component: {fileID: 2773475322455024935}
   - component: {fileID: 5720581928755810035}
-  - component: {fileID: 4988113224220544650}
+  - component: {fileID: 3883170142693499924}
+  - component: {fileID: 4261438184908819492}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Command
@@ -593,7 +594,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4988113224220544650
+--- !u!114 &3883170142693499924
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -602,7 +603,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 8779295946840248723}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21541b8f5f6a97242bf91a38661f24c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 9145e8fbd1841ec41a29f5812f501d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Scene: Menus
+--- !u!114 &4261438184908819492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8779295946840248723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -615,12 +629,12 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0, g: 0, b: 0, a: 0.5019608}
-    m_HighlightedColor: {r: 0.5283019, g: 0, b: 0.075471915, a: 0.49019608}
-    m_PressedColor: {r: 1, g: 0, b: 0.27234697, a: 0.49019608}
+    m_HighlightedColor: {r: 0.5294118, g: 0, b: 0.07450981, a: 0.49019608}
+    m_PressedColor: {r: 1, g: 0, b: 0.27058825, a: 0.49019608}
     m_SelectedColor: {r: 0.5294118, g: 0, b: 0.07450981, a: 0.49019608}
-    m_DisabledColor: {r: 0.23584908, g: 0.2055892, b: 0.2055892, a: 0.5019608}
+    m_DisabledColor: {r: 0.23529412, g: 0.20392157, b: 0.20392157, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: 0.25
+    m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -637,9 +651,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: Menu_Principal
+      - m_Target: {fileID: 3883170142693499924}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: Load
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -649,10 +663,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  command:
-    id: 0
-    displayName: 
-    displayDescription: 
 --- !u!1 &8779295948045938343
 GameObject:
   m_ObjectHideFlags: 0

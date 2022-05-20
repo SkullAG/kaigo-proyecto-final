@@ -836,7 +836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4271712323945942183, guid: c97306ed0586f774b8b7d9e5dd291ad3, type: 3}
       propertyPath: m_Intensity
-      value: 1.3082608
+      value: 1.6175029
       objectReference: {fileID: 0}
     - target: {fileID: 7556168000378012137, guid: c97306ed0586f774b8b7d9e5dd291ad3, type: 3}
       propertyPath: m_RootOrder
@@ -947,14 +947,6 @@ PrefabInstance:
     - target: {fileID: 2730991665316551047, guid: ab2c252f5f97bd64ba6353153e606ecb, type: 3}
       propertyPath: m_Name
       value: Kyorinrin
-      objectReference: {fileID: 0}
-    - target: {fileID: 2730991665316551047, guid: ab2c252f5f97bd64ba6353153e606ecb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2730991665316551047, guid: ab2c252f5f97bd64ba6353153e606ecb, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab2c252f5f97bd64ba6353153e606ecb, type: 3}
@@ -5095,7 +5087,7 @@ AudioSource:
   m_GameObject: {fileID: 418305868}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7424207813458849335, guid: 62a0a96d901d7e247b9e2eb956654fde, type: 2}
   m_audioClip: {fileID: 8300000, guid: b4969ec3a03a9594fbe57547e5dcf2ff, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
@@ -11207,7 +11199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7582528470214076336, guid: 3adef25bf6ba6e84ebf51d7268b4e240, type: 3}
       propertyPath: m_Intensity
-      value: 1.7191502
+      value: 1.9846499
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3adef25bf6ba6e84ebf51d7268b4e240, type: 3}
@@ -11540,7 +11532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8201168128150521849, guid: 56804e124abfda042800920eb73891c0, type: 3}
       propertyPath: m_Intensity
-      value: 1.3425256
+      value: 1.2940366
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56804e124abfda042800920eb73891c0, type: 3}
@@ -20884,7 +20876,7 @@ PrefabInstance:
     - target: {fileID: 837480743609471878, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 509289566}
+      objectReference: {fileID: 1830005984}
     - target: {fileID: 2474240264670226408, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -20917,6 +20909,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5227563447169015578, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2135411566}
     - target: {fileID: 5414502202225600162, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -24279,6 +24275,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8325793821975758188, guid: c28f1edd88056d6438fd09de2b69a561, type: 3}
   m_PrefabInstance: {fileID: 1827748492}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1830005984 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8882726204993222936, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
+  m_PrefabInstance: {fileID: 1565082245}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9145e8fbd1841ec41a29f5812f501d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1832857230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26142,7 +26149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4271712323945942183, guid: c97306ed0586f774b8b7d9e5dd291ad3, type: 3}
       propertyPath: m_Intensity
-      value: 1.7382014
+      value: 1.3061509
       objectReference: {fileID: 0}
     - target: {fileID: 7556168000378012137, guid: c97306ed0586f774b8b7d9e5dd291ad3, type: 3}
       propertyPath: m_RootOrder
@@ -26517,7 +26524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8201168128150521849, guid: 56804e124abfda042800920eb73891c0, type: 3}
       propertyPath: m_Intensity
-      value: 1.4338453
+      value: 1.328134
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56804e124abfda042800920eb73891c0, type: 3}
@@ -28260,6 +28267,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2971706111047905840, guid: 9edc4e4b8de0f014a93c91e17353c57d, type: 3}
   m_PrefabInstance: {fileID: 2128413814}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2135411566 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5148190406587051130, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
+  m_PrefabInstance: {fileID: 1565082245}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9145e8fbd1841ec41a29f5812f501d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2139735570
 GameObject:
   m_ObjectHideFlags: 0
@@ -28538,10 +28556,6 @@ PrefabInstance:
     - target: {fileID: 2730991665316551047, guid: ab2c252f5f97bd64ba6353153e606ecb, type: 3}
       propertyPath: m_Name
       value: Kyorinrin
-      objectReference: {fileID: 0}
-    - target: {fileID: 2730991665316551047, guid: ab2c252f5f97bd64ba6353153e606ecb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab2c252f5f97bd64ba6353153e606ecb, type: 3}

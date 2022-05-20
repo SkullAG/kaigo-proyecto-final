@@ -172,6 +172,8 @@ public class Targetter : Singleton<Targetter>
 
     private void OnCountUpdated(int count) {
 
+        if (!_update) return;
+
         _characters = FindVisibleCharacters();
 
         // Get positions of characters in screen coordinates

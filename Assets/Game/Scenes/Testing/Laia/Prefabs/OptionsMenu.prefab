@@ -995,8 +995,8 @@ RectTransform:
   m_Father: {fileID: 464137394025668269}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.306, y: 0}
-  m_AnchorMax: {x: 0.306, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1106,8 +1106,8 @@ RectTransform:
   m_Father: {fileID: 464137394900539721}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.306, y: 0}
-  m_AnchorMax: {x: 0.306, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1182,7 +1182,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.306, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1326,7 +1326,7 @@ RectTransform:
   m_GameObject: {fileID: 464137394492903670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.54343, y: 0.54343, z: 0.54343}
   m_Children:
   - {fileID: 464137393261976576}
   m_Father: {fileID: 0}
@@ -1349,15 +1349,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b42dd5d20cd22438a740ac88a6a285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgm: 1
   _bgmSlider: {fileID: 464137393989920226}
-  _bgmGroup: {fileID: -7424207813458849335, guid: 62a0a96d901d7e247b9e2eb956654fde, type: 2}
-  bgs: 1
-  _bgsSlider: {fileID: 464137394159153140}
-  _bgsGroup: {fileID: 24300002, guid: 62a0a96d901d7e247b9e2eb956654fde, type: 2}
-  se: 1
-  _seSlider: {fileID: 464137393525160650}
-  _seGroup: {fileID: -1050770559319554371, guid: 62a0a96d901d7e247b9e2eb956654fde, type: 2}
+  _bgmName: BGMVol
+  _masterSlider: {fileID: 464137394159153140}
+  _masterName: MasterVol
+  _sfxSlider: {fileID: 464137393525160650}
+  _sfxName: SFXVol
+  _audioMixer: {fileID: 24100000, guid: 62a0a96d901d7e247b9e2eb956654fde, type: 2}
+  dBslider: {x: -80, y: 0}
 --- !u!1 &464137394517228462
 GameObject:
   m_ObjectHideFlags: 0
@@ -1540,8 +1539,8 @@ RectTransform:
   m_Father: {fileID: 464137394899684818}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.306, y: 0}
-  m_AnchorMax: {x: 0.306, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1616,7 +1615,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.306, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1691,7 +1690,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.306, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Core.Characters;
 using Core.Actions;
+using Core.AI;
 using NaughtyAttributes;
 
 namespace Core.Gambits
@@ -53,15 +54,18 @@ namespace Core.Gambits
                 
                 Character _target = set.list[i].target?.GetTarget(_actor);
 
-                bool _condition = _target != null ? set.list[i].condition.Evaluate(_actor, _target) : false;
+                if(_target)
+                {
+                    bool _condition = _target != null ? set.list[i].condition.Evaluate(_actor, _target) : false;
 
-                // If action list has the gambit's action
-                if(_condition) {
+                    // If action list has the gambit's action
+                    if(_condition) {
 
-                    _actionQueue.RequestExecution(set.list[i].actionReference, _actor, _target, _freeUse);
+                        _actionQueue.RequestExecution(set.list[i].actionReference, _actor, _target, _freeUse);
 
-                    break;
+                        break;
 
+                    }
                 }
 
             }

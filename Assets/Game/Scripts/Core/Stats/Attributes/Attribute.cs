@@ -11,7 +11,7 @@ namespace Core.Stats {
 
         public System.Action<float> onValueChanged = delegate {};
 
-        [SerializeField]
+        [SerializeField, Min(1)]
         protected float _rawValue;
 
         [SerializeField, ReadOnly, AllowNesting]

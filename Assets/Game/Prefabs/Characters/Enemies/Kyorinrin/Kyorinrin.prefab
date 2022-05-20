@@ -1168,8 +1168,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
+      propertyPath: agility._rawValue
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
+      propertyPath: bravery._rawValue
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
+      propertyPath: vitality._rawValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: actionPoints._maxValue
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
+      propertyPath: constitution._rawValue
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4021926938695819963, guid: 4227e5dd179615b4d98a4a0f0df125bd, type: 3}
       propertyPath: determination._rawValue

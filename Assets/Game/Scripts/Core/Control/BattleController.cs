@@ -48,7 +48,7 @@ public class BattleController : Singleton<BattleController>
         foreach (Character partyMember in _party)  {
             
             // If member is being targetted or an action is being casted to an enemy
-            if(partyMember.targettedBy.CompareTag(enemyTag)) {
+            if(partyMember.targettedBy && partyMember.targettedBy.CompareTag(enemyTag)) {
 
                 // Track enemies targetting any party member
                 _enemies.Add(partyMember.targettedBy);

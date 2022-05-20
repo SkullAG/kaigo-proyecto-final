@@ -16,6 +16,8 @@ namespace Core.AI
 
         public Scope filterScope;
         public bool excludeSelf = true;
+        public bool excludeDeads = true;
+
 
         //[System.Flags] public enum Scope { none = 0, allies = 1 << 0, enemies = 1 << 1}
         public enum Scope { playerGroup = 1, fieldMobs = 2 } // No funciona aliados + enemigos de momento
@@ -34,6 +36,8 @@ namespace Core.AI
 
                 if(excludeSelf) _list.Remove(actor);
 
+                if(excludeDeads) _list.RemoveWhere(x => !x.isAlive);
+
                 // Return list of allies
                 return _list;
 
@@ -44,7 +48,7 @@ namespace Core.AI
 
                     HashSet<Character> _list = new HashSet<Character>(_battle.enemies);
 
-                    _list.RemoveWhere(x => !x.isAlive); // no lo soporto más
+                    if (excludeDeads) _list.RemoveWhere(x => !x.isAlive); // no lo soporto más
 
                     if(excludeSelf) _list.Remove(actor);
                     

@@ -913,6 +913,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5414502202555511708, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
+      propertyPath: m_Value
+      value: 0.162
+      objectReference: {fileID: 0}
     - target: {fileID: 5414502202876919566, guid: ff750d30e787ce743a7c305c9514952f, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

@@ -3,81 +3,84 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using NaughtyAttributes;
 
 public class VolumeController : MonoBehaviour
 {
+	[SerializeField]
+	private Slider _bgmSlider;
 
-    [SerializeField, Range(0, 2)]
-    private float bgm = 1;
+	[SerializeField]
+	private string _bgmName;
 
-    [SerializeField]
-    private Slider _bgmSlider;
+	[Space(15)]
 
-    [SerializeField]
-    private AudioMixerGroup _bgmGroup;
+	[SerializeField]
+	private Slider _masterSlider;
 
-    [Space(15)]
+	[SerializeField]
+	private string _masterName;
 
-    [SerializeField, Range(0, 2)]
-    private float bgs = 1;
+	[Space(15)]
 
-    [SerializeField]
-    private Slider _bgsSlider;
+	[SerializeField]
+	private Slider _sfxSlider;
 
-    [SerializeField]
-    private AudioMixerGroup _bgsGroup;
+	[SerializeField]
+	private string _sfxName;
 
-    [Space(15)]
+	[Space(15)]
 
-    [SerializeField, Range(0, 2)]
-    private float se = 1;
+	[SerializeField]
+	private AudioMixer _audioMixer;
 
-    [SerializeField]
-    private Slider _seSlider;
-    
-    [SerializeField]
-    private AudioMixerGroup _seGroup;
+	[SerializeField, MinMaxSlider(-80f, 20f)]
+	private Vector2 dBslider;
 
-    private float _originalBGMVolume = 0f;
-    private float _originalBGSVolume = 0f;
-    private float _originalSEVolume = 0f;
+    private void OnEnable()
+    {
+		_bgmSlider.onValueChanged.AddListener(UpdateBGM);
+		_masterSlider.onValueChanged.AddListener(UpdateMaster);
+		_sfxSlider.onValueChanged.AddListener(UpdateSXF);
 
-    private void Awake() {
+		float sfx;
+		float mas;
+		float bgm;
 
-        _bgmGroup.audioMixer.GetFloat("bgmVol", out _originalBGMVolume);
-        _bgsGroup.audioMixer.GetFloat("bgsVol", out _originalBGSVolume);
-        _seGroup.audioMixer.GetFloat("seVol", out _originalSEVolume);
+		_audioMixer.GetFloat(_bgmName, out bgm);
+		_audioMixer.GetFloat(_masterName, out mas);
+		_audioMixer.GetFloat(_sfxName, out sfx);
 
-    }
+		_bgmSlider.value = (bgm - dBslider.x) / (dBslider.y - dBslider.x);
+		_masterSlider.value = (mas - dBslider.x) / (dBslider.y - dBslider.x);
+		_sfxSlider.value = (sfx - dBslider.x) / (dBslider.y - dBslider.x);
 
-    public void UpdateBGM() {
+	}
 
-        bgm = _bgmSlider.value;
+    public void UpdateBGM(float value) {
 
-        _bgmGroup.audioMixer.SetFloat("bgmVol", ValueToVolume(bgm) + _originalBGMVolume);
+		_audioMixer.SetFloat(_bgmName, ValueToVolume(value));
 
-    }
+	}
 
-    public void UpdateBGS(float value) {
+	public void UpdateMaster(float value) {
 
-        bgs = _bgsSlider.value;
+		_audioMixer.SetFloat(_masterName, ValueToVolume(value));
 
-        _bgsGroup.audioMixer.SetFloat("bgsVol", ValueToVolume(bgs) + _originalBGSVolume);
+	}
 
-    }
+	public void UpdateSXF(float value) {
 
-    public void UpdateSE(float value) {
+		_audioMixer.SetFloat(_sfxName, ValueToVolume(value));
 
-        se = _seSlider.value;
+	}
 
-        _seGroup.audioMixer.SetFloat("seVol", ValueToVolume(se) + _originalSEVolume);
+	private float ValueToVolume(float value) {
 
-    }
+		//Debug.Log(Mathf.Log10(value) * 20);
+		//return Mathf.Log10(value) * 20;
+		return Mathf.Lerp(dBslider.x, dBslider.y, value);
 
-    private float ValueToVolume(float value) {
-
-        return Mathf.Log10(value) * 20;
-
-    }
+	}
 
 }

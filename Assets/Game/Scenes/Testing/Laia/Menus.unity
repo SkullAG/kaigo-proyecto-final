@@ -6119,6 +6119,7 @@ GameObject:
   - component: {fileID: 1938191755}
   - component: {fileID: 1938191754}
   - component: {fileID: 1938191753}
+  - component: {fileID: 1938191756}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -6190,9 +6191,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2004379159}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: Salir_del_juego
+      - m_Target: {fileID: 1938191756}
+        m_TargetAssemblyTypeName: ExitManager, Assembly-CSharp
+        m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6240,6 +6241,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938191751}
   m_CullTransparentMesh: 1
+--- !u!114 &1938191756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938191751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61722aab3798a314e9a1d237958817ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1956795322
 GameObject:
   m_ObjectHideFlags: 0
@@ -6269,7 +6282,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -7424207813458849335, guid: 62a0a96d901d7e247b9e2eb956654fde, type: 2}
   m_audioClip: {fileID: 8300000, guid: 49c64d10cbe089c48b47f9c83e8dce7b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6520,6 +6533,7 @@ GameObject:
   - component: {fileID: 2025010360}
   - component: {fileID: 2025010359}
   - component: {fileID: 2025010358}
+  - component: {fileID: 2025010361}
   m_Layer: 5
   m_Name: Main
   m_TagString: Untagged
@@ -6591,9 +6605,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2004379159}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: Jugar_al_lvl
+      - m_Target: {fileID: 2025010361}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: Load
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6641,6 +6655,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025010356}
   m_CullTransparentMesh: 1
+--- !u!114 &2025010361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025010356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9145e8fbd1841ec41a29f5812f501d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Scene: Level1
 --- !u!1 &2067565345
 GameObject:
   m_ObjectHideFlags: 0
