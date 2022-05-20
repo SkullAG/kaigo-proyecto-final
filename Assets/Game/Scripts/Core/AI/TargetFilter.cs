@@ -23,7 +23,7 @@ namespace Core.AI
         public enum Scope { playerGroup = 1, fieldMobs = 2 } // No funciona aliados + enemigos de momento
 
         public abstract Character GetTarget(Character actor);
-        public abstract void DrawGizmos(Character actor);
+        public virtual void DrawGizmos(Character actor) { }
 
         public HashSet<Character> GetValidCharacters(Character actor, Scope scope) {
 
